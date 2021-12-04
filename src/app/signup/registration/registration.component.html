@@ -1,0 +1,49 @@
+<div class="wrrpperRegisterForm">
+    <app-top-header-bt [back]="back_link" [title]="component_title"></app-top-header-bt>
+    
+    <div class="forms">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="formGroup">
+                <label>Your Full Name*</label>
+                <div class="inputs">
+                    <input autocomplete="off" formControlName="name" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" maxlength="28">
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">Name is required</div>
+                        <div *ngIf="f.name.errors.pattern">Characters and space are allowed, It's length should be minimum two characters</div>
+                      </div>
+                      <div class="invalid-feedback error" style="display: block;" *ngIf="f.name.errors?.serverError">{{ f.name.errors?.serverError }}</div>
+                </div>
+            </div>
+            <div class="formGroup">
+                <label>Your Email Id*</label>
+                <div class="inputs">
+                    <input autocomplete="off" formControlName="email" type="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required.</div> 
+                        <div *ngIf="f.email.errors.emailTaken">Email is already taken.</div>
+                        <div *ngIf="f.email.errors.pattern">Email must be a valid email address.</div>
+                      </div> 
+                      <div class="invalid-feedback error" style="display: block;" *ngIf="f.email.errors?.serverError">{{ f.email.errors?.serverError }}</div>
+                </div>
+            </div>
+            <app-your-mobile-number [parent]="form" [submit]="submitted"></app-your-mobile-number>
+            <app-select-your-gender [parent]="form" [submit]="submitted"></app-select-your-gender>
+            <app-date-of-birth [parent]="form" [submit]="submitted"></app-date-of-birth>
+            <app-your-country-state-city [parent]="form" [submit]="submitted"></app-your-country-state-city>
+            <div class="formGroup">
+                <label>Home Town*</label>
+                <div class="inputs">
+                    <input autocomplete="off" formControlName="home_town" type="text"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">
+                    <div *ngIf="submitted && f.home_town.errors" class="invalid-feedback">
+                        <div *ngIf="f.home_town.errors.required">Home town is required.</div> 
+                      </div> 
+                      <div class="invalid-feedback error" style="display: block;" *ngIf="f.email.errors?.serverError">{{ f.home_town.errors?.serverError }}</div>
+                </div>
+            </div>
+            <button type="submit" class="next" >NEXT</button>
+        </form>
+        <div>
+            {{form.value | json}}
+          </div>
+    </div>
+</div>

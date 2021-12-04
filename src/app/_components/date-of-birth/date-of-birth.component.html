@@ -1,0 +1,32 @@
+<div class="formGroup" [formGroup]="parent">
+    <label>Your Date of Birth*</label>
+    <div class="dateBirth">
+        <div class="select">
+            <select formControlName="day" class="form-control" [ngClass]="{ 'is-invalid': submit && f.day.errors }">
+                <option value="">Day</option>
+                <option [value]="day" *ngFor="let day of dayList" >{{day}}</option>
+             </select>
+             <div *ngIf="submit && f.day.errors" class="invalid-feedback">
+                 <div *ngIf="f.day.errors.required">Day is required</div>               
+               </div>       
+        </div>
+        <div class="select">
+            <select formControlName="month" class="form-control" [ngClass]="{ 'is-invalid': submit && f.month.errors }">
+                <option value="">Month</option>
+                <option [value]="month" *ngFor="let month of monthList" >{{month}}</option>
+             </select>
+             <div *ngIf="submit && f.month.errors" class="invalid-feedback">
+                 <div *ngIf="f.month.errors.required">Month is required</div>               
+               </div>
+        </div>
+        <div class="select">
+            <select formControlName="year" class="form-control" [ngClass]="{ 'is-invalid': submit && f.year.errors }">
+                <option value="" disabled>Year</option>
+                <option [value]="year" *ngFor="let year of yearList" >{{year}}</option>
+             </select>
+             <div *ngIf="submit && f.year.errors" class="invalid-feedback">
+                 <div *ngIf="f.year.errors.required">Year is required</div>               
+               </div>
+        </div>
+    </div>
+</div>

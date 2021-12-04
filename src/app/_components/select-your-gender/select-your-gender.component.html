@@ -1,0 +1,12 @@
+<div class="formGroup" [formGroup]="parent">
+    <label>Select Your Gender*</label>
+    <div class="select">
+        <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submit && f.gender.errors }">
+            <option value="">Select</option>
+            <option [value]="gender" *ngFor="let gender of genderList">{{gender}}</option>
+        </select>
+        <div *ngIf="submit && f.gender.errors" class="invalid-feedback">
+            <div *ngIf="f.gender.errors.required">Gender is required</div>               
+          </div>          
+    </div>
+</div> 

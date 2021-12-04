@@ -17,6 +17,8 @@ import { YourMobileNumberComponent } from './_components/your-mobile-number/your
 import { SelectYourGenderComponent } from './_components/select-your-gender/select-your-gender.component';
 import { YourCountryStateCityComponent } from './_components/your-country-state-city/your-country-state-city.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SigninComponent } from './signin/signin.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     DateOfBirthComponent,
     YourMobileNumberComponent,
     SelectYourGenderComponent,
-    YourCountryStateCityComponent
+    YourCountryStateCityComponent,
+    SigninComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

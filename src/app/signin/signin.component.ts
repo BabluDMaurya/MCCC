@@ -62,7 +62,7 @@ export class SigninComponent implements OnInit {
                     sessionStorage.setItem('profile_status',data.profileStatus);
                     // console.log("login data :" + JSON.stringify(data));
                     if(data.profileStatus === 'false'){
-                      this.router.navigate(['/upload-images']);
+                      this.router.navigate(['/home']);
                     }else{
                       sessionStorage.setItem('name',data.userDetails.name);
                       sessionStorage.setItem('dob',data.userDetails.dob);
@@ -82,13 +82,13 @@ export class SigninComponent implements OnInit {
                       if(data.userDetails.hobbies != null && data.userDetails.hobbies != ''){
                         sessionStorage.setItem('hobbies',data.userDetails.hobbies);
                       }
-                      // this.splaceScreen = data.splashScreen;
-                      // if(this.splaceScreen == 1){
-                      //   this.dashboardService.filter('applyed');
-                      //   this.router.navigate(['/splash']);
-                      // }else{                        
+                      this.splaceScreen = data.splashScreen;
+                      if(this.splaceScreen == 1){
+                        this.dashboardService.filter('applyed');
+                        this.router.navigate(['/home']);
+                      }else{                        
                         this.router.navigate(['/home']);                        
-                      // }
+                      }
                     }
                   }
                 },

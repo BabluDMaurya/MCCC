@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './_helpers/auth.guard';
 import { LogoComponent } from './logo/logo.component';
 import { SplashComponent } from './splash/splash.component';
 import { SigninSignupComponent } from './signin-signup/signin-signup.component';
 import { RegistrationComponent } from './signup/registration/registration.component';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
-import { CreatePasswordComponent } from './signup/create-password/create-password.component';
-import { SuccessComponent } from './signup/success/success.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { UploadVideoComponent } from './complete-profile/upload-video/upload-video.component';
-import { CompleteProfileComponent } from './complete-profile/complete-profile/complete-profile.component';
-import { FinalSuccessComponent } from './complete-profile/final-success/final-success.component';
-import { UploadImagesComponent } from './complete-profile/upload-images/upload-images.component';
-
+import { BtsComponent } from './bts/bts.component';
+import { BtsInnerComponent } from './bts/bts-inner/bts-inner.component';
+import { BtsVideoViewComponent } from './bts/bts-video-view/bts-video-view.component';
+import { TrainingComponent } from './training/training.component';
+import {WorkshopComponent} from './workshop/workshop.component';
+import { WorkshopRegistrationComponent } from './workshop/workshop-registration/workshop-registration.component';
+import { WorkshopRegistrationFormComponent } from './workshop/workshop-registration-form/workshop-registration-form.component';
+import { ThankYouPageComponent } from './workshop/thank-you-page/thank-you-page.component';
 const routes: Routes = [{    
   path: '',    
   redirectTo: 'logo',    
@@ -38,45 +36,45 @@ const routes: Routes = [{
   data: {title: 'registration'}    
 },
 {    
-  path: 'create-password',component: CreatePasswordComponent,    
-  data: {title: 'create password'}    
-},
-{    
-  path: 'success',component: SuccessComponent,    
-  data: {title: 'success'}    
-},
-{    
   path: 'signin',component: SigninComponent,    
   data: {title: 'registration'}    
 },
 {    
-  path: 'forgot-password',component: ForgotPasswordComponent,    
-  data: {title: 'forgot password'}    
-},
-{    
-  path: 'reset-password/:token',component: ResetPasswordComponent,    
-  data: {title: 'reset password'}    
-},
-{    
-  path: 'upload-images',component: UploadImagesComponent,canActivate: [AuthGuard], 
-  data: {title: 'Upload Images'}    
-},
-{    
-  path: 'upload-video',component: UploadVideoComponent,canActivate: [AuthGuard],
-  data: {title: 'Upload Video'}    
-},
-{    
-  path: 'complete-profile',component: CompleteProfileComponent,canActivate: [AuthGuard],  
-  data: {title: 'complete profile'}    
-},
-{    
-  path: 'final-success',component: FinalSuccessComponent,canActivate: [AuthGuard],
-  data: {title: 'final success'}    
-},
-{    
-  path: 'home',component: HomeComponent,canActivate: [AuthGuard],   
+  path: 'home',component: HomeComponent,    
   data: {title: 'registration'}    
-}
+},
+{    
+  path: 'bts',component: BtsComponent,    
+  data: {title: 'BTS'}    
+},
+{    
+  path: 'bts-inner/:id',component: BtsInnerComponent,    
+  data: {storeRoute: false, title: 'BTS Inner'}    
+},
+{    
+  path: 'bts-video-view/:id/:type',component: BtsVideoViewComponent,
+  data: {storeRoute: false,title: 'BTS Inner'}    
+},
+{    
+  path: 'training',component: TrainingComponent,    
+  data: {title: 'training'}    
+},
+{    
+  path: 'workshop/:id',component: WorkshopComponent,    
+  data: {storeRoute: false,title: 'Workshop'}    
+},
+{
+  path: 'workshop-registration/:id',component: WorkshopRegistrationComponent,    
+  data: {storeRoute: true,title: 'Workshop Registration'}    
+},
+{    
+  path: 'workshop-registration-form/:id/:type',component: WorkshopRegistrationFormComponent,   
+  data: {title: 'Workshop Registration Form'}    
+},
+{    
+  path: 'thank-you-workshop/:name',component: ThankYouPageComponent,  
+  data: {title: 'Workshop Registration Form'}    
+},
 ];
 
 @NgModule({

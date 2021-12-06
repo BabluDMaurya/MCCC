@@ -32,6 +32,7 @@ import { FooterComponent } from './_components/footer/footer.component';
 import { HeaderComponent } from './_components/header/header.component';
 import { SidebarsComponent } from './_components/sidebars/sidebars.component';
 import { SubHeaderComponent } from './_components/sub-header/sub-header.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,9 @@ import { SubHeaderComponent } from './_components/sub-header/sub-header.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass :'toast-bottom-right'
+    })
   ],
   providers: [DatePipe,],
   bootstrap: [AppComponent],

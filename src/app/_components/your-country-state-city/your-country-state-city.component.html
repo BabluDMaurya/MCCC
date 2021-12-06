@@ -3,8 +3,8 @@
     <div class="select">
         <select formControlName="country" class="form-control" [ngClass]="{ 'is-invalid': submit && f.country.errors }">            
             <option value="">Select</option>
-            <option value="101">India</option>
-            <!-- <option  *ngFor="let item of countryList" >{{item.CountryName}}</option> -->
+            <!-- <option value="101">India</option>             -->
+            <option value="country.id" *ngFor="let country of countryList" >{{country.name}}</option>
          </select>
          <div *ngIf="submit && f.country.errors" class="invalid-feedback">
              <div *ngIf="f.country.errors.required">Country is required</div>               
@@ -63,7 +63,7 @@
     <div class="select">
         <select formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submit && f.city.errors }">
             <option value="">Select</option>
-            <option *ngFor="let city of cityList" value="city.id">{{city.name}}</option>
+            <option *ngFor="let city of cityList" value="{{city.id}}">{{city.name}}</option>
          </select>
          <div *ngIf="submit && f.city.errors" class="invalid-feedback">
              <div *ngIf="f.city.errors.required">City is required</div>               

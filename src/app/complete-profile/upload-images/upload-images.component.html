@@ -1,0 +1,54 @@
+<div class="wrrpperRegisterForm successs profilePhoto">
+    <app-top-header-bt [back]="back_link" [title]="component_title"></app-top-header-bt>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="imgContent">
+        <div class="imgs">
+            <input type="file" formControlName="files" (change)="fileChangeEvent($event)" id="files" multiple accept="image/jpeg, image/png, image/jpg,">
+            <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
+        </div>
+        <div class="ctnt">
+            <p>Take a photo or choose From <br>your library</p>
+        </div>
+    </div>
+    <div style="display:flex;max-width:600px;overflow: auto;">
+        <div *ngFor="let item of ulpoadedFiles" style="margin:5px">
+          <span (click)="cropImage(item.imgId)">
+            <img [src]="item.imgBase64" style="max-width:300px;max-height:300px ;border:2px solid gray" />
+          </span>
+          <div class="close_btn" (click)="removeImage(item.imgId)"><span>-</span></div>
+        </div>  
+      </div>
+    <div class="btnArea">
+        <p class="btn_ctnt">Take a few minutes to complete your Profile</p>
+        <button class="next" (click)="SaveAllImages()" [disabled]="ulpoadedFiles?.length != 3">Continue</button>
+        <span>I will do it later</span>
+    </div>
+    <div class="backdrop" [ngStyle]="{'display':display}"></div>
+                  
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Image Cropper</h4>
+            <!-- <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button> -->
+          </div>
+          <div class="modal-body">
+            <image-cropper [imageChangedEvent]="imageChangedEvent"
+                           [maintainAspectRatio]="true"
+                           [aspectRatio]="4 / 3"
+                           [resizeToWidth]="500"
+                           format="png"
+                           (imageCropped)="imageCropped($event)"
+                           (imageLoaded)="imageLoaded()"
+                           (cropperReady)="cropperReady()"
+                           (loadImageFailed)="loadImageFailed()" style="max-height:500px"></image-cropper>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="SaveCropedImage()">Save</button>
+            <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div> 
+</form>
+</div>

@@ -139,7 +139,7 @@ export class UploadImagesComponent implements OnInit {
   SaveAllImages() {
     // this.finalImageList = null;
     this.ulpoadedFiles.forEach((imgObject: { imgBase64: any; }) => {
-      console.log(imgObject);
+      // console.log(imgObject);
       this.finalImageList.push(imgObject.imgBase64);
       this.patchValues();
       

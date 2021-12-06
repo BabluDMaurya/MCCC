@@ -188,6 +188,11 @@ export class CompleteProfileComponent implements OnInit {
         this.uploading = false;
         this.responseData = data;
         if (this.responseData.status == "true") {
+          let ld:any  = localStorage.getItem('currentUser');
+          let item =JSON.parse(ld);
+          item['profileStatus']='true';
+          localStorage.setItem('currentUser', JSON.stringify(item));
+          this.authenticationService.currentUserValue.profileStatus = "true";
           this.route.navigate(['/final-success']);
         } else {
           this.alertService.success(this.responseData.data);

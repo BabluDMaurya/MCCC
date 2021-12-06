@@ -24,20 +24,21 @@ export class SuccessComponent implements OnInit {
   ngOnInit(): void {
   }
   completeYourProfile(){
-    // this.authenticationService.login(sessionStorage.getItem('email'), sessionStorage.getItem('password'))
-    //         .subscribe(
-    //             data => {
-    //               sessionStorage.clear();
-    //               sessionStorage.setItem('profile_status',data.profileStatus);
-    //               if(data.profileStatus === 'false'){
+    this.authenticationService.login(sessionStorage.getItem('email'), sessionStorage.getItem('password'))
+            .subscribe(
+                data => {
+                  //clear all the session data
+                  sessionStorage.clear();
+                  sessionStorage.setItem('profile_status',data.profileStatus);
+                  if(data.profileStatus === 'false'){
                     this.route.navigate(['/upload-images']);
-                //   }else{
-                //     this.route.navigate(['/home']);
-                //   }
-                // },
-                // error => {
+                  }else{
+                    this.route.navigate(['/home']);
+                  }
+                },
+                error => {
                   
-                // });
+                });
   }
 
 }

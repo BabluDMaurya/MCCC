@@ -73,8 +73,9 @@ this.form.controls['home_town'].setValue(sessionStorage.getItem('home_town'));
 // fetch terms and condtion from server
 this.registerService.terms().subscribe(
   data => {
-    console.log("terms run");
+    
     this.all_terms = data;
+    this.all_terms = this.all_terms.allTerms;
   },error => {
     console.log("terms error");
   });
@@ -87,8 +88,20 @@ this.registerService.terms().subscribe(
     if (this.form.invalid) {
       return;
     }else{
+        sessionStorage.setItem('password',this.form.value.password);
         this.registerService.register_new(this.form.value).subscribe(
-                data => {                                  
+                data => {     
+                  sessionStorage.removeItem('city_id');
+                  sessionStorage.removeItem('otp');
+                  sessionStorage.removeItem('gender');
+                  sessionStorage.removeItem('state_id');
+                  sessionStorage.removeItem('home_town');
+                  sessionStorage.removeItem('dob');
+                  sessionStorage.removeItem('phone');
+                  sessionStorage.removeItem('name');
+                  sessionStorage.removeItem('country_id'); 
+                  // sessionStorage.removeItem('email');
+                  // sessionStorage.removeItem('password');                    
                   this.route.navigate(['/success']);
                 },
                 (errorResponse: HttpErrorResponse) => {

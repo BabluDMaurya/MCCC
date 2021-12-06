@@ -21,10 +21,9 @@ export class HomeComponent implements OnInit {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       let Auth = JSON.stringify(this.authenticationService.currentUserValue.status);
-      console.log("Auth : ", Auth);
       if (Auth) {
-        if (sessionStorage.getItem('profile_status') === 'false') {
-          this.route.navigate(['/profile_first_step']);
+        if (this.authenticationService.currentUserValue.profileStatus  === 'false') {
+          this.route.navigate(['/upload-images']);
         }
       } else {
         this.route.navigate(['/signin']);

@@ -33,6 +33,12 @@ export class RegisterService {
   terms(){
     return this.http.get(`${Config.BasePath}/terms`);
   }
+  countries(){
+    return this.http.get(`${Config.BasePath}/countries`);
+  }
+  states(){
+    return this.http.get(`${Config.BasePath}/states`);
+  }
   languages(){
     return this.http.get(`${Config.BasePath}/languages`);
   }

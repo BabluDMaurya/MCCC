@@ -21,6 +21,60 @@ slider.on('afterChange', function(event, slick, currentSlide, nextSlide){
     slider.slickSetOption("dots",false,false)
   };
 });
+$('.moresliderVideos').slick({
+  fade:false,
+  dots:false,
+  arrows:false,
+  // initialSlides: 0.5,
+  slidesToShow:3,
+  slidesToScroll:1
+});
+
+
+
+var $carousel = $('.bts_popular_sliderSecond');
+
+var settings = {
+  dots: false,
+  arrows: false,
+  slide: '.btsSlioder',
+  // initialsSlide: 0.5,
+  slidesToShow: 2,
+  centerMode: true,
+  centerPadding: '60px',
+};
+
+function setSlideVisibility() {
+  //Find the visible slides i.e. where aria-hidden="false"
+  var visibleSlides = $carousel.find('.slick-btsSlioder[aria-hidden="false"]');
+  //Make sure all of the visible slides have an opacity of 1
+  $(visibleSlides).each(function() {
+    $(this).css('opacity', 1);
+  });
+
+  //Set the opacity of the first and last partial slides.
+  $(visibleSlides).first().prev().css('opacity', 0);
+}
+
+$carousel.slick(settings);
+$carousel.slick('slickGoTo', 1);
+// setSlideVisibility();
+
+$carousel.on('afterChange', function() {
+  setSlideVisibility();
+});
+
+
+// $('.bts_popular_sliderFirst').slick({
+//   fade:false,
+//   dots:false,
+//   arrows:false,
+//   centerMode: false,
+//   initialSlide: 0.5,
+//   slidesToShow:2.5,
+//   slidesToScroll:1
+// });
+
 
 $('#password').keyup(function() {
   var password = $('#password').val();
@@ -218,3 +272,41 @@ function getCodeBoxElement(index) {
        }
     }
   }
+
+  $(document).ready(function(){
+    $(".plus_icon_workWxperince").on('click',function () {
+      $(".work_experince").append(' <div class="formGroup addRemoveDivss workExperince"><label><img src="assets/img/img/work.webp" alt="">  Work Experince</label><div class="withIcon"><div class="inputs"><input type="text" placeholder="" class=""></div><div class="minus_iconWorkficatuons"><img src="assets/img/img/downArrow.webp" alt=""></div></div></div>');
+
+      $('.minus_iconWorkficatuons').on('click',function(){
+        $(this).closest('.workExperince').remove();
+      });
+    });
+
+    $(".plus_icon_qualificationsPlus").on('click',function () {
+      $(".qaulifications").append(' <div class="formGroup addRemoveDivss qaulificationss"><label><img src="assets/img/img/qualification.webp" =""> Qaulifications</label><div class="withIcon"><div class="inputs"><input type="text" placeholder="" class=""></div><div class="minusQuakifiactions"><img src="assets/img/img/downArrow.webp" alt=""></div></div></div>');
+
+      $('.minusQuakifiactions').on('click',function(){
+        $(this).closest('.qaulificationss').remove();
+      });
+    });
+
+    $(".plus_icon_SocailLinks").on('click',function () {
+      $(".SocailLinks").append(' <div class="formGroup addRemoveDivss SocailLinkss"><label><img src="assets/img/img/languages.webp" alt="">  Social links /  Video links</label><div class="withIcon"><div class="inputs"><input type="text" placeholder="" class=""></div><div class="minus_SocailLinks"><img src="assets/img/img/downArrow.webp" alt=""></div></div></div>');
+
+      $('.minus_SocailLinks').on('click',function(){
+        $(this).closest('.SocailLinkss').remove();
+      });
+    });
+    // $('#nav-icon4').on('click',function(){
+    //   $(this).toggleClass('open');
+    // });
+  });
+
+  $('.trainngSlider').slick({
+    fade:false,
+    dots:false,
+    arrows:false,
+    // initialSlides: 0.5,
+    slidesToShow:2,
+    slidesToScroll:1
+  });

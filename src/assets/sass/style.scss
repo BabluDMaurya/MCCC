@@ -13,8 +13,8 @@
 // Plugins
 //-------------------------------------------------------------
 // Splide
-// @import url('inc/slick/slick.min.css');
-// @import url('inc/slick/slick-theme.min.css');
+@import url('inc/slick/slick.min.css');
+@import url('inc/slick/slick-theme.min.css');
 
 
 //-------------------------------------------------------------
@@ -32,6 +32,11 @@
 // Layout
 //-------------------------------------------------------------
 // Body - General Settings
+select,input{
+    &:focus-visible{
+        outline: none;
+    }
+}
 @import 'body';
 // Header
 @import 'section/header';

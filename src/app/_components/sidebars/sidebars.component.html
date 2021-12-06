@@ -1,0 +1,131 @@
+<!-- sidebars -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarPanel">
+    <div class="offcanvas-body">
+        <!-- profile box -->
+        <div class="profileBox">
+            <div class="image-wrapper">
+                <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
+            </div>
+            <div class="in">
+                <strong>Hello {{currentUser.userDetails.name}} <!DOCTYPE html></strong>
+            </div>
+            <a href="#" class="close-sidebar-button" data-bs-dismiss="offcanvas">
+                <ion-icon name="close"></ion-icon>
+            </a>
+        </div>
+        <!-- * profile box -->
+
+        <ul class="listview flush transparent no-line image-listview mt-2">
+            <li>
+                <a href="index.html" class="item">
+                    <div class="in">
+                        My Applications
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="app-components.html" class="item">
+                    <div class="in">
+                        Notifications
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="app-pages.html" class="item">
+                    <div class="in">
+                        <div>Upcoming Workshop</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="page-chat.html" class="item">
+                    <div class="in">
+                        <div>Training Sessions</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="page-chat.html" class="item">
+                    <div class="in">
+                        <div>Shortlisted</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="page-chat.html" class="item">
+                    <div class="in">
+                        <div>BTS</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="page-chat.html" class="item">
+                    <div class="in">
+                        <div>Celeb Videos</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="page-chat.html" class="item">
+                    <div class="in">
+                        <div>Games</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="page-chat.html" class="item">
+                    <div class="in">
+                        <div>Classified</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="page-chat.html" class="item">
+                    <div class="in">
+                        <div>About MCCC</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="page-chat.html" class="item">
+                    <div class="in">
+                        <div>FAQ's</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="page-chat.html" class="item">
+                    <div class="in">
+                        <div>Help</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="page-chat.html" class="item">
+                    <div class="in">
+                        <div>Terms & Condition</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="item">
+                    <div class="in">
+                        <div>Dark Mode</div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input dark-mode-switch" type="checkbox" id="darkmodesidebar">
+                            <label class="form-check-label" for="darkmodesidebar"></label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="item">
+                    <div class="in">
+                        <div>Version 1.1</div>
+                        <div class="logout" (click)="logout()"><span>Logout</span></div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

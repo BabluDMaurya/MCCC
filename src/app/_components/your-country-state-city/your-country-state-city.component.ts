@@ -16,32 +16,36 @@ export class YourCountryStateCityComponent implements OnInit {
   @Input() parent: FormGroup | any;
   @Input() submit: any;
   cityList : any;
-  stateList : any [] = []; 
+  stateList : any; 
   selectedCountry = 'Select';  
   selectedState = 'Select';
   selectedCity = 'Select';
   response : any;
-  dataTrue = false;
-  
+  dataTrue = false;  
   all_countries : any = [];
   constructor(private registerService : RegisterService) { }
 
   ngOnInit(): void {        
     this.parent.addControl('country',new FormControl('', [Validators.required]));     
       this.parent.addControl('state',new FormControl('',[Validators.required]));
-      this.parent.addControl('city',new FormControl('', [Validators.required])); 
-
-      //-fetch all the cities
-    this.registerService.countries().subscribe(
-      data => {        
-        this.all_countries = data;
-        console.log("countries : ", this.all_countries);
-      },error => {
-        console.log("terms error");
-      });
+      this.parent.addControl('city',new FormControl('', [Validators.required]));
   }
   get f(): { [key: string]: AbstractControl } {
     return this.parent.controls;
+  }
+  changeSuitState(e:any) {
+    if(e.target.value > 0){      
+      this.registerService.states({country_id:e.target.value}).subscribe(res=>{
+        this.response = res;
+        if(this.response.data !== 'undefined' && this.response.data.length > 0){
+          this.stateList = this.response.data;  
+        }else{          
+          this.dataTrue = false;
+        }
+      },error=>{
+       
+      });
+    }
   }
   changeSuit(e:any) {
     if(e.target.value > 0){      

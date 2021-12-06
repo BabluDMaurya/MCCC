@@ -55,13 +55,9 @@ export class RegistrationComponent implements OnInit {
     this.submitted = true;
     if (this.form.invalid) {      
       return;
-    }else{          
-      console.log("this.form.value.day : ", this.form.value.day); 
-      console.log("this.form.value.month : ", this.form.value.month);
-      console.log("this.form.value.year : ", this.form.value.year);
+    }else{ 
       let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
-      this.form.controls['dob'].setValue(DOB);
-      console.log("DOB: ",this.form.value.dob);
+      this.form.controls['dob'].setValue(DOB);      
         this.registerService.check_email_mobile(this.form.value).subscribe(
                 (data:any) => {
                   sessionStorage.setItem('otp',data.otp);

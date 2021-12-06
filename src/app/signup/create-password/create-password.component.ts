@@ -68,7 +68,7 @@ this.form.controls['gender'].setValue(sessionStorage.getItem('gender'));
 this.form.controls['country'].setValue(sessionStorage.getItem('country_id'));
 this.form.controls['state'].setValue(sessionStorage.getItem('state_id'));
 this.form.controls['city'].setValue(sessionStorage.getItem('city_id'));
-// this.form.controls['home_twon'].setValue(sessionStorage.getItem('home_twon'));
+this.form.controls['home_town'].setValue(sessionStorage.getItem('home_town'));
 
 // fetch terms and condtion from server
 this.registerService.terms().subscribe(

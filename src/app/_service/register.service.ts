@@ -23,9 +23,9 @@ export class RegisterService {
   }
   state(){
     return this.http.get(`${Config.BasePath}/states`);
-  }
+  }  
   cities(id:any){
-    return this.http.post(`${Config.BasePath}/cities`,id);
+    return this.http.post(`${Config.BasePath}/cities_by_id`,id);
   }
   delete(id: number) {
     return this.http.delete(`${Config.BasePath}/users/${id}`);
@@ -36,8 +36,8 @@ export class RegisterService {
   countries(){
     return this.http.get(`${Config.BasePath}/countries`);
   }
-  states(){
-    return this.http.get(`${Config.BasePath}/states`);
+  states(id:any){
+    return this.http.post(`${Config.BasePath}/states_by_id`,id);
   }
   languages(){
     return this.http.get(`${Config.BasePath}/languages`);

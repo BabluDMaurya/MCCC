@@ -1,0 +1,65 @@
+
+ 
+<app-sidebars></app-sidebars>
+<app-footer></app-footer>
+<div class="main">
+    <app-header></app-header>
+    <div class="main_wrppers">
+    <div class=" casting bts">
+       
+        <div class="main_wrppers">
+            <div class="casingCalls">
+                <div class="casingCallHeader">
+                    <p class="classinghead recomded">Popular BTS</p>
+                    <span><a [routerLink]="['/bts-inner/1']">View All</a></span>
+                </div>
+                <div class="bts_popular_slider bts_popular_sliderSecond">
+                    <div class="btsSlioder" *ngFor = "let vid of popularBtsVideos" >
+                       <a [routerLink]="['/bts-video-view/',vid.id,1]">
+                            <img src="../../assets/img/img/homeBanner.webp" alt="">
+                            <div class="btsPlay_icon">
+                                <img *ngIf="vid.youtube_thumbnail == null " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
+                                <img *ngIf="vid.youtube_thumbnail != null " src="{{vid.youtube_thumbnail}}">
+                            </div>
+                       </a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="casingCalls">
+                <div class="casingCallHeader">
+                    <p class="classinghead primary__color recomded">Top BTS</p>
+                    <span><a [routerLink]="['/bts-inner/2']">View All</a></span>
+                </div>
+                <div class="bts_popular_slider bts_popular_sliderSecond">
+                    <div class="btsSlioder" *ngFor="let vid of topBtsVideos">
+                       <a [routerLink]="['/bts-video-view/',vid.id,2]" >
+                        <img *ngIf="vid.youtube_thumbnail == null " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
+					    <img *ngIf="vid.youtube_thumbnail != null " src="{{vid.youtube_thumbnail}}">
+                            <div class="btsPlay_icon">
+                                <img src="../../assets/img/img/play_icon.webp" alt="">
+                            </div>
+                       </a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="casingCalls">
+                <div class="casingCallHeader">
+                    <p class="classinghead recomded secondary__color">Watch more videos</p>
+                    <span><a>View All</a></span>
+                </div>
+                <div class="moresliderVideos">
+                    <div class="moreSlider" *ngFor="let catg of categories; let i=index;" >
+                        <a [routerLink]="['/bts-inner/',catg.id]">
+                            <div class="more_V_box">
+                                <span>{{catg.category}}</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

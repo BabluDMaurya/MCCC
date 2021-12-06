@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Config } from 'src/app/_config/config';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../_service/authentication.service';
 
 @Component({
   selector: 'app-splash',
@@ -50,15 +49,8 @@ export class SplashComponent implements OnInit {
   }
   //-----slick slider------------//
   constructor(
-    private route : Router,private authenticationService: AuthenticationService
-  ) { 
-    if (this.authenticationService.currentUserValue) {
-      let Auth =  JSON.stringify(this.authenticationService.currentUserValue.status);
-      if(Auth){
-          this.route.navigate([Config.AfterLogin]);
-      }
-     }
-  }
+    private route : Router
+  ) { }
 
   ngOnInit(): void {
   }

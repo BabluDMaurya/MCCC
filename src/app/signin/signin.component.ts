@@ -108,7 +108,7 @@ export class SigninComponent implements OnInit {
     sessionStorage.removeItem('city');
     sessionStorage.removeItem('password');
     sessionStorage.removeItem('confirm_password');
-    this.router.navigate(['/signup-name']);
+    this.router.navigate(['/registration']);
   }
 
 }

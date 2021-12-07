@@ -7,7 +7,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DatePipe } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { ErrorInterceptor } from './_helpers/error.interceptor';
+// import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -35,6 +35,8 @@ import { HeaderComponent } from './_components/header/header.component';
 import { FooterComponent } from './_components/footer/footer.component';
 import { SubHeaderComponent } from './_components/sub-header/sub-header.component';
 import { SidebarsComponent } from './_components/sidebars/sidebars.component';
+import { CastingComponent } from './casting/casting.component';
+import { CastingCardComponent } from './_components/casting-card/casting-card.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { SidebarsComponent } from './_components/sidebars/sidebars.component';
     FooterComponent,
     SubHeaderComponent,
     SidebarsComponent,
+    CastingComponent,
+    CastingCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,7 @@ import { SidebarsComponent } from './_components/sidebars/sidebars.component';
   providers: [
     DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

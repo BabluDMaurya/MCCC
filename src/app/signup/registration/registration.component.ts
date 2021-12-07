@@ -72,7 +72,7 @@ export class RegistrationComponent implements OnInit {
                   sessionStorage.setItem('home_town',data.userDetails.home_town);
                   this.route.navigate(['/create-password']);
                 },
-                (errorResponse: HttpErrorResponse) => {
+                (errorResponse: HttpErrorResponse) => {                  
                   const validationErrors = errorResponse.error.errors;
                   Object.keys(validationErrors).forEach(prop => {
                     const formControl = this.form.get(prop);

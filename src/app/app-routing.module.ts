@@ -15,6 +15,7 @@ import { UploadVideoComponent } from './complete-profile/upload-video/upload-vid
 import { CompleteProfileComponent } from './complete-profile/complete-profile/complete-profile.component';
 import { FinalSuccessComponent } from './complete-profile/final-success/final-success.component';
 import { UploadImagesComponent } from './complete-profile/upload-images/upload-images.component';
+import { CastingComponent } from './casting/casting.component';
 
 const routes: Routes = [{    
   path: '',    
@@ -72,6 +73,11 @@ const routes: Routes = [{
 {    
   path: 'final-success',component: FinalSuccessComponent,canActivate: [AuthGuard],
   data: {title: 'final success'}    
+},
+//----casting----------//
+{    
+  path: 'casting',component: CastingComponent,canActivate: [AuthGuard],
+  data: {title: 'casting'}    
 },
 {    
   path: 'home',component: HomeComponent,canActivate: [AuthGuard],   

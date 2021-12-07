@@ -9,6 +9,8 @@ import { BtsVideosService } from '../_service/bts-videos.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  castingtab:any = 0;
+  workshoptab:any = 0;
   categories: any;
   loadingbts:boolean = false;
   category_color: any = ['hsl(7deg 88% 68%)','hsl(88deg 47% 64%)','hsl(42deg 76% 64%)','hsl(201deg 100% 73%)','hsl(7deg 88% 68%)','hsl(88deg 47% 64%)','hsl(42deg 76% 64%)','hsl(201deg 100% 73%)'];

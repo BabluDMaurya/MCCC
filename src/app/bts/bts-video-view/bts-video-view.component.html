@@ -39,10 +39,10 @@
                 </div>
                 <div class="upNext">
                     <div class="youtubeContent">
-                        <div  *ngIf="desc.length > 29 && expanded !=  this.BtsVideos[0].id" >
+                        <div  *ngIf="descLength > 29 && expanded !=  BtsVideos[0].id" >
                         <p [innerHTML]="desc.substr(0, 29) | titlecase"></p>
-                            <span (click)="expanded = this.BtsVideos[0].id"
-                            class="text-green"><b>{{expanded==  this.BtsVideos[0].id ?'View less':'View more'}}</b>
+                            <span (click)="expanded = BtsVideos[0].id"
+                            class="text-green"><b>{{expanded==  BtsVideos[0].id ?'View less':'View more'}}</b>
                             </span>
                         </div>
                     <div  *ngIf="expanded ==  this.BtsVideos[0].id ">

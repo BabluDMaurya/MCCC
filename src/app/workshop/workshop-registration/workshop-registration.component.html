@@ -1,14 +1,14 @@
  <div class="main casting_inner sidePaading0 workshop_inner">
         <div class="mainHeader">
             <div class="top_header">
-                <div class="arrowLeft">
+                <div class="arrowLeft" (click)="back()">
                     <ion-icon name="chevron-back-outline"></ion-icon>
                 </div>
                 <div class="logo middle">
                     <img src="assets/img/img/black_logo.webp" alt="">
                 </div>
                 <div class="lats_side">
-                    <div class="avtars">
+                    <div class="avtars" [routerLink]="['/home']">
                         <!-- <div class="avatar"> -->
                             <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
                         <!-- </div> -->
@@ -18,28 +18,34 @@
         </div>
         <div class="main_wrppers">
             <div class="castingImg">
-                <img src="assets/img/img/worshopInnerimg.webp" alt="">
+                <img src="{{bgImage}}" alt="">
                 <div class="shaveIcon">
                     <i class="far fa-bookmark"></i>
                 </div>
             </div>
             <div class="castingContent">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                <p>{{workshopData.title}}</p>
                 <ul class="cating_details">
                     <li>
                         <div class="head">
                             <i class="far fa-clock"></i>Date & Time
                         </div>
-                        <label>10th June 2021 | 12:30pm</label>
+                        <label>  {{eventDate }}  | {{workshopData.start_time_1}}</label>
                     </li>
                     <li>
                         <div class="head">
                             <ion-icon name="location-outline"></ion-icon> Location
                         </div>
-                        <label>35/2, Aram Nagar Part 2, Jeet Nagar, Versova, Andheri West, <br>Mumbai, Maharashtra 400061</label>
+                        <label>{{workshopData.location}}, {{workshopData.city_name}}, {{workshopData.state_name}}.</label>
                     </li>
                 </ul>
-                <button class="castingApply">Enroll Now</button>
+                <div class="training-btn" *ngIf="this.checkData.data == 'No Data' && prevDate ">
+                    <button class="castingApply" [routerLink] = "['/workshop-registration-form/',workshopData.id,2]"> ENROLL NOW </button>
+                  <!-- <h6 *ngIf="this.checkData.data == 'No Data' && prevDate ">Enroll now to confirm your seat</h6> -->
+                </div>
+                <div class="training-btn" *ngIf="this.checkData.data != 'No Data' && prevDate ">
+                    <a> ALREADY ENROLLED </a>
+                </div>
             </div>
         </div>
     </div>

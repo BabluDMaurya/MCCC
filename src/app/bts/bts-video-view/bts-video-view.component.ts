@@ -17,6 +17,7 @@ export class BtsVideoViewComponent implements OnInit {
   expanded = 0;
   hostUrl:string = Config.Host+'backend2/';
   videoNotFound :boolean = false;
+  descLength: any;
   constructor(private actRoute:ActivatedRoute,
     private route : Router,
     private btsVideosService: BtsVideosService,
@@ -54,6 +55,7 @@ export class BtsVideoViewComponent implements OnInit {
                           // this.vid = this.BtsVideos[0].video_url+'?autoplay=1&mute=1&enablejsapi=1';
                           console.log("vid : ",this.vid);
                           this.desc = this.BtsVideos[0].description;
+                          this.descLength = this.desc;
                           this.videoNotFound = false;
                         }else{
                           this.videoNotFound = true;

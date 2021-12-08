@@ -21,4 +21,8 @@ export class TrainingService {
   get_training_videos(data:any){
     return this.https.post<any>(Config.BasePath +'/get_training_videos',data);
   }
+
+  get_training_videos_by_id(data:any){
+    return this.https.post<any>(Config.BasePath +'/get_training_videos_by_id',data);
+  }
 }

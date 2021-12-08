@@ -6,7 +6,7 @@ import { Config } from 'src/app/_config/config';
 import { RegisterService } from 'src/app/_service/register.service';
 import { AuthenticationService } from 'src/app/_service/authentication.service';
 import { OtpService } from 'src/app/_service/otp.service';
-import { MustMatch,MustMatchOTP } from '../../_helpers/must-match.validator';
+// import { MustMatch,MustMatchOTP } from '../../_helpers/must-match.validator';
 declare var $: any;
 
 @Component({
@@ -56,7 +56,7 @@ export class CreatePasswordComponent implements OnInit {
       city: [''],
       home_town: ['']
     },{
-    validator: [MustMatchOTP(this.storeOTP,'otp'),MustMatch('password','confirm_password')]
+    // validator: [MustMatchOTP(this.storeOTP,'otp'),MustMatch('password','confirm_password')]
     
 });
 //set the form value

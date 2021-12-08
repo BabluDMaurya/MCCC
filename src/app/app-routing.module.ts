@@ -14,6 +14,12 @@ import {WorkshopComponent} from './workshop/workshop.component';
 import { WorkshopRegistrationComponent } from './workshop/workshop-registration/workshop-registration.component';
 import { WorkshopRegistrationFormComponent } from './workshop/workshop-registration-form/workshop-registration-form.component';
 import { ThankYouPageComponent } from './workshop/thank-you-page/thank-you-page.component';
+import { TrainingInnerComponent } from './training/training-inner/training-inner.component';
+import { ImagesComponent } from './common/images/images.component';
+import { VideoComponent } from './common/video/video.component';
+import { AnatomyComponent } from './common/anatomy/anatomy.component';
+import { PersonalComponent } from './common/personal/personal.component';
+import { NotificationComponent } from './notification/notification.component';
 const routes: Routes = [{    
   path: '',    
   redirectTo: 'logo',    
@@ -56,6 +62,10 @@ const routes: Routes = [{
   data: {storeRoute: false,title: 'BTS Inner'}    
 },
 {    
+  path: 'training-video-view/:id/:type',component: TrainingInnerComponent,
+  data: {storeRoute: false,title: 'Training Video'}    
+},
+{    
   path: 'training',component: TrainingComponent,    
   data: {title: 'training'}    
 },
@@ -73,7 +83,27 @@ const routes: Routes = [{
 },
 {    
   path: 'thank-you-workshop/:name',component: ThankYouPageComponent,  
-  data: {title: 'Workshop Registration Form'}    
+  data: {title: 'Thank You'}    
+},
+{    
+  path: 'images',component: ImagesComponent,  
+  data: {title: 'Images'}    
+},
+{    
+  path: 'anatomy',component: AnatomyComponent,    
+  data: {storeRoute: true,title: 'Anatomy'}    
+},
+{    
+  path: 'personal',component: PersonalComponent,    
+  data: {storeRoute: false,title: 'personal'}    
+},
+{    
+  path: 'video',component: VideoComponent,    
+  data: {storeRoute: false,title: 'Video'}    
+},
+{
+  path: 'notification',component: NotificationComponent,    
+  data: {title: 'Notification Panel'}    
 },
 ];
 

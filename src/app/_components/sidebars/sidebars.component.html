@@ -129,3 +129,35 @@
         </ul>
     </div>
 </div>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-right">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title"><a >Hello {{currentUser.userDetails.name}}</a></h5>
+        <a href="#" class="offcanvas-close" data-bs-dismiss="offcanvas">
+            <!-- <ion-icon name="close-outline"></ion-icon> -->
+            <ion-icon name="close"></ion-icon>
+        </a>
+    </div>
+    <div class="offcanvas-body">
+        
+         <div class="prof-nav">
+             <img src="assets/img/img/avtar.webp">
+             <a [routerLink]="['/personal']">Personal</a>
+         </div>
+         <div class="prof-nav">
+             <img src="assets/img/img/avtar.webp">
+             <a [routerLink]="['/anatomy']">Anatomy</a>
+         </div>
+         <div class="prof-nav">
+             <img src="assets/img/img/avtar.webp">
+             <a [routerLink]="['/images']">Images</a>
+         </div>
+         <div class="prof-nav">
+             <img src="assets/img/img/avtar.webp">
+             <a [routerLink]="['/video']">Videos</a>
+         </div>
+            <div class="prof-nav">
+             <img src="assets/img/img/avtar.webp">
+             <a (click)="logout()">Logout</a>
+         </div>
+    </div>
+</div>

@@ -36,6 +36,7 @@
             "styles": [
               "src/assets/css/inc/bootstrap/bootstrap.min.css",
               "node_modules/slick-carousel/slick/slick.scss",
+              "node_modules/@videogular/ngx-videogular/fonts/videogular.css",
               "node_modules/slick-carousel/slick/slick-theme.scss",
               "src/styles.scss",
               "src/assets/css/style.css",

@@ -7,59 +7,29 @@
         
         <div class="main_wrppers trainingWrapper">
             <div class="trainngSlider">
-                <div class="traning_slide">
-                    <img src="assets/img/img/trainingSlideImg.webp" alt="">
+                <div class="traning_slide" *ngFor = "let data of trainCatg">
+                    <img src="assets/img/img/trainingSlideImg.webp" (click)="changeCat(data.id,data.title)" alt="">
                 </div>
-                <div class="traning_slide">
-                    <img src="assets/img/img/trainingSlideImg.webp" alt="">
-                </div>
-                <div class="traning_slide">
-                    <img src="assets/img/img/trainingSlideImg.webp" alt="">
-                </div>
+                
             </div>
             <div class="otherTrainingVid">
                 <div class="trainingCallHeader">
-                    <p class="classinghead primary__color">Training with Mukesh Chhabra</p>
+                    <p class="classinghead primary__color">{{title}}</p>
                 </div>
-                <div class="videosWithContnt">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                    <div class="imgPlayIcon">
-                        <img src="assets/img/img/trainingVideImg.webp" alt="">
+                <div class="videosWithContnt" *ngFor="let vid of trainingVideo">
+                    <p>{{vid.description}}</p>
+                    <div class="imgPlayIcon" [routerLink]="['/training-video-view/',vid.id,vid.category_id]">
+                        <img src="{{vid.youtube_thumbnail}}" alt="">
                         <div class="btsPlay_icon">
                             <img src="assets/img/img/play_icon.webp" alt="">
                         </div>
                     </div>
                 </div>
-                <div class="videosWithContnt">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                    <div class="imgPlayIcon">
-                        <img src="assets/img/img/trainingVideImg.webp" alt="">
-                        <div class="btsPlay_icon">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="videosWithContnt">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
-                    <div class="imgPlayIcon">
-                        <img src="assets/img/img/trainingVideImg.webp" alt="">
-                        <div class="btsPlay_icon">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                    </div>
+                <div *ngIf="trainingVideo == '' ">
+                    <p>No Data</p>
                 </div>
             </div>
         </div>
     </div>
     </div>
 </div>
-<script>
-    $('.trainngSlider').slick({
-    fade:false,
-    dots:false,
-    arrows:false,
-    // initialSlides: 0.5,
-    slidesToShow:2,
-    slidesToScroll:1
-  });
-    </script>

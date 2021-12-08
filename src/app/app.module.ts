@@ -16,7 +16,6 @@ import { DateOfBirthComponent } from './_components/date-of-birth/date-of-birth.
 import { YourMobileNumberComponent } from './_components/your-mobile-number/your-mobile-number.component';
 import { SelectYourGenderComponent } from './_components/select-your-gender/select-your-gender.component';
 import { YourCountryStateCityComponent } from './_components/your-country-state-city/your-country-state-city.component';
-import { HttpClientModule } from '@angular/common/http';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 import { BtsComponent } from './bts/bts.component';
@@ -33,6 +32,19 @@ import { HeaderComponent } from './_components/header/header.component';
 import { SidebarsComponent } from './_components/sidebars/sidebars.component';
 import { SubHeaderComponent } from './_components/sub-header/sub-header.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ImagesComponent } from './common/images/images.component';
+import { VideoComponent } from './common/video/video.component';
+import {VgCoreModule} from '@videogular/ngx-videogular/core';
+import {VgControlsModule} from '@videogular/ngx-videogular/controls';
+import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
+import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { NotificationComponent } from './notification/notification.component';
+import { AnatomyComponent } from './common/anatomy/anatomy.component';
+import { PersonalComponent } from './common/personal/personal.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +73,11 @@ import { ToastrModule } from 'ngx-toastr';
     FooterComponent,
     SubHeaderComponent,
     SidebarsComponent,
+    ImagesComponent,
+    VideoComponent,
+    NotificationComponent,
+    AnatomyComponent,
+    PersonalComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,11 +86,18 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ImageCropperModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
     ToastrModule.forRoot({
       positionClass :'toast-bottom-right'
     })
   ],
-  providers: [DatePipe,],
+  providers: [DatePipe,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

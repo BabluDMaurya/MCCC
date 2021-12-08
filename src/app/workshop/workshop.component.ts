@@ -17,6 +17,10 @@ export class WorkshopComponent implements OnInit {
   endingsoonData: any;
   previosData: any;
   expanded = 0;
+  workshsopData: any;
+  eventForYouData: any;
+  onGoingData: any;
+  upcoming: any;
   constructor(private workshopService: WorkshopService,
               private route:Router,private actRoute:ActivatedRoute,
               private notifyService : NotificationService,
@@ -42,6 +46,19 @@ export class WorkshopComponent implements OnInit {
     this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
       this.catId = params.get('id');
     });
+
+    this.workshopService.get_all_workshop_data('').subscribe(
+      data => { 
+        this.workshsopData = data.data;
+        this.eventForYouData = this.workshsopData.event_for_u;
+        this.onGoingData = this.workshsopData.on_going;
+        this.upcoming = this.workshsopData.upcoming;
+        this.loading = true;
+        if(this.upcomingData == 'No Data'){
+          this.upcomingData = [];
+        }
+        console.log(this.upcomingData);
+    });
     this.workshopService.get_upcoming_workshop_data({'limit': ''}).subscribe(
       data => { 
         this.upcomingData = data.data;
@@ -49,7 +66,7 @@ export class WorkshopComponent implements OnInit {
         if(this.upcomingData == 'No Data'){
           this.upcomingData = [];
         }
-        console.log(this.upcomingData.length);
+        console.log(this.upcomingData);
     });
 
     this.workshopService.get_endingsoon_workshop_data({'limit': ''}).subscribe(

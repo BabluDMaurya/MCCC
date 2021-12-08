@@ -11,15 +11,17 @@
             <img src="assets/img/img/black_logo.webp" alt="">
         </div>
         <div class="lats_side">
-            <div class="notification">
+            <div class="notification" [routerLink]="['/notification']">
                 <ion-icon name="notifications-outline"></ion-icon>
                 <div class="notificationsCount">
-                    <span>5</span>
+                    <span>{{getCount}}</span>
                 </div>
             </div>
             <div class="avtars">
                 <div class="avatar">
-                    <img src="assets/img/img/avtar.webp" alt="avatar" class="rounded">
+                    <a data-bs-toggle="offcanvas" href="#offcanvas-right">
+                        <img src="assets/img/img/avtar.webp" alt="avatar" class="rounded">
+                    </a>
                 </div>
             </div>
         </div>

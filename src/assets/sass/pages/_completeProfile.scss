@@ -35,13 +35,13 @@
                     align-items: center;
                     justify-content: center;
                     .inputs{
-                        width: 85%;
+                        width: 90%;
                     }
                     .plus_icon_workWxperince, .minus_iconWorkficatuons, .plus_icon_qualificationsPlus,.minusQuakifiactions,.plus_icon_SocailLinks,.minus_SocailLinks{
-                        width: 15%;
+                        width: 10%;
                         display: flex;
                         align-items: center;
-                        justify-content: center;
+                        justify-content: flex-end;
                         // height: 44px;
                     }
                 }
@@ -62,7 +62,7 @@
                 font-weight: 600;
             }
             &::after {
-                content: url(../../img/img/downArrow.webp);
+                content: url('../../img/img/downArrow.webp');
                 pointer-events: none;
                 position: absolute;
                 top: 50%;
@@ -72,7 +72,7 @@
         }
     }
     .btnArea{
-        button.next{
+        a.next{
             width: 100%;
             border: none;
             background: #ff6454;
@@ -82,6 +82,49 @@
             border-radius: 50px;
             padding: 8px 0;
             margin-bottom: 40px;
+            display: block;
+        }
+    }
+}
+body.dark-mode-active{
+    .mainHeader{
+        background: #000;
+        .bottomHeader{
+            .tabs{
+                .box{
+
+                    img.darkMode{
+                        margin: 0 auto;
+                    }
+                    .label{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    .completeProfile{
+        .forms_input{
+            .formGroup{
+                label{
+                    color: #fff;
+                    span{
+                        color: #fff;
+                    }
+                }
+                .inputs{
+                    input{
+                        color: #fff;
+                    }
+                }
+                .select{
+                    select{
+                        option{
+                            background: #000;
+                        }
+                    }
+                } 
+            }
         }
     }
 }

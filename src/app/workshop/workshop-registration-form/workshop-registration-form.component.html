@@ -1,14 +1,14 @@
 <div class="main casting_inner workshop_innerProfile">
         <div class="mainHeader">
             <div class="top_header">
-                <div class="arrowLeft">
+                <div class="arrowLeft" (click)="back()">
                     <ion-icon name="chevron-back-outline"></ion-icon>
                 </div>
                 <div class="logo middle">
                     <img src="assets/img/img/black_logo.webp" alt="">
                 </div>
                 <div class="lats_side">
-                    <div class="avtars">
+                    <div class="avtars" [routerLink]="['/home']">
                         <!-- <div class="avatar"> -->
                             <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
                         <!-- </div> -->
@@ -18,76 +18,122 @@
         </div>
         <div class="main_wrppers casting__profiles">
             <div class="castingProfile">
-                <h2>Walk in introduction in Bhopal</h2>
+                <form [formGroup]="form">
+                <h2>{{workshopData.title}}</h2>
                 <!-- <h3>Looking  for a Child Actor</h3> -->
-                <p class="workShopInner">For all the actors out there in Bhopal, we are now open for walk-in introductions. <br>Time- 11:00am - 6:00pm. Monday - Saturday. <br>- C-3, BDA Complex, Bittan Market, Ravis hankar Nagar, Bhopal, Madhya Pradesh-462016.<br><br>The name and photo associated with your in App account will be recorded when you upload file and submit this form</p>
+                <p class="workShopInner">{{workshopData.more_details}} <br>Time- {{workshopData.start_time_1}} - {{workshopData.end_time_1}}  <br>- {{workshopData.location}}<br><br>The name and photo associated with your in App account will be recorded when you upload file and submit this form</p>
 
                 <p><span>*</span> You can change your profile details in My Profile section</p>
                 <div class="profileDetailsWrpper">
                     <div class="profileDiv">
                         <label>Name<span>*</span></label>
-                        <p class="innerDetail">Aditya Pal</p>
+                        <p class="innerDetail">{{currentUser.userDetails.name}}</p>
                     </div>
                     <div class="profileDiv">
                         <label>Age<span>*</span></label>
-                        <p class="innerDetail">42</p>
+                        <p class="innerDetail">{{userData.data.age}}</p>
                     </div>
                     <div class="profileDiv">
                         <label>Sex<span>*</span></label>
-                        <p class="innerDetail">Male</p>
+                        <p class="innerDetail">{{currentUser.userDetails.gender}}</p>
                     </div>
                     <div class="profileDiv">
                         <label>Date of Birth<span>*</span></label>
-                        <p class="innerDetail">25/03/1993</p>
+                        <p class="innerDetail">{{currentUser.userDetails.dob}}</p>
                     </div>
                     <div class="profileDiv">
                         <label>Email Id<span>*</span></label>
-                        <p class="innerDetail">aditya@gmail.com</p>
+                        <p class="innerDetail">{{currentUser.userDetails.email}}</p>
                     </div>
                     <div class="profileDiv">
                         <label>Contact Number<span>*</span></label>
-                        <p class="innerDetail">+91 8425025713</p>
+                        <p class="innerDetail">{{currentUser.userDetails.phone}}</p>
                     </div>
                     <div class="profileDiv">
                         <label>Secondary Contact<span>*</span></label>
-                        <p class="innerDetail">+91 7208188101</p>
+                        <div class="inputs">
+                            <input type="text" formControlName="sos_phone" value="" minlength="10" maxlength="10" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
+                            <div *ngIf="submitted && f.sos_phone.errors" class="invalid-feedback">
+                                <div *ngIf="f.sos_phone.errors.required">Please provide your secondary contact number.</div>
+                                <div *ngIf="f.sos_phone.errors.minlength">
+                                    contact number must be at least 10 digit.
+                                </div>
+                                <div *ngIf="f.sos_phone.errors.maxlength">
+                                    contact number must be at least 10 digit.
+                                </div>
+                                </div>
+                        </div>
                     </div>
                     <div class="profileDiv">
-                        <label>School/College<span>*</span></label>
-                        <p class="innerDetail">Television Institute of India - Pune</p>
+                        <label>School/College<span class="text-danger">*</span></label>
+                        <div class="inputs">
+                        <input type="text" formControlName="edu_details" maxlength="100" value="Bechelor's in Theater from NSD" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.edu_details.errors }">
+                        
+                        <div *ngIf="submitted && f.edu_details.errors" class="invalid-feedback">
+                            <div *ngIf="f.edu_details.errors.required">School/College required</div>
+                        </div>
+                        </div>
                     </div>
+
                     <div class="profileDiv">
-                        <label>Address<span>*</span></label>
-                        <p class="innerDetail">Kesar Plaza, Charkop Charkop Industrial...</p>
+                        <label>Address<span class="text-danger">*</span></label>
+                        <div class="inputs">
+                            <textarea placeholder="type here" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"> </textarea>
+                            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                <div *ngIf="f.address.errors.required">Please provide your Address details.</div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="profileDiv">
                         <label>Current City<span>*</span></label>
-                        <p class="innerDetail">Mumbai</p>
+                        <p class="innerDetail">{{userData.data.user_details.city_name}}</p>
                     </div>
+
                     <div class="profileDiv">
                         <label>Adhaar Card<span>*</span></label>
-                       <div class="inputFile">
-                            <input type="file" id="upkoadAdhPan">
+                        <div class="inputFile">
+                            <input #fileInput type="file" accept="image/*"  id="upkoadAdhPan" formControlName="aadhar_file" (change)="onFileChange2($event)" [ngClass]="{ 'is-invalid': submitted && f.aadhar_file.errors }">
+                            <div *ngIf="aadharfileChoosen" class="file-name">{{aadharfileName}}</div>
                             <label for="upkoadAdhPan">Upload Adhaar</label>
                             <div class="fileUpIcon">
                                 <img src="assets/img/img/uploadFile.webp" alt="">
                             </div>
-                       </div>
+                        </div>
+                        <div *ngIf="submitted && f.aadhar_file.errors" class="invalid-feedback">
+                            <div *ngIf="f.aadhar_file.errors.required" class="error-dw">Please upload Aadhar card photo.</div>
+                        </div>
                     </div>
 
                     <div class="profileDiv uploadPan">
                         <label>Pan Card<span>*</span></label>
-                       <div class="inputFile">
-                            <input type="file" id="upkoadAdhPan">
-                            <label for="upkoadAdhPan">Upload Pan</label>
+                        <div class="inputFile">
+                            <input #fileInput type="file" accept="image/*" formControlName="pan_file" id="upkoadPan" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.pan_file.errors }">
+                            <div *ngIf="panfileChoosen" class="file-name">{{panfileName}}</div>
+                            <label for="upkoadPan">Upload Pan</label>
                             <div class="fileUpIcon">
                                 <img src="assets/img/img/uploadFile.webp" alt="">
                             </div>
-                       </div>
+                        </div>
+                        <div *ngIf="submitted && f.pan_file.errors" class="invalid-feedback">
+                            <div *ngIf="f.pan_file.errors.required" class="error-dw">Please upload Pan card photo.</div>
+                        </div>
+                    </div>
+
+                    <div class="profileDiv">
+                        <label *ngIf="type == 2">Why you want to attend this workshop?<span class="text-danger">*</span></label>
+                        <div class="inputs">
+                        <textarea placeholder="Your Answer" formControlName="about_workshop" [ngClass]="{ 'is-invalid': submitted && f.about_workshop.errors }"></textarea>
+                        
+                        <div *ngIf="submitted && f.about_workshop.errors" class="invalid-feedback">
+                            <div *ngIf="f.about_workshop.errors.required">This field is required.</div>
+                        </div>
+                    </div>
                     </div>
                 </div>
 
-                <button class="btnss">Submit</button>
+                <button type="submit" (click)="submit()" class="btnss">Submit</button>
+            </form>
             </div>
         </div>
     </div>

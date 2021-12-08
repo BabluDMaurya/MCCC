@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BtsVideosService} from '../_service/bts-videos.service';
 import { Config } from '../_config/config';
+import '../../assets/js/main.js'
 @Component({
   selector: 'app-bts',
   templateUrl: './bts.component.html',

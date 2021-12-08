@@ -4,14 +4,14 @@
     
     <div class="mainHeader">
         <div class="top_header">
-            <div class="arrowLeft">
+            <div class="arrowLeft" (click)="back()">
                 <ion-icon name="chevron-back-outline"></ion-icon>
             </div>
             <div class="logo middle">
                 <img src="assets/img/img/black_logo.webp" alt="">
             </div>
             <div class="lats_side">
-                <div class="avtars">
+                <div class="avtars" [routerLink]="['/home']">
                     <!-- <div class="avatar"> -->
                         <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
                     <!-- </div> -->
@@ -23,7 +23,7 @@
         <div class="bts__inner_inner">
             <div class="videosTopPart">
                 <div class="youtubeVideos">
-                    <iframe width="100%" height="315" src="http://www.youtube.com/embed/nIsCs9_-LP8" frameborder="0" allowfullscreen></iframe>
+                    <iframe #iframe  width="100%" height="315" class="e2e-trusted-url ivideo"  src="about:blank" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;" allowfullscreen=""></iframe>
                     <div class="shaveIcon">
                         <i class="far fa-bookmark" aria-hidden="true"></i>
                     </div>
@@ -31,75 +31,36 @@
             </div>
             <div class="upNext">
                 <div class="youtubeContent">
-                    <p>Hereʼs A chance for all the A Hereʼs A chance for all the chance for all the...<a href="#">View More</a></p>
-                    <span>10 Views</span>
+                    <div  *ngIf="length > 29 && expanded !=  trainingVideo[0].id" >
+                        <p [innerHTML]="desc.substr(0, 29) | titlecase"></p>
+                            <span (click)="expanded = trainingVideo[0].id"
+                            class="text-green"><b>{{expanded==  trainingVideo[0].id ?'View less':'View more'}}</b>
+                            </span>
+                        </div>
+                    <div  *ngIf="expanded ==  trainingVideo[0].id ">
+                        <p [innerHTML]="desc | titlecase"></p>
+                        <span (click)="expanded = 0"
+                        class="text-green"><b>{{expanded ==  trainingVideo[0].id ?'View less':'View more'}}</b>
+                        </span>
+                    </div>
+                    
                 </div>
                 <label>Up Next</label>
-                <div class="upNextVideos">
-                    <div class="vLeft">
-                        <img src="assets/img/img/videosUpNestimg.webp" alt="">
+                <div class="upNextVideos" *ngFor="let data of upNext">
+                    <div class="vLeft" [routerLink]="['/training-video-view/',data.id,data.category_id]">
+                        <img *ngIf="data.youtube_thumbnail == null " src="{{hostUrl}}{{data.thumbnail_path}}{{data.thumbnail}}">
+                        <img *ngIf="data.youtube_thumbnail != null " src="{{data.youtube_thumbnail}}">
                         <div class="play__ionc">
                             <img src="assets/img/img/play_icon.webp" alt="">
                         </div>
                     </div>
                     <div class="vright">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing Mukesh Chhabra.</p>
-                        <span>Lorem ipsum dolor sit amet, consectetuer adipiscing.......</span>
-                        <a href="#">More</a>
+                        <p>{{data.title | titlecase}}</p>
+                        <span [innerHTML]="data.description.substr(0, 35) | titlecase"></span>
+                        <a [routerLink]="['/training-video-view/',data.id,data.category_id]" >More</a>
                     </div>
                 </div>
-                <div class="upNextVideos">
-                    <div class="vLeft">
-                        <img src="assets/img/img/videosUpNestimg.webp" alt="">
-                        <div class="play__ionc">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                    </div>
-                    <div class="vright">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing Mukesh Chhabra.</p>
-                        <span>Lorem ipsum dolor sit amet, consectetuer adipiscing.......</span>
-                        <a href="#">More</a>
-                    </div>
-                </div>
-                <div class="upNextVideos">
-                    <div class="vLeft">
-                        <img src="assets/img/img/videosUpNestimg.webp" alt="">
-                        <div class="play__ionc">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                    </div>
-                    <div class="vright">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing Mukesh Chhabra.</p>
-                        <span>Lorem ipsum dolor sit amet, consectetuer adipiscing.......</span>
-                        <a href="#">More</a>
-                    </div>
-                </div>
-                <div class="upNextVideos">
-                    <div class="vLeft">
-                        <img src="assets/img/img/videosUpNestimg.webp" alt="">
-                        <div class="play__ionc">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                    </div>
-                    <div class="vright">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing Mukesh Chhabra.</p>
-                        <span>Lorem ipsum dolor sit amet, consectetuer adipiscing.......</span>
-                        <a href="#">More</a>
-                    </div>
-                </div>
-                <div class="upNextVideos">
-                    <div class="vLeft">
-                        <img src="assets/img/img/videosUpNestimg.webp" alt="">
-                        <div class="play__ionc">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                    </div>
-                    <div class="vright">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing Mukesh Chhabra.</p>
-                        <span>Lorem ipsum dolor sit amet, consectetuer adipiscing.......</span>
-                        <a href="#">More</a>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

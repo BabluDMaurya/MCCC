@@ -16,10 +16,10 @@
                 <div class="bts_popular_slider bts_popular_sliderSecond">
                     <div class="btsSlioder" *ngFor = "let vid of popularBtsVideos" >
                        <a [routerLink]="['/bts-video-view/',vid.id,1]">
-                            <img src="../../assets/img/img/homeBanner.webp" alt="">
+                            <img *ngIf="vid.youtube_thumbnail == null " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
+                            <img *ngIf="vid.youtube_thumbnail != null " src="{{vid.youtube_thumbnail}}">
                             <div class="btsPlay_icon">
-                                <img *ngIf="vid.youtube_thumbnail == null " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
-                                <img *ngIf="vid.youtube_thumbnail != null " src="{{vid.youtube_thumbnail}}">
+                                <img src="../../assets/img/img/play_icon.webp" alt="">
                             </div>
                        </a>
                     </div>

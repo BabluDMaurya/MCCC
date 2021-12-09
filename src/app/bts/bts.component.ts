@@ -63,5 +63,7 @@ export class BtsComponent implements OnInit {
                     this.loadData = true;
                 });              
   }
-
+  isOdd(n:number) {
+    return Math.abs(n % 2) == 1;
+ }
 }

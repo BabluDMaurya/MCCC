@@ -41,6 +41,16 @@
                             </div>
                        </a>
                     </div>
+
+                    <ngx-slick-carousel *ngIf="loadData" class="carousel behinde-screen_sliders" #slickModal="slick-carousel" [config]="trns_sliders"
+                    (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+                    (beforeChange)="beforeChange($event)">
+                      <div *ngFor = " let vid of topBtsVideos" [routerLink]="['/bts-video-view/',vid.id,1]"  ngxSlickItem class="slider">
+                        <!-- <img  src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}"> -->
+                        <img *ngIf="vid.youtube_thumbnail == null " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
+                                  <img *ngIf="vid.youtube_thumbnail != null " src="{{vid.youtube_thumbnail}}">
+                      </div>
+                    </ngx-slick-carousel>
                     
                 </div>
             </div>
@@ -50,13 +60,16 @@
                     <span><a>View All</a></span>
                 </div>
                 <div class="moresliderVideos">
-                    <div class="moreSlider" *ngFor="let catg of categories; let i=index;" >
-                        <a [routerLink]="['/bts-inner/',catg.id]">
-                            <div class="more_V_box">
-                                <span>{{catg.category}}</span>
-                            </div>
-                        </a>
+                    
+                    <ngx-slick-carousel class="carousel video_slider" #slickModal="slick-carousel" [config]="trns_sliders"
+                    (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+                    (beforeChange)="beforeChange($event)">
+                    <div class="moreSlider" *ngFor="let catg of categories; let i=index;" [routerLink]="['/bts-inner/',catg.id]" ngxSlickItem>
+                    <div [ngClass]="isOdd(i) ? 'more_V_box primaryColor' : 'more_V_box'">
+                        <span>{{catg.category}}</span>
                     </div>
+                     </div>
+                </ngx-slick-carousel>
                 </div>
             </div>
         </div>

@@ -10,6 +10,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 // import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { LogoComponent } from './logo/logo.component';
 import { SplashComponent } from './splash/splash.component';
@@ -37,6 +39,25 @@ import { SubHeaderComponent } from './_components/sub-header/sub-header.componen
 import { SidebarsComponent } from './_components/sidebars/sidebars.component';
 import { CastingComponent } from './casting/casting.component';
 import { CastingCardComponent } from './_components/casting-card/casting-card.component';
+import { NotFoundDataComponent } from './_components/not-found-data/not-found-data.component';
+import { CastingInnerComponent } from './casting/casting-inner/casting-inner.component';
+import { ApplyCastingComponent } from './casting/apply-casting/apply-casting.component';
+import { ThankYouCastingComponent } from './casting/thank-you-casting/thank-you-casting.component';
+import { MyApplicationsComponent } from './my-applications/my-applications.component';
+import { MyBookmarksComponent } from './my-bookmarks/my-bookmarks.component';
+import { GamesComponent } from './games/games.component';
+import { BollywoodMemoryGameComponent } from './games/bollywood-memory-game/bollywood-memory-game.component';
+import { GameCardComponent } from './games/bollywood-memory-game/game-card/game-card.component';
+import { RestartDialogComponent } from './games/bollywood-memory-game/restart-dialog/restart-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyApplicationCardComponent } from './my-applications/my-application-card/my-application-card.component';
+import { MyApplicationInnerComponent } from './my-applications/my-application-inner/my-application-inner.component';
+import { BookmarkComponent } from './bookmark/bookmark.component';
+import { TopHeaderBtlComponent } from './_components/top-header-btl/top-header-btl.component';
+import { AboutComponent } from './about/about.component';
+import { FaqComponent } from './faq/faq.component';
+import { HelpComponent } from './help/help.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +87,24 @@ import { CastingCardComponent } from './_components/casting-card/casting-card.co
     SidebarsComponent,
     CastingComponent,
     CastingCardComponent,
+    NotFoundDataComponent,
+    CastingInnerComponent,
+    ApplyCastingComponent,
+    ThankYouCastingComponent,
+    MyApplicationsComponent,
+    MyBookmarksComponent,
+    GamesComponent,
+    BollywoodMemoryGameComponent,
+    GameCardComponent,
+    RestartDialogComponent,
+    MyApplicationCardComponent,
+    MyApplicationInnerComponent,
+    BookmarkComponent,
+    TopHeaderBtlComponent,
+    AboutComponent,
+    FaqComponent,
+    HelpComponent,
+    TermsConditionComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +114,10 @@ import { CastingCardComponent } from './_components/casting-card/casting-card.co
     ReactiveFormsModule,
     HttpClientModule,
     ImageCropperModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule,
+    
   ],
   providers: [
     DatePipe,

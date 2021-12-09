@@ -1,21 +1,18 @@
 <div class="boxs">
     <div class="boxHead">
-     <h5><a href="#">Looking for a Foreigner</a></h5>
-     <div class="shaveIcon">
+     <h5><a (click)="castingInner(data.id)">{{data.title | titlecase}}</a></h5>
+     <div class="shaveIcon" (click)="bookmarkCasting(data.id)">
          <i class="far fa-bookmark"></i>
      </div>
     </div>
-    <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-     adipiscing elit, sed....</a></p>
+    <p><a [innerHTML]="doHtmlDisplay(data.short_description)"></a></p>
      <ul class="userDetails">
-         <li><i class="fas fa-transgender-alt"></i>Male</li>
-         <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-         <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
+         <li><i class="fas fa-transgender-alt"></i>{{data.gender}}</li>
+         <li><i class="far fa-calendar-alt"></i>{{data.created_at}}</li>
+         <li><ion-icon name="location-outline"></ion-icon>{{data.location}}</li>
+         <li><i class="far fa-user" aria-hidden="true"></i>Role</li>
      </ul>
      <div class="labelBtns">
-         <label>Male</label>
-         <label>Foreigner</label>
-         <label>Add Film</label>
-         <label>30-50 years</label>
+         <label *ngFor="let tag of data.tags;">{{tag}}</label>
      </div>
  </div>

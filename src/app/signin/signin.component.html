@@ -1,33 +1,45 @@
-<div class="login">
-    <img src="../../assets/img/login-bg.png">
-          <div class="container">
-              <div class="login-content">
-        <img src="../../assets/img/logo.png">
-          <div class="form">
-            <div class="login-form">
-                <form [formGroup]="signinForm" (ngSubmit)="onSubmit()"> 
-                    <div class="form-group">
-                        <input autofocus type="text" formControlName="email_or_mobile" placeholder="Phone or email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email_or_mobile.errors }" maxlength="28"/>     
-                        <div *ngIf="submitted && f.email_or_mobile.errors" class="invalid-feedback">
-                            <div *ngIf="f.email_or_mobile.errors.required">Phone or Email is required</div>
-                          </div>                  
-                    </div>
-                    <div class="form-group">
-                        <input type="password" formControlName="password" placeholder="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" maxlength="8" minlength="6"/>    
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">Password is required</div>
-                            <div *ngIf="f.password.errors.incorrect">Email or Password is wrong</div>
-                          </div>                   
-                    </div> 
-              <button type="submit" class="login-button">Log in</button>
-            </form> 
-              <a href="forgot-password" class="forgot-ps">Forgot Password?</a>             
-
-              <p>Not a Member Yet?</p>
-              <a (click)="signup()" class="join-now"><button>Join Now</button></a>
-
-            </div>
-        </div>
-              </div>
+<div class="wrrpperSingUp wrrpperRegisterForm login_wrpper">
+  <div class="logos">
+    <img src="assets/img/black_logo.webp" class="lightMode" alt="">
+    <img src="assets/img/white_logo.webp" class="darkMode" alt="">
+  </div>
+  <div class="contentDetails">
+    <p>Fill the form to Sign in</p>
+  </div>
+  <div class="forms">
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+      <div class="formGroup">
+        <label>Your Email Id*</label>
+        <div class="inputs">
+          <input type="text" formControlName="email_or_mobile" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email_or_mobile.errors }" maxlength="28" />
+          <div *ngIf="submitted && f.email_or_mobile.errors" class="invalid-feedback">
+            <div *ngIf="f.email_or_mobile.errors.required">Phone or Email is required</div>
           </div>
+        </div>
       </div>
+      <div class="formGroup">
+        <label>Password*</label>
+        <div class="inputs passwrd">
+          <input type="password" formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" maxlength="8" minlength="6" />
+          <div class="eye">
+            <i class="fas fa-eye showPasswd"></i>
+          </div>
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.incorrect">Email or Password is wrong</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-links mt-2">
+        <div><a (click)="signup()" class="register">Register Now</a></div>
+        <div><a [routerLink]="['/forgot-password']" class="">Forgot Password?</a></div>
+      </div>
+      <div class="signIn">
+        <button type="submit">SIGN IN</button>
+        <!-- <a (click)="signup()">SIGN IN</a> -->
+      </div>
+    </form>
+  </div>  
+</div>

@@ -16,6 +16,18 @@ import { CompleteProfileComponent } from './complete-profile/complete-profile/co
 import { FinalSuccessComponent } from './complete-profile/final-success/final-success.component';
 import { UploadImagesComponent } from './complete-profile/upload-images/upload-images.component';
 import { CastingComponent } from './casting/casting.component';
+import { ThankYouCastingComponent } from './casting/thank-you-casting/thank-you-casting.component';
+import { CastingInnerComponent } from './casting/casting-inner/casting-inner.component';
+import { ApplyCastingComponent } from './casting/apply-casting/apply-casting.component';
+import { GamesComponent } from './games/games.component';
+import { BollywoodMemoryGameComponent } from './games/bollywood-memory-game/bollywood-memory-game.component';
+import { MyApplicationsComponent } from './my-applications/my-applications.component';
+import { MyApplicationInnerComponent } from './my-applications/my-application-inner/my-application-inner.component';
+import { BookmarkComponent } from './bookmark/bookmark.component';
+import { AboutComponent } from './about/about.component';
+import { FaqComponent } from './faq/faq.component';
+import { HelpComponent } from './help/help.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 
 const routes: Routes = [{    
   path: '',    
@@ -80,9 +92,57 @@ const routes: Routes = [{
   data: {title: 'casting'}    
 },
 {    
+  path: 'casting-inner/:id',component: CastingInnerComponent,canActivate: [AuthGuard],
+  data: {title: 'casting inner'}    
+},
+{    
+  path: 'apply-casting/:id',component: ApplyCastingComponent,canActivate: [AuthGuard],    
+  data: {title: 'Apply Casting'}   
+},
+{    
+  path: 'thank-you-casting/:application_no',component: ThankYouCastingComponent,canActivate: [AuthGuard],    
+  data: {title: 'Thank You Casting'}    
+},
+{    
   path: 'home',component: HomeComponent,canActivate: [AuthGuard],   
   data: {title: 'registration'}    
-}
+},
+{    
+  path: 'games',component: GamesComponent,canActivate: [AuthGuard],   
+  data: {title: 'games'}    
+},
+{    
+  path: 'bollywood-memory-game',component: BollywoodMemoryGameComponent,canActivate: [AuthGuard],   
+  data: {title: 'bollywood memory game'}    
+},
+{    
+  path: 'my-applications',component: MyApplicationsComponent,canActivate: [AuthGuard],   
+  data: {title: 'my applications'}    
+},
+{    
+  path: 'my-application-inner/:id',component: MyApplicationInnerComponent,canActivate: [AuthGuard],   
+  data: {title: 'my application inner'}    
+},
+{    
+  path: 'bookmark',component: BookmarkComponent,canActivate: [AuthGuard],   
+  data: {title: 'bookmark'}    
+},
+{    
+  path: 'about',component: AboutComponent,canActivate: [AuthGuard],   
+  data: {title: 'about'}    
+},
+{    
+  path: 'faq',component: FaqComponent,canActivate: [AuthGuard],   
+  data: {title: 'faq'}    
+},
+{    
+  path: 'help',component: HelpComponent,canActivate: [AuthGuard],   
+  data: {title: 'help'}    
+},
+{    
+  path: 'terms-condition',component: TermsConditionComponent,canActivate: [AuthGuard],   
+  data: {title: 'terms and condition'}    
+},
 ];
 
 @NgModule({

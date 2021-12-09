@@ -2,68 +2,33 @@
 <app-footer></app-footer>
 <div class="main">
     <app-header [castingtab]="castingtab" [workshoptab]="workshoptab"></app-header>
-    <div class="main_wrppers">
-        <div class="banner main_banner">
-            <img src="assets/img/img/homeBanner.webp" alt="">
-            <div class="banner_content">
-                <h5>Casting Call</h5>
-                <p>Lorem ipsum dolor sit<br>
-                    adipiscing elit, sed....</p>
-            </div>
+    <div class="main_wrppers">        
+        <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="slideConfig"
+        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)">
+        <div ngxSlickItem *ngFor="let slide of slides" class="banner main_banner" style="min-height: 132px;">
+          <img src="{{ baseUrl+slide.banner_image_path+slide.casting_banner_image }}" alt="">
+          <div class="banner_content">
+            <!-- <h5>Casting Call</h5>
+            <p>Lorem ipsum dolor sit<br>
+                adipiscing elit, sed....</p> -->
         </div>
-        <div class="casingCalls">
+        </div>        
+      </ngx-slick-carousel>
+
+        <div class="casingCalls" *ngIf="!nonewcall">
             <div class="casingCallHeader">
                 <p class="classinghead">New Casing Call</p>
-                <span><a href="casting.html">View All</a></span>
+                <span><a [routerLink]="['/casting-all/1']">View All</a></span>
             </div>
-            <div class="boxs">
-               <div class="boxHead">
-                <h5><a href="#">Looking for a Foreigner</a></h5>
-                <div class="shaveIcon">
-                    <i class="far fa-bookmark"></i>
-                </div>
-               </div>
-               <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                adipiscing elit, sed....</a></p>
-                <ul class="userDetails">
-                    <li><i class="fas fa-transgender-alt"></i>Male</li>
-                    <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                    <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                </ul>
-                <div class="labelBtns">
-                    <label>Male</label>
-                    <label>Foreigner</label>
-                    <label>Add Film</label>
-                    <label>30-50 years</label>
-                </div>
-            </div>
-        </div>
-        <div class="casingCalls">
+            <app-casting-card *ngFor="let c of newCasting; let idx=index" [data]="c"></app-casting-card>
+        </div>        
+        <div class="casingCalls" *ngIf="!norecomended">
             <div class="casingCallHeader">
                 <p class="classinghead recomded primary__color">Recommended Calls</p>
-                <span><a>View All</a></span>
+                <span><a [routerLink]="['/casting-all/2']">View All</a></span>
             </div>
-            <div class="boxs">
-               <div class="boxHead">
-                <h5><a href="#">Looking for a Foreigner</a></h5>
-                <div class="shaveIcon">
-                    <i class="far fa-bookmark"></i>
-                </div>
-               </div>
-               <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                adipiscing elit, sed....</a></p>
-                <ul class="userDetails">
-                    <li><i class="fas fa-transgender-alt"></i>Male</li>
-                    <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                    <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                </ul>
-                <div class="labelBtns">
-                    <label>Male</label>
-                    <label>Foreigner</label>
-                    <label>Add Film</label>
-                    <label>30-50 years</label>
-                </div>
-            </div>
+            <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
         </div>
 
         <div class="casingCalls">

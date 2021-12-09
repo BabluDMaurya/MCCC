@@ -3,13 +3,13 @@
         <ngx-slick-carousel class="carousel slick_sliders splace_slider wrrpperHomeSlider" #slickModal="slick-carousel"
             [config]="slideConfig" (init)="slickInit($event)" (breakpoint)="breakpoint($event)"
             (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
-            <div ngxSlickItem *ngFor="let slide of slides" class="homeSliders">
+            <div ngxSlickItem *ngFor="let slide of slides" class="homeSliders {{ slide.class1 }}">
                 <div class="logos">
                     <img src="{{ slide.logo }}" alt="">
                 </div>
-                <div class="girlImg">
+                <!-- <div class="girlImg">
                     <img src="{{ slide.img }}" alt="">
-                </div>
+                </div> -->
                 <div class="bottomContent">
                     <h2>{{slide.title}}</h2>
                     <p>{{slide.des}}</p>
@@ -22,7 +22,7 @@
                             <span><i>Start Swiping</i></span>
                             <ion-icon name="arrow-forward-outline"></ion-icon>
                         </button>
-                        <a [routerLink]="['/signin']">Skip</a>
+                        <a [routerLink]="['/signin-signup']">Skip</a>
                    </div>
                 </div>
             </div>

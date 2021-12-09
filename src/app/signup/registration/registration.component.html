@@ -30,7 +30,7 @@
             <app-date-of-birth [parent]="form" [submit]="submitted"></app-date-of-birth>
             <app-your-country-state-city [parent]="form" [submit]="submitted"></app-your-country-state-city>
             <div class="formGroup">
-                <label>Home Town*</label>
+                <label>Home Town* <img src="assets/img/img/i_icon.webp" alt=""></label>
                 <div class="inputs">
                     <input autocomplete="off" formControlName="home_town" type="text"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">
                     <div *ngIf="submitted && f.home_town.errors" class="invalid-feedback">

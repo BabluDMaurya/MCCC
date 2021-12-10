@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input, } from '@angular/core';
+// import { Component, OnInit, } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../_service/authentication.service';
 import { DashboardService } from '../../_service/dashboard.service';
 import { User } from '../../_models/user';
-
 
 @Component({
   selector: 'app-header',
@@ -19,6 +19,9 @@ export class HeaderComponent implements OnInit {
   ) {
     
    }
+  @Input() castingtab : any;
+  @Input() workshoptab : any;
+
 
   ngOnInit(): void {
     this.getUserNotificationCounter();

@@ -13654,11 +13654,6 @@ body.dark-mode-active .imges_wrpper .btnArea .next.outline {
   font-weight: 600;
 }
 
-.rightSidebaars .offcanvas-header .profileBox {
-  left: inherit;
-  right: 0;
-}
-
 body.dark-mode-active .form-switch .form-check-input:checked ~ .form-check-label:after {
   background-color: #000;
   border-color: #000 !important;

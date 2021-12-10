@@ -1,0 +1,39 @@
+.casting{
+    .mainHeader{
+        .bottomHeader{
+            .tabs{
+                .box{
+                    &:first-child{
+                        .label{
+                            color:#49b3dd;
+                        }
+                    }
+                }
+            }
+        }
+        .extraHeader{
+            position: initial;
+            box-shadow:initial;
+        }
+    }
+    .main_wrppers{
+        margin-top:180px;
+    }
+    #appCapsule{
+        padding-top: 0px;
+        padding-bottom: 0;
+        .tab-pane{
+            .casingCalls{
+                .boxs{
+                    margin-bottom: 30px;
+                }
+            }
+        }
+        .notFoundData{
+            height: calc(100vh - 180px);
+            position: fixed;
+            width: 100%;
+            left: 0;
+        }
+    }
+}

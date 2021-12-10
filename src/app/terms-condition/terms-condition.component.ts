@@ -1,0 +1,16 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-terms-condition',
+  templateUrl: './terms-condition.component.html',
+  styleUrls: ['./terms-condition.component.scss']
+})
+export class TermsConditionComponent implements OnInit {
+  back_link :any =  "home";
+  component_title : string = 'Terms & Conditions';
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

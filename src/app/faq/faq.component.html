@@ -1,0 +1,51 @@
+<div class="main casting_inner inviteFrnds">
+    <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
+    <div class=" main_wrppers faq">
+        <div class="faqWrapper">
+            <label>Casting Call</label>
+            <div class="accordion" id="accordionCasting">
+                <div class="accordion-item" *ngFor="let item of casting_calls; let i = index">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            [attr.data-bs-target]="'#accordioncc'+i" [innerHTML]="item.title"></button>
+                    </h2>
+                    <div [id]="'accordioncc'+i" class="accordion-collapse collapse" [ngClass]="{ 'show': i == 0 }"
+                        data-bs-parent="#accordionCasting">
+                        <div class="accordion-body" [innerHTML]="item.description">/div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faqWrapper">
+                <label>BTS</label>
+                <div class="accordion" id="bts">
+                    <div class="accordion-item" *ngFor="let itemb of bts; let i = index">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                [attr.data-bs-target]="'#accordionbts'+i" [innerHTML]="itemb.title"></button>
+                        </h2>
+                        <div [id]="'accordionbts'+i" class="accordion-collapse collapse" [ngClass]="{ 'show': i == 0 }"
+                            data-bs-parent="#bts">
+                            <div class="accordion-body" [innerHTML]="itemb.description">/div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faqWrapper">
+                <label>Training</label>
+                <div class="accordion" id="training">
+                    <div class="accordion-item" *ngFor="let itemt of training; let i = index">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                [attr.data-bs-target]="'#accordiont'+i" [innerHTML]="itemt.title"></button>
+                        </h2>
+                        <div [id]="'accordiont'+i" class="accordion-collapse collapse" [ngClass]="{ 'show': i == 0 }"
+                            data-bs-parent="#training">
+                            <div class="accordion-body" [innerHTML]="itemt.description">/div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

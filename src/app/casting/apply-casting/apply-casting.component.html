@@ -1,0 +1,77 @@
+<!-- <app-footer></app-footer> -->
+<div class="main casting_inner">
+    <app-sub-header [back]="back_link"></app-sub-header>
+    <div class="main_wrppers casting__profiles">
+        <div class="castingProfile">
+            <h2>Submit Your Details</h2>
+            <h3>{{casting_title | titlecase}}</h3>
+            <h4><label> Date : </label> {{casting_date}}</h4>
+            <p><span>*</span> You can change your profile details in My Profile section</p>
+            <div class="profileDetailsWrpper">
+                <div class="profileDiv">
+                    <label>Name<span>*</span></label>
+                    <p class="innerDetail">{{userdetail.name}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Age<span>*</span></label>
+                    <p class="innerDetail">{{age}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Height<span>*</span></label>
+                    <p class="innerDetail">{{userdetail.height}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Contact Number<span>*</span></label>
+                    <p class="innerDetail">+91 {{userdetail.phone}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Language<span>*</span></label>
+                    <p class="innerDetail">{{userdetail.language}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Current City<span>*</span></label>
+                    <p class="innerDetail">{{userdetail.city_name}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Home Town<span>*</span></label>
+                    <p class="innerDetail">Goregoan West</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Hobbies<span>*</span></label>
+                    <p class="innerDetail">Playing Cricket,Listing Music</p>
+                </div>
+            </div>
+            <div class="profilePhotos">
+                <label>Your Added Photos</label>
+                <div class="imgsArea" *ngIf="ShowUploadedImages">
+                    <img *ngFor="let img of uploadedImages;let i=index;" src="{{imagePath+img.image}}" alt=""  width="auto" height="135px">                    
+                </div>
+                <div class="imgsArea" *ngIf="!ShowUploadedImages">
+                    <img src="assets/img/img/castingProfileImg.webp" alt="">
+                    <img src="assets/img/img/castingProfileImg.webp" alt="">
+                    <img src="assets/img/img/castingProfileImg.webp" alt="">
+                </div>
+                <p><span>*</span> To change images go to profile and update images from there</p>
+            </div>
+            <div class="profileVideos">
+                <label>Your Added Video</label>
+                <div class="videosArea" *ngIf="ShowUploadedVideo">
+                    <video class="js--image-preview" width="auto" height="208px" controls controlsList="nodownload noplaybackrate" disablePictureInPicture>
+                        <source src="{{videoPath+userdetail.videos[0].videos}}" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video>
+                </div>
+                <div class="videosArea" *ngIf="!ShowUploadedVideo">
+                    <a href="#">
+                        <img src="assets/img/img/castingPrfolieVide.webp" alt="">
+                        <div class="play__ionc">
+                            <img src="assets/img/img/play_icon.webp" alt="">
+                        </div>
+                    </a>
+                </div>
+                <p><span>*</span> To change images go to profile and update images from there</p>
+            </div>
+            <button class="btnss" (click)="submit()">Submit</button>
+        </div>
+    </div>
+</div>

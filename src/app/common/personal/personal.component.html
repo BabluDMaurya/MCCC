@@ -1,7 +1,7 @@
-<div class="main casting casting_inner profile">
+ <div class="main casting casting_inner profile">
         <div class="mainHeader">
             <div class="top_header">
-                <div class="arrowLeft">
+                <div class="arrowLeft" (click)=back()>
                     <ion-icon name="chevron-back-outline"></ion-icon>
                 </div>
                 <div class="logo middle">
@@ -9,90 +9,165 @@
                 </div>
                 <div class="lats_side">
                     <div class="avtars">
-                            <a href="main_home.html">
+                            <a [routerLink]="['/home']">
                                 <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
                             </a>
-                        <!-- </div> -->
                     </div>
                 </div>
             </div>
         </div>
         <div class=" main_wrppers profileWrpper">
             <div class="profiles">
+                <form [formGroup]="form" (ngSubmit)="submit()">
                 <div class="profileDiv">
                     <label>Name<span>*</span></label>
-                    <input class="innerDetail" type="text" value="Aditya">
+                   
+                        <input autocomplete="off" formControlName="name" type="text" class="innerDetail" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" maxlength="28">
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                            <div *ngIf="f.name.errors.pattern">Characters and space are allowed, It's length should be minimum two characters</div>
+                          </div>
+                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.name.errors?.serverError">{{ f.name.errors?.serverError }}</div>
+                    
                 </div>
                 <div class="profileDiv">
                     <label>DOB<span>*</span></label>
                     <div class="dateBirth">
                         <div class="select">
-                            <select name="" id="">
-                                <option value="male" selected disabled>Date</option>
-                                <option value="male">1</option>
-                                <option value="male">2</option>
-                                <option value="male">3</option>
-                                <option value="male">4</option>
-                                <option value="male">5</option>
-                                <option value="male">6</option>
-                            </select>
+                            <select formControlName="day" [(ngModel)]="day" class="form-control" [ngClass]="{ 'is-invalid': submit && f.day.errors }">
+                                <option value="">Date</option>
+                                <option [value]="day" *ngFor="let day of dayList" >{{day}}</option>
+                             </select>
+                             <div *ngIf="submit && f.day.errors" class="invalid-feedback">
+                                 <div *ngIf="f.day.errors.required">Day is required</div>               
+                               </div>       
                         </div>
                         <div class="select">
-                            <select name="" id="">
-                                <option value="male" selected disabled>Month</option>
-                                <option value="male">1</option>
-                                <option value="male">2</option>
-                                <option value="male">3</option>
-                                <option value="male">4</option>
-                                <option value="male">5</option>
-                                <option value="male">6</option>
-                            </select>
+                            <select formControlName="month" [(ngModel)]="month" class="form-control" [ngClass]="{ 'is-invalid': submit && f.month.errors }">
+                                <option value="">Month</option>
+                                <option [value]="month" *ngFor="let month of monthList" >{{month}}</option>
+                             </select>
+                             <div *ngIf="submit && f.month.errors" class="invalid-feedback">
+                                 <div *ngIf="f.month.errors.required">Month is required</div>               
+                               </div>
                         </div>
                         <div class="select">
-                            <select name="" id="">
-                                <option value="male" selected disabled >Year</option>
-                                <option value="male">1986</option>
-                                <option value="male">1987</option>
-                                <option value="male">1988</option>
-                                <option value="male">1989</option>
-                                <option value="male">1990</option>
-                                <option value="male">1991</option>
-                            </select>
+                            <select formControlName="year" [(ngModel)]="myYear" class="form-control" [ngClass]="{ 'is-invalid': submit && f.year.errors }">
+                                <option value="" disabled>Year</option>
+                                <option [value]="year" *ngFor="let year of yearList" >{{year}}</option>
+                             </select>
+                             <div *ngIf="submit && f.year.errors" class="invalid-feedback">
+                                 <div *ngIf="f.year.errors.required">Year is required</div>               
+                               </div>
                         </div>
                     </div>
                 </div>
                 <div class="profileDiv">
                     <label>Height<span>*</span></label>
-                    <input class="innerDetail" value="55">
+                    <input type="tel" class="innerDetail" formControlName="height" maxlength="50" [ngClass]="{ 'is-invalid': submitted && f.height.errors }">
+                    <div *ngIf="submitted && f.height.errors" class="invalid-feedback">
+                        <div *ngIf="f.height.errors.required">Height is required</div>
+                        <div *ngIf="f.height.errors.pattern">Height must be numeric</div>
+                    </div>
                 </div>
                 <div class="profileDiv">
                     <label>Contact Number<span>*</span></label>
-                    <input class="innerDetail" value="+91 8425025713">
+                    <div class="mobileNumer">
+                        <div class="selects">
+                            <!-- <select name="" id="country Code">
+                                <option value="+91">+91</option>
+                                <option value="+91">+91</option>
+                                <option value="+91">+91</option>
+                            </select> -->
+                            <select formControlName="country_code" class="country Code" [(ngModel)]="selectedCode">
+                                <option [value]="code" *ngFor="let code of codeList">{{code}}</option>
+                             </select>
+                             <div *ngIf="submit && f.country_code.errors" class="invalid-feedback">
+                                <div *ngIf="f.country_code.errors.required">Country code is required</div>               
+                              </div>
+                              <div class="invalid-feedback error" style="display: block;" *ngIf="f.country_code.errors?.serverError">{{ f.country_code.errors?.serverError }}</div>
+                        
+                        </div>   
+                        <div class="inputs">
+                            <input autocomplete="off" formControlName="phone" type="tel" maxlength="10" class="form-control" [ngClass]="{ 'is-invalid': submit && f.phone.errors }">
+                            <div *ngIf="submit && f.phone.errors" class="invalid-feedback">
+                              <div *ngIf="f.phone.errors.required">Phone is required</div>
+                              <div *ngIf="f.phone.errors.pattern">Please Enter 10 digit's mobile number</div>
+                              <div *ngIf="f.phone.errors.phoneTaken">Phone number is already taken.</div>
+                            </div>
+                            <div class="invalid-feedback error" style="display: block;" *ngIf="f.phone.errors?.serverError">{{ f.phone.errors?.serverError }}</div> 
+                          
+                        </div>
+                    </div>
                 </div>
                 <div class="profileDiv">
                     <label>Language<span>*</span></label>
-                    <input class="innerDetail" value="Marathi">
+                    
+                    <div class="select">
+                        <select class="form-control"  formControlName="language_id" [(ngModel)]="language_ids" multiple [ngClass]="{ 'is-invalid': submitted && f.language_id.errors }">
+                            <option *ngFor="let language of languages;" value="{{language.id}}">{{language.name}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.language_id.errors" class="invalid-feedback">
+                            <div *ngIf="f.language_id.errors.required">Language is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profileDiv">
+                    <label>Your Country*</label>
+                    <div class="select">
+                        <select formControlName="country" (change)="changeSuitState($event)" class="form-control" [ngClass]="{ 'is-invalid': submit && f.country.errors }">            
+                            <option value="">Select</option>
+                            <option value="101">India</option>            
+                            <!-- <option value="country.id" *ngFor="let country of countryList" >{{country.name}}</option> -->
+                        </select>
+                        <div *ngIf="submit && f.country.errors" class="invalid-feedback">
+                            <div *ngIf="f.country.errors.required">Country is required</div>               
+                        </div>
+                    </div>
                 </div>
                 <div class="profileDiv">
                     <label>State<span>*</span></label>
-                    <input class="innerDetail" value="Maharastra">
+                    <div class="select">
+                        <select formControlName="state" (change)="changeSuit($event)" class="form-control" [ngClass]="{ 'is-invalid': submit && f.state.errors }">
+                            <option value="">Select</option>
+                            <option value="{{state.id}}" *ngFor="let state of stateList" >{{state.name}}</option>
+                         </select>
+                         <div *ngIf="submit && f.state.errors" class="invalid-feedback">
+                             <div *ngIf="f.state.errors.required">State is required</div>               
+                           </div>
+                    </div>
                 </div>
                 <div class="profileDiv">
                     <label>City<span>*</span></label>
-                    <input class="innerDetail" value="Mumbai">
+                    <div class="select">
+                        <select formControlName="select_city" class="form-control" [ngClass]="{ 'is-invalid': submit && f.select_city.errors }">
+                            <option value="">Select</option>
+                            <option *ngFor="let city of cityList" value="{{city.id}}">{{city.name}}</option>
+                         </select>
+                         <div *ngIf="submit && f.select_city.errors" class="invalid-feedback">
+                             <div *ngIf="f.select_city.errors.required">City is required</div>               
+                           </div>
+                    </div>
                 </div>
                 <div class="profileDiv">
                     <label>Home Town<span>*</span></label>
-                    <input class="innerDetail" value="Goregoan West">
+                    <input class="innerDetail" type="text" formControlName="home_town" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">
+                    <div *ngIf="submitted && f.home_town.errors" class="invalid-feedback">
+                        <div *ngIf="f.home_town.errors.required">Home Town is required</div>
+                    </div>
                 </div>
                 <div class="profileDiv">
                     <label>Hobbies<span>*</span></label>
-                    <input class="innerDetail" value="Playing Cricket,Listing Music">
+                    <input type="text" class="innerDetail" formControlName="hobbies" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.hobbies.errors }">
+                    <div *ngIf="submitted && f.hobbies.errors" class="invalid-feedback">
+                        <div *ngIf="f.hobbies.errors.required">Hobbies is required</div>
+                    </div> 
                 </div>
                 <div class="submit">
-                    <a href='anatomy.html' class="btns">Submit</a>
-                    <a href="#" class="btns outline">Cancel</a>
+                    <button type="submit" class="btns"> submit</button>
+                    <a class="btns outline" (click)="back()"> Cancel</a>
                 </div>
+            </form>
             </div>
         </div>
     </div>

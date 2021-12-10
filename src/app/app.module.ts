@@ -7,6 +7,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DatePipe } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { LogoComponent } from './logo/logo.component';
 import { SplashComponent } from './splash/splash.component';
 import { SigninSignupComponent } from './signin-signup/signin-signup.component';
@@ -45,6 +47,36 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { NotificationComponent } from './notification/notification.component';
 import { AnatomyComponent } from './common/anatomy/anatomy.component';
 import { PersonalComponent } from './common/personal/personal.component';
+import { CastingComponent } from './casting/casting.component';
+import { CastingCardComponent } from './_components/casting-card/casting-card.component';
+import { NotFoundDataComponent } from './_components/not-found-data/not-found-data.component';
+import { CastingInnerComponent } from './casting/casting-inner/casting-inner.component';
+import { ApplyCastingComponent } from './casting/apply-casting/apply-casting.component';
+import { ThankYouCastingComponent } from './casting/thank-you-casting/thank-you-casting.component';
+import { MyApplicationsComponent } from './my-applications/my-applications.component';
+import { MyBookmarksComponent } from './my-bookmarks/my-bookmarks.component';
+import { GamesComponent } from './games/games.component';
+import { BollywoodMemoryGameComponent } from './games/bollywood-memory-game/bollywood-memory-game.component';
+import { GameCardComponent } from './games/bollywood-memory-game/game-card/game-card.component';
+import { RestartDialogComponent } from './games/bollywood-memory-game/restart-dialog/restart-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyApplicationCardComponent } from './my-applications/my-application-card/my-application-card.component';
+import { MyApplicationInnerComponent } from './my-applications/my-application-inner/my-application-inner.component';
+import { BookmarkComponent } from './bookmark/bookmark.component';
+import { TopHeaderBtlComponent } from './_components/top-header-btl/top-header-btl.component';
+import { AboutComponent } from './about/about.component';
+import { FaqComponent } from './faq/faq.component';
+import { HelpComponent } from './help/help.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { SuccessComponent } from './signup/success/success.component';
+import { FinalSuccessComponent } from './complete-profile/final-success/final-success.component';
+import { CreatePasswordComponent } from './signup/create-password/create-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { UploadImagesComponent } from './complete-profile/upload-images/upload-images.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CompleteProfileComponent } from './complete-profile/complete-profile/complete-profile.component';
+import { UploadVideoComponent } from './complete-profile/upload-video/upload-video.component';
+import { WorkshopCardComponent } from './_components/workshop-card/workshop-card.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +92,15 @@ import { PersonalComponent } from './common/personal/personal.component';
     YourCountryStateCityComponent,
     SigninComponent,
     HomeComponent,
+    SuccessComponent,
     BtsComponent,
+    FinalSuccessComponent,
+    UploadVideoComponent,
+    CreatePasswordComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    CompleteProfileComponent,
+    UploadImagesComponent,
     TrainingComponent,
     WorkshopComponent,
     BtsInnerComponent,
@@ -78,6 +118,27 @@ import { PersonalComponent } from './common/personal/personal.component';
     NotificationComponent,
     AnatomyComponent,
     PersonalComponent,
+    CastingComponent,
+    CastingCardComponent,
+    NotFoundDataComponent,
+    CastingInnerComponent,
+    ApplyCastingComponent,
+    ThankYouCastingComponent,
+    MyApplicationsComponent,
+    MyBookmarksComponent,
+    GamesComponent,
+    BollywoodMemoryGameComponent,
+    GameCardComponent,
+    RestartDialogComponent,
+    MyApplicationCardComponent,
+    MyApplicationInnerComponent,
+    BookmarkComponent,
+    TopHeaderBtlComponent,
+    AboutComponent,
+    FaqComponent,
+    HelpComponent,
+    TermsConditionComponent,
+    WorkshopCardComponent
   ],
   imports: [
     BrowserModule,
@@ -93,11 +154,16 @@ import { PersonalComponent } from './common/personal/personal.component';
     VgBufferingModule,
     ToastrModule.forRoot({
       positionClass :'toast-bottom-right'
-    })
+    }),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule,
+    
   ],
   providers: [DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,16 +1,30 @@
 <div class="boxs">
     <div class="boxHead">
-     <h5><a (click)="castingInner(data.id)">{{data.title | titlecase}}</a></h5>
+     <h5><a (click)="castingInner(data.id)">{{data.title | titlecase}}</a></h5>     
      <div class="shaveIcon" (click)="bookmarkCasting(data.id)">
-         <i class="far fa-bookmark"></i>
-     </div>
+        <i [ngClass]="data.bookmark_status == 1 ? 'far fa-bookmark-o' : 'far fa-bookmark'"></i>
+    </div>
+     <div id="toast-15" class="toast-box bg-success toast-bottom">
+        <div class="in">
+            <div class="text">
+                Bookmark added
+            </div>
+        </div>
+    </div>
+    <div id="toast-16" class="toast-box bg-danger toast-bottom">
+        <div class="in">
+            <div class="text">
+                Bookmark remove
+            </div>
+        </div>
+    </div>
     </div>
     <p><a [innerHTML]="doHtmlDisplay(data.short_description)"></a></p>
      <ul class="userDetails">
          <li><i class="fas fa-transgender-alt"></i>{{data.gender}}</li>
          <li><i class="far fa-calendar-alt"></i>{{data.created_at}}</li>
          <li><ion-icon name="location-outline"></ion-icon>{{data.location}}</li>
-         <li><i class="far fa-user" aria-hidden="true"></i>Role</li>
+         <li><i class="far fa-user" aria-hidden="true"></i>{{data.role}}</li>
      </ul>
      <div class="labelBtns">
          <label *ngFor="let tag of data.tags;">{{tag}}</label>

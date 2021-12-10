@@ -28,6 +28,7 @@ import { AboutComponent } from './about/about.component';
 import { FaqComponent } from './faq/faq.component';
 import { HelpComponent } from './help/help.component';
 import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { NoInternetComponent } from './no-internet/no-internet.component';
 
 const routes: Routes = [{    
   path: '',    
@@ -142,6 +143,10 @@ const routes: Routes = [{
 {    
   path: 'terms-condition',component: TermsConditionComponent,canActivate: [AuthGuard],   
   data: {title: 'terms and condition'}    
+},
+{    
+  path: 'no-internet',component: NoInternetComponent,   
+  data: {title: 'no internet'}    
 },
 ];
 

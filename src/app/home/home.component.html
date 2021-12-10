@@ -9,13 +9,12 @@
         <div ngxSlickItem *ngFor="let slide of slides" class="banner main_banner" style="min-height: 132px;">
           <img src="{{ baseUrl+slide.banner_image_path+slide.casting_banner_image }}" alt="">
           <div class="banner_content">
-            <!-- <h5>Casting Call</h5>
+            <!--<h5>Casting Call</h5>
             <p>Lorem ipsum dolor sit<br>
-                adipiscing elit, sed....</p> -->
+                adipiscing elit, sed....</p>-->
         </div>
         </div>        
       </ngx-slick-carousel>
-
         <div class="casingCalls" *ngIf="!nonewcall">
             <div class="casingCallHeader">
                 <p class="classinghead">New Casing Call</p>
@@ -30,7 +29,6 @@
             </div>
             <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
         </div>
-
         <div class="casingCalls">
             <div class="casingCallHeader">
                 <p class="classinghead">Upcoming Workshop</p>
@@ -109,39 +107,19 @@
                 <p class="classinghead recomded">Popular BTS</p>
                 <span><a href="bts.html">View All</a></span>
             </div>
-            <div class="bts_popular_slider bts_popular_sliderSecond">
-                <div class="btsSlioder">
-                   <a href="#">
-                        <img src="assets/img/img/homeBanner.webp" alt="">
-                        <div class="btsPlay_icon">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                   </a>
-                </div>
-                <div class="btsSlioder">
-                   <a href="#">
-                        <img src="assets/img/img/homeBanner.webp" alt="">
-                        <div class="btsPlay_icon">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                   </a>
-                </div>
-                <div class="btsSlioder">
-                    <a href="#">
-                        <img src="assets/img/img/homeBanner.webp" alt="">
-                        <div class="btsPlay_icon">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                    </a>
-                </div>
-                <div class="btsSlioder">
-                    <a href="#">
-                        <img src="assets/img/img/homeBanner.webp" alt="">
-                        <div class="btsPlay_icon">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                    </a>
-                </div>
+            <div class="bts_popular_slider bts_popular_sliderSecond">                
+                <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="slideConfig"
+        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)">
+        <div ngxSlickItem *ngFor="let slide of slides" class="btsSlioder">
+            <a href="#">
+            <img src="assets/img/img/homeBanner.webp" alt="">
+            <div class="btsPlay_icon">
+                <img src="assets/img/img/play_icon.webp" alt="">
+            </div>
+            </a>
+        </div>        
+      </ngx-slick-carousel>
             </div>
         </div>
         <div class="casingCalls">

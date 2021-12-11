@@ -17,6 +17,7 @@ export class TrainingComponent implements OnInit {
   trainingVideo: any;
   title: any;
   constructor(private trainingService: TrainingService) { }
+  two_sliders = {"slidesToShow": 2, "slidesToScroll": 2,"dots": false,"infinite": false};
 
   ngOnInit(): void {
     this.trainingService.get_training_categories().subscribe(res => {
@@ -43,6 +44,21 @@ export class TrainingComponent implements OnInit {
     });
     
   }
+  isOdd(n:number) {
+    return Math.abs(n % 2) == 1;
+ }
+ slickInit(e:any) {
+  // console.log('slick initialized');
+}    
+breakpoint(e:any) {
+  // console.log('breakpoint');
+}    
+afterChange(e:any) {
+  // console.log('afterChange');
+}    
+beforeChange(e:any) {
+  // console.log('beforeChange');
+}
   changeCat(id: any,title:any){
     console.log(id);
     this.title = title;

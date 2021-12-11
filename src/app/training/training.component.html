@@ -7,9 +7,14 @@
         
         <div class="main_wrppers trainingWrapper">
             <div class="trainngSlider">
-                <div class="traning_slide" *ngFor = "let data of trainCatg">
-                    <img src="assets/img/img/trainingSlideImg.webp" (click)="changeCat(data.id,data.title)" alt="">
-                </div>
+                
+                <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="two_sliders"
+                    (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+                    (beforeChange)="beforeChange($event)">
+                    <div ngxSlickItem  *ngFor="let data of trainCatg; let i=index;"  class="btsSlioder">
+                        <img src="assets/img/img/trainingSlideImg.webp" (click)="changeCat(data.id,data.title)" alt="">
+                    </div>        
+                </ngx-slick-carousel>
                 
             </div>
             <div class="otherTrainingVid">
@@ -25,8 +30,9 @@
                         </div>
                     </div>
                 </div>
+                
                 <div *ngIf="trainingVideo == '' ">
-                    <p>No Data</p>
+                    <app-not-found-data ></app-not-found-data>
                 </div>
             </div>
         </div>

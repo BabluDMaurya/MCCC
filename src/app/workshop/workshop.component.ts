@@ -47,7 +47,7 @@ export class WorkshopComponent implements OnInit {
       this.catId = params.get('id');
     });
 
-    this.workshopService.get_all_workshop_data('').subscribe(
+    this.workshopService.get_all_workshop_data({'limit':''} ).subscribe(
       data => { 
         this.workshsopData = data.data;
         this.eventForYouData = this.workshsopData.event_for_u;

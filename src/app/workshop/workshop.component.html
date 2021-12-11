@@ -68,20 +68,7 @@
                                     <!-- <span><a>View All</a></span> -->
                                 </div>
                                 <div *ngIf="!onGoingData[0].noData">
-                                <div class="boxs" *ngFor="let onGoing of onGoingData">
-                                   <div class="boxHead">
-                                    <h5><a [routerLink]="['/workshop-registration/',onGoing.id]">{{onGoing.title}}</a></h5>
-                                    <div class="shaveIcon">
-                                        <i class="far fa-bookmark" (click)="bookmarkEvent(onGoing.id)"></i>
-                                    </div>
-                                   </div>
-                                   <p [innerHtml]="doHtmlDisplay(onGoing.description)"></p>
-                                    <ul class="userDetails">
-                                        <li><ion-icon name="location-outline"></ion-icon>{{onGoing.city_name}}</li>
-                                        <li><i class="far fa-calendar-alt"></i>{{onGoing.start_date | date :'mediumDate'}}</li>
-                                        <li><i class="far fa-clock"></i>{{onGoing.start_time_1}}</li>
-                                    </ul>
-                                </div>
+                                    <app-workshop-card *ngFor="let c of onGoingData; let idx=index" [data]="c"></app-workshop-card>
                                 </div>
                                 <div *ngIf="onGoingData[0].noData">
                                     <app-not-found-data ></app-not-found-data>
@@ -102,20 +89,7 @@
                                     <!-- <span><a>View All</a></span> -->
                                 </div>
                                 <div *ngIf = "!upcoming[0].noData ">
-                                <div class="boxs" *ngFor="let upData of upcoming">
-                                    <div class="boxHead">
-                                     <h5><a [routerLink]="['/workshop-registration/',upData.id]">{{upData.title}}</a></h5>
-                                     <div class="shaveIcon">
-                                         <i class="far fa-bookmark" (click)="bookmarkEvent(upData.id)"></i>
-                                     </div>
-                                    </div>
-                                    <p [innerHtml]="doHtmlDisplay(upData.description)"></p>
-                                     <ul class="userDetails">
-                                         <li><ion-icon name="location-outline"></ion-icon>{{upData.city_name}}</li>
-                                         <li><i class="far fa-calendar-alt"></i>{{upData.start_date | date :'mediumDate'}}</li>
-                                         <li><i class="far fa-clock"></i>{{upData.start_time_1}}</li>
-                                     </ul>
-                                 </div>
+                                <app-workshop-card *ngFor="let c of upcoming; let idx=index" [data]="c"></app-workshop-card>
                                 </div>
                                  <div *ngIf = "upcoming[0].noData ">
                                     <app-not-found-data ></app-not-found-data>
@@ -135,20 +109,7 @@
                                     <!-- <span><a>View All</a></span> -->
                                 </div>
                                 <div *ngIf = "!eventForYouData[0].noData ">
-                                    <div class="boxs" *ngFor="let eventForYou of eventForYouData">
-                                        <div class="boxHead">
-                                         <h5><a [routerLink]="['/workshop-registration/',eventForYou.id]">{{eventForYou.title}}</a></h5>
-                                         <div class="shaveIcon">
-                                             <i class="far fa-bookmark" (click)="bookmarkEvent(eventForYou.id)"></i>
-                                         </div>
-                                        </div>
-                                        <p [innerHtml]="doHtmlDisplay(eventForYou.description)"></p>
-                                         <ul class="userDetails">
-                                             <li><ion-icon name="location-outline"></ion-icon>{{eventForYou.city_name}}</li>
-                                             <li><i class="far fa-calendar-alt"></i>{{eventForYou.start_date | date :'mediumDate'}}</li>
-                                             <li><i class="far fa-clock"></i>{{eventForYou.start_time_1}}</li>
-                                         </ul>
-                                     </div>
+                                    <app-workshop-card *ngFor="let c of eventForYouData; let idx=index" [data]="c"></app-workshop-card>
                                     </div>
                                      <div *ngIf = "eventForYouData[0].noData ">
                                         <app-not-found-data ></app-not-found-data>

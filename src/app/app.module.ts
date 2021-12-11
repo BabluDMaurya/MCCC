@@ -80,6 +80,8 @@ import { CompleteProfileComponent } from './complete-profile/complete-profile/co
 import { UploadVideoComponent } from './complete-profile/upload-video/upload-video.component';
 import { WorkshopCardComponent } from './_components/workshop-card/workshop-card.component';
 import { NoInternetComponent } from './no-internet/no-internet.component';
+import { BtsCategoryCardComponent } from './_components/bts-category-card/bts-category-card.component';
+import { BtsCardComponent } from './_components/bts-card/bts-card.component';
 
 @NgModule({
   declarations: [
@@ -142,7 +144,9 @@ import { NoInternetComponent } from './no-internet/no-internet.component';
     HelpComponent,
     TermsConditionComponent,
     WorkshopCardComponent,
-    NoInternetComponent
+    NoInternetComponent,
+    BtsCategoryCardComponent,
+    BtsCardComponent
   ],
   imports: [
     BrowserModule,

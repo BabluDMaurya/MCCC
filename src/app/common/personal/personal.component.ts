@@ -55,6 +55,7 @@ export class PersonalComponent implements OnInit {
   monthList: any = ['1', '2', '3','4','5','6','7','8','9','10','11','12'];
   yearList: any = [];
   all_countries : any = [];
+  genderList = ['Female', 'Male', 'Transgender', 'Genderqueer'];
   constructor(private location:Location,
     public datepipe: DatePipe,
     private formBuilder: FormBuilder,
@@ -72,11 +73,12 @@ export class PersonalComponent implements OnInit {
       home_town : ['', Validators.required],
       hobbies: ['', Validators.required],
       language_id: ['',[Validators.required]],
-      country_code:['',[Validators.required]],
+      // country_code:['',[Validators.required]],
+      gender:['',[Validators.required]],
       country:['',[Validators.required]],
       state:['',[Validators.required]],
       select_city:['',[Validators.required]],
-      phone:['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      // phone:['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       height:['',[Validators.required,Validators.pattern("^[0-9]+(.[0-9]{0,2})?$")]],
       day:['', [Validators.required]],     
       month:['', [Validators.required]],     
@@ -170,7 +172,8 @@ export class PersonalComponent implements OnInit {
           this.form.controls['name'].setValue(this.userdetail.name);
           this.form.controls['dob'].setValue(this.userdetail.dob);
           this.form.controls['height'].setValue(this.userdetail.height);
-          this.form.controls['phone'].setValue(this.userdetail.phone);
+          // this.form.controls['phone'].setValue(this.userdetail.phone);gender
+          this.form.controls['gender'].setValue(this.userdetail.gender);
           this.form.controls['language_id'].setValue(this.userdetail.language_id);
           this.form.controls['country'].setValue(101);
           this.form.controls['select_city'].setValue(this.userdetail.city_id);

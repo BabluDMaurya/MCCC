@@ -67,9 +67,9 @@ export class HomeComponent implements OnInit {
   //-----slick slider------------//    
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,autoplay: true,autoplaySpeed: 2000,};
   btsSlideConfig = {"slidesToShow": 2.5, initialSlide: 0.5, "slidesToScroll": 2,"dots": false,"infinite": false};
-  topBtsSlideConfig = {"slidesToShow": 1, initialSlide: 1, "slidesToScroll": 1,"dots": false,"infinite": false};
+  topBtsSlideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,"infinite": false};
   trns_sliders = {"slidesToShow": 3, "slidesToScroll": 3,"dots": false,"infinite": false};
-  two_sliders = {"slidesToShow": 2, "slidesToScroll": 2,"dots": false,"infinite": false};
+  two_sliders = {"slidesToShow": 2.5, "slidesToScroll": 2,"dots": false,"infinite": false};
   // addSlide() {
   //   this.slides.push({img: "http://placehold.it/350x150/777777"})
   // }    
@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit {
             this.topBTSVideos = data.data;
             this.loadData = true;
         });
-        this.workshopService.get_all_workshop_data('').subscribe(
+        this.workshopService.get_all_workshop_data({'limit': 5}).subscribe(
           data => { 
             this.workshsopData = data.data;
             console.log(this.workshsopData , 'workshop');

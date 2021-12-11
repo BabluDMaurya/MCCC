@@ -1,21 +1,16 @@
 <div class="boxs">
     <div class="boxHead">
-     <h5><a (click)="workshopInner(data.id)">{{data.title | titlecase}}</a></h5>
+     <h5><a (click)="workshopInner(data.id)">{{data.title | titlecase}} </a></h5>
      <div class="shaveIcon">
          <i class="far fa-bookmark"></i>
      </div>
     </div>
-    <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-     adipiscing elit, sed....</a></p>
+    <p [innerHtml]="doHtmlDisplay(data.description)"> </p><span (click)="workshopInner(data.id)">View More</span>
      <ul class="userDetails">
-         <li><i class="fas fa-transgender-alt"></i>Male</li>
-         <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-         <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
+
+        <li><ion-icon name="location-outline"></ion-icon>{{data.city_name}}</li>
+        <li><i class="far fa-calendar-alt"></i>{{data.start_date | date :'mediumDate'}}</li>
+        <li><i class="far fa-clock"></i>{{data.start_time_1}}</li>
      </ul>
-     <div class="labelBtns">
-         <label>Male</label>
-         <label>Foreigner</label>
-         <label>Add Film</label>
-         <label>30-50 years</label>
-     </div>
+     
  </div>

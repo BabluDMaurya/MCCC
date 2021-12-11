@@ -14,16 +14,7 @@
                     <span><a [routerLink]="['/bts-inner/1']">View All</a></span>
                 </div>
                 <div class="bts_popular_slider bts_popular_sliderSecond">
-                    <div class="btsSlioder" *ngFor = "let vid of popularBtsVideos" >
-                       <a [routerLink]="['/bts-video-view/',vid.id,1]">
-                            <img *ngIf="vid.youtube_thumbnail == null " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
-                            <img *ngIf="vid.youtube_thumbnail != null " src="{{vid.youtube_thumbnail}}">
-                            <div class="btsPlay_icon">
-                                <img src="../../assets/img/img/play_icon.webp" alt="">
-                            </div>
-                       </a>
-                    </div>
-                    
+                    <app-bts-card  [data]="popularBtsVideos"></app-bts-card>  
                 </div>
             </div>
             <div class="casingCalls">
@@ -32,45 +23,17 @@
                     <span><a [routerLink]="['/bts-inner/2']">View All</a></span>
                 </div>
                 <div class="bts_popular_slider bts_popular_sliderSecond">
-                    <div class="btsSlioder" *ngFor="let vid of topBtsVideos">
-                       <a [routerLink]="['/bts-video-view/',vid.id,2]" >
-                        <img *ngIf="vid.youtube_thumbnail == null " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
-					    <img *ngIf="vid.youtube_thumbnail != null " src="{{vid.youtube_thumbnail}}">
-                            <div class="btsPlay_icon">
-                                <img src="../../assets/img/img/play_icon.webp" alt="">
-                            </div>
-                       </a>
-                    </div>
-
-                    <ngx-slick-carousel *ngIf="loadData" class="carousel behinde-screen_sliders" #slickModal="slick-carousel" [config]="trns_sliders"
-                    (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-                    (beforeChange)="beforeChange($event)">
-                      <div *ngFor = " let vid of topBtsVideos" [routerLink]="['/bts-video-view/',vid.id,1]"  ngxSlickItem class="slider">
-                        <!-- <img  src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}"> -->
-                        <img *ngIf="vid.youtube_thumbnail == null " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
-                                  <img *ngIf="vid.youtube_thumbnail != null " src="{{vid.youtube_thumbnail}}">
-                      </div>
-                    </ngx-slick-carousel>
-                    
+                    <app-bts-card  [data]="topBtsVideos"></app-bts-card>  
                 </div>
             </div>
             <div class="casingCalls">
                 <div class="casingCallHeader">
                     <p class="classinghead recomded secondary__color">Watch more videos</p>
-                    <span><a>View All</a></span>
                 </div>
                 <div class="moresliderVideos">
-                    
-                    <ngx-slick-carousel class="carousel video_slider" #slickModal="slick-carousel" [config]="trns_sliders"
-                    (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-                    (beforeChange)="beforeChange($event)">
-                    <div class="moreSlider" *ngFor="let catg of categories; let i=index;" [routerLink]="['/bts-inner/',catg.id]" ngxSlickItem>
-                    <div [ngClass]="isOdd(i) ? 'more_V_box primaryColor' : 'more_V_box'">
-                        <span>{{catg.category}}</span>
+                    <app-bts-category-card  [data]="categories"></app-bts-category-card>
                     </div>
-                     </div>
-                </ngx-slick-carousel>
-                </div>
+                
             </div>
         </div>
     

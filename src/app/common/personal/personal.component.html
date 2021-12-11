@@ -71,14 +71,22 @@
                     </div>
                 </div>
                 <div class="profileDiv">
+                    <label>Select Your Gender*</label>
+                    <div class="select">
+                        <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submit && f.gender.errors }">
+                            <option value="" [disabled]="true">Select</option>
+                            <option [value]="gender" *ngFor="let gender of genderList">{{gender}}</option>
+                        </select>
+                        <div *ngIf="submit && f.gender.errors" class="invalid-feedback">
+                            <div *ngIf="f.gender.errors.required">Gender is required</div>               
+                        </div>          
+                    </div>
+                </div>
+                <!-- <div class="profileDiv">
                     <label>Contact Number<span>*</span></label>
                     <div class="mobileNumer">
                         <div class="selects">
-                            <!-- <select name="" id="country Code">
-                                <option value="+91">+91</option>
-                                <option value="+91">+91</option>
-                                <option value="+91">+91</option>
-                            </select> -->
+                           
                             <select formControlName="country_code" class="country Code" [(ngModel)]="selectedCode">
                                 <option [value]="code" *ngFor="let code of codeList">{{code}}</option>
                              </select>
@@ -99,7 +107,7 @@
                           
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="profileDiv">
                     <label>Language<span>*</span></label>
                     

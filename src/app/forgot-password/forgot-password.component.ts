@@ -25,10 +25,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      email_or_mobile : ['',[Validators.required,
-        //  Validators.email,
-         Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
-        ]]
+      email_or_mobile :['', Validators.required],
+      // email_or_mobile : ['',[Validators.required,Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]]
     });
   }
   get f(): { [key: string]: AbstractControl } {

@@ -1,0 +1,45 @@
+<!-- <app-footer></app-footer> -->
+<div class="main casting_inner sidePaading0">
+    <app-sub-header [back]="back_link"></app-sub-header>
+    <div class="main_wrppers">
+        <div class="castingImg">
+            <img *ngIf="Apiloading" src="../../../assets/img/white_logo.webp" class="hd-img">
+            <img *ngIf="!Apiloading" src="{{image}}" alt="">
+            <div class="shaveIcon">
+                <i (click)="bookmark(castingId)" [ngClass]="bookmarks != '1'?'far fa-bookmark':'fas fa-bookmark'"></i>
+            </div>
+        </div>
+        <div class="castingContent">
+            <h5 [innerHTML]="castingTitle"></h5>
+            <p [innerHTML]="long_description"></p>
+            <ul class="cating_details">
+                <li>
+                    <div class="head">
+                        <i class="far fa-user"></i> Role
+                    </div>
+                    <label>{{role}}</label>
+                </li>
+                <li>
+                    <div class="head">
+                        <i class="far fa-calendar-alt"></i> Age
+                    </div>
+                    <label>{{age}}</label>
+                </li>
+                <li>
+                    <div class="head">
+                        <ion-icon name="location-outline"></ion-icon> Location
+                    </div>
+                    <label>{{locations}}</label>
+                </li>
+                <li>
+                    <div class="head">
+                        <i class="fas fa-transgender-alt"></i> Gender
+                    </div>
+                    <label>{{gender}}</label>
+                </li>
+            </ul>
+            <button *ngIf="applySt == 0" class="castingApply" (click)="apply()">Apply</button>
+            <button *ngIf="applySt == 1" class="castingApply" >Applied</button>
+        </div>
+    </div>
+</div>

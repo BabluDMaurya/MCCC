@@ -1,0 +1,32 @@
+
+    
+    <div class="main casting_inner notifications">
+        <div class="mainHeader">
+            <div class="top_header">
+                <div class="arrowLeft" (click)="back()">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </div>
+                <div class="logo middle">
+                    <label>Notifications</label>
+                </div>
+                <div class="lats_side">
+                    <div class="avtars">
+                            <a [routerLink]="['/home']">
+                                <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
+                            </a>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_wrppers">
+            <div class="notification_area">
+                <div class="notificationDiv" *ngFor="let data of resData">
+                    <p>{{data.title}}</p>
+                    <p>{{data.message}}</p>
+                    <span>{{data.created_at}}</span>
+                    <a [routerLink]="[data.link]"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>

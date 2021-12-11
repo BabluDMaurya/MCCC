@@ -1,0 +1,151 @@
+<!-- <app-footer></app-footer> -->
+<div class="main casting_inner">
+    <app-sub-header [back]="back_link"></app-sub-header>
+    <div class="main_wrppers casting__profiles">
+        <div class="castingProfile">
+            <h2>Submit Your Details</h2>
+            <h3>{{casting_title | titlecase}}</h3>
+            <h4><label> Date : </label> {{casting_date}}</h4>
+            <p><span>*</span> You can change your profile details in My Profile section</p>
+            <div class="profileDetailsWrpper">
+                <div class="profileDiv">
+                    <label>Name<span>*</span></label>
+                    <p class="innerDetail">{{userdetail.name}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Age<span>*</span></label>
+                    <p class="innerDetail">{{age}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Height<span>*</span></label>
+                    <p class="innerDetail">{{userdetail.height}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Contact Number<span>*</span></label>
+                    <p class="innerDetail">+91 {{userdetail.phone}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Language<span>*</span></label>
+                    <p class="innerDetail">{{userdetail.language}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Current City<span>*</span></label>
+                    <p class="innerDetail">{{userdetail.city_name}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Home Town<span>*</span></label>
+                    <p class="innerDetail">{{userdetail.home_town}}</p>
+                </div>
+                <div class="profileDiv">
+                    <label>Hobbies<span>*</span></label>
+                    <p class="innerDetail">{{userdetail.hobbies}}<i class="fas fa-pencil-alt" data-bs-toggle="modal" data-bs-target="#ModalForm"></i></p>
+                </div>                
+            </div>
+            <div class="profilePhotos">
+                <label>Your Added Photos</label>
+                <div class="imgsArea" *ngIf="ShowUploadedImages">
+                    <img *ngFor="let img of uploadedImages;let i=index;" src="{{imagePath+img.image}}" alt=""  width="auto" height="135px">                    
+                </div>
+                <div class="imgsArea" *ngIf="!ShowUploadedImages">
+                    <img src="assets/img/img/castingProfileImg.webp" alt="">
+                    <img src="assets/img/img/castingProfileImg.webp" alt="">
+                    <img src="assets/img/img/castingProfileImg.webp" alt="">
+                </div>
+                <p><span>*</span> To change images go to profile and update images from there</p>
+            </div>
+            <div class="profileVideos">
+                <label>Your Added Video</label>
+                <div class="videosArea" *ngIf="ShowUploadedVideo">
+                    <!-- <video class="js--image-preview" width="auto" height="208px" controls controlsList="nodownload noplaybackrate" disablePictureInPicture>
+                        <source src="{{videoPath+userdetail.videos[0].videos}}" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video> -->
+
+                      <vg-player>
+                        <vg-overlay-play></vg-overlay-play>
+                        <vg-buffering></vg-buffering>
+                    
+                        <vg-scrub-bar>
+                          <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                          <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                        </vg-scrub-bar>
+                    
+                        <vg-controls>
+                          <vg-play-pause></vg-play-pause>
+                          <vg-playback-button></vg-playback-button>
+                    
+                          <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                    
+                          <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+                    
+                          <!-- <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display> -->
+                          <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                    
+                          <!-- <vg-track-selector></vg-track-selector> -->
+                          <vg-mute></vg-mute>
+                          <vg-volume></vg-volume>
+                    
+                          <vg-fullscreen></vg-fullscreen>
+                        </vg-controls>
+                    
+                        <video [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" >
+                          <source src="{{videoPath+userdetail.videos[0].videos}}" type="video/mp4">
+                    
+                          <!-- <track kind="subtitles" label="English" src="http://static.videogular.com/assets/subs/pale-blue-dot.vtt"
+                            srclang="en" default>
+                          <track kind="subtitles" label="Español" src="http://static.videogular.com/assets/subs/pale-blue-dot-es.vtt"
+                            srclang="es"> -->
+                        </video>
+                      </vg-player>
+
+                </div>
+                <div class="videosArea" *ngIf="!ShowUploadedVideo">
+                    <a href="#">
+                        <img src="assets/img/img/castingPrfolieVide.webp" alt="">
+                        <div class="play__ionc">
+                            <img src="assets/img/img/play_icon.webp" alt="">
+                        </div>
+                    </a>
+                </div>
+                <p><span>*</span> To change images go to profile and update images from there</p>
+            </div>
+            <button class="btnss" (click)="submit()">Submit</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalbox" id="ModalForm" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Enter Your Hobbies</h5>
+                <a #closebutton data-bs-dismiss="modal">Close</a>
+            </div>
+            <div class="modal-body">
+                <div class="login-form">
+                    <!-- <div class="section mt-2">
+                        <h1>Get started</h1>
+                        <h4>Fill the form to log in</h4>
+                    </div> -->
+                    <div class="section mt-4 mb-5">
+                        <form [formGroup]="hobbiesForm" (ngSubmit)="updateHobbies($event)">
+                            <div class="form-group basic">                                
+                                <div class="input-wrapper">
+                                    <label class="form-label" for="hobbies">Hobbies</label>                                    
+                                    <input formControlName="hobbies" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && h.hobbies.errors }" maxlength="100">
+                                    <div *ngIf="submitted && h.hobbies.errors" class="invalid-feedback">
+                                        <div *ngIf="h.hobbies.errors.required">Hobbies is required</div>
+                                        <div *ngIf="h.hobbies.errors.maxlength">It's length should be maximum 100 characters</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

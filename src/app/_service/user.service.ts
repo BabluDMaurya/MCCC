@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { User } from '../_models/user';
 import { Config } from '../_config/config';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -24,11 +25,11 @@ export class UserService {
     delete(id: number) {
         return this.http.delete(`${Config.BasePath}/users/${id}`);
     }
-    upload_image(data :any){
-        return this.http.post(`${Config.BasePath}/profile_first_step`, data);
+    upload_image(data :any):Observable<any>{
+        return this.http.post(`${Config.BasePath}/profile_first_step`, data,{reportProgress: true,observe: 'events'});
     }
-    upload_video(data :any){
-        return this.http.post(`${Config.BasePath}/profile_second_step`, data);
+    upload_video(data :any):Observable<any>{
+        return this.http.post(`${Config.BasePath}/profile_second_step`, data,{reportProgress: true,observe: 'events'});
     }
     // upload_image(data :any){
     //     return this.http.post(`${Config.Host}/upload.php`,data);

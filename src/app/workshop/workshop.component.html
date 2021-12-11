@@ -1,0 +1,127 @@
+<app-sidebars></app-sidebars>
+<app-footer></app-footer>
+
+
+    <div class="main casting workShop">
+        
+        <div class="mainHeader">
+            <div class="top_header">
+                <div class="hamburger left">
+                    <div id="nav-icon4" class="headerButton" data-bs-toggle="offcanvas" data-bs-target="#sidebarPanel">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="logo middle">
+                    <img src="assets/img/img/black_logo.webp" alt="">
+                </div>
+                <div class="lats_side">
+                    <div class="notification">
+                        <ion-icon name="notifications-outline"></ion-icon>
+                        <div class="notificationsCount">
+                            <span>5</span>
+                        </div>
+                    </div>
+                    <div class="avtars">
+                        <div class="avatar">
+                            <img src="assets/img/img/avtar.webp" alt="avatar" class="rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottomHeader">
+                <app-header></app-header>
+            </div>
+            <!-- Extra Header -->
+            <div class="extraHeader p-0">
+                <ul class="nav nav-tabs lined" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link " [ngClass]="catId == 1 ? 'active':''" data-bs-toggle="tab" href="#photos" role="tab">
+                            On Going
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [ngClass]="catId == 2 ? 'active':''" data-bs-toggle="tab" href="#videos" role="tab">
+                            Upcoming
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [ngClass]="catId == 3 ? 'active':''" data-bs-toggle="tab" href="#sounds" role="tab">
+                            Workshop For You
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- * Extra Header -->
+        </div>
+        <div class="main_wrppers">
+                <!-- App Capsule -->
+            <div id="appCapsule" class="extra-header-active">
+                <div class="tab-content mt-1">
+                    <!-- photos tab -->
+                    <div class="tab-pane fade  " [ngClass]="catId == 1 ? 'active show':''" id="photos" role="tabpanel">
+                        <div class="section full mt-1">
+                            <div class="casingCalls">
+                                <div class="casingCallHeader" *ngIf="!onGoingData[0].noData">
+                                    <p class="classinghead">On Going Workshop</p>
+                                    <!-- <span><a>View All</a></span> -->
+                                </div>
+                                <div *ngIf="!onGoingData[0].noData">
+                                    <app-workshop-card *ngFor="let c of onGoingData; let idx=index" [data]="c"></app-workshop-card>
+                                </div>
+                                <div *ngIf="onGoingData[0].noData">
+                                    <app-not-found-data ></app-not-found-data>
+                                </div>
+
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- * photos tab -->
+                    <!-- videos tab -->
+                    <div class="tab-pane fade" id="videos" [ngClass]="catId == 2 ? 'active show':''" role="tabpanel">
+                        <div class="section full mt-1">
+                             <div class="casingCalls">
+                                <div class="casingCallHeader" *ngIf = "!upcoming[0].noData ">
+                                    <p class="classinghead">Upcoming Workshop</p>
+                                    <!-- <span><a>View All</a></span> -->
+                                </div>
+                                <div *ngIf = "!upcoming[0].noData ">
+                                <app-workshop-card *ngFor="let c of upcoming; let idx=index" [data]="c"></app-workshop-card>
+                                </div>
+                                 <div *ngIf = "upcoming[0].noData ">
+                                    <app-not-found-data ></app-not-found-data>
+                                 </div>
+                                 
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- * videos tab -->
+                    <!-- sounds tab -->
+                    <div class="tab-pane fade" id="sounds" [ngClass]="catId == 3 ? 'active show':''" role="tabpanel">
+                        <div class="section full mt-1">
+                            <div class="casingCalls">
+                                <div class="casingCallHeader" *ngIf = "!eventForYouData[0].noData ">
+                                    <p class="classinghead">Workshop For You</p>
+                                    <!-- <span><a>View All</a></span> -->
+                                </div>
+                                <div *ngIf = "!eventForYouData[0].noData ">
+                                    <app-workshop-card *ngFor="let c of eventForYouData; let idx=index" [data]="c"></app-workshop-card>
+                                    </div>
+                                     <div *ngIf = "eventForYouData[0].noData ">
+                                        <app-not-found-data ></app-not-found-data>
+                                     </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- * sounds tab -->
+                </div>
+            </div>
+            <!-- * App Capsule -->
+        </div>
+    </div>
+    

@@ -1,0 +1,23 @@
+<div class="casingCalls">
+    <div class="boxs">
+        <div class="boxHead">
+            <h5><a (click)="castingInner(data.id)">{{data.get_user_casting_model.title | titlecase}}</a></h5>
+            
+            <!-- <div class="shaveIcon" (click)="bookmarkCasting(data.id)">
+                <i [ngClass]="data.bookmark_status == 1 ? 'fas fa-bookmark removecard' : 'far fa-bookmark'"></i>
+            </div> -->
+        </div>
+        <p><a [innerHTML]="doHtmlDisplay(data.get_user_casting_model.short_description)"></a></p>
+        <ul class="userDetails">
+            <li><i class="fas fa-transgender-alt"></i>{{data.get_user_casting_model.gender}}</li>
+            <li><i class="far fa-calendar-alt"></i>{{data.get_user_casting_model.created_at}}</li>
+            <li>
+                <ion-icon name="location-outline"></ion-icon>{{data.get_user_casting_model.location}}
+            </li>
+            <li><i class="far fa-user" aria-hidden="true"></i>Role</li>
+        </ul>
+        <div class="labelBtns">
+            <label *ngFor="let tag of data.get_user_casting_model.tags;">{{tag}}</label>
+        </div>
+    </div>
+</div>

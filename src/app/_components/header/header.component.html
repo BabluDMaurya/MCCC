@@ -11,15 +11,17 @@
             <img src="assets/img/img/black_logo.webp" alt="">
         </div>
         <div class="lats_side">
-            <div class="notification">
+            <div class="notification" [routerLink]="['/notification']">
                 <ion-icon name="notifications-outline"></ion-icon>
                 <div class="notificationsCount">
-                    <span>5</span>
+                    <span>{{getCount}}</span>
                 </div>
             </div>
             <div class="avtars">
                 <div class="avatar">
-                    <img src="assets/img/img/avtar.webp" alt="avatar" class="rounded">
+                    <a data-bs-toggle="offcanvas" href="#offcanvas-right">
+                        <img src="assets/img/img/avtar.webp" alt="avatar" class="rounded">
+                    </a>
                 </div>
             </div>
         </div>
@@ -27,29 +29,71 @@
     <div class="bottomHeader">
         <div class="tabs">
             <div class="box">
-               <a href="casting.html">
+               <a [routerLink]="['/casting/1']">
                     <img src="assets/img/img/casting.webp" alt="">
-                    <div class="label">Cating</div>
+                    <div class="label">Casting</div>
                </a>
             </div>
             <div class="box">
-               <a href="workShop.html">
+               <a [routerLink]="['/workshop/1']">
                 <img src="assets/img/img/workshop.webp" alt="">
                 <div class="label">Workshop</div>
                </a>
             </div>
             <div class="box">
-               <a href="bts.html">
+               <a [routerLink]="['/bts']">
                     <img src="assets/img/img/bts.webp" alt="">
                     <div class="label">BTS</div>
                </a>
             </div>
             <div class="box">
-                <a href="traning.html">
+                <a [routerLink]="['/training']">
                     <img src="assets/img/img/training.webp" alt="">
                     <div class="label">Training</div>
                 </a>
             </div>
         </div>
     </div>
+    <!-- Extra Header -->
+    <div class="extraHeader p-0" *ngIf="castingtab == 1">
+        <ul class="nav nav-tabs lined" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="tab == 1 ? 'active':''" data-bs-toggle="tab" href="#photos" role="tab">
+                    New
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="tab == 2? 'active':''" data-bs-toggle="tab" href="#videos" role="tab">
+                    Recommended
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="tab == 3 ? 'active':''" data-bs-toggle="tab" href="#sounds" role="tab">
+                    Ending Soon
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- * Extra Header -->
+    <!-- Extra Header -->
+    <div class="extraHeader p-0" *ngIf="workshoptab == 1">
+        <ul class="nav nav-tabs lined" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#photos" role="tab">
+                    On Going
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#videos" role="tab">
+                    Upcoming
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#sounds" role="tab">
+                    Workshop For You
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- * Extra Header -->
 </div>

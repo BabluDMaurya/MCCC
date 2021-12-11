@@ -1,0 +1,13 @@
+<app-footer></app-footer>
+<div class="main casting_inner my_application">
+    <app-sub-header [back]="back_link"></app-sub-header>
+    <div class="main_wrppers bts_inners">
+        <div class="bts__inner" *ngIf="noData && loading">
+            <div class="head">
+                <label>My Application</label>
+            </div>
+            <app-my-application-card *ngFor="let c of applications; let idx=index" [data]="c"></app-my-application-card>
+        </div>
+        <app-not-found-data *ngIf="!noData"></app-not-found-data>
+    </div>
+</div>

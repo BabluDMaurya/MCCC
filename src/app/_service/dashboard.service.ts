@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Config } from '../_config/config';
-// import{MyApplication} from'../_models/my-application';
+import{MyApplication} from'../_models/my-application';
 import { shareReplay, map } from 'rxjs/operators';
 import { Observable,BehaviorSubject, Subject  } from 'rxjs';
 @Injectable({
@@ -47,6 +47,9 @@ export class DashboardService {
     applyForCasting(data:any){
       return this.http.post(`${Config.BasePath}/user_applied_castings`,data);
     }
+    updateHobbies(data:any){
+      return this.http.post(`${Config.BasePath}/user_hobbies_update`,data);
+    }
     confirmCasting(data:any){
       return this.http.post(`${Config.BasePath}/confirm_casting_application`,data);
     }
@@ -56,9 +59,9 @@ export class DashboardService {
     // myApplication(data:any){
     //   return this.http.post(`${Config.BasePath}/get_user_applied_casting`,data);
     // }
-    // myApplication(data:any):Observable<MyApplication[]>{
-    //   return this.http.post<MyApplication[]>(`${Config.BasePath}/get_user_applied_casting`,data);
-    // }
+    myApplication(data:any):Observable<MyApplication[]>{
+      return this.http.post<MyApplication[]>(`${Config.BasePath}/get_user_applied_casting`,data);
+    }
 
     private _listners = new Subject<any>();
     listen():Observable<any>{

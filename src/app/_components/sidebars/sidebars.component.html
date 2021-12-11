@@ -9,7 +9,7 @@
             <div class="in">
                 <strong>Hello {{currentUser.userDetails.name}} <!DOCTYPE html></strong>
             </div>
-            <a href="#" class="close-sidebar-button" data-bs-dismiss="offcanvas">
+            <a class="close-sidebar-button" data-bs-dismiss="offcanvas">
                 <ion-icon name="close"></ion-icon>
             </a>
         </div>
@@ -17,7 +17,7 @@
 
         <ul class="listview flush transparent no-line image-listview mt-2">
             <li>
-                <a href="index.html" class="item">
+                <a [routerLink]="['/my-applications']" class="item">
                     <div class="in">
                         My Applications
                     </div>
@@ -45,7 +45,7 @@
                 </a>
             </li>
             <li>
-                <a href="page-chat.html" class="item">
+                <a [routerLink]="['/bookmark']" class="item">
                     <div class="in">
                         <div>Shortlisted</div>
                     </div>
@@ -66,7 +66,7 @@
                 </a>
             </li>
             <li>
-                <a href="page-chat.html" class="item">
+                <a [routerLink]="['/games']" class="item">
                     <div class="in">
                         <div>Games</div>
                     </div>
@@ -80,28 +80,28 @@
                 </a>
             </li>
             <li>
-                <a href="page-chat.html" class="item">
+                <a [routerLink]="['/about']" class="item">
                     <div class="in">
                         <div>About MCCC</div>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="page-chat.html" class="item">
+                <a [routerLink]="['/faq']" class="item">
                     <div class="in">
                         <div>FAQ's</div>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="page-chat.html" class="item">
+                <a [routerLink]="['/help']" class="item">
                     <div class="in">
                         <div>Help</div>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="page-chat.html" class="item">
+                <a [routerLink]="['/terms-condition']" class="item">
                     <div class="in">
                         <div>Terms & Condition</div>
                     </div>
@@ -127,5 +127,37 @@
                 </a>
             </li>
         </ul>
+    </div>
+</div>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-right">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title"><a >Hello {{currentUser.userDetails.name}}</a></h5>
+        <a href="#" class="offcanvas-close" data-bs-dismiss="offcanvas">
+            <!-- <ion-icon name="close-outline"></ion-icon> -->
+            <ion-icon name="close"></ion-icon>
+        </a>
+    </div>
+    <div class="offcanvas-body">
+        
+         <div class="prof-nav">
+             <img src="assets/img/img/avtar.webp">
+             <a [routerLink]="['/personal']">Personal</a>
+         </div>
+         <div class="prof-nav">
+             <img src="assets/img/img/avtar.webp">
+             <a [routerLink]="['/anatomy']">Anatomy</a>
+         </div>
+         <div class="prof-nav">
+             <img src="assets/img/img/avtar.webp">
+             <a [routerLink]="['/images']">Images</a>
+         </div>
+         <div class="prof-nav">
+             <img src="assets/img/img/avtar.webp">
+             <a [routerLink]="['/video']">Videos</a>
+         </div>
+            <div class="prof-nav">
+             <img src="assets/img/img/avtar.webp">
+             <a (click)="logout()">Logout</a>
+         </div>
     </div>
 </div>

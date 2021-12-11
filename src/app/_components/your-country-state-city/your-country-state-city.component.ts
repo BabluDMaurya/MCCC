@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from 'src/app/_service/register.service';
-import countries from '../../_files/countries.json';
+// import countries from 'src/app/_files/countries.json';
 
 @Component({
   selector: 'app-your-country-state-city',
@@ -11,7 +11,7 @@ import countries from '../../_files/countries.json';
 export class YourCountryStateCityComponent implements OnInit {
 
   title = 'json-file-read-angular';
-  public countryList:{id:string,name:string, code:string}[] = countries;
+  // public countryList:{name:string, code:string}[] = countries;
 
   @Input() parent: FormGroup | any;
   @Input() submit: any;

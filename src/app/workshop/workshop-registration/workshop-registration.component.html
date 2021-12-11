@@ -1,0 +1,51 @@
+ <div class="main casting_inner sidePaading0 workshop_inner">
+        <div class="mainHeader">
+            <div class="top_header">
+                <div class="arrowLeft" (click)="back()">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </div>
+                <div class="logo middle">
+                    <img src="assets/img/img/black_logo.webp" alt="">
+                </div>
+                <div class="lats_side">
+                    <div class="avtars" [routerLink]="['/home']">
+                        <!-- <div class="avatar"> -->
+                            <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_wrppers">
+            <div class="castingImg">
+                <img src="{{bgImage}}" alt="">
+                <div class="shaveIcon">
+                    <i class="far fa-bookmark"></i>
+                </div>
+            </div>
+            <div class="castingContent">
+                <p>{{workshopData.title}}</p>
+                <ul class="cating_details">
+                    <li>
+                        <div class="head">
+                            <i class="far fa-clock"></i>Date & Time
+                        </div>
+                        <label>  {{eventDate }}  | {{workshopData.start_time_1}}</label>
+                    </li>
+                    <li>
+                        <div class="head">
+                            <ion-icon name="location-outline"></ion-icon> Location
+                        </div>
+                        <label>{{workshopData.location}}, {{workshopData.city_name}}, {{workshopData.state_name}}.</label>
+                    </li>
+                </ul>
+                <div class="training-btn" *ngIf="this.checkData.data == 'No Data' && prevDate ">
+                    <button class="castingApply" [routerLink] = "['/workshop-registration-form/',workshopData.id,2]"> ENROLL NOW </button>
+                  <!-- <h6 *ngIf="this.checkData.data == 'No Data' && prevDate ">Enroll now to confirm your seat</h6> -->
+                </div>
+                <div class="training-btn" *ngIf="this.checkData.data != 'No Data' && prevDate ">
+                    <a> ALREADY ENROLLED </a>
+                </div>
+            </div>
+        </div>
+    </div>

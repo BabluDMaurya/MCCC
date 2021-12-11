@@ -15,7 +15,7 @@ import { NotificationService } from 'src/app/_service/notification.service';
 })
 export class MyApplicationInnerComponent implements OnInit {
 
-  back_link = "casting";
+  back_link = "my-applications";
   pageName="casting-inner";
   castingId:any;
   resData:any;

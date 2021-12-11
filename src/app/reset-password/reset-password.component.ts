@@ -9,7 +9,7 @@ import { MustMatch,MustMatchOTP } from '../_helpers/must-match.validator';
 import { RegisterService } from 'src/app/_service/register.service';
 import { OtpService } from 'src/app/_service/otp.service';
 declare var $: any;
-
+declare var toastbox: any;
 
 @Component({
   selector: 'app-reset-password',
@@ -17,6 +17,7 @@ declare var $: any;
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
+  toastSuccess:string = 'toast-12';
   back_link :any =  "forgot-password";
   component_title : string = 'Reset Password';
   form: FormGroup | any;
@@ -64,7 +65,12 @@ this.registerService.terms().subscribe(
         if(this.responceData.status == 'true'){  
           sessionStorage.removeItem('rotp');
           // this.notifyService.showSuccess("Password Reset Successfully !!", "");
-          this.route.navigate(['/signin']);
+          new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+              this.route.navigate(['/signin']);
+          }, 2000);
+          
         }else{
           // this.notifyService.showError(this.responceData.message, "")
           console.log('Hello forgot',this.responceData);

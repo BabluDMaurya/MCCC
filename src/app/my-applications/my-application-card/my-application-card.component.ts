@@ -2,14 +2,17 @@ import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashboardService } from 'src/app/_service/dashboard.service';
 import { NotificationService } from 'src/app/_service/notification.service';
-
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-my-application-card',
   templateUrl: './my-application-card.component.html',
   styleUrls: ['./my-application-card.component.scss']
 })
 export class MyApplicationCardComponent implements OnInit {
-
+  toastSuccess:string = 'toast-15';
+  toastDanger:string = 'toast-16';
+  resData:any;
   @Input() data:any;
   constructor(
     private route : Router,
@@ -34,11 +37,25 @@ export class MyApplicationCardComponent implements OnInit {
   bookmarkCasting(id:any){
     this.dashboardService.bookmarkCasting({casting_card_id:id})
       .subscribe(res => {
-        // this.resData = res;        
-        // this.callEnding = this.resData.data; 
-        this.showToasterSuccess();      
+        this.resData = res;        
+        if(this.resData.data[0] == 'Bookmark Added'){
+          this.data.bookmark_status = 1;
+          console.log('toast added',this.toastSuccess);
+          new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
+        }
+        if(this.resData.data[0] == 'Bookmark removed'){
+          this.data.bookmark_status = 0;
+          new toastbox(this.toastDanger, 2000);
+            setTimeout(() => {
+              $('#'+this.toastDanger).removeClass('show');
+          }, 2000);
+        }      
       });
   }
+  
   showToasterSuccess(){
     this.notifyService.showSuccess("Casting Call saved successfully !!", "")
 }

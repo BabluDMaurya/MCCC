@@ -29,9 +29,9 @@
     <div class="bottomHeader">
         <div class="tabs">
             <div class="box">
-               <a [routerLink]="['/casting']">
+               <a [routerLink]="['/casting/1']">
                     <img src="assets/img/img/casting.webp" alt="">
-                    <div class="label">Cating</div>
+                    <div class="label">Casting</div>
                </a>
             </div>
             <div class="box">
@@ -58,17 +58,17 @@
     <div class="extraHeader p-0" *ngIf="castingtab == 1">
         <ul class="nav nav-tabs lined" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#photos" role="tab">
+                <a class="nav-link" [ngClass]="tab == 1 ? 'active':''" data-bs-toggle="tab" href="#photos" role="tab">
                     New
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#videos" role="tab">
+                <a class="nav-link" [ngClass]="tab == 2? 'active':''" data-bs-toggle="tab" href="#videos" role="tab">
                     Recommended
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#sounds" role="tab">
+                <a class="nav-link" [ngClass]="tab == 3 ? 'active':''" data-bs-toggle="tab" href="#sounds" role="tab">
                     Ending Soon
                 </a>
             </li>

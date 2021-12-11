@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
   btsSlideConfig = {"slidesToShow": 2.5, initialSlide: 0.5, "slidesToScroll": 2,"dots": false,"infinite": false};
   topBtsSlideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,"infinite": false};
   trns_sliders = {"slidesToShow": 3, "slidesToScroll": 3,"dots": false,"infinite": false};
-  two_sliders = {"slidesToShow": 2.5, "slidesToScroll": 2,"dots": false,"infinite": false};
+  two_sliders = {"slidesToShow": 2.5, "slidesToScroll": 2.5,"dots": false,"infinite": false};
   // addSlide() {
   //   this.slides.push({img: "http://placehold.it/350x150/777777"})
   // }    

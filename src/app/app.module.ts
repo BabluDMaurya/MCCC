@@ -56,7 +56,6 @@ import { CastingInnerComponent } from './casting/casting-inner/casting-inner.com
 import { ApplyCastingComponent } from './casting/apply-casting/apply-casting.component';
 import { ThankYouCastingComponent } from './casting/thank-you-casting/thank-you-casting.component';
 import { MyApplicationsComponent } from './my-applications/my-applications.component';
-import { MyBookmarksComponent } from './my-bookmarks/my-bookmarks.component';
 import { GamesComponent } from './games/games.component';
 import { BollywoodMemoryGameComponent } from './games/bollywood-memory-game/bollywood-memory-game.component';
 import { GameCardComponent } from './games/bollywood-memory-game/game-card/game-card.component';
@@ -82,6 +81,8 @@ import { WorkshopCardComponent } from './_components/workshop-card/workshop-card
 import { NoInternetComponent } from './no-internet/no-internet.component';
 import { BtsCategoryCardComponent } from './_components/bts-category-card/bts-category-card.component';
 import { BtsCardComponent } from './_components/bts-card/bts-card.component';
+import { BookmarkCastingCardComponent } from './_components/bookmark-casting-card/bookmark-casting-card.component';
+import { SupportComponent } from './support/support.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +131,6 @@ import { BtsCardComponent } from './_components/bts-card/bts-card.component';
     ApplyCastingComponent,
     ThankYouCastingComponent,
     MyApplicationsComponent,
-    MyBookmarksComponent,
     GamesComponent,
     BollywoodMemoryGameComponent,
     GameCardComponent,
@@ -146,7 +146,10 @@ import { BtsCardComponent } from './_components/bts-card/bts-card.component';
     WorkshopCardComponent,
     NoInternetComponent,
     BtsCategoryCardComponent,
-    BtsCardComponent
+    BtsCardComponent,
+    NoInternetComponent,
+    BookmarkCastingCardComponent,
+    SupportComponent
   ],
   imports: [
     BrowserModule,
@@ -167,6 +170,10 @@ import { BtsCardComponent } from './_components/bts-card/bts-card.component';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     MatDialogModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
     
   ],
   providers: [DatePipe,

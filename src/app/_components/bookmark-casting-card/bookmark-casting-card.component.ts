@@ -4,12 +4,14 @@ import { DashboardService } from 'src/app/_service/dashboard.service';
 import { NotificationService } from 'src/app/_service/notification.service';
 declare var toastbox: any;
 declare var $: any;
+
 @Component({
-  selector: 'app-casting-card',
-  templateUrl: './casting-card.component.html',
-  styleUrls: ['./casting-card.component.scss']
+  selector: 'app-bookmark-casting-card',
+  templateUrl: './bookmark-casting-card.component.html',
+  styleUrls: ['./bookmark-casting-card.component.scss']
 })
-export class CastingCardComponent implements OnInit {
+export class BookmarkCastingCardComponent implements OnInit {
+
   @Input() data:any;
   toastSuccess:string = 'toast-15';
   toastDanger:string = 'toast-16';
@@ -40,7 +42,6 @@ export class CastingCardComponent implements OnInit {
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){
           this.data.bookmark_status = 1;
-          console.log('toast added',this.toastSuccess);
           new toastbox(this.toastSuccess, 2000);
             setTimeout(() => {
               $('#'+this.toastSuccess).removeClass('show');
@@ -53,9 +54,9 @@ export class CastingCardComponent implements OnInit {
               $('#'+this.toastDanger).removeClass('show');
           }, 2000);
         }
-        // if(status == 1){
-        //   $('#card-'+id).remove();
-        // }
+        if(status == 1){
+          $('#card-'+id).remove();
+        }
         // this.showToasterSuccess();      
       });
   }

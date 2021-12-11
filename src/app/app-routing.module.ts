@@ -43,6 +43,7 @@ import { FaqComponent } from './faq/faq.component';
 import { HelpComponent } from './help/help.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { NoInternetComponent } from './no-internet/no-internet.component';
+import { SupportComponent } from './support/support.component';
 
 const routes: Routes = [{    
   path: '',    
@@ -107,7 +108,7 @@ const routes: Routes = [{
 },
 //----casting----------//
 {    
-  path: 'casting',component: CastingComponent,canActivate: [AuthGuard],
+  path: 'casting/:id',component: CastingComponent,canActivate: [AuthGuard],
   data: {title: 'casting'}    
 },
 {    
@@ -221,7 +222,11 @@ const routes: Routes = [{
 },
 {    
   path: 'final-success',component: FinalSuccessComponent,canActivate: [AuthGuard],
-  data: {title: 'final success'}    
+  data: {title: 'final success'}
+},
+{    
+  path: 'support',component: SupportComponent,   
+  data: {title: 'support'}    
 },
 ];
 

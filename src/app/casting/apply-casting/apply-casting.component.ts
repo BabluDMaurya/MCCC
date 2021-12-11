@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router,ParamMap } from '@angular/router';
 import { Config } from 'src/app/_config/config';
@@ -11,12 +11,15 @@ import { NotificationService } from 'src/app/_service/notification.service';
   styleUrls: ['./apply-casting.component.scss']
 })
 export class ApplyCastingComponent implements OnInit {
+  currentPlayingVideo: HTMLVideoElement | any;
+  @ViewChild('closebutton') closebutton :any;
   back_link :any;
   castingId:any;
   userdetail:any;
   age:any;
   resData:any;
   form: FormGroup | any;
+  hobbiesForm: FormGroup | any;
   casting_title:any;
   casting_date:any;
   baseUrl :string = Config.Host+'backend2/';
@@ -39,7 +42,22 @@ export class ApplyCastingComponent implements OnInit {
       this.back_link = "casting-inner/"+this.castingId;
     });
    }
-
+   onPlayingVideo(event:any) {
+    event.preventDefault();
+    // play the first video that is chosen by the user
+    if (this.currentPlayingVideo === undefined) {
+      console.log('video playing');
+        this.currentPlayingVideo = event.target;
+        this.currentPlayingVideo.play();
+    } else {
+    // if the user plays a new video, pause the last one and play the new one
+        if (event.target !== this.currentPlayingVideo) {         
+            this.currentPlayingVideo.pause();
+            // this.currentPlayingVideo = event.target;
+            // this.currentPlayingVideo.play();
+        }
+    }
+}
   ngOnInit(): void {
     this.casting_title = sessionStorage.getItem('casting_title');
     this.casting_date = sessionStorage.getItem('casting_date');
@@ -56,6 +74,11 @@ export class ApplyCastingComponent implements OnInit {
       city : [''],
       home_town : [''],
       hobbies : [''],
+    });
+
+    this.hobbiesForm = this.formBuilder.group({
+      hobbies : ['',[Validators.required,Validators.maxLength]],
+      profile_id : ['',Validators.required]
     });
     this.userDetails();
   }
@@ -87,7 +110,7 @@ export class ApplyCastingComponent implements OnInit {
         this.form.controls['phone'].setValue(this.userdetail.phone);
         this.form.controls['oldfileSource'].setValue(this.userdetail.images);
         this.form.controls['oldvideofileSource'].setValue(this.userdetail.videos);
-        console.log("UserDetails:",this.userdetail);   
+        // console.log("UserDetails:",this.userdetail);   
         
       });        
 }
@@ -107,5 +130,25 @@ submit(){
 }
 get f(): { [key: string]: AbstractControl } {
   return this.form.controls;
+}
+get h(): { [key: string]: AbstractControl } {
+  return this.hobbiesForm.controls;
+}
+updateHobbies(event: any){
+  this.submitted = true;
+  this.hobbiesForm.controls['profile_id'].setValue(this.userdetail.user_profile_id);
+  if (this.hobbiesForm.invalid) {
+    return;
+  }else{    
+    console.log(this.hobbiesForm.value);
+    this.dashboardService.updateHobbies(this.hobbiesForm.value)     
+        .subscribe(res => {
+          this.resData = res;
+          this.form.controls['hobbies'].setValue(this.resData.data.hobbies);  
+          this.userdetail.hobbies = this.resData.data.hobbies;
+          this.hobbiesForm.reset(this.hobbiesForm.value.hobbies);
+          this.closebutton.nativeElement.click();
+        });
+  }
 }
 }

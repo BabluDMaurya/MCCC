@@ -13,9 +13,47 @@
     </div>
     <div class="btom_file">
         <div class="profileImg_area">
-            <video [src]="url" *ngIf="format==='video' && url" height="200" controls controlsList="nodownload noplaybackrate" disablePictureInPicture></video>
+            <!-- <video [src]="url" *ngIf="format==='video' && url" height="200" controls controlsList="nodownload noplaybackrate" disablePictureInPicture></video> -->
+            <vg-player>
+                <vg-overlay-play></vg-overlay-play>
+                <vg-buffering></vg-buffering>
+            
+                <vg-scrub-bar>
+                  <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                  <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                </vg-scrub-bar>
+            
+                <vg-controls>
+                  <vg-play-pause></vg-play-pause>
+                  <vg-playback-button></vg-playback-button>
+            
+                  <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+            
+                  <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+            
+                  <!-- <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display> -->
+                  <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+            
+                  <!-- <vg-track-selector></vg-track-selector> -->
+                  <vg-mute></vg-mute>
+                  <vg-volume></vg-volume>
+            
+                  <vg-fullscreen></vg-fullscreen>
+                </vg-controls>
+            
+                <video [vgMedia]="$any(media)" *ngIf="format==='video' && url" #media id="singleVideo" preload="auto" >
+                  <source src="{{url}}" type="video/mp4">            
+                </video>
+              </vg-player>
         </div>
     </div>
+    <!-- Progress Bar -->
+    <div class="wide-block pt-2 pb-2" *ngIf="progress">
+      <p>Video uploading on server please wait...</p>
+      <div class="progress">
+          <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+      </div>
+  </div>
     <div class="btnArea">
         <!-- <p class="btn_ctnt">Take a few minutes to complete your Profile</p> -->
         <button class="next">Continue</button>

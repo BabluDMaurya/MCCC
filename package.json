@@ -24,6 +24,7 @@
     "@videogular/ngx-videogular": "^5.0.1",
     "ionicons": "^6.0.0",
     "jquery": "^3.6.0",
+    "ng-connection-service": "^1.0.4",
     "ngx-image-cropper": "^5.0.1",
     "ngx-skeleton-loader": "^4.0.0",
     "ngx-slick-carousel": "^0.5.1",

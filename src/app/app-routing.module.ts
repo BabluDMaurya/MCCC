@@ -42,6 +42,7 @@ import { AboutComponent } from './about/about.component';
 import { FaqComponent } from './faq/faq.component';
 import { HelpComponent } from './help/help.component';
 import { AuthGuard } from './_helpers/auth.guard';
+import { NoInternetComponent } from './no-internet/no-internet.component';
 
 const routes: Routes = [{    
   path: '',    
@@ -184,6 +185,43 @@ const routes: Routes = [{
 {    
   path: 'terms-condition',component: TermsConditionComponent,canActivate: [AuthGuard],   
   data: {title: 'terms and condition'}    
+},
+{    
+  path: 'no-internet',component: NoInternetComponent,   
+  data: {title: 'no internet'}    
+},
+{    
+  path: 'create-password',component: CreatePasswordComponent,    
+  data: {title: 'create password'}    
+},
+{    
+  path: 'success',component: SuccessComponent,    
+  data: {title: 'success'}    
+},
+
+{    
+  path: 'forgot-password',component: ForgotPasswordComponent,    
+  data: {title: 'forgot password'}    
+},
+{    
+  path: 'reset-password/:token',component: ResetPasswordComponent,    
+  data: {title: 'reset password'}    
+},
+{    
+  path: 'upload-images',component: UploadImagesComponent,canActivate: [AuthGuard], 
+  data: {title: 'Upload Images'}    
+},
+{    
+  path: 'upload-video',component: UploadVideoComponent,canActivate: [AuthGuard],
+  data: {title: 'Upload Video'}    
+},
+{    
+  path: 'complete-profile',component: CompleteProfileComponent,canActivate: [AuthGuard],  
+  data: {title: 'complete profile'}    
+},
+{    
+  path: 'final-success',component: FinalSuccessComponent,canActivate: [AuthGuard],
+  data: {title: 'final success'}    
 },
 ];
 

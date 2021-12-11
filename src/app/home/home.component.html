@@ -9,13 +9,12 @@
         <div ngxSlickItem *ngFor="let slide of slides" class="banner main_banner" style="min-height: 132px;">
           <img src="{{ baseUrl+slide.banner_image_path+slide.casting_banner_image }}" alt="">
           <div class="banner_content">
-            <!-- <h5>Casting Call</h5>
+            <!--<h5>Casting Call</h5>
             <p>Lorem ipsum dolor sit<br>
-                adipiscing elit, sed....</p> -->
+                adipiscing elit, sed....</p>-->
         </div>
         </div>        
       </ngx-slick-carousel>
-
         <div class="casingCalls" *ngIf="!nonewcall">
             <div class="casingCallHeader">
                 <p class="classinghead">New Casing Call</p>
@@ -30,7 +29,6 @@
             </div>
             <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
         </div>
-
         <div class="casingCalls">
             <div class="casingCallHeader">
                 <p class="classinghead">Upcoming Workshop</p>
@@ -41,7 +39,7 @@
                 <img src="assets/img/img/homeBanner.webp" alt="">
             </div>
 
-            <app-workshop-card *ngFor="let c of upcoming; let idx=index" [data]="c"></app-workshop-card>
+            <app-workshop-card *ngFor="let c of onGoingData; let idx=index" [data]="c"></app-workshop-card>
         </div>
         <div class="casingCalls">
             <div class="casingCallHeader">

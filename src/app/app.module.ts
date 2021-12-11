@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConnectionServiceModule } from 'ng-connection-service';
+
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DatePipe } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -77,6 +79,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { CompleteProfileComponent } from './complete-profile/complete-profile/complete-profile.component';
 import { UploadVideoComponent } from './complete-profile/upload-video/upload-video.component';
 import { WorkshopCardComponent } from './_components/workshop-card/workshop-card.component';
+import { NoInternetComponent } from './no-internet/no-internet.component';
 
 @NgModule({
   declarations: [
@@ -138,7 +141,8 @@ import { WorkshopCardComponent } from './_components/workshop-card/workshop-card
     FaqComponent,
     HelpComponent,
     TermsConditionComponent,
-    WorkshopCardComponent
+    WorkshopCardComponent,
+    NoInternetComponent
   ],
   imports: [
     BrowserModule,
@@ -152,6 +156,7 @@ import { WorkshopCardComponent } from './_components/workshop-card/workshop-card
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
+    ConnectionServiceModule,
     ToastrModule.forRoot({
       positionClass :'toast-bottom-right'
     }),

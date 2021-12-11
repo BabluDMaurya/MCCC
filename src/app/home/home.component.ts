@@ -111,6 +111,8 @@ export class HomeComponent implements OnInit {
         this.workshopService.get_all_workshop_data('').subscribe(
           data => { 
             this.workshsopData = data.data;
+            console.log(this.workshsopData , 'workshop');
+            
             this.eventForYouData = this.workshsopData.event_for_u;
             this.onGoingData = this.workshsopData.on_going;
             this.upcoming = this.workshsopData.upcoming;
@@ -118,7 +120,6 @@ export class HomeComponent implements OnInit {
             if(this.upcomingData == 'No Data'){
               this.upcomingData = [];
             }
-            console.log(this.upcomingData);
         });
   }
   

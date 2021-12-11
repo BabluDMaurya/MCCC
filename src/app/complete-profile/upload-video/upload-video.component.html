@@ -47,6 +47,13 @@
               </vg-player>
         </div>
     </div>
+    <!-- Progress Bar -->
+    <div class="wide-block pt-2 pb-2" *ngIf="progress">
+      <p>Video uploading on server please wait...</p>
+      <div class="progress">
+          <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+      </div>
+  </div>
     <div class="btnArea">
         <!-- <p class="btn_ctnt">Take a few minutes to complete your Profile</p> -->
         <button class="next">Continue</button>

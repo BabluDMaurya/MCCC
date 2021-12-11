@@ -7,14 +7,17 @@ import { DashboardService } from 'src/app/_service/dashboard.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 import { NotificationService } from 'src/app/_service/notification.service';
-
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-casting-inner',
   templateUrl: './casting-inner.component.html',
   styleUrls: ['./casting-inner.component.scss']
 })
 export class CastingInnerComponent implements OnInit {
-  back_link = "casting";
+  toastSuccess:string = 'toast-15';
+  toastDanger:string = 'toast-16';
+  back_link = "casting/1";
   pageName="casting-inner";
   castingId:any;
   resData:any;
@@ -103,10 +106,17 @@ export class CastingInnerComponent implements OnInit {
         this.resData = res; 
         this.bmkStatus = this.resData.data[0];
         if(this.bmkStatus === 'Bookmark removed'){
-          this.notifyService.showSuccess('Bookmark removed.','');
+          new toastbox(this.toastDanger, 2000);
+            setTimeout(() => {
+              $('#'+this.toastDanger).removeClass('show');
+          }, 2000);
           this.bookmarks = 0;
+          
         }else if(this.bmkStatus === 'Bookmark Added'){
-          this.notifyService.showSuccess('Bookmark Added.','');
+          new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
           this.bookmarks = 1;
         }     
       });

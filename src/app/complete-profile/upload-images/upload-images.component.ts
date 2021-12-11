@@ -7,6 +7,7 @@ import { first } from 'rxjs/operators';
 import { UserService } from 'src/app/_service/user.service';
 import { AlertService } from 'src/app/_service/alert.service';
 import { Dimensions,ImageCroppedEvent, ImageTransform,base64ToFile} from 'ngx-image-cropper';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload-images',
@@ -14,6 +15,7 @@ import { Dimensions,ImageCroppedEvent, ImageTransform,base64ToFile} from 'ngx-im
   styleUrls: ['./upload-images.component.scss']
 })
 export class UploadImagesComponent implements OnInit {
+  progress: number = 0;
   back_link :any =  "signin";
   component_title : string = 'Complete your Profile';
   form: FormGroup | any;
@@ -224,18 +226,42 @@ saveImage(){
       console.log('Invalid');
       return;
     }else{      
-      this.userService.upload_image(this.form.value).subscribe(res => { 
-        this.uploading = false;       
-        this.responseData = res;
-        if(this.responseData.status == 'true'){
-            this.route.navigate(['/upload-video']);
-        }else{
-          // this.notification.showSuccess(' Somthing Wrong.','');
+      this.userService.upload_image(this.form.value).subscribe(
+        (event: HttpEvent<any>) => {
+          switch (event.type) {
+            case HttpEventType.Sent:
+              console.log('Request has been made!');
+              break;
+            case HttpEventType.ResponseHeader:
+              console.log('Response header has been received!');
+              break;
+            case HttpEventType.UploadProgress:
+              let total:any = event.total;
+              this.progress = Math.round(event.loaded / total * 100);
+              console.log(`Uploaded! ${this.progress}%`);
+              break;
+            case HttpEventType.Response:
+                this.uploading = false; 
+                if (event.body.status == 'true') {
+                  this.route.navigate(['/upload-video']);
+                } else {
+                }
+              setTimeout(() => {
+                this.progress = 0;
+              }, 1500);
+          }
         }
-        
-      },error=>{
-        this.uploading = false;
-      });
+
+      //   res => { 
+      //   this.uploading = false;       
+      //   this.responseData = res;
+      //   if(this.responseData.status == 'true'){
+      //       this.route.navigate(['/upload-video']);
+      //   }else{
+      //     // this.notification.showSuccess(' Somthing Wrong.','');
+      //   }        
+      // }
+      );
     }
   }
   back(): void {

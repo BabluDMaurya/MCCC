@@ -1,0 +1,28 @@
+<app-footer></app-footer>
+<div class="main casting_inner notifications wrrpperRegisterForm">
+    <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
+    <div class="main_wrppers">
+        <div class="forms">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="formGroup">
+                    <div class="select">
+                        <select formControlName="options" class="form-control" [ngClass]="{ 'is-invalid': submit && f.options.errors }">
+                            <option value="">Select</option>
+                            <option [value]="options" *ngFor="let options of optionsList">{{options}}</option>
+                        </select>
+                        <div *ngIf="submit && f.options.errors" class="invalid-feedback">
+                            <div *ngIf="f.options.errors.required">Gender is required</div>               
+                          </div>          
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label>Message</label>
+                    <div class="inputs">
+                        <textarea name="" id=""></textarea>
+                    </div>
+                </div>
+                <a class="next">Send</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -35,7 +35,7 @@
                 <div class="tab-pane fade show active" id="casting" role="tabpanel">
                     <div class="section full mt-1">
                         <div class="casingCalls">
-                            <app-casting-card *ngFor="let c of castings; let idx=index" [data]="c"></app-casting-card>
+                            <app-bookmark-casting-card *ngFor="let c of castings; let idx=index" [data]="c"></app-bookmark-casting-card>
                         </div>
                     </div>
                     <app-not-found-data *ngIf="bookmarkNoData"></app-not-found-data>

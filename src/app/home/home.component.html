@@ -17,15 +17,15 @@
       </ngx-slick-carousel>
         <div class="casingCalls" *ngIf="!nonewcall">
             <div class="casingCallHeader">
-                <p class="classinghead">New Casing Call</p>
-                <span><a [routerLink]="['/casting-all/1']">View All</a></span>
+                <p class="classinghead">New Casting Call</p>
+                <span><a [routerLink]="['/casting/1']">View All</a></span>
             </div>
             <app-casting-card *ngFor="let c of newCasting; let idx=index" [data]="c"></app-casting-card>
         </div>        
         <div class="casingCalls" *ngIf="!norecomended">
             <div class="casingCallHeader">
                 <p class="classinghead recomded primary__color">Recommended Calls</p>
-                <span><a [routerLink]="['/casting-all/2']">View All</a></span>
+                <span><a [routerLink]="['/casting/2']">View All</a></span>
             </div>
             <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
         </div>

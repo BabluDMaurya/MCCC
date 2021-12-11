@@ -62,6 +62,8 @@ import { FaqComponent } from './faq/faq.component';
 import { HelpComponent } from './help/help.component';
 import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 import { NoInternetComponent } from './no-internet/no-internet.component';
+import { BookmarkCastingCardComponent } from './_components/bookmark-casting-card/bookmark-casting-card.component';
+import { SupportComponent } from './support/support.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +110,9 @@ import { NoInternetComponent } from './no-internet/no-internet.component';
     FaqComponent,
     HelpComponent,
     TermsConditionComponent,
-    NoInternetComponent
+    NoInternetComponent,
+    BookmarkCastingCardComponent,
+    SupportComponent
   ],
   imports: [
     BrowserModule,

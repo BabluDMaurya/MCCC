@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/_service/authentication.service';
 import { Config } from 'src/app/_config/config';
 import { first } from 'rxjs/operators';
 import { UserService } from 'src/app/_service/user.service';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload-video',
@@ -12,6 +13,7 @@ import { UserService } from 'src/app/_service/user.service';
   styleUrls: ['./upload-video.component.scss']
 })
 export class UploadVideoComponent implements OnInit {
+  progress: number = 0;
   currentPlayingVideo: HTMLVideoElement | any;
   back_link :any =  "upload-images";
   component_title : string = 'Complete your Profile';
@@ -104,16 +106,30 @@ export class UploadVideoComponent implements OnInit {
     if (this.form.invalid) {
       return;
     } else {
-      this.userService.upload_video(this.form.value).pipe(first()).subscribe(res => {
-        this.uploading = false;  
-        this.responseData = res;
-        if (this.responseData.status == 'true') {
-          this.route.navigate(['/complete-profile']);
-        } else {
-          // this.alertService.success('File uploaded Successfully', true);
+      this.userService.upload_video(this.form.value).subscribe(
+        (event: HttpEvent<any>) => {
+        switch (event.type) {
+          case HttpEventType.Sent:
+            console.log('Request has been made!');
+            break;
+          case HttpEventType.ResponseHeader:
+            console.log('Response header has been received!');
+            break;
+          case HttpEventType.UploadProgress:
+            let total:any = event.total;
+            this.progress = Math.round(event.loaded / total * 100);
+            console.log(`Uploaded! ${this.progress}%`);
+            break;
+          case HttpEventType.Response:
+              this.uploading = false; 
+              if (event.body.status == 'true') {
+                this.route.navigate(['/complete-profile']);
+              } else {
+              }
+            setTimeout(() => {
+              this.progress = 0;
+            }, 1500);
         }
-      },error=>{
-        this.uploading = false;
       });
     }
   }

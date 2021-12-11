@@ -29,6 +29,7 @@ import { FaqComponent } from './faq/faq.component';
 import { HelpComponent } from './help/help.component';
 import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 import { NoInternetComponent } from './no-internet/no-internet.component';
+import { SupportComponent } from './support/support.component';
 
 const routes: Routes = [{    
   path: '',    
@@ -89,7 +90,7 @@ const routes: Routes = [{
 },
 //----casting----------//
 {    
-  path: 'casting',component: CastingComponent,canActivate: [AuthGuard],
+  path: 'casting/:id',component: CastingComponent,canActivate: [AuthGuard],
   data: {title: 'casting'}    
 },
 {    
@@ -147,6 +148,10 @@ const routes: Routes = [{
 {    
   path: 'no-internet',component: NoInternetComponent,   
   data: {title: 'no internet'}    
+},
+{    
+  path: 'support',component: SupportComponent,   
+  data: {title: 'support'}    
 },
 ];
 

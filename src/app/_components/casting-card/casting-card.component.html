@@ -1,8 +1,8 @@
-<div class="boxs">
+<div class="boxs" id="card-{{data.id}}">
     <div class="boxHead">
      <h5><a (click)="castingInner(data.id)">{{data.title | titlecase}}</a></h5>     
-     <div class="shaveIcon" (click)="bookmarkCasting(data.id)">
-        <i [ngClass]="data.bookmark_status == 1 ? 'far fa-bookmark-o' : 'far fa-bookmark'"></i>
+     <div class="shaveIcon" (click)="bookmarkCasting(data.id,data?.bookmark_status)">
+        <i [ngClass]="data.bookmark_status == 1 ? 'fas fa-bookmark removecard' : 'far fa-bookmark'"></i>
     </div>
      <div id="toast-15" class="toast-box bg-success toast-bottom">
         <div class="in">

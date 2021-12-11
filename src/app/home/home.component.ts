@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
   //-----slick slider------------//    
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,autoplay: true,autoplaySpeed: 2000,};
   trns_sliders = {"slidesToShow": 3, "slidesToScroll": 3,"dots": false,"infinite": false};
-  two_sliders = {"slidesToShow": 2, "slidesToScroll": 2,"dots": false,"infinite": false};
+  two_sliders = {"slidesToShow": 2.5, "slidesToScroll": 2.5,"dots": false,"infinite": false};
   // addSlide() {
   //   this.slides.push({img: "http://placehold.it/350x150/777777"})
   // }    

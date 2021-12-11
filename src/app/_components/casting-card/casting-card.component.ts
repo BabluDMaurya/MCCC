@@ -34,7 +34,7 @@ export class CastingCardComponent implements OnInit {
     this.route.navigate(['casting-inner',id]);
   }
 
-  bookmarkCasting(id:any){
+  bookmarkCasting(id:any,status?:any){
     this.dashboardService.bookmarkCasting({casting_card_id:id})
       .subscribe(res => {
         this.resData = res; 
@@ -49,6 +49,9 @@ export class CastingCardComponent implements OnInit {
             setTimeout(() => {
               $('#'+this.toastDanger).removeClass('show');
           }, 2000);
+        }
+        if(status == 1){
+          $('#card-'+id).remove();
         }
         // this.showToasterSuccess();      
       });

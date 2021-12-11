@@ -38,7 +38,9 @@
                             <app-casting-card *ngFor="let c of castings; let idx=index" [data]="c"></app-casting-card>
                         </div>
                     </div>
+                    <app-not-found-data *ngIf="bookmarkNoData"></app-not-found-data>
                 </div>
+                
                 <!-- * casting tab -->
                 <!-- workshop tab -->
                 <div class="tab-pane fade" id="workshop" role="tabpanel">

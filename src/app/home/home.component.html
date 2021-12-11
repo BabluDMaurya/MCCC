@@ -108,11 +108,11 @@
                 <span><a href="bts.html">View All</a></span>
             </div>
             <div class="bts_popular_slider bts_popular_sliderSecond">                
-                <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="slideConfig"
+                <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="two_sliders"
         (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
         (beforeChange)="beforeChange($event)">
         <div ngxSlickItem *ngFor="let slide of slides" class="btsSlioder">
-            <a href="#">
+            <a [routerLink]="['/games']">
             <img src="assets/img/img/homeBanner.webp" alt="">
             <div class="btsPlay_icon">
                 <img src="assets/img/img/play_icon.webp" alt="">

@@ -12,6 +12,7 @@ import { UserService } from 'src/app/_service/user.service';
   styleUrls: ['./upload-video.component.scss']
 })
 export class UploadVideoComponent implements OnInit {
+  currentPlayingVideo: HTMLVideoElement | any;
   back_link :any =  "upload-images";
   component_title : string = 'Complete your Profile';
   form: FormGroup | any;
@@ -49,6 +50,22 @@ export class UploadVideoComponent implements OnInit {
       }
     }
   }
+  onPlayingVideo(event:any) {
+    event.preventDefault();
+    // play the first video that is chosen by the user
+    if (this.currentPlayingVideo === undefined) {
+      console.log('video playing');
+        this.currentPlayingVideo = event.target;
+        this.currentPlayingVideo.play();
+    } else {
+    // if the user plays a new video, pause the last one and play the new one
+        if (event.target !== this.currentPlayingVideo) {         
+            this.currentPlayingVideo.pause();
+            // this.currentPlayingVideo = event.target;
+            // this.currentPlayingVideo.play();
+        }
+    }
+}
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       files: ['', Validators.required],

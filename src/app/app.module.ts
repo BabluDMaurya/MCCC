@@ -12,6 +12,10 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { MatDialogModule } from '@angular/material/dialog';
+import {VgCoreModule} from '@videogular/ngx-videogular/core';
+import {VgControlsModule} from '@videogular/ngx-videogular/controls';
+import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
+import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 
 import { LogoComponent } from './logo/logo.component';
 import { SplashComponent } from './splash/splash.component';
@@ -44,7 +48,6 @@ import { CastingInnerComponent } from './casting/casting-inner/casting-inner.com
 import { ApplyCastingComponent } from './casting/apply-casting/apply-casting.component';
 import { ThankYouCastingComponent } from './casting/thank-you-casting/thank-you-casting.component';
 import { MyApplicationsComponent } from './my-applications/my-applications.component';
-import { MyBookmarksComponent } from './my-bookmarks/my-bookmarks.component';
 import { GamesComponent } from './games/games.component';
 import { BollywoodMemoryGameComponent } from './games/bollywood-memory-game/bollywood-memory-game.component';
 import { GameCardComponent } from './games/bollywood-memory-game/game-card/game-card.component';
@@ -93,7 +96,6 @@ import { NoInternetComponent } from './no-internet/no-internet.component';
     ApplyCastingComponent,
     ThankYouCastingComponent,
     MyApplicationsComponent,
-    MyBookmarksComponent,
     GamesComponent,
     BollywoodMemoryGameComponent,
     GameCardComponent,
@@ -119,6 +121,10 @@ import { NoInternetComponent } from './no-internet/no-internet.component';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     MatDialogModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
     
   ],
   providers: [

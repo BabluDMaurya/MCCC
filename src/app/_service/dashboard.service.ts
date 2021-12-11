@@ -47,6 +47,9 @@ export class DashboardService {
     applyForCasting(data:any){
       return this.http.post(`${Config.BasePath}/user_applied_castings`,data);
     }
+    updateHobbies(data:any){
+      return this.http.post(`${Config.BasePath}/user_hobbies_update`,data);
+    }
     confirmCasting(data:any){
       return this.http.post(`${Config.BasePath}/confirm_casting_application`,data);
     }

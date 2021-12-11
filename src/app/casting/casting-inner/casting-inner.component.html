@@ -38,7 +38,8 @@
                     <label>{{gender}}</label>
                 </li>
             </ul>
-            <button class="castingApply" (click)="apply()">Apply</button>
+            <button *ngIf="applySt == 0" class="castingApply" (click)="apply()">Apply</button>
+            <button *ngIf="applySt == 1" class="castingApply" >Applied</button>
         </div>
     </div>
 </div>

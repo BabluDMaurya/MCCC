@@ -27,6 +27,9 @@ export class RegisterService {
   cities(id:any){
     return this.http.post(`${Config.BasePath}/cities_by_id`,id);
   }
+  support(data:any){
+    return this.http.post(`${Config.BasePath}/support`,data);
+  }
   delete(id: number) {
     return this.http.delete(`${Config.BasePath}/users/${id}`);
   }

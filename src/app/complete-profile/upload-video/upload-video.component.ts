@@ -54,7 +54,7 @@ export class UploadVideoComponent implements OnInit {
     event.preventDefault();
     // play the first video that is chosen by the user
     if (this.currentPlayingVideo === undefined) {
-      console.log('video playing');
+      // console.log('video playing');
         this.currentPlayingVideo = event.target;
         this.currentPlayingVideo.play();
     } else {

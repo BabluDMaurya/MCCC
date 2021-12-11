@@ -15,6 +15,9 @@ import{ AgeBetween13To54 } from "../../_helpers/custom-DOB.validator";
   styleUrls: ['./complete-profile.component.scss']
 })
 export class CompleteProfileComponent implements OnInit {
+  workCount : number = 1;
+  qualiCount : number = 1;
+  socialCount : number = 1;
   back_link :any =  "upload-video";
   component_title : string = 'Complete your Profile';
   submitted: boolean = false;
@@ -121,8 +124,11 @@ export class CompleteProfileComponent implements OnInit {
     });
   }
   addExperience(): void {
-    this.experiences = this.form.get('work_experiences') as FormArray;
-    this.experiences.push(this.createExperience());
+    if(this.workCount < 5){
+        this.experiences = this.form.get('work_experiences') as FormArray;
+        this.experiences.push(this.createExperience());
+        this.workCount = this.workCount + 1;
+    }
   }
   removeExperience(i: number) {
     this.experiences.removeAt(i);
@@ -133,8 +139,11 @@ export class CompleteProfileComponent implements OnInit {
     });
   }
   addQualification(): void {
+    if(this.qualiCount < 5){
     this.qualifs = this.form.get('qualifications') as FormArray;
     this.qualifs.push(this.createQualification());
+    this.qualiCount = this.qualiCount + 1;
+    }
   }
   removeQualification(i: number) {
     this.qualifs.removeAt(i);
@@ -146,8 +155,11 @@ export class CompleteProfileComponent implements OnInit {
     });
   }
   addSocialLinks(): void {
-    this.slinks = this.form.get('social_links') as FormArray;
-    this.slinks.push(this.createSocialLinks());
+    if(this.socialCount < 5){
+      this.slinks = this.form.get('social_links') as FormArray;
+      this.slinks.push(this.createSocialLinks());
+      this.socialCount = this.socialCount + 1;
+    }
   }
   removeSocialLinks(i: number) {
     this.slinks.removeAt(i);

@@ -41,8 +41,8 @@
                   <vg-fullscreen></vg-fullscreen>
                 </vg-controls>
             
-                <video [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" >
-                  <source src="url" type="video/mp4">            
+                <video [vgMedia]="$any(media)" *ngIf="format==='video' && url" #media id="singleVideo" preload="auto" >
+                  <source src="{{url}}" type="video/mp4">            
                 </video>
               </vg-player>
         </div>

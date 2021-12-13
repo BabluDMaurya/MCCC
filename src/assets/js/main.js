@@ -294,7 +294,7 @@ function getCodeBoxElement(index) {
 
   $(document).ready(function(){
     $(".plus_icon_workWxperince").on('click',function () {
-      $(".work_experince").append(' <div class="formGroup addRemoveDivss workExperince"><label><img src="assets/img/img/work.webp" alt="">  Work Experince</label><div class="withIcon"><div class="inputs"><input type="text" placeholder="" class=""></div><div class="minus_iconWorkficatuons"><img src="assets/img/img/minus.webp" class="lightMode" alt=""></div><img src="assets/img/img/white_minus.webp" class="darkMode" alt=""></div></div></div>');
+      $(".work_experince").append(' <div class="formGroup addRemoveDivss workExperince"><label><img src="assets/img/img/work.webp" alt="">  Work Experince</label><div class="withIcon"><div class="inputs"><input type="text" placeholder="" class=""></div><div class="minus_iconWorkficatuons"><img src="assets/img/img/minus.webp" class="lightMode" alt=""></div></div></div></div>');
 
       $('.minus_iconWorkficatuons').on('click',function(){
         $(this).closest('.workExperince').remove();
@@ -333,21 +333,23 @@ function getCodeBoxElement(index) {
   const togglePassword = document.querySelector('.showPasswd');
   const password = document.querySelector('.password');
  
-  togglePassword.addEventListener('click', function (e) {
-    // toggle the type attribute
-    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-    password.setAttribute('type', type);
-    // toggle the eye slash icon
-    this.classList.toggle('fa-eye-slash');
-  });
+  // togglePassword.addEventListener('click', function (e) {
+  //   // toggle the type attribute
+  //   const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+  //   password.setAttribute('type', type);
+  //   // toggle the eye slash icon
+  //   this.classList.toggle('fa-eye-slash');
+  // });
 
   const Confirm_togglePassword = document.querySelector('.confirm_showPasswd');
   const confirm_password = document.querySelector('.ConfirmPassword');
  
-  Confirm_togglePassword.addEventListener('click', function (e) {
-    // toggle the type attribute
-    const type = confirm_password.getAttribute('type') === 'password' ? 'text' : 'password';
-    confirm_password.setAttribute('type', type);
-    // toggle the eye slash icon
-    this.classList.toggle('fa-eye-slash');
-  });
+  // Confirm_togglePassword.addEventListener('click', function (e) {
+  //   // toggle the type attribute
+  //   const type = confirm_password.getAttribute('type') === 'password' ? 'text' : 'password';
+  //   confirm_password.setAttribute('type', type);
+  //   // toggle the eye slash icon
+  //   this.classList.toggle('fa-eye-slash');
+  // });
+
+  $('body').hasClass('')

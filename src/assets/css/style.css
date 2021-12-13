@@ -9489,3 +9489,15 @@ body.dark-mode-active.rtl-mode .notification-dialog.android-style .notification-
 
   justify-content: center;
 }
+.loader {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #0003;
+  z-index: 99999;
+  top: 0;
+  left: 0;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

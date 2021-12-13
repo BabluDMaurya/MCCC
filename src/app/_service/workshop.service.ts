@@ -5,7 +5,11 @@ import { Config } from '../_config/config';
   providedIn: 'root'
 })
 export class WorkshopService {
-
+  headers:any;
+  localstorageData : any;
+  currentUser : any;
+  token : any;
+  public options: any;
   constructor(private http: HttpClient) { }
   get_upcoming_workshop_data(data:any){
     return this.http.post<any>(Config.BasePath +'/get_upcoming_workshop_data',data);
@@ -21,6 +25,10 @@ export class WorkshopService {
 
   get_each_workshop_data(data:any){
     return this.http.post<any>(Config.BasePath +'/get_each_workshop_data',data);
+  }
+
+  get_all_workshop_data(data:any){
+    return this.http.post<any>(Config.BasePath +'/get_all_workshop_data',data);
   }
 
   user_apply_for_workshop(data:any){

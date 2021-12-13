@@ -1,0 +1,78 @@
+ <div class="main casting casting_inner profile anatomy_wrpper">
+        <div class="mainHeader">
+            <div class="top_header">
+                <div class="arrowLeft" (click)="back()">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </div>
+                <div class="logo middle">
+                    <label>Anatomy</label>
+                </div>
+                <div class="lats_side">
+                    <div class="avtars">
+                            <a [routerLink]= "['/home']">
+                                <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
+                            </a>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" main_wrppers profileWrpper">
+            <div class="profiles">
+                <form [formGroup]="form" (ngSubmit)="submit()"> 
+                <div class="profileDiv">
+                    <label>Waist<span class="text-danger">*</span></label>
+                    <input type="tel" [ngClass]="{ 'is-invalid': submitted && f.waist.errors }" class="" formControlName="waist"  placeholder="36">
+                    <div *ngIf="submitted && f.waist.errors" class="invalid-feedback">
+                        <div *ngIf="f.waist.errors.required">Waist is required</div>
+                    </div>
+                </div>
+                <div class="profileDiv">
+                    <div class="form-group">
+                        <label>Chest<span class="text-danger">*</span></label>
+                        <input type="text" [ngClass]="{ 'is-invalid': submitted && f.chest.errors }" class="form-control" formControlName="chest" placeholder="56 widee">
+                        <div *ngIf="submitted && f.chest.errors" class="invalid-feedback">
+                            <div *ngIf="f.chest.errors.required">Chest is required</div>
+                          </div>
+                    </div>
+                </div>
+                <div class="profileDiv">
+                    <div class="form-group">
+                        <label>Bust<span class="text-danger">*</span></label>
+                        <input type="text" [ngClass]="{ 'is-invalid': submitted && f.bust.errors }" class="form-control" formControlName="bust" placeholder="32 underbust">
+                        <div *ngIf="submitted && f.bust.errors" class="invalid-feedback">
+                            <div *ngIf="f.bust.errors.required">Bust is required</div>
+                          </div>
+                    </div>
+                </div>
+                <div class="profileDiv">
+                    <div class="form-group">
+                        <label>Hair<span class="text-danger">*</span></label>
+                        <input type="text" [ngClass]="{ 'is-invalid': submitted && f.hair.errors }" class="form-control" formControlName="hair" placeholder="Black">
+                        <div *ngIf="submitted && f.hair.errors" class="invalid-feedback">
+                            <div *ngIf="f.hair.errors.required">Hair is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profileDiv">
+                    <div class="form-group">
+                        <label>Tattoo<span class="text-danger">*</span></label>
+                        <input type="text" [ngClass]="{ 'is-invalid': submitted && f.tattoo.errors }" class="form-control" formControlName="tattoo" placeholder="Tattoo">
+                        <div *ngIf="submitted && f.tattoo.errors" class="invalid-feedback">
+                            <div *ngIf="f.tattoo.errors.required">Tattoo is required</div>
+                          </div>
+                    </div>
+                </div>
+                <div class="submit">
+                    <button type="submit" class="btns" [attr.disabled] = "active === 1 ? 'disabled' : null"> Save </button>
+                     <a (click)="back()" class="btns outline"> Cancel</a>
+                </div>
+                </form>
+            </div>
+        </div>
+        <!-- <div class="loader_screen" *ngIf="uploading"></div> -->
+        <div *ngIf="uploading" class="loader"><img src="../../../assets/img/img/MCCC_loading_black.gif" alt=""></div>
+
+
+
+    </div>

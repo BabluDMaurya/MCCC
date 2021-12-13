@@ -29,7 +29,7 @@
             </div>
             <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
         </div>
-        <div class="casingCalls">
+        <div class="casingCalls" *ngIf="!onGoingData[0].noData">
             <div class="casingCallHeader">
                 <p class="classinghead">Upcoming Workshop</p>
                 <span><a>View All</a></span>
@@ -39,105 +39,57 @@
                 <img src="assets/img/img/homeBanner.webp" alt="">
             </div>
 
-            <div class="boxs">
-               <div class="boxHead">
-                <h5><a href="#">Looking for a Foreigner</a></h5>
-                <div class="shaveIcon">
-                    <i class="far fa-bookmark"></i>
-                </div>
-               </div>
-               <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                adipiscing elit, sed....</a></p>
-                <ul class="userDetails">
-                    <li><i class="fas fa-transgender-alt"></i>Male</li>
-                    <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                    <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                </ul>
-                <div class="labelBtns">
-                    <label>Male</label>
-                    <label>Foreigner</label>
-                    <label>Add Film</label>
-                    <label>30-50 years</label>
-                </div>
-            </div>
+            <app-workshop-card *ngFor="let c of onGoingData; let idx=index" [data]="c"></app-workshop-card>
         </div>
-        <div class="casingCalls">
+        <div class="casingCalls" *ngIf="!eventForYouData[0].noData">
             <div class="casingCallHeader">
                 <p class="classinghead recomded primary__color">Workshop for you</p>
                 <span><a>View All</a></span>
             </div>
-            <div class="boxs">
-               <div class="boxHead">
-                <h5><a href="#">Looking for a Foreigner</a></h5>
-                <div class="shaveIcon">
-                    <i class="far fa-bookmark"></i>
-                </div>
-               </div>
-               <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                adipiscing elit, sed....</a></p>
-                <ul class="userDetails">
-                    <li><i class="fas fa-transgender-alt"></i>Male</li>
-                    <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                    <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                </ul>
-                <div class="labelBtns">
-                    <label>Male</label>
-                    <label>Foreigner</label>
-                    <label>Add Film</label>
-                    <label>30-50 years</label>
-                </div>
-            </div>
+            <app-workshop-card *ngFor="let c of eventForYouData; let idx=index" [data]="c"></app-workshop-card>
         </div>
+        
         <div class="casingCalls">
             <div class="casingCallHeader">
-                <p class="classinghead recomded secondary__color">Behind The Scene</p>
-                <span><a>View All</a></span>
+                <p class="classinghead recomded">Behind The Scene</p>
+                <span><a [routerLink]="['/bts-inner/2']">View All</a></span>
             </div>
-            <div class="videoPlay">
-                <a href="#">
-                    <img src="assets/img/img/homeBanner.webp" alt="">
-                    <div class="play__ionc">
-                        <img src="assets/img/img/play_icon.webp" alt="">
-                    </div>
-                   </a>
+            <div class="bts_popular_slider bts_popular_sliderSecond">                
+                <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="topBtsSlideConfig"
+                    (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+                    (beforeChange)="beforeChange($event)">
+                    <div ngxSlickItem  *ngFor="let vid of topBTSVideos; let i=index;"  class="btsSlioder">
+                        <a [routerLink]="['/bts-video-view/',vid.id,1]">
+                            <img *ngIf="vid.youtube_thumbnail == null " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
+                            <img *ngIf="vid.youtube_thumbnail != null " src="{{vid.youtube_thumbnail}}">
+                            <div class="btsPlay_icon">
+                                <img src="assets/img/img/play_icon.webp" alt="">
+                            </div>
+                        </a>
+                    </div>        
+                </ngx-slick-carousel>
             </div>
         </div>
+        
         <div class="casingCalls">
             <div class="casingCallHeader">
                 <p class="classinghead recomded">Popular BTS</p>
-                <span><a href="bts.html">View All</a></span>
+                <span><a [routerLink]="['/bts-inner/1']">View All</a></span>
             </div>
-            <div class="bts_popular_slider bts_popular_sliderSecond">                
-                <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="two_sliders"
-        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-        (beforeChange)="beforeChange($event)">
-        <div ngxSlickItem *ngFor="let slide of slides" class="btsSlioder">
-            <a [routerLink]="['/games']">
-            <img src="assets/img/img/homeBanner.webp" alt="">
-            <div class="btsPlay_icon">
-                <img src="assets/img/img/play_icon.webp" alt="">
-            </div>
-            </a>
-        </div>        
-      </ngx-slick-carousel>
+            <div class="bts_popular_slider bts_popular_sliderSecond">      
+                <app-bts-card  [data]="popularBtsVideos"></app-bts-card>          
+                
             </div>
         </div>
         <div class="casingCalls">
             <div class="casingCallHeader">
                 <p class="classinghead recomded secondary__color">Watch more videos</p>
-                <span><a>View All</a></span>
+                <!-- <span><a>View All</a></span> -->
             </div>
             <div class="moresliderVideos">
-                <ngx-slick-carousel class="carousel video_slider" #slickModal="slick-carousel" [config]="trns_sliders"
-                (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-                (beforeChange)="beforeChange($event)">
-                <div class="moreSlider" *ngFor="let catg of categories; let i=index;" [routerLink]="['/bts-inner/',catg.id]" ngxSlickItem>
-                    <div [ngClass]="isOdd(i) ? 'more_V_box primaryColor' : 'more_V_box'">
-                            <span>{{catg.category}}</span>
-                        </div>
-                </div>
-                </ngx-slick-carousel>
+            <app-bts-category-card  [data]="categories"></app-bts-category-card>
             </div>
+            
         </div>
     </div>
 </div>

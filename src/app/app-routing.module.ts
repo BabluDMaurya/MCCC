@@ -1,12 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './_helpers/auth.guard';
 import { LogoComponent } from './logo/logo.component';
 import { SplashComponent } from './splash/splash.component';
 import { SigninSignupComponent } from './signin-signup/signin-signup.component';
 import { RegistrationComponent } from './signup/registration/registration.component';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
+import { BtsComponent } from './bts/bts.component';
+import { BtsInnerComponent } from './bts/bts-inner/bts-inner.component';
+import { BtsVideoViewComponent } from './bts/bts-video-view/bts-video-view.component';
+import { TrainingComponent } from './training/training.component';
+import {WorkshopComponent} from './workshop/workshop.component';
+import { WorkshopRegistrationComponent } from './workshop/workshop-registration/workshop-registration.component';
+import { WorkshopRegistrationFormComponent } from './workshop/workshop-registration-form/workshop-registration-form.component';
+import { ThankYouPageComponent } from './workshop/thank-you-page/thank-you-page.component';
+import { TrainingInnerComponent } from './training/training-inner/training-inner.component';
+import { ImagesComponent } from './common/images/images.component';
+import { VideoComponent } from './common/video/video.component';
+import { AnatomyComponent } from './common/anatomy/anatomy.component';
+import { PersonalComponent } from './common/personal/personal.component';
+import { NotificationComponent } from './notification/notification.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 import { CreatePasswordComponent } from './signup/create-password/create-password.component';
 import { SuccessComponent } from './signup/success/success.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -27,7 +41,7 @@ import { BookmarkComponent } from './bookmark/bookmark.component';
 import { AboutComponent } from './about/about.component';
 import { FaqComponent } from './faq/faq.component';
 import { HelpComponent } from './help/help.component';
-import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { AuthGuard } from './_helpers/auth.guard';
 import { NoInternetComponent } from './no-internet/no-internet.component';
 import { SupportComponent } from './support/support.component';
 
@@ -53,40 +67,44 @@ const routes: Routes = [{
   data: {title: 'registration'}    
 },
 {    
-  path: 'create-password',component: CreatePasswordComponent,    
-  data: {title: 'create password'}    
-},
-{    
-  path: 'success',component: SuccessComponent,    
-  data: {title: 'success'}    
-},
-{    
   path: 'signin',component: SigninComponent,    
   data: {title: 'registration'}    
 },
 {    
-  path: 'forgot-password',component: ForgotPasswordComponent,    
-  data: {title: 'forgot password'}    
+  path: 'home',component: HomeComponent,    
+  data: {title: 'registration'}    
 },
 {    
-  path: 'reset-password/:token',component: ResetPasswordComponent,    
-  data: {title: 'reset password'}    
+  path: 'bts',component: BtsComponent,    
+  data: {title: 'BTS'}    
 },
 {    
-  path: 'upload-images',component: UploadImagesComponent,canActivate: [AuthGuard], 
-  data: {title: 'Upload Images'}    
+  path: 'bts-inner/:id',component: BtsInnerComponent,    
+  data: {storeRoute: false, title: 'BTS Inner'}    
 },
 {    
-  path: 'upload-video',component: UploadVideoComponent,canActivate: [AuthGuard],
-  data: {title: 'Upload Video'}    
+  path: 'bts-video-view/:id/:type',component: BtsVideoViewComponent,
+  data: {storeRoute: false,title: 'BTS Inner'}    
 },
 {    
-  path: 'complete-profile',component: CompleteProfileComponent,canActivate: [AuthGuard],  
-  data: {title: 'complete profile'}    
+  path: 'training-video-view/:id/:type',component: TrainingInnerComponent,
+  data: {storeRoute: false,title: 'Training Video'}    
 },
 {    
-  path: 'final-success',component: FinalSuccessComponent,canActivate: [AuthGuard],
-  data: {title: 'final success'}    
+  path: 'training',component: TrainingComponent,    
+  data: {title: 'training'}    
+},
+{    
+  path: 'workshop/:id',component: WorkshopComponent,    
+  data: {storeRoute: false,title: 'Workshop'}    
+},
+{
+  path: 'workshop-registration/:id',component: WorkshopRegistrationComponent,    
+  data: {storeRoute: true,title: 'Workshop Registration'}    
+},
+{    
+  path: 'workshop-registration-form/:id/:type',component: WorkshopRegistrationFormComponent,   
+  data: {title: 'Workshop Registration Form'}    
 },
 //----casting----------//
 {    
@@ -106,6 +124,30 @@ const routes: Routes = [{
   data: {title: 'Thank You Casting'}    
 },
 {    
+  path: 'thank-you-workshop/:name',component: ThankYouPageComponent,  
+  data: {title: 'Thank You'}    
+},
+{    
+  path: 'images',component: ImagesComponent,  
+  data: {title: 'Images'}    
+},
+{    
+  path: 'anatomy',component: AnatomyComponent,    
+  data: {storeRoute: true,title: 'Anatomy'}    
+},
+{    
+  path: 'personal',component: PersonalComponent,    
+  data: {storeRoute: false,title: 'personal'}    
+},
+{    
+  path: 'video',component: VideoComponent,    
+  data: {storeRoute: false,title: 'Video'}    
+},
+{
+  path: 'notification',component: NotificationComponent,    
+  data: {title: 'Notification Panel'} 
+},
+{   
   path: 'home',component: HomeComponent,canActivate: [AuthGuard],   
   data: {title: 'registration'}    
 },
@@ -148,6 +190,39 @@ const routes: Routes = [{
 {    
   path: 'no-internet',component: NoInternetComponent,   
   data: {title: 'no internet'}    
+},
+{    
+  path: 'create-password',component: CreatePasswordComponent,    
+  data: {title: 'create password'}    
+},
+{    
+  path: 'success',component: SuccessComponent,    
+  data: {title: 'success'}    
+},
+
+{    
+  path: 'forgot-password',component: ForgotPasswordComponent,    
+  data: {title: 'forgot password'}    
+},
+{    
+  path: 'reset-password/:token',component: ResetPasswordComponent,    
+  data: {title: 'reset password'}    
+},
+{    
+  path: 'upload-images',component: UploadImagesComponent,canActivate: [AuthGuard], 
+  data: {title: 'Upload Images'}    
+},
+{    
+  path: 'upload-video',component: UploadVideoComponent,canActivate: [AuthGuard],
+  data: {title: 'Upload Video'}    
+},
+{    
+  path: 'complete-profile',component: CompleteProfileComponent,canActivate: [AuthGuard],  
+  data: {title: 'complete profile'}    
+},
+{    
+  path: 'final-success',component: FinalSuccessComponent,canActivate: [AuthGuard],
+  data: {title: 'final success'}
 },
 {    
   path: 'support',component: SupportComponent,   

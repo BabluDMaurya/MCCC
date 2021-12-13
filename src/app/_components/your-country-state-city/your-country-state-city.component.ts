@@ -11,7 +11,7 @@ import countries from '../../_files/countries.json';
 export class YourCountryStateCityComponent implements OnInit {
 
   title = 'json-file-read-angular';
-  public countryList:{id:string,name:string, code:string}[] = countries;
+  public countryList:{id:number, name:string, code:string}[] = countries;
 
   @Input() parent: FormGroup | any;
   @Input() submit: any;
@@ -34,6 +34,7 @@ export class YourCountryStateCityComponent implements OnInit {
     return this.parent.controls;
   }
   changeSuitState(e:any) {
+    console.log("changeSuitState");
     if(e.target.value > 0){      
       this.registerService.states({country_id:e.target.value}).subscribe(res=>{
         this.response = res;

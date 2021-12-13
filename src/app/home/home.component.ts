@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../_service/authentication.service';
 import { BtsVideosService } from '../_service/bts-videos.service';
 import { DashboardService } from '../_service/dashboard.service';
+import {WorkshopService} from '../_service/workshop.service';
+
 import { Config } from '../_config/config';
 
 @Component({
@@ -32,12 +34,21 @@ export class HomeComponent implements OnInit {
   norecomended:boolean = false;
   loadingtrner:boolean = false;
   loadingnr:boolean = false;
-
+  popularBtsVideos: any;
+  loadData: any = false;
+  workshsopData: any;
+  eventForYouData: any;
+  onGoingData: any;
+  upcoming: any;
+  upcomingData: any;
+  hostUrl:string = Config.Host+'backend2/';
+  topBTSVideos: any;
   constructor(
     private authenticationService: AuthenticationService,
     private route: Router,
     private btsVideosService: BtsVideosService,
     private dashboardService : DashboardService,
+    private workshopService: WorkshopService,
     ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -55,6 +66,8 @@ export class HomeComponent implements OnInit {
   }
   //-----slick slider------------//    
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,autoplay: true,autoplaySpeed: 2000,};
+  btsSlideConfig = {"slidesToShow": 2.5, initialSlide: 0.5, "slidesToScroll": 2,"dots": false,"infinite": false};
+  topBtsSlideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,"infinite": false};
   trns_sliders = {"slidesToShow": 3, "slidesToScroll": 3,"dots": false,"infinite": false};
   two_sliders = {"slidesToShow": 2.5, "slidesToScroll": 2.5,"dots": false,"infinite": false};
   // addSlide() {
@@ -85,7 +98,29 @@ export class HomeComponent implements OnInit {
         this.loadingbts = true;
         this.categories = data.data;
     });
-
+    this.btsVideosService.get_bts_videos({'limit': 4,'category_id':1}).subscribe(
+      data => { 
+          this.popularBtsVideos = data.data;
+          this.loadData = true;
+      });
+      this.btsVideosService.get_bts_videos({'limit': 1,'category_id':2}).subscribe(
+        data => { 
+            this.topBTSVideos = data.data;
+            this.loadData = true;
+        });
+        this.workshopService.get_all_workshop_data({'limit': 5}).subscribe(
+          data => { 
+            this.workshsopData = data.data;
+            console.log(this.workshsopData , 'workshop');
+            
+            this.eventForYouData = this.workshsopData.event_for_u;
+            this.onGoingData = this.workshsopData.on_going;
+            this.upcoming = this.workshsopData.upcoming;
+            this.loading = true;
+            if(this.upcomingData == 'No Data'){
+              this.upcomingData = [];
+            }
+        });
   }
   
   isEven(n:number) {

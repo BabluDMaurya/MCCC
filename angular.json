@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "c314882c-9434-4b80-a04f-edd5e6e9d777"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -33,6 +36,7 @@
             "styles": [
               "src/assets/css/inc/bootstrap/bootstrap.min.css",
               "node_modules/slick-carousel/slick/slick.scss",
+              "node_modules/@videogular/ngx-videogular/fonts/videogular.css",
               "node_modules/slick-carousel/slick/slick-theme.scss",
               "node_modules/@videogular/ngx-videogular/fonts/videogular.css",
               "src/styles.scss",

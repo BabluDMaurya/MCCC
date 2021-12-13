@@ -62,7 +62,7 @@
                 font-weight: 600;
             }
             &::after {
-                content: url(../../img/img/downArrow.webp);
+                content: url('../../img/img/downArrow.webp');
                 pointer-events: none;
                 position: absolute;
                 top: 50%;

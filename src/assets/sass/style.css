@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @import url("inc/bootstrap/bootstrap.min.css");
-@import url("inc/splide/splide.min.css");
-/* @import url("inc/slick/slick.min.css");
-@import url("inc/slick/slick-theme.min.css"); */
+/* @import url("inc/splide/splide.min.css"); */
+/* @import url("inc/slick/slick.min.css"); */
+/* @import url("inc/slick/slick-theme.min.css"); */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
 select:focus-visible, input:focus-visible {
@@ -14,8 +14,8 @@ body {
   font-size: 15px;
   line-height: 1.55rem;
   letter-spacing: -0.015rem;
-  color: #4F5050;
-  background: #F9F9F9;
+    color: #4F5050;
+  background: #fff;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
@@ -29,6 +29,7 @@ select {
 
 input:focus, select:focus, textarea:focus {
   outline: none;
+  box-shadow: none!important;
 }
 
 ::-webkit-scrollbar {
@@ -83,6 +84,7 @@ button:hover, button:active, button:focus {
       -ms-flex-pack: center;
           justify-content: center;
   z-index: 9999;
+  box-shadow: 0px 0px 5px 2px #0002;
 }
 
 .heading.sticky .arrowLeft {
@@ -2125,7 +2127,7 @@ a.badge-dark {
 .image-listview > li .item {
   padding: 10px 16px;
   width: 100%;
-  min-height: 50px;
+  min-height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5201,7 +5203,7 @@ textarea,
 }
 
 .form-switch {
-  height: 30px;
+  height: 25px;
 }
 
 .form-switch .form-check-label {
@@ -10595,6 +10597,7 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
   width: 15px;
   height: 15px;
   line-height: 15px;
+  background: #fff;
   border-radius: 50%;
 }
 
@@ -10605,7 +10608,7 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
 }
 
 .wrrpperHomeSlider .sliderss .slick-dots li button:before {
-  font-size: 35px !important;
+  font-size: 7px!important;
   opacity: 0;
   width: 15px;
   height: 15px;
@@ -10795,6 +10798,12 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   font-size: 17px;
   color: #000;
   padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+.wrrpperRegisterForm .forms .formGroup label ion-icon{
+  font-size: 20px;
+  color: #ff6454;
 }
 
 .wrrpperRegisterForm .forms .formGroup .inputs input {
@@ -10838,9 +10847,9 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   content: url("../img/img/downArrow.webp");
   pointer-events: none;
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  top: 22px;
+  /* -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); */
   right: 25px;
 }
 
@@ -10866,9 +10875,9 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   content: url("../img/img/downArrow.webp");
   pointer-events: none;
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  top: 22px;
+  /* -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); */
   right: 20px;
 }
 
@@ -10891,9 +10900,9 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   content: url("../img/img/arrow_down.webp");
   pointer-events: none;
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  top: 22px;
+  /* -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); */
   right: 10px;
 }
 
@@ -10907,6 +10916,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+          padding: 0;
   padding-left: 8px;
   font-size: 16px;
   font-weight: 600;
@@ -11022,6 +11032,7 @@ body.dark-mode-active .wrrpperRegisterForm .forms .formGroup .mobileNumer .selec
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+          flex-wrap: wrap;
 }
 
 .passwords .forms .formGroup .otpInputs input {
@@ -11032,6 +11043,7 @@ body.dark-mode-active .wrrpperRegisterForm .forms .formGroup .mobileNumer .selec
   line-height: 40px;
   padding: 0 20px;
   font-size: 16px;
+  text-align: center;
 }
 
 .passwords .forms .formGroup .otpInputs input:focus-visible {
@@ -11068,6 +11080,10 @@ body.dark-mode-active .wrrpperRegisterForm .forms .formGroup .mobileNumer .selec
   display: none;
 }
 
+.passwords .forms .termConditions {
+  margin-bottom: 60px;
+}
+
 .passwords .forms .termConditions input[type="checkbox"] + label {
   display: block;
   position: relative;
@@ -11076,7 +11092,7 @@ body.dark-mode-active .wrrpperRegisterForm .forms .formGroup .mobileNumer .selec
   font-size: 15px;
   color: #000;
   cursor: pointer;
-  margin-bottom: 60px;
+  margin-bottom: 0;
   -webkit-user-select: none;
 }
 
@@ -11131,7 +11147,7 @@ body.dark-mode-active .wrrpperRegisterForm .forms .formGroup .mobileNumer .selec
 }
 
 .passwords .forms .termConditions .term_conditons .modal-dialog .modal-content .modal-header .modal-title {
-  margin-top: 50px;
+  margin-top: 40px;
   font-size: 17px;
   color: #000;
 }
@@ -11139,7 +11155,16 @@ body.dark-mode-active .wrrpperRegisterForm .forms .formGroup .mobileNumer .selec
 .passwords .forms .termConditions .term_conditons .modal-dialog .modal-content .modal-body {
   width: 85%;
   margin: 0 auto;
-  padding: 0;
+  padding-right: 10px;
+}
+
+.passwords .forms .termConditions .term_conditons .modal-dialog .modal-content .modal-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.passwords .forms .termConditions .term_conditons .modal-dialog .modal-content .modal-body::-webkit-scrollbar-thumb {
+  width: 4px;
+  background: #ff6454;
 }
 
 .passwords .forms .termConditions .term_conditons .modal-dialog .modal-content .modal-body .termConditionsData .text {
@@ -11270,7 +11295,42 @@ body.dark-mode-active .btnArea .btn_ctnt {
 }
 
 .profilePhoto .imgContent {
-  height: 80vh;
+  height: auto;
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+.profilePhoto .imgPrevw{
+  position: relative;
+  display: block;
+}
+.profilePhoto .imgPrevw .close_btn{
+  position: absolute;
+    top: -6px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 50%;
+    color: #ff6554;
+}
+.profilePhoto .imgPrevw .edit_btn{
+  position: absolute;
+  bottom: -6px;
+  right: -8px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff6554;
+}
+.profilePhoto .imgPrevw .edit_btn i{
+  font-size: 16px;
 }
 
 .profilePhoto .imgContent .ctnt span {
@@ -11578,6 +11638,7 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   width: 100%;
   margin: 0 auto;
   padding: 0 5%;
+  overflow-x:hidden;
 }
 
 .main .mainHeader {
@@ -11884,7 +11945,7 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 
 .main_wrppers {
   margin-bottom: 70px;
-  margin-top: 140px;
+  margin-top: 70px;
 }
 
 .main_wrppers .banner {
@@ -11976,6 +12037,9 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   border-radius: 25px;
 }
 
+.main_wrppers .casingCalls .boxs.workshop{
+  margin-bottom: 30px;
+}
 .main_wrppers .casingCalls .boxs .boxHead {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12169,7 +12233,7 @@ body.dark-mode-active .main_wrppers .casingCalls .casingCallHeader p, body.dark-
 }
 
 .casting .main_wrppers {
-  margin-top: 180px;
+  margin-top: 105px;
 }
 
 .casting #appCapsule {
@@ -12223,7 +12287,7 @@ body.dark-mode-active .workShop .mainHeader .bottomHeader .tabs .box:nth-child(2
 }
 
 .bts .main_wrppers {
-  margin-top: 120px;
+  margin-top: 50px!important;
 }
 
 .bts .mainHeader .bottomHeader .tabs .box:nth-child(1) .label {
@@ -12273,7 +12337,10 @@ body.dark-mode-active .bts .mainHeader .bottomHeader .tabs .box:nth-child(4) .la
 }
 
 .training .main_wrppers {
-  margin-top: 150px;
+  margin-top: 70px;
+}
+.main_wrppers.trainingWrapper{
+  margin-top: 0;
 }
 
 .training .mainHeader .bottomHeader .tabs .box:nth-child(1) .label {
@@ -12294,6 +12361,10 @@ body.dark-mode-active .bts .mainHeader .bottomHeader .tabs .box:nth-child(4) .la
 
 .training .trainingWrapper .trainngSlider .traning_slide {
   margin-right: 10px;
+}
+.training .trainingWrapper .trainngSlider .btsSlioder img{
+  width: 98%;
+  border-radius: 10px;
 }
 
 .training .trainingWrapper .trainngSlider .traning_slide img {
@@ -12408,14 +12479,51 @@ body.dark-mode-active .training .trainingWrapper .otherTrainingVid .videosWithCo
   font-size: 25px;
   color: #ff6454;
 }
+.input_text .modal-body form .basic .input-wrapper label{
+  font-size: 12px;
+  color: #ff6454;
+}
 
-.casting_inner .main_wrppers {
+.input_text .modal-body form .basic .input-wrapper input{
+  font-size: 17px;
+  padding: 0;
+  padding-bottom: 8px;
+  position: relative;
+  border: none;
+  width: 100%;
+  /* padding: 0 20px; */
+}
+.input_text .modal-body form .basic .input-wrapper::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  border-bottom: 2px solid #ff6454;
+}
+
+.input_text .modal-body button.next{
+  width: 100%;
+  border: none;
+  background: #ff6454;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 50px;
+  padding: 8px 0;
   margin-top: 70px;
+  display: block;
+}
+
+/* .input_text .modal-body form .basic .input-wrapper input{} */
+.casting_inner .main_wrppers {
+  margin-top: 0px;
   margin-bottom: 20px;
 }
 
 .casting_inner .main_wrppers .castingImg {
   position: relative;
+  min-height: 375px;
 }
 
 .casting_inner .main_wrppers .castingImg img {
@@ -12546,6 +12654,23 @@ body.dark-mode-active .casting_inner .castingContent .cating_details li .head i 
   padding-bottom: 20px;
 }
 
+.casting__profiles .castingProfile .profileDetailsWrpper .profileDiv .inputs input {
+  padding: 0!important;
+} 
+.casting__profiles .castingProfile .profileDetailsWrpper .profileDiv .inputs textarea{
+  width: 50%;
+  border: none;
+  border-bottom: 2px solid #ff6454;
+  background: transparent;
+  border-radius: 0;
+  line-height: 40px;
+  padding: 0 0px;
+  font-size: 16px;
+  resize: none;
+  height: 60px;
+  line-height: normal;
+}
+
 .casting__profiles .castingProfile .profileDetailsWrpper .profileDiv label {
   font-size: 12px;
   color: #ff6454;
@@ -12567,6 +12692,9 @@ body.dark-mode-active .casting_inner .castingContent .cating_details li .head i 
   border-bottom: 2px solid #ff6454;
 }
 
+.profile .profileWrpper .profiles input.innerDetail {
+  height: 45px;
+}
 .casting__profiles .castingProfile .profilePhotos {
   padding-top: 50px;
 }
@@ -12589,6 +12717,7 @@ body.dark-mode-active .casting_inner .castingContent .cating_details li .head i 
   border-radius: 5px;
   -o-object-fit: cover;
      object-fit: cover;
+     width: 100%;
 }
 
 .casting__profiles .castingProfile .profilePhotos .imgsArea p {
@@ -12662,18 +12791,26 @@ body.dark-mode-active .casting_inner .casting__profiles .castingProfile .profile
   color: #000;
   font-weight: 400;
 }
-
+deg
 .notifications .notification_area {
   padding-top: 1px;
 }
 
 .notifications .notification_area .notificationDiv {
-  max-width: calc(100% - 30px);
+  max-width: 100%;
   position: relative;
   padding-bottom: 30px;
   margin-top: 30px;
 }
 
+.notifications .notification_area .notificationDiv .notificationDivs{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.notifications .notification_area .notificationDiv .notificationDivs a{
+transform: rotate(270deg);
+}
 .notifications .notification_area .notificationDiv::after {
   position: absolute;
   left: 0;
@@ -12751,7 +12888,7 @@ body.dark-mode-active .thankyou_casting .imgContent .btn_ctnt {
 }
 
 .workshop_inner .main_wrppers .castingContent .cating_details li {
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 
 .workshop_inner .main_wrppers .castingContent .cating_details li .head {
@@ -12764,6 +12901,18 @@ body.dark-mode-active .thankyou_casting .imgContent .btn_ctnt {
 
 .workshop_inner .main_wrppers .castingContent .cating_details li label {
   line-height: normal;
+}
+.workshop_inner .main_wrppers .castingContent .training-btn a.next{
+  width: 100%;
+  border: none;
+  background: #ff6454;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 50px;
+  padding: 8px 0;
+  margin-bottom: 50px;
+  display: block;
 }
 
 .workshop_innerProfile .casting__profiles .workShopInner {
@@ -12779,6 +12928,10 @@ body.dark-mode-active .thankyou_casting .imgContent .btn_ctnt {
   height: 43px;
 }
 
+.workshop_innerProfile .profileDetailsWrpper .profileDiv .inputFile .upkoadPans {
+  opacity: 0;
+  height: 43px;
+}
 .workshop_innerProfile .profileDetailsWrpper .profileDiv .inputFile label {
   width: 100%;
   position: absolute;
@@ -12798,9 +12951,9 @@ body.dark-mode-active .thankyou_casting .imgContent .btn_ctnt {
 
 .workshop_innerProfile .profileDetailsWrpper .profileDiv .inputFile .fileUpIcon {
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  top: 22px;
+  /* -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); */
   right: 20px;
 }
 
@@ -12897,7 +13050,7 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
 }
 
 .casting_inner.bts_inner_inner .main_wrppers {
-  margin-top: 60px;
+  margin-top: 0px!important;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner {
@@ -12918,6 +13071,8 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .videosTopPart {
   min-height: 315px;
 }
+
+
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent p {
   font-size: 16px;
@@ -12945,6 +13100,16 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
   padding-bottom: 115px;
 }
 
+.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .shavIcon_training{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .shavIcon_training i{
+  font-size: 16px;
+  color: #ff6554;
+}
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext label {
   font-size: 16px;
   color: #000;
@@ -12957,22 +13122,22 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  align-items: stretch !important;
   padding-bottom: 20px;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vLeft {
   position: relative;
   width: 35%;
+
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vLeft img {
   width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
   border-radius: 5px;
+  height: 100%!important;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vLeft .play__ionc {
@@ -13007,7 +13172,7 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vright a {
   font-size: 12px;
-  color: #000;
+  color: #212185 !important;
   margin: 0;
   padding: 0;
   line-height: normal;
@@ -13314,6 +13479,12 @@ body.dark-mode-active .about p {
   opacity: 1;
 }
 
+.trainingWrapper .wrrpperNoInternet {
+  min-height: 419px;
+  width: 100%;
+  max-height: 400px;
+}
+
 .faq .accordion .accordion-item .accordion-header button.accordion-button {
   padding-bottom: 0;
   padding-top: 0;
@@ -13496,7 +13667,7 @@ body.dark-mode-active .gameWrpper .gameHeader .classinghead {
 
 .profile .profileWrpper .profiles .profileDiv label {
   font-size: 12px;
-  color: #ff6454;
+  color: #000;
 }
 
 .profile .profileWrpper .profiles .profileDiv p {
@@ -13597,12 +13768,32 @@ body.dark-mode-active .profile .profileWrpper .profiles .submit .btns.outline {
 .imges_wrpper .imgContent .imgPrevw .prvwImg {
   border-radius: 5px;
   overflow: hidden;
+  position: relative;
 }
 
 .imges_wrpper .imgContent .imgPrevw .prvwImg img {
   width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+.imges_wrpper .imgContent .imgPrevw .prvwImg .multi-field{
+  position: absolute;
+  top: -3px;
+  right: -3px;
 }
 
+.imges_wrpper .imgContent .imgPrevw .prvwImg .multi-field button{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #ff6554;
+}
 .imges_wrpper .imgContent .ctnt span {
   font-size: 12px;
   color: #000;
@@ -13694,4 +13885,52 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-/*# sourceMappingURL=style.css.map */
+.offcanvas-body .prof-nav ion-icon {
+  font-size: 22px;
+  margin-right: 10px;
+  color: #ff6454;
+}
+.offcanvas-body .prof-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 0;
+}
+.offcanvas-body .prof-nav a{
+  color: #000;
+}
+.casting_inner .main_wrppers .castingContent .catingHeader{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.casting_inner .main_wrppers .castingContent .catingHeader .shaveIcon i {
+  color: #ff6454;
+}
+.profile .profileWrpper .profiles .profileDiv .select::after, .profile .profileWrpper .profiles .profileDiv .dateBirth .select select{
+  top: 8px !important;
+  transform: initial !important;
+}
+.anatomy_wrpper .profileWrpper .profileDiv{
+  margin-bottom: 20px;
+}
+.anatomy_wrpper .profileWrpper .profileDiv label{
+  font-size: 12px;
+    color: #ff6454;
+    display: block;
+}
+.anatomy_wrpper .profileWrpper .profileDiv input{
+  font-size: 17px;
+    padding: 0;
+    padding-bottom: 8px;
+    position: relative;
+    border: none;
+    background: transparent;
+    border-bottom: 2px solid #ff6454;
+    width: 100%;
+    position: relative;
+    height: 45px;
+    border-radius: 0px;
+}
+
+    /*# sourceMappingURL=style.css.map */

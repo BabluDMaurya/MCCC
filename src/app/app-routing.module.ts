@@ -68,11 +68,7 @@ const routes: Routes = [{
 },
 {    
   path: 'signin',component: SigninComponent,    
-  data: {title: 'registration'}    
-},
-{    
-  path: 'home',component: HomeComponent,    
-  data: {title: 'registration'}    
+  data: {title: 'signin'}    
 },
 {    
   path: 'bts',component: BtsComponent,    
@@ -149,7 +145,7 @@ const routes: Routes = [{
 },
 {   
   path: 'home',component: HomeComponent,canActivate: [AuthGuard],   
-  data: {title: 'registration'}    
+  data: {storeRoute: false,title: 'home'}    
 },
 {    
   path: 'games',component: GamesComponent,canActivate: [AuthGuard],   
@@ -161,7 +157,7 @@ const routes: Routes = [{
 },
 {    
   path: 'my-applications',component: MyApplicationsComponent,canActivate: [AuthGuard],   
-  data: {title: 'my applications'}    
+  data: {storeRoute: true,title: 'my applications'}    
 },
 {    
   path: 'my-application-inner/:id',component: MyApplicationInnerComponent,canActivate: [AuthGuard],   
@@ -169,7 +165,7 @@ const routes: Routes = [{
 },
 {    
   path: 'bookmark',component: BookmarkComponent,canActivate: [AuthGuard],   
-  data: {title: 'bookmark'}    
+  data: {storeRoute: true,title: 'bookmark'}    
 },
 {    
   path: 'about',component: AboutComponent,canActivate: [AuthGuard],   

@@ -19,7 +19,11 @@ export class BookmarkComponent implements OnInit {
   eventbookmarkNoData :boolean = true;
   workshopbookmarkNoData :boolean = true;
   constructor(private dashboardService:DashboardService,
-    private route : Router,) { }
+    private route : Router,) {
+      this.dashboardService.listen().subscribe((e:any)=>{
+        this.ngOnInit();
+      });
+     }
 
   ngOnInit(): void {
     this.catId = 1;

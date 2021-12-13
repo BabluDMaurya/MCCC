@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@videogular/ngx-videogular": "^5.0.1",
+    "angularx-social-login": "^4.0.1",
     "ionicons": "^6.0.0",
     "jquery": "^3.6.0",
     "ng-connection-service": "^1.0.4",

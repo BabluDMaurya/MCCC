@@ -82,7 +82,7 @@
             <li>
                 <a [routerLink]="['/about']" class="item">
                     <div class="in">
-                        <div>About MCCC</div>
+                        <div>About Us</div>
                     </div>
                 </a>
             </li>
@@ -140,23 +140,28 @@
     <div class="offcanvas-body">
         
          <div class="prof-nav">
-             <img src="assets/img/img/avtar.webp">
+             <!-- <img src="assets/img/img/personal.webp"> -->
+             <ion-icon name="person-outline"></ion-icon>
              <a [routerLink]="['/personal']">Personal</a>
          </div>
          <div class="prof-nav">
-             <img src="assets/img/img/avtar.webp">
+             <!-- <img src="assets/img/img/anatomyImg.webp"> -->
+             <ion-icon name="person-add-outline"></ion-icon>
              <a [routerLink]="['/anatomy']">Anatomy</a>
-         </div>
-         <div class="prof-nav">
-             <img src="assets/img/img/avtar.webp">
+            </div>
+            <div class="prof-nav">
+                <!-- <img src="assets/img/img/image.webp"> -->
+                <ion-icon name="image-outline"></ion-icon>
              <a [routerLink]="['/images']">Images</a>
          </div>
          <div class="prof-nav">
-             <img src="assets/img/img/avtar.webp">
+             <!-- <img src="assets/img/img/video_righside_bar.webp"> -->
+             <ion-icon name="videocam-outline"></ion-icon>
              <a [routerLink]="['/video']">Videos</a>
          </div>
             <div class="prof-nav">
-             <img src="assets/img/img/avtar.webp">
+             <!-- <img src="assets/img/img/logout.webp"> -->
+             <ion-icon name="log-out-outline"></ion-icon>
              <a (click)="logout()">Logout</a>
          </div>
     </div>

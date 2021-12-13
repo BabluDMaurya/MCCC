@@ -294,7 +294,7 @@ function getCodeBoxElement(index) {
 
   $(document).ready(function(){
     $(".plus_icon_workWxperince").on('click',function () {
-      $(".work_experince").append(' <div class="formGroup addRemoveDivss workExperince"><label><img src="assets/img/img/work.webp" alt="">  Work Experince</label><div class="withIcon"><div class="inputs"><input type="text" placeholder="" class=""></div><div class="minus_iconWorkficatuons"><img src="assets/img/img/minus.webp" class="lightMode" alt=""></div><img src="assets/img/img/white_minus.webp" class="darkMode" alt=""></div></div></div>');
+      $(".work_experince").append(' <div class="formGroup addRemoveDivss workExperince"><label><img src="assets/img/img/work.webp" alt="">  Work Experince</label><div class="withIcon"><div class="inputs"><input type="text" placeholder="" class=""></div><div class="minus_iconWorkficatuons"><img src="assets/img/img/minus.webp" class="lightMode" alt=""></div></div></div></div>');
 
       $('.minus_iconWorkficatuons').on('click',function(){
         $(this).closest('.workExperince').remove();
@@ -351,3 +351,5 @@ function getCodeBoxElement(index) {
   //   // toggle the eye slash icon
   //   this.classList.toggle('fa-eye-slash');
   // });
+
+  $('body').hasClass('')

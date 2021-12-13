@@ -19,12 +19,14 @@
         <div class="main_wrppers">
             <div class="castingImg">
                 <img src="{{bgImage}}" alt="">
-                <div class="shaveIcon">
-                    <i class="far fa-bookmark"></i>
-                </div>
             </div>
             <div class="castingContent">
-                <p>{{workshopData.title}}</p>
+                <div class="catingHeader">
+                    <p>{{workshopData.title}}</p>
+                    <div class="shaveIcon">
+                        <i class="far fa-bookmark"></i>
+                    </div>
+                </div>
                 <ul class="cating_details">
                     <li>
                         <div class="head">
@@ -44,7 +46,7 @@
                   <!-- <h6 *ngIf="this.checkData.data == 'No Data' && prevDate ">Enroll now to confirm your seat</h6> -->
                 </div>
                 <div class="training-btn" *ngIf="this.checkData.data != 'No Data' && prevDate ">
-                    <a> ALREADY ENROLLED </a>
+                    <a class="next"> ALREADY ENROLLED </a>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
   <div class="forms">
     <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
       <div class="formGroup">
-        <label>Your Email Id*</label>
+        <label>Your Email Id or Phone*</label>
         <div class="inputs">
           <input type="text" formControlName="email_or_mobile" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f.email_or_mobile.errors }" maxlength="28" />

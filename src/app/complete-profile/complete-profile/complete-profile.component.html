@@ -3,7 +3,7 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="forms_input">        
             <div class="formGroup">
-                <label><img src="assets/img/img/height.webp" alt="">  Height <span>(e.g.5.8)</span></label>
+                <label><img src="assets/img/img/height.webp" alt="">  Height <span>(e.g.5.8)</span>*</label>
                 <div class="inputs">
                     <input type="tel" class="form-control" formControlName="height" maxlength="50" [ngClass]="{ 'is-invalid': submitted && f.height.errors }">
                     <div *ngIf="submitted && f.height.errors" class="invalid-feedback">
@@ -15,7 +15,7 @@
             <div class="addRemoveDivs work_experince">            
                 <div class="group">
                     <div class="formGroup addRemoveDivss workExperince" formArrayName="work_experiences" *ngFor="let item of form.get('work_experiences')['controls']; let i = index;">                   
-                        <label><img src="assets/img/img/work.webp" alt="">  Work Experince</label>
+                        <label><img src="assets/img/img/work.webp" alt="">  Work Experince*</label>
                         <div class="withIcon"  [formGroupName]="i">                        
                             <div  class="inputs">
                                 <input type="text" formControlName="experience" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.work_experiences.errors }">
@@ -35,7 +35,7 @@
             <div class="addRemoveDivs qaulifications">
                 <div class="group">
                     <div class="formGroup addRemoveDivss qaulificationss" formArrayName="qualifications" *ngFor="let item of form.get('qualifications')['controls']; let j = index;">
-                        <label><img src="assets/img/img/qualification.webp" alt=""> Qaulifications</label>
+                        <label><img src="assets/img/img/qualification.webp" alt=""> Qaulifications*</label>
                         <div class="withIcon" [formGroupName]="j">
                             <div class="inputs">
                                 <input type="text" formControlName="qualification" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.qualifications.errors }">
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="formGroup">
-                <label> <img src="assets/img/img/languages.webp" alt=""> Languages you know</label>
+                <label> <img src="assets/img/img/languages.webp" alt=""> Languages you know*</label>
                 <div class="select">
                     <select class="form-control"  formControlName="language_id" multiple [ngClass]="{ 'is-invalid': submitted && f.language_id.errors }">
                         <option *ngFor="let language of languages;" value="{{language.id}}">{{language.name}}</option>
@@ -66,7 +66,7 @@
             <div class="addRemoveDivs SocailLinks">
                 <div class="group">
                     <div class="formGroup addRemoveDivss SocailLinkss" formArrayName="social_links" *ngFor="let item of form.get('social_links')['controls']; let i = index;">
-                        <label><img src="assets/img/img/languages.webp" alt="">  Social links /  Video links</label>
+                        <label><img src="assets/img/img/social_link.webp" alt="">  Social links /  Video links*</label>
                         <div class="withIcon" [formGroupName]="i">
                             <div class="inputs">
                                 <input type="text" formControlName="social_link" maxlength="200"  [ngClass]="{ 'is-invalid': submitted && f.social_links.errors }">

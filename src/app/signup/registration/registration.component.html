@@ -30,7 +30,7 @@
             <app-date-of-birth [parent]="form" [submit]="submitted"></app-date-of-birth>
             <app-your-country-state-city [parent]="form" [submit]="submitted"></app-your-country-state-city>
             <div class="formGroup">
-                <label>Home Town* <img src="assets/img/img/i_icon.webp" alt=""></label>
+                <label>Home Town* <ion-icon name="information-circle-outline"></ion-icon></label>
                 <div class="inputs">
                     <input autocomplete="off" formControlName="home_town" type="text"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">
                     <div *ngIf="submitted && f.home_town.errors" class="invalid-feedback">
@@ -39,7 +39,7 @@
                       <div class="invalid-feedback error" style="display: block;" *ngIf="f.email.errors?.serverError">{{ f.home_town.errors?.serverError }}</div>
                 </div>
             </div>
-            <button type="submit" class="next">NEXT</button>
+            <button type="submit" class="next" style="display: inline-block;">NEXT</button>
         </form>
         <!-- <div>
             {{form.value | json}}

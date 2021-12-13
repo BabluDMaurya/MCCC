@@ -124,7 +124,7 @@ submit(){
     this.dashboardService.applyForCasting(this.form.value)     
         .subscribe(res => {
           this.resData = res;
-          this.route.navigate(['/thank-you-casting/'+this.resData.data.id]);
+          this.route.navigate(['/thank-you-casting/'+this.resData.data.application_id]);
         });
   }
 }

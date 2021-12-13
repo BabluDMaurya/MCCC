@@ -6,22 +6,46 @@
             <form [formGroup]="form" (ngSubmit)="submit()">
                 <div class="formGroup">
                     <div class="select">
-                        <select formControlName="options" class="form-control" [ngClass]="{ 'is-invalid': submit && f.options.errors }">
+                        <select formControlName="options" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.options.errors }">
                             <option value="">Select</option>
                             <option [value]="options" *ngFor="let options of optionsList">{{options}}</option>
                         </select>
-                        <div *ngIf="submit && f.options.errors" class="invalid-feedback">
-                            <div *ngIf="f.options.errors.required">Gender is required</div>               
+                        <div *ngIf="submitted && f.options.errors" class="invalid-feedback">
+                            <div *ngIf="f.options.errors.required">Option is required</div>               
                           </div>          
                     </div>
                 </div>
                 <div class="formGroup">
                     <label>Message</label>
                     <div class="inputs">
-                        <textarea name="" id=""></textarea>
+                        <textarea formControlName="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
+                        <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+                            <div *ngIf="f.message.errors.required">Message is required</div>               
+                          </div>
                     </div>
                 </div>
-                <a class="next">Send</a>
+                <button class="next">Send</button>
+                <button type="button" class="btn btn-secondary" #opendialog data-bs-toggle="modal" data-bs-target="#SupportSuccess" style="display: none;">Success</button>
+                <div class="modal fade dialogbox" id="SupportSuccess" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-icon text-success">
+                                <ion-icon name="checkmark-circle" role="img" class="md hydrated" aria-label="checkmark circle"></ion-icon>
+                            </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title">Success</h5>
+                            </div>
+                            <div class="modal-body">
+                                Thank you for getting in touch!
+                            </div>
+                            <div class="modal-footer">
+                                <div class="btn-inline">
+                                    <a href="#" class="btn" data-bs-dismiss="modal">CLOSE</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

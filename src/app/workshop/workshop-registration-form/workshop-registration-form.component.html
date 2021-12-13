@@ -108,7 +108,7 @@
                     <div class="profileDiv uploadPan">
                         <label>Pan Card<span>*</span></label>
                         <div class="inputFile">
-                            <input #fileInput type="file" accept="image/*" formControlName="pan_file" id="upkoadPan" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.pan_file.errors }">
+                            <input #fileInput type="file" accept="image/*" formControlName="pan_file" id="upkoadPan" class="upkoadPans" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.pan_file.errors }">
                             <div *ngIf="panfileChoosen" class="file-name">{{panfileName}}</div>
                             <label for="upkoadPan">Upload Pan</label>
                             <div class="fileUpIcon">

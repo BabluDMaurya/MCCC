@@ -9,8 +9,8 @@
     </div>
     <div class="signUpButtons">
         <a [routerLink]="['/registration']" class="signUp">SIGN UP</a>
-        <button class="signUpFacbook"> <i class="fab fa-facebook-f"></i> Login with Facebook</button>
-        <button class="signUpGoogle"> <img src="assets/img/img/googleIcon.webp" alt="">   Login with Google</button>
+        <button class="signUpFacbook" (click)="loginWithFacebook()"> <i class="fab fa-facebook-f"></i> Login with Facebook</button>
+        <button class="signUpGoogle" (click)="loginWithGoogle()"> <img src="assets/img/img/googleIcon.webp" alt="">   Login with Google</button>
     </div>
     <div class="signIn">
         <a [routerLink]="['/signin']">SIGN IN</a>

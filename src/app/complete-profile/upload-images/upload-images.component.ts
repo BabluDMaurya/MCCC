@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_service/authentication.service';
@@ -15,6 +15,8 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
   styleUrls: ['./upload-images.component.scss']
 })
 export class UploadImagesComponent implements OnInit {
+  @ViewChild('openbutton') openbutton :any;
+  @ViewChild('closebutton') closebutton :any;
   progress: number = 0;
   back_link :any =  "signin";
   component_title : string = 'Complete your Profile';
@@ -84,12 +86,13 @@ export class UploadImagesComponent implements OnInit {
     }
   } 
   openModal() {
-    this.display = 'block';
+    this.openbutton.nativeElement.click();
   }
 
   onCloseHandled() {
     this.imageChangedEvent = null;
     this.display = 'none';
+    this.closebutton.nativeElement.click();
   }
   fileChangeEvent(event: any): void {
     //Processing selected Images 

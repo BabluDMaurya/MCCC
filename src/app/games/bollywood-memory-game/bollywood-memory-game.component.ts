@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardData } from '../../card-data.model';
 import { RestartDialogComponent } from './restart-dialog/restart-dialog.component';
@@ -9,6 +9,7 @@ import { RestartDialogComponent } from './restart-dialog/restart-dialog.componen
   styleUrls: ['./bollywood-memory-game.component.scss']
 })
 export class BollywoodMemoryGameComponent implements OnInit {
+  @ViewChild('opendialog') opendialog:any;
   back_link = "games";
   cardImages = [
     'Mccclogo150w-02',
@@ -79,13 +80,14 @@ export class BollywoodMemoryGameComponent implements OnInit {
         this.matchedCount++;
 
         if (this.matchedCount === this.cardImages.length) {
-          const dialogRef = this.dialog.open(RestartDialogComponent, {
-            disableClose: true
-          });
+          this.opendialog.nativeElement.click();
+          // const dialogRef = this.dialog.open(RestartDialogComponent, {
+          //   disableClose: true
+          // });
 
-          dialogRef.afterClosed().subscribe(() => {
-            this.restart();
-          });
+          // dialogRef.afterClosed().subscribe(() => {
+          //   this.restart();
+          // });
         }
       }
 

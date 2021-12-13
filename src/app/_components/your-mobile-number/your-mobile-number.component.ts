@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import countries from '../../_files/countries.json';
+import mobile_code from '../../_files/mobile_code.json';
 
 @Component({
   selector: 'app-your-mobile-number',
@@ -8,7 +8,7 @@ import countries from '../../_files/countries.json';
   styleUrls: ['./your-mobile-number.component.scss']
 })
 export class YourMobileNumberComponent implements OnInit {
-  public codeList:{id:number, name:string,mobileCountryCode:string}[] = countries;
+  public codeList:{id:number, name:string,mobileCountryCode:string}[] = mobile_code;
   // public countryList:{id:number, name:string, code:string}[] = countries;
   @Input() parent: FormGroup | any;
   @Input() submit: any;

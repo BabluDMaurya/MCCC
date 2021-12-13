@@ -10,6 +10,10 @@ import { AlertService } from '../../_service/alert.service';
 import { DatePipe } from '@angular/common';
 
 import { first } from 'rxjs/operators';
+import { NotificationService } from 'src/app/_service/notification.service';
+import { base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import countries from '../../_files/countries.json';
 
 @Component({
   selector: 'app-personal',
@@ -17,6 +21,8 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
+  public countryList:{id:number,name:string, code:string}[] = countries;
+
   form: FormGroup | any;
   back_link :any =  "signin-signup";
   component_title : string = 'Fill Your Details';
@@ -55,6 +61,20 @@ export class PersonalComponent implements OnInit {
   monthList: any = ['1', '2', '3','4','5','6','7','8','9','10','11','12'];
   yearList: any = [];
   all_countries : any = [];
+  fileTypes = ['png','jpg','jpeg'];
+  imagenotload : boolean = false;
+  imgId = 0;
+  cropimages : any[] = [];
+  currentProcessingImg: any = 0;
+  imageChangedEvent: any = '';
+  display = 'none';
+  croppedImage: any = '';
+  showCropper = false;
+  finalImageList: any = [];
+
+
+
+
   genderList = ['Female', 'Male', 'Transgender', 'Genderqueer'];
   constructor(private location:Location,
     public datepipe: DatePipe,
@@ -62,7 +82,8 @@ export class PersonalComponent implements OnInit {
     private dashboardService: DashboardService,
     private authenticationService: AuthenticationService,
     private registerService: RegisterService,
-    private alertService: AlertService,) { }
+    private alertService: AlertService,
+    private notification: NotificationService) { }
 
   ngOnInit(): void {
     this.year(1971);
@@ -82,7 +103,8 @@ export class PersonalComponent implements OnInit {
       height:['',[Validators.required,Validators.pattern("^[0-9]+(.[0-9]{0,2})?$")]],
       day:['', [Validators.required]],     
       month:['', [Validators.required]],     
-      year:['', [Validators.required]],      
+      year:['', [Validators.required]],   
+      profilePicSource:[''] ,
      
     });
 
@@ -125,6 +147,12 @@ export class PersonalComponent implements OnInit {
       this.loading = true;
       let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
       this.form.controls['dob'].setValue(DOB); 
+      this.cropimages.forEach((imgObject: { imgBase64: any; }) => {
+        console.log(imgObject);
+        this.finalImageList.push(imgObject.imgBase64);
+        this.patchValues();
+        
+      }) 
       this.dashboardService.editUserDetail(this.form.value).pipe(first()).subscribe(res=>{
         this.loading = false;
         this.resData = res;
@@ -172,10 +200,9 @@ export class PersonalComponent implements OnInit {
           this.form.controls['name'].setValue(this.userdetail.name);
           this.form.controls['dob'].setValue(this.userdetail.dob);
           this.form.controls['height'].setValue(this.userdetail.height);
-          // this.form.controls['phone'].setValue(this.userdetail.phone);gender
           this.form.controls['gender'].setValue(this.userdetail.gender);
           this.form.controls['language_id'].setValue(this.userdetail.language_id);
-          this.form.controls['country'].setValue(101);
+          this.form.controls['country'].setValue(this.userdetail.country_id);
           this.form.controls['select_city'].setValue(this.userdetail.city_id);
           this.form.controls['state'].setValue(this.userdetail.state_id);
           this.form.controls['home_town'].setValue(this.userdetail.home_town);
@@ -251,6 +278,89 @@ export class PersonalComponent implements OnInit {
     });
 
         });
+  }
+
+  fileChangeEvent(event: any): void {
+    // this.modalService.dismissAll('save');
+    var extension = event.target.files[0].name.split('.').pop().toLowerCase();
+      var isSuccess = this.fileTypes.indexOf(extension) > -1;
+      if (isSuccess) { 
+      this.imagenotload = false;
+      // this.imageChangedEvent = event;
+      }else{
+        this.notification.showInfo('Select image (jpg,jpeg,png) only.','');
+      }
+    
+      for (var i = 0; i < event.target.files.length; i++) {
+        this.imageProcess(event, event.target.files[i]);
+      
+    }
+  }
+  imageProcess(event: any, file: any) {
+    //Setting images in our required format
+    this.cropimages = [];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (e) => {
+      this.imgId = this.imgId + 1;
+      // if(this.ulpoadedFiles.length < 3){
+        this.cropimages.push({ imgId: this.imgId, imgBase64: reader.result, imgFile: file });
+      // }
+    };
+    console.log(this.cropimages);
+  }
+  cropImage(imgId: any) {
+    console.log('dd');
+    this.currentProcessingImg = imgId;
+    console.log(imgId);
+    console.log(this.cropimages);
+    var imgObj = this.cropimages.find((x: { imgId: any; }) => x.imgId === imgId);
+    //created dummy event Object and set as imageChangedEvent so it will set cropper on this image 
+    var event = {
+      target: {
+        files: [imgObj.imgFile]
+      }
+    };
+    this.imageChangedEvent = event;
+    this.openModal();
+  }
+  SaveCropedImage() {
+    var imgObj = this.cropimages.find((x: { imgId: any; }) => x.imgId === this.currentProcessingImg);
+    imgObj.imgBase64 = this.croppedImage;
+    // this.finalImageList.push(imgObj.imgBase64);
+    // this.patchValues();
+    this.onCloseHandled();
+  }
+  patchValues(){
+    // this.form.controls['newfileSource'].setValue(this.finalImageList);
+    this.form.patchValue({
+       profilePicSource: this.finalImageList,
+    });
+  }
+  openModal() {
+    this.display = 'block';
+  }
+  cropperReady() {
+    // cropper ready
+  }
+  loadImageFailed() {
+    this.imagenotload = true;
+    this.notification.showInfo('Load failed.','');
+      console.log('Load failed');
+  }
+  imageLoaded() {
+    this.imagenotload = false;
+      this.showCropper = true;
+      console.log('Image loaded');    
+  }
+  onCloseHandled() {
+    this.imageChangedEvent = null;
+    this.display = 'none';
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;    
+    // this.cropedfile = base64ToFile(this.croppedImage);   
+    
   }
   changeSuitState(e:any) {
     if(e.target.value > 0){      

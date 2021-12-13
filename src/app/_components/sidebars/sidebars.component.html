@@ -4,7 +4,8 @@
         <!-- profile box -->
         <div class="profileBox">
             <div class="image-wrapper">
-                <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
+                <img *ngIf="this.data.profile_pic == '' || this.data.profile_pic == 'Null' " src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
+                <img *ngIf="this.data.profile_pic != '' " src="{{baseUrl}}{{this.data.profile_pic_path}}{{this.data.profile_pic}}" alt="image" class="imaged rounded">
             </div>
             <div class="in">
                 <strong>Hello {{currentUser.userDetails.name}} <!DOCTYPE html></strong>
@@ -24,21 +25,21 @@
                 </a>
             </li>
             <li>
-                <a href="app-components.html" class="item">
+                <a [routerLink]="['/notification']"  class="item">
                     <div class="in">
                         Notifications
                     </div>
                 </a>
             </li>
             <li>
-                <a href="app-pages.html" class="item">
+                <a [routerLink]="['/workshop/2']" class="item">
                     <div class="in">
                         <div>Upcoming Workshop</div>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="page-chat.html" class="item">
+                <a [routerLink]="['/training']" class="item">
                     <div class="in">
                         <div>Training Sessions</div>
                     </div>
@@ -52,14 +53,14 @@
                 </a>
             </li>
             <li>
-                <a href="page-chat.html" class="item">
+                <a [routerLink]="['/bts']" class="item">
                     <div class="in">
                         <div>BTS</div>
                     </div>
                 </a>
             </li>
             <li>
-                <a href="page-chat.html" class="item">
+                <a [routerLink]="['/bts-inner/5']" class="item">
                     <div class="in">
                         <div>Celeb Videos</div>
                     </div>

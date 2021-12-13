@@ -1,9 +1,9 @@
 <div class="boxs workshop">
     <div class="boxHead">
      <h5><a (click)="workshopInner(data.id)">{{data.title | titlecase}} </a></h5>
-     <div class="shaveIcon">
-         <i class="far fa-bookmark"></i>
-     </div>
+     <div class="shaveIcon" (click)="bookmarkCasting(data.id,data?.bookmark_status)">
+        <i [ngClass]="data.bookmark_status == 1 ? 'fas fa-bookmark removecard' : 'far fa-bookmark'"></i>
+    </div> 
     </div>
     <p [innerHtml]="doHtmlDisplay(data.description)"> </p><span (click)="workshopInner(data.id)">View More</span>
      <ul class="userDetails">

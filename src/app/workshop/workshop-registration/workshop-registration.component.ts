@@ -5,7 +5,8 @@ import {WorkshopService} from '../../_service/workshop.service';
 import { Location,formatDate,DatePipe} from '@angular/common';
 import { DashboardService } from 'src/app/_service/dashboard.service';
 import { NotificationService } from 'src/app/_service/notification.service';
-
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-workshop-registration',
   templateUrl: './workshop-registration.component.html',
@@ -25,6 +26,8 @@ export class WorkshopRegistrationComponent implements OnInit {
   prevDate: boolean = true;
   eventDate: any;
   dataLoad: boolean = false;
+  toastSuccess:string = 'toast-15';
+  toastDanger:string = 'toast-16';
   constructor(private notifyService : NotificationService,private location: Location,private workshopService: WorkshopService,
     private route:Router,private actRoute:ActivatedRoute,public datepipe: DatePipe,private dashboardService : DashboardService) { }
 
@@ -62,6 +65,32 @@ export class WorkshopRegistrationComponent implements OnInit {
         this.checkData = data;
     });
   }
+  bookmarkCasting(id:any,status?:any){
+    this.dashboardService.bookmarkWorkshopEvents({event_id:id,type:'workshop'})
+      .subscribe(res => {
+        this.resData = res; 
+        if(this.resData.data[0] == 'Bookmark Added'){
+          this.workshopData.bookmark_status = 1;
+          console.log('toast added',this.toastSuccess);
+          new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
+        }
+        if(this.resData.data[0] == 'Bookmark removed'){
+          this.workshopData.bookmark_status = 0;
+          new toastbox(this.toastDanger, 2000);
+            setTimeout(() => {
+              $('#'+this.toastDanger).removeClass('show');
+          }, 2000);
+        }
+        // if(status == 1){
+        //   $('#card-'+id).remove();
+        // }
+        // this.showToasterSuccess();      
+      });
+  }
+
   back(): void {
     this.location.back()
   }  

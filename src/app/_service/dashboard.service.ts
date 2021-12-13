@@ -102,4 +102,7 @@ export class DashboardService {
     getUserBookmarkWorkshop(data:any){
       return this.http.post<any>(`${Config.BasePath}/get_user_bookmark_workshop`,data);
     }
+    getUserBookmarkBTS(data:any){
+      return this.http.post<any>(`${Config.BasePath}/get_user_bookmark_bts`,data);
+    }
 }

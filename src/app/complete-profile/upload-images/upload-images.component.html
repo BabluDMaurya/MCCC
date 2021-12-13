@@ -34,13 +34,11 @@
     </div>
     <div class="backdrop" [ngStyle]="{'display':display}"></div>
                   
-    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+    <!-- <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Image Cropper</h4>
-            <!-- <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button> -->
-          </div>
+            <h4 class="modal-title">Image Cropper</h4></div>
           <div class="modal-body">
             <image-cropper [imageChangedEvent]="imageChangedEvent"
                            [maintainAspectRatio]="true"
@@ -50,7 +48,8 @@
                            (imageCropped)="imageCropped($event)"
                            (imageLoaded)="imageLoaded()"
                            (cropperReady)="cropperReady()"
-                           (loadImageFailed)="loadImageFailed()" style="max-height:500px"></image-cropper>
+                           (loadImageFailed)="loadImageFailed()" style="max-height:500px">
+                          </image-cropper>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" (click)="SaveCropedImage()">Save</button>
@@ -58,6 +57,33 @@
           </div>
         </div>
       </div>
-    </div> 
-</form>
+    </div>  -->
+    <button data-bs-toggle="modal" data-bs-target="#ModalForm" #openbutton style="display: none;"> OpenModel</button>
+    <div class="modal fade modalbox input_text" id="ModalForm" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Image Cropper</h5>
+                  <a #closebutton data-bs-dismiss="modal">X</a>
+              </div>
+              <div class="modal-body">
+                <image-cropper [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="4 / 3"
+                [resizeToWidth]="500"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()"
+                (loadImageFailed)="loadImageFailed()" style="max-height:500px">
+               </image-cropper>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="SaveCropedImage()">Save</button>
+                <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  </form>
 </div>

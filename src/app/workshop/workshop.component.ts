@@ -59,35 +59,7 @@ export class WorkshopComponent implements OnInit {
         }
         console.log(this.upcomingData);
     });
-    this.workshopService.get_upcoming_workshop_data({'limit': ''}).subscribe(
-      data => { 
-        this.upcomingData = data.data;
-        this.loading = true;
-        if(this.upcomingData == 'No Data'){
-          this.upcomingData = [];
-        }
-        console.log(this.upcomingData);
-    });
-
-    this.workshopService.get_endingsoon_workshop_data({'limit': ''}).subscribe(
-      data => { 
-        this.loading = true;
-        this.endingsoonData = data.data;
-        if(this.endingsoonData == 'No Data'){
-          this.endingsoonData = [];
-        }
-        console.log(this.endingsoonData);
-    });
-  
-  this.workshopService.get_previous_workshop_data({'limit': ''}).subscribe(
-      data => { 
-        this.loading = true;
-        this.previosData = data.data;
-        if(this.previosData == 'No Data'){
-          this.previosData = [];
-        }
-        console.log(this.previosData);
-  });
+   
   }
   tab(data:any){
     this.catId = data;

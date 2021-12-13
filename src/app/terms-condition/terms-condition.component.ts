@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
+import {RegisterService} from '../_service/register.service'
 
 @Component({
   selector: 'app-terms-condition',
@@ -8,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class TermsConditionComponent implements OnInit {
   back_link :any =  "home";
   component_title : string = 'Terms & Conditions';
-  constructor() { }
+  all_terms: any;
+  terms: any;
+  constructor(private registerService: RegisterService) { }
 
   ngOnInit(): void {
+    this.registerService.terms().pipe(first()).subscribe(
+      data => {
+        this.all_terms = data;
+        this.terms = this.all_terms.firstFourTerms;  
+        // if(this.all_terms.length > 4){
+          // this.showViewMore = true;
+        // }      
+      },error => {
+        // this.alertService.error(error);
+          // this.loading = false;
+      });
   }
 
 }

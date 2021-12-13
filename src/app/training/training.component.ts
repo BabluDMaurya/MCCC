@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TrainingComponent implements OnInit {
   stickymenu = 'training';
+  expanded = 0;
   pageName = 'training';
   loading: boolean= false;
   resData: any;

@@ -22,7 +22,21 @@
                     <p class="classinghead primary__color">{{title}}</p>
                 </div>
                 <div class="videosWithContnt" *ngFor="let vid of trainingVideo">
-                    <p>{{vid.description}}</p>
+                    <div  *ngIf="vid.description.length > 50 && expanded !=  trainingVideo[0].id" >
+                        <p [innerHTML]="vid.description.substr(0, 50) + '...' | titlecase"></p>
+                            <span (click)="expanded = trainingVideo[0].id"
+                            class="text-green"><b>{{expanded==  trainingVideo[0].id ?'View less':'View more'}}</b>
+                            </span>
+                        </div>
+                    <div  *ngIf="expanded ==  trainingVideo[0].id ">
+                        <p [innerHTML]="vid.description | titlecase"></p>
+                        <span (click)="expanded = 0"
+                        class="text-green"><b>{{expanded ==  trainingVideo[0].id ?'View less':'View more'}}</b>
+                        </span>
+                    </div>
+                    <div  *ngIf="vid.description.length < 50 " >
+                        <p [innerHTML]="vid.description | titlecase"></p>
+                        </div>
                     <div class="imgPlayIcon" [routerLink]="['/training-video-view/',vid.id,vid.category_id]">
                         <img src="{{vid.youtube_thumbnail}}" alt="">
                         <div class="btsPlay_icon">

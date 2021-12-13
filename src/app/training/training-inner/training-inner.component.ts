@@ -6,6 +6,9 @@ import { TrainingService } from '../../_service/training.service';
 import { Config } from '../../_config/config';
 
 import { Location } from '@angular/common';
+import { DashboardService } from 'src/app/_service/dashboard.service';
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-training-inner',
   templateUrl: './training-inner.component.html',
@@ -22,10 +25,14 @@ export class TrainingInnerComponent implements OnInit {
   desc: any;
   expanded = 0;
   length: any;
+  resData: any;
+  toastSuccess:string = 'toast-15';
+  toastDanger:string = 'toast-16';
   hostUrl:string = Config.Host+'backend2/';
   constructor(private actRoute:ActivatedRoute,
     private trainingService: TrainingService,
-    private location:Location,) {
+    private location:Location,
+    private dashboardService:DashboardService) {
     this.actRoute.paramMap.subscribe((params: ParamMap) => {  
       this.ngOnInit();
     });
@@ -63,5 +70,26 @@ export class TrainingInnerComponent implements OnInit {
 
   back(){
     this.location.back()
+  }
+  bookmarkBTS(id:any,status?:any){
+    this.dashboardService.bookmarkWorkshopEvents({event_id:id,type:'event'})
+      .subscribe(res => {
+        this.resData = res; 
+        if(this.resData.data[0] == 'Bookmark Added'){
+          this.trainingVideo[0].bookmark_status = 1;
+          console.log('toast added',this.toastSuccess);
+          new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
+        }
+        if(this.resData.data[0] == 'Bookmark removed'){
+          this.trainingVideo[0].bookmark_status = 0;
+          new toastbox(this.toastDanger, 2000);
+            setTimeout(() => {
+              $('#'+this.toastDanger).removeClass('show');
+          }, 2000);
+        }     
+      });
   }
 }

@@ -2,98 +2,21 @@
     <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
     <div class=" main_wrppers faq term__Conditions">
         <div class="faqWrapper">
-            <div class="accordion" id="accordionExample1">
-                <div class="accordion-item">
+            <div class="accordion" *ngFor="let term of all_terms.allTerms; let i=index;" [id]="'accordionExample'+i">
+                <div class="accordion-item" >
                     <h2 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#accordion1">
-                            Introduction and Acceptance
+                            [attr.data-bs-target]="'#accordion'+i">
+                            {{term.title}}
                         </button>
                     </h2>
-                    <div id="accordion1" class="accordion-collapse collapse show" data-bs-parent="#accordionExample1">
+                    <div [id]="'accordion'+i" class="accordion-collapse collapse show" [attr.data-bs-parent]="'#accordionExample'+i">
                         <div class="accordion-body">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras auctor, sapien sit amet egestas pharetra, tortor lorem dignissim metus, id efficitur augue nulla nec velit. Sed sem magna, iaculis vel eros a, pharetra vulputate risus. Nunc a gravida purus, a eleifend libero. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus nisl leo, placerat ut posuere eget, ullamcorper ut diam. Sed erat urna, ornare at enim sit amet, pretium suscipit felis.
+                            {{term.description}}
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#accordion2">
-                            What CSS framework this theme use?
-                        </button>
-                    </h2>
-                    <div id="accordion2" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
-                        <div class="accordion-body">
-                            We are using Bootstrap 5.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#accordion3">
-                            What can i do with this template?
-                        </button>
-                    </h2>
-                    <div id="accordion3" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
-                        <div class="accordion-body">
-                            You can make mobile websites or progressive web apps for mobile devices.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#accordion4">
-                            Is this WordPress theme?
-                        </button>
-                    </h2>
-                    <div id="accordion4" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
-                        <div class="accordion-body">
-                            No. It is a html template. Mobilekit build with HTML, CSS, Javascript and some love.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#accordion5">
-                            Is this WordPress theme?
-                        </button>
-                    </h2>
-                    <div id="accordion5" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
-                        <div class="accordion-body">
-                            No. It is a html template. Mobilekit build with HTML, CSS, Javascript and some love.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#accordion6">
-                            Is this WordPress theme?
-                        </button>
-                    </h2>
-                    <div id="accordion6" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
-                        <div class="accordion-body">
-                            No. It is a html template. Mobilekit build with HTML, CSS, Javascript and some love.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#accordion7">
-                            Is this WordPress theme?
-                        </button>
-                    </h2>
-                    <div id="accordion7" class="accordion-collapse collapse" data-bs-parent="#accordionExample1">
-                        <div class="accordion-body">
-                            No. It is a html template. Mobilekit build with HTML, CSS, Javascript and some love.
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

@@ -147,7 +147,7 @@ export class HomeComponent implements OnInit {
     });
 }
  newCastingCallApi(){
-  this.dashboardService.castingCall({limit:5})
+  this.dashboardService.castingCall({limit:1})
     .subscribe(res => {
       
       this.resData = res;        

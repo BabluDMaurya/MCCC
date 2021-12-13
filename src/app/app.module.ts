@@ -1,14 +1,13 @@
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConnectionServiceModule } from 'ng-connection-service';
-
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DatePipe } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from './_service/custom_reuse_strategy';
 import { MatDialogModule } from '@angular/material/dialog';
 import {VgCoreModule} from '@videogular/ngx-videogular/core';
 import {VgControlsModule} from '@videogular/ngx-videogular/controls';
@@ -184,6 +183,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   providers: [
     DatePipe,
+    {
+      provide: RouteReuseStrategy,
+      useClass: CustomReuseStrategy
+      },
     {
       
       provide: 'SocialAuthServiceConfig',

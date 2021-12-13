@@ -153,7 +153,7 @@ const routes: Routes = [{
 },
 {    
   path: 'games',component: GamesComponent,canActivate: [AuthGuard],   
-  data: {title: 'games'}    
+  data: {storeRoute: true,title: 'games'}    
 },
 {    
   path: 'bollywood-memory-game',component: BollywoodMemoryGameComponent,canActivate: [AuthGuard],   
@@ -173,19 +173,19 @@ const routes: Routes = [{
 },
 {    
   path: 'about',component: AboutComponent,canActivate: [AuthGuard],   
-  data: {title: 'about'}    
+  data: {storeRoute: true,title: 'about'}    
 },
 {    
   path: 'faq',component: FaqComponent,canActivate: [AuthGuard],   
-  data: {title: 'faq'}    
+  data: {storeRoute: true,title: 'faq'}    
 },
 {    
   path: 'help',component: HelpComponent,canActivate: [AuthGuard],   
-  data: {title: 'help'}    
+  data: {storeRoute: true,title: 'help'}    
 },
 {    
   path: 'terms-condition',component: TermsConditionComponent,canActivate: [AuthGuard],   
-  data: {title: 'terms and condition'}    
+  data: {storeRoute: true,title: 'terms and condition'}    
 },
 {    
   path: 'no-internet',component: NoInternetComponent,   

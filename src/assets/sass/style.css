@@ -14237,6 +14237,9 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
 .profile.personal_profile .profileWrpper .profiles .profileDiv .select::after{
   top:12px!important;
 }
+i.far.fa-bookmark, i.fas.fa-bookmark.removecard{
+  color: #ff6554!important;
+}
 
 @keyframes loader {
   from {

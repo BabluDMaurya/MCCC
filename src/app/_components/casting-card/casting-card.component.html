@@ -13,6 +13,6 @@
          <li><i class="far fa-user" aria-hidden="true"></i>{{data.role}}</li>
      </ul>
      <div class="labelBtns">
-         <label *ngFor="let tag of data.tags;">{{tag}}</label>
+        <div class="slide" *ngFor="let tag of data.tags;"> <label>{{tag}}</label></div>
      </div>
  </div>

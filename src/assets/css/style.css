@@ -11,12 +11,15 @@ body {
   line-height: 1.55rem;
   letter-spacing: -0.015rem;
   color: #4F5050;
-  background: #F9F9F9;
+  background: #fff;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body.dark-mode-active{
+  background: #000!important;
 }
 
 ::-webkit-scrollbar {

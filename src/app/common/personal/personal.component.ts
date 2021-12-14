@@ -14,7 +14,8 @@ import { NotificationService } from 'src/app/_service/notification.service';
 import { base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import countries from '../../_files/countries.json';
-
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-personal',
   templateUrl: './personal.component.html',
@@ -71,6 +72,7 @@ export class PersonalComponent implements OnInit {
   croppedImage: any = '';
   showCropper = false;
   finalImageList: any = [];
+  toastSuccess:string = 'toast-18';
 
 
 
@@ -164,6 +166,10 @@ export class PersonalComponent implements OnInit {
           this.age = this.resData.data.age; 
         this.userdetail = this.resData.data;
         let message = this.resData.message;
+        new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000); 
         // this.notification.showSuccess(message,'');
           sessionStorage.setItem('name',this.form.value.name);
           this.authenticationService.currentUserValue.userDetails.name = this.form.value.name;

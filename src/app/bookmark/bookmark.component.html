@@ -31,14 +31,21 @@
             <!-- App Capsule -->
         <div id="appCapsule" class="extra-header-active">
             <div class="tab-content mt-1">
-                <!-- casting tab -->
+                <!-- casting tab -->                
                 <div class="tab-pane fade show active" id="casting" role="tabpanel">
+                    <!-- box-skeleton -->
+                    <div *ngIf="!bookmarkNoData && !loading">
+                        <div class="header_skelton"></div>
+                        <div class="box_skeleton"></div>
+                        <div class="box_skeleton"></div>
+                        <div class="box_skeleton"></div>
+                    </div>
                     <div class="section full mt-1">
                         <div class="casingCalls">
                             <app-bookmark-casting-card *ngFor="let c of castings; let idx=index" [data]="c"></app-bookmark-casting-card>
                         </div>
                     </div>
-                    <app-not-found-data *ngIf="bookmarkNoData"></app-not-found-data>
+                    <app-not-found-data *ngIf="bookmarkNoData && loading"></app-not-found-data>
                 </div>
                 
                 <!-- * casting tab -->
@@ -58,7 +65,7 @@
                 <!-- bts tab -->
                 <div class="tab-pane fade" id="bts" role="tabpanel">
                     <div class="section full mt-1">
-                        <div class="bts__inner">
+                        <div class="bts__inner" *ngIf="!btsBookmarkNoData">
                             <div class="moviesArea" *ngFor="let data of btsBookmarkData; let idx=index">
                                 <div class="moviess"  [routerLink]="['/bts-video-view/',data.id,data.category_id]" >
                                     <img *ngIf="data.youtube_thumbnail == null " src="{{hostUrl}}{{data.thumbnail_path}}{{data.thumbnail}}">
@@ -90,6 +97,9 @@
 
                             </div>
                         </div>
+                        <div class="bts__inner" *ngIf="btsBookmarkNoData">
+                            <app-not-found-data ></app-not-found-data>
+                        </div>
                     </div>
 
                 </div>
@@ -97,7 +107,7 @@
                  <!-- training tab -->
                  <div class="tab-pane fade" id="training" role="tabpanel">
                     <div class="section full mt-1">
-                        <div class="bts__inner">
+                        <div class="bts__inner" *ngIf="!eventbookmarkNoData">
                             
                             <div class="moviesArea" *ngFor="let eventData of eventBookmarkData; let idx=index">
                                 <div class="moviess"  [routerLink]="['/training-video-view/',eventData.id,eventData.category_id]" >
@@ -126,6 +136,9 @@
                                     <p [innerHTML]="eventData.description"></p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="bts__inner" *ngIf="eventbookmarkNoData">
+                            <app-not-found-data ></app-not-found-data>
                         </div>
                     </div>
 

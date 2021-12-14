@@ -2,6 +2,13 @@
 <div class="main casting_inner my_application">
     <app-sub-header [back]="back_link"></app-sub-header>
     <div class="main_wrppers bts_inners">
+        <!-- box-skeleton -->
+        <div *ngIf="noData && !loading">
+            <div class="header_skelton"></div>
+            <div class="box_skeleton"></div>
+            <div class="box_skeleton"></div>
+            <div class="box_skeleton"></div>
+        </div>
         <div class="bts__inner" *ngIf="noData && loading">
             <div class="head">
                 <label>My Application</label>

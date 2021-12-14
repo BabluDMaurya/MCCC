@@ -10,6 +10,8 @@ import { Config } from 'src/app/_config/config';
 import { base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from 'src/app/_service/notification.service';
+declare var toastbox: any;
+declare var $: any;
 
 @Component({
   selector: 'app-images',
@@ -53,6 +55,8 @@ export class ImagesComponent implements OnInit {
     closeResult:any;
     saveCropImage : boolean = false;
   totalupimg: any;
+  toastSuccess:string = 'toast-18';
+
   constructor(  private notification : NotificationService,private modalService: NgbModal,private alertService:AlertService,private formBuilder: FormBuilder,private location:Location,private route:Router,
     private authenticationService: AuthenticationService,private commonService:CommonService) {
       this.currentUser = this.authenticationService.currentUserValue;
@@ -63,12 +67,16 @@ export class ImagesComponent implements OnInit {
         oldfileSource : [''],
         newfileSource : [''], 
       });
+      this.cropimages = [];
       this.loading = false;
       this.commonService.myImages().subscribe(res => {
         this.loading = true;
         this.resData = res;   
         this.datas = this.resData.data;
         this.imgArray =  this.datas;
+        if(this.imgArray == 'No Record Found'){
+          this.imgArray = [];
+        }
         console.log(this.imgArray);
       },error=>{
         this.loading = false;
@@ -83,10 +91,8 @@ export class ImagesComponent implements OnInit {
             this.imgArray.splice(index,1);
             this.commonService.deleteImages({image_id : value.id}).subscribe(
               data => {                   
-                this.notification.showSuccess('Image removed Successfully.','');
               },
               error => {              
-                this.notification.showError(error.error.message,true);
                 });
           }
           this.patchOldImageValues();
@@ -102,6 +108,7 @@ export class ImagesComponent implements OnInit {
         let totalimg = this.imgArray.length+this.cropimages.length;
          
         if(totalimg > 0 ){    
+          console.log(this.cropimages);
           this.cropimages.forEach((imgObject: { imgBase64: any; }) => {
             console.log(imgObject);
             this.finalImageList.push(imgObject.imgBase64);
@@ -116,7 +123,12 @@ export class ImagesComponent implements OnInit {
             this.loading = true;
             this.uploading = false;     
             this.active=0;   
-            this.notification.showSuccess('Image saved Successfully.','');
+            // this.notification.showSuccess('Image saved Successfully.','');
+            new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
+          this.ngOnInit();
           },
           error => {
             this.loading = true;
@@ -156,15 +168,12 @@ export class ImagesComponent implements OnInit {
       this.imageChangedEvent = null; //reset the image changes event
       this.cropedfile = null; // reset the croped file
     }
-    removeSelectedImages(url:any){    
-      this.cropimages = this.cropimages.filter(img => (img != url));
-      this.patchValues();
+    removeSelectedImages(url:any){   
+      console.log(url); 
+      this.cropimages.splice(url, 1);
+      // this.patchValues();
     }
-    removeSelectedImage(url:any){    
-      this.savedimages = this.savedimages.filter(img => (img != url));
-      this.cropimages = this.savedimages;
-      this.patchValues();
-    }
+    
     open(content:any) {
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
@@ -184,21 +193,23 @@ export class ImagesComponent implements OnInit {
  //--------image crop--------------//
  fileChangeEvent(event: any): void {
   this.modalService.dismissAll('save');
-  var extension = event.target.files[0].name.split('.').pop().toLowerCase();
-    var isSuccess = this.fileTypes.indexOf(extension) > -1;
-    if (isSuccess) { 
-    this.imagenotload = false;
-    // this.imageChangedEvent = event;
-    }else{
-      this.notification.showInfo('Select image (jpg,jpeg,png) only.','');
-    }
+  
     this.totalupimg = this.imgArray.length+this.cropimages.length;
-    var cnt = 3 - this.imgArray.length;
+    var cnt = 3 - (this.imgArray.length + this.cropimages.length);
     console.log(this.imgArray.length);
     console.log(this.cropimages.length);
+    console.log(cnt);
     for (var i = 0; i < event.target.files.length; i++) {
       if(i < cnt){
-      this.imageProcess(event, event.target.files[i]);
+        var extension = event.target.files[i].name.split('.').pop().toLowerCase();
+        var isSuccess = this.fileTypes.indexOf(extension) > -1;
+        if (isSuccess) { 
+            this.imageProcess(event, event.target.files[i]);
+            this.imagenotload = false;
+        }else{
+            this.notification.showInfo('Select image (jpg,jpeg,png) only.','');
+        }
+      
     }
   }
 }

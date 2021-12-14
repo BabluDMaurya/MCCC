@@ -2,6 +2,25 @@
     <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
     <div class=" main_wrppers faq term__Conditions">
         <div class="faqWrapper">
+            <div *ngIf="!loading">
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>   
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>         
+            </div>
             <div class="accordion" *ngFor="let term of all_terms.allTerms; let i=index;" [id]="'accordionExample'+i">
                 <div class="accordion-item" >
                     <h2 class="accordion-header">

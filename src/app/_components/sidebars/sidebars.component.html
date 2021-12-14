@@ -48,7 +48,7 @@
             <li>
                 <a [routerLink]="['/bookmark']" (click)="sideBarClose()" class="item">
                     <div class="in">
-                        <div>Shortlisted</div>
+                        <div>Bookmark</div>
                     </div>
                 </a>
             </li>
@@ -102,7 +102,7 @@
                 </a>
             </li>
             <li>
-                <a [routerLink]="['/terms-condition']" class="item">
+                <a [routerLink]="['/terms-condition']" (click)="sideBarClose()" class="item">
                     <div class="in">
                         <div>Terms & Condition</div>
                     </div>
@@ -123,7 +123,7 @@
                 <a class="item">
                     <div class="in">
                         <div>Version 1.1</div>
-                        <div class="logout" (click)="logout()" (click)="sideBarClose()"><span>Logout</span></div>
+                        <div class="logout" (click)="logout()" ><span>Logout</span></div>
                     </div>
                 </a>
             </li>
@@ -133,7 +133,7 @@
 <div class="offcanvas offcanvas-end right_sidebar" tabindex="-1" id="offcanvas-right">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title"><a >Hello {{currentUser.userDetails.name}}</a></h5>
-        <a href="#" class="offcanvas-close" data-bs-dismiss="offcanvas">
+        <a  class="offcanvas-close" data-bs-dismiss="offcanvas">
             <!-- <ion-icon name="close-outline"></ion-icon> -->
             <ion-icon name="close"></ion-icon>
         </a>
@@ -163,7 +163,7 @@
             <div class="prof-nav">
              <!-- <img src="assets/img/img/logout.webp"> -->
              <ion-icon name="log-out-outline"></ion-icon>
-             <a (click)="logout()" (click)="sideBarClose()">Logout</a>
+             <a (click)="logout()" >Logout</a>
          </div>
     </div>
 </div>

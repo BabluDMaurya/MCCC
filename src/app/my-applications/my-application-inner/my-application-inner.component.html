@@ -2,14 +2,14 @@
 <div class="main casting_inner sidePaading0">
     <app-sub-header [back]="back_link"></app-sub-header>
     <div class="main_wrppers">
-        <div class="castingImg">
+        <div class="castingImg" *ngIf="!Apiloading">
             <!-- <img *ngIf="Apiloading" src="../../../assets/img/white_logo.webp" class="hd-img"> -->
             <img *ngIf="!Apiloading" src="{{image}}" alt="">
             <!-- <div class="shaveIcon">
                 <i (click)="bookmark(castingId)" [ngClass]="bookmarks != '1'?'fa fa-bookmark-o':'fa fa-bookmark'"></i>
             </div> -->
         </div>
-        <div class="castingContent">
+        <div class="castingContent" *ngIf="!Apiloading">
             <h5 [innerHTML]="castingTitle"></h5>
             <p [innerHTML]="long_description"></p>
             <ul class="cating_details">
@@ -39,6 +39,23 @@
                 </li>
             </ul>
             <!-- <button class="castingApply" (click)="apply()">Apply</button> -->
+        </div>
+        <!-- innerPage_skeleton -->
+        <div *ngIf="Apiloading">
+            <div class="inner_imgskeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
         </div>
     </div>
 </div>

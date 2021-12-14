@@ -2,12 +2,12 @@
 <app-footer></app-footer>
 <div class="main">
     <app-header [castingtab]="castingtab" [workshoptab]="workshoptab"></app-header>
-    <div class="main_wrppers">        
+    <div class="main_wrppers">  
+        <!-- homeImg_banner_skeleton -->
+        <div class="img_skeleton" *ngIf="!slideData"></div>      
         <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="slideConfig"
         (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
-        (beforeChange)="beforeChange($event)"  *ngIf="slideData">
-        <div class="img_skeleton"></div>
-        
+        (beforeChange)="beforeChange($event)"  *ngIf="slideData">                
         <div ngxSlickItem *ngFor="let slide of slides" class="banner main_banner" style="min-height: 132px;">
           <img src="{{ baseUrl+slide.banner_image_path+slide.casting_banner_image }}" alt="">
           <div class="banner_content">
@@ -17,30 +17,49 @@
         </div>
         </div>        
       </ngx-slick-carousel>
-        <div class="casingCalls" *ngIf="!nonewcall && loadingnc">
-            <div class="casingCallHeader">
+      <!-- box-skeleton -->
+        <div *ngIf="!nonewcall && !loadingnc">
+            <div class="header_skelton"></div>
+            <div class="box_skeleton"></div>
+        </div>
+        <div class="casingCalls" *ngIf="!nonewcall">             
+            <div class="casingCallHeader" *ngIf="loadingnc">
                 <p class="classinghead">New Casting Call</p>
                 <span><a [routerLink]="['/casting/1']">View All</a></span>
             </div>
-            <app-casting-card *ngFor="let c of newCasting; let idx=index" [data]="c"></app-casting-card>
-        </div>        
-        <div class="casingCalls" *ngIf="!norecomended && loadingnr">
-            <div class="casingCallHeader">
+             <!-- box-skeleton -->
+            <div *ngIf="!loadingnc">
+                <div class="box_skeleton"></div>
+            </div>
+            <div *ngIf="loadingnc"><app-casting-card *ngFor="let c of newCasting; let idx=index" [data]="c"></app-casting-card></div>
+            
+        </div>    
+        <!-- box-skeleton -->
+        <div *ngIf="!norecomended && !loadingnr">
+            <div class="header_skelton"></div>
+            <div class="box_skeleton"></div>
+        </div>    
+        <div class="casingCalls" *ngIf="!norecomended">
+            <div class="casingCallHeader" *ngIf="loadingnr">
                 <p class="classinghead recomded primary__color">Recommended Calls</p>
                 <span><a [routerLink]="['/casting/2']">View All</a></span>
             </div>
-            <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
+             <!-- box-skeleton -->
+            <div *ngIf="!loadingnr">
+                <div class="box_skeleton"></div>
+            </div> 
+            <div *ngIf="loadingnr">
+                <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
+            </div>            
         </div>
         <div class="casingCalls" *ngIf="!upcoming[0].noData">
             <div class="casingCallHeader">
                 <p class="classinghead">Upcoming Workshop</p>
                 <span><a [routerLink]="['/workshop/2']">View All</a></span>
             </div>
-
             <div class="banner mb-5">
                 <img src="assets/img/img/homeBanner.webp" alt="">
             </div>
-
             <app-workshop-card *ngFor="let c of upcoming; let idx=index" [data]="c"></app-workshop-card>
         </div>
         <div class="casingCalls" *ngIf="!eventForYouData[0].noData">
@@ -83,12 +102,21 @@
                 
             </div>
         </div>
+        
         <div class="casingCalls">
             <div class="casingCallHeader">
                 <p class="classinghead recomded secondary__color">Watch more videos</p>
                 <!-- <span><a>View All</a></span> -->
-            </div>
-            <div class="moresliderVideos">
+            </div>  
+            <!-- circle-skeleton -->
+            <div *ngIf="!loadingbts">            
+                <div class="moreSlider">
+                    <div class="more_slider_skeleton"></div>
+                    <div class="more_slider_skeleton"></div>
+                    <div class="more_slider_skeleton"></div>
+                </div>
+            </div>          
+            <div class="moresliderVideos" *ngIf="loadingbts">
             <app-bts-category-card  [data]="categories"></app-bts-category-card>
             </div>
             

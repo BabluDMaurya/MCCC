@@ -10,7 +10,8 @@ import { Config } from 'src/app/_config/config';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationService } from 'src/app/_service/notification.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -50,6 +51,8 @@ export class VideoComponent implements OnInit {
   baseUrl :string = Config.Host+'backend2/';
   videoPath = this.baseUrl+'public/uploads/UserVideos/';
   fileTypes = ['mp4'];  //acceptable file types
+  toastSuccess:string = 'toast-18';
+
   constructor(  private modalService: NgbModal,private notification : NotificationService,private formBuilder: FormBuilder,private location:Location,private route:Router,
     private authenticationService: AuthenticationService,private commonService:CommonService) {
       this.currentUser = this.authenticationService.currentUserValue;
@@ -121,12 +124,15 @@ export class VideoComponent implements OnInit {
             let total:any = event.total;
             this.progress = Math.round((100 / total) * event.loaded);
             this.waitText = true;
-            this.videoloading = false;
+            this.videoloading = true;
           } else if (event.type == HttpEventType.Response) {
             this.videoloading = true;
             this.progress = 0;
             this.waitText = false;
-            this.notification.showSuccess('Video saved Successfully.','');
+            new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000); 
             this.resData = event;
           }
         });

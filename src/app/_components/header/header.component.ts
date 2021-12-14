@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../_service/authentication.service';
 import { DashboardService } from '../../_service/dashboard.service';
 import { User } from '../../_models/user';
+import { Config } from 'src/app/_config/config';
+
 
 @Component({
   selector: 'app-header',
@@ -12,6 +14,10 @@ import { User } from '../../_models/user';
 })
 export class HeaderComponent implements OnInit {
   getCount: any;
+  resData: any;
+  data : any;
+  baseUrl :string = Config.Host;
+  profile_pic_path: any;
   constructor(
     private route:Router,
     private authenticationService: AuthenticationService,
@@ -29,6 +35,14 @@ export class HeaderComponent implements OnInit {
     setInterval(() => { 
      this.getUserNotificationCounter();
     }, 10000 * 15)
+
+    this.dashboardService.userDetailsForPeofile()
+        .subscribe(res => {
+          this.resData = res;
+          // this.profile_pic_path =  this.resData.profile_pic_path;
+          this.data = this.resData.data.user_details;
+          console.log(this.resData.data.user_details);
+        });
   }
   getUserNotificationCounter(){
     this.dashboardService.getUserNotificationCounter(null)

@@ -1,15 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-
-
-<body>
-    <!-- sidebars -->
-    
-    <!-- circleMenu-start -->
-    
-    <!-- circleMenu-end -->
-    <div class="main casting_inner sidePaading0 bts_inner_inner">
+ <div class="main casting_inner sidePaading0 bts_inner_inner">
         <div class="mainHeader">
             <div class="top_header">
                 <div class="arrowLeft" (click)="back()">
@@ -19,7 +8,7 @@
                     <img src="assets/img/img/black_logo.webp" alt="">
                 </div>
                 <div class="lats_side">
-                    <div class="avtars">
+                    <div class="avtars" [routerLink]="['/home']">
                         <!-- <div class="avatar"> -->
                             <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
                         <!-- </div> -->
@@ -76,7 +65,3 @@
             </div>
         </div>
     </div>
-
-</body>
-
-</html>

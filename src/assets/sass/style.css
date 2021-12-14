@@ -12842,6 +12842,7 @@ transform: rotate(270deg);
   -webkit-transform: rotate(270deg);
           transform: rotate(270deg);
   right: -25px;
+  display: none;
 }
 
 .notifications .notification_area .notificationDiv span {
@@ -13063,9 +13064,9 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeVideos .shaveIcon {
   position: absolute;
-  bottom: 10px;
-  right: 20px;
-  color: #fff;
+  bottom: -24px!important;
+  right: 10px!important;
+  color: #ff6554!important;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .videosTopPart {
@@ -13537,7 +13538,7 @@ body.dark-mode-active .faq .faqWrapper .accordion .accordion-item .accordion-col
 }
 
 .bookemark_main .main_wrppers {
-  margin-top: 150px;
+  margin-top: 80px;
 }
 
 body.dark-mode-active .bookemark_main .bookmarke .bookmaerkWrapper .extraHeader {
@@ -13932,5 +13933,7 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
     height: 45px;
     border-radius: 0px;
 }
-
+.bts_inners .bookmaerkWrapper .bts__inner .moviesArea .moviesContent{
+  padding: 5% 0;
+}
     /*# sourceMappingURL=style.css.map */

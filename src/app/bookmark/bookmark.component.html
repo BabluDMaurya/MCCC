@@ -1,6 +1,6 @@
 <div class="main casting casting_inner inviteFrnds bookemark_main">
     <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
-    <div class=" main_wrppers bookmarke">
+    <div class=" main_wrppers bookmarke bts_inners ">
         <div class="bookmaerkWrapper">
             <!-- Extra Header -->
                 <div class="extraHeader p-0">
@@ -45,8 +45,11 @@
                 <!-- workshop tab -->
                 <div class="tab-pane fade" id="workshop" role="tabpanel">
                     <div class="section full mt-1">
-                         <div class="casingCalls">
+                         <div class="casingCalls" *ngIf="!workshopbookmarkNoData">
                             <app-workshop-card *ngFor="let c of workshopBookmarkData; let idx=index" [data]="c"></app-workshop-card>
+                        </div>
+                        <div class="casingCalls" *ngIf="workshopbookmarkNoData">
+                            <app-not-found-data ></app-not-found-data>
                         </div>
                     </div>
 
@@ -92,7 +95,7 @@
                  <!-- training tab -->
                  <div class="tab-pane fade" id="training" role="tabpanel">
                     <div class="section full mt-1">
-                        <div class="casingCalls">
+                        <div class="bts__inner">
                             
                             <div class="moviesArea" *ngFor="let eventData of eventBookmarkData; let idx=index">
                                 <div class="moviess"  [routerLink]="['/training-video-view/',eventData.id,eventData.category_id]" >

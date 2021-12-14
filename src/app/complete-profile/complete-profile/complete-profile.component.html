@@ -21,8 +21,14 @@
                                 <input type="text" formControlName="experience" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.work_experiences.errors }">
                             </div>  
                             <div class="plus_icon_workWxperince">
-                                <span  *ngIf="i == 0" (click)="addExperience()"><img src="assets/img/img/plus.webp" alt=""></span>
-                                <span *ngIf="i > 0"(click)="removeExperience(i)"><img src="assets/img/img/downArrow.webp" alt=""></span>
+                                <span  *ngIf="i == 0" (click)="addExperience()">
+                                    <img src="assets/img/img/plus.webp" alt="" class="lightMode">
+                                    <img src="assets/img/img/white_plus.webp" class="darkMode" alt="">
+                                </span>
+                                <span *ngIf="i > 0"(click)="removeExperience(i)">
+                                    <img src="assets/img/img/minus.webp" class="lightMode" alt="">
+                                    <img src="assets/img/img/white_minus.webp" class="darkMode" alt="">
+                                </span>
                                 
                             </div>                              
                             <div *ngIf="submitted && f.work_experiences.errors" class="invalid-feedback">
@@ -41,8 +47,14 @@
                                 <input type="text" formControlName="qualification" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.qualifications.errors }">
                             </div>
                             <div class="plus_icon_qualificationsPlus">
-                                <span  *ngIf="j == 0" (click)="addQualification()"><img src="assets/img/img/plus.webp" alt=""></span>
-                                <span *ngIf="j > 0" (click)="removeQualification(j)"><img src="assets/img/img/downArrow.webp" alt=""></span>
+                                <span  *ngIf="j == 0" (click)="addQualification()">
+                                    <img src="assets/img/img/plus.webp" alt="" class="lightMode">
+                                    <img src="assets/img/img/white_plus.webp" class="darkMode" alt="">
+                                </span>
+                                <span *ngIf="j > 0" (click)="removeQualification(j)">
+                                    <img src="assets/img/img/minus.webp" class="lightMode" alt="">
+                                    <img src="assets/img/img/white_minus.webp" class="darkMode" alt="">
+                                </span>
                                 
                             </div>
                             <div *ngIf="submitted && f.qualifications.errors" class="invalid-feedback">
@@ -72,8 +84,14 @@
                                 <input type="text" formControlName="social_link" maxlength="200"  [ngClass]="{ 'is-invalid': submitted && f.social_links.errors }">
                             </div>
                             <div class="plus_icon_SocailLinks">
-                                <span  *ngIf="i == 0" (click)="addSocialLinks()"><img src="assets/img/img/plus.webp" alt=""></span>
-                                <span *ngIf="i > 0"(click)="removeSocialLinks(i)"><img src="assets/img/img/downArrow.webp" alt=""></span>
+                                <span  *ngIf="i == 0" (click)="addSocialLinks()">
+                                    <img src="assets/img/img/plus.webp" alt="" class="lightMode">
+                                    <img src="assets/img/img/white_plus.webp" class="darkMode" alt="">
+                                </span>
+                                <span *ngIf="i > 0"(click)="removeSocialLinks(i)">
+                                    <img src="assets/img/img/minus.webp" class="lightMode" alt="">
+                                    <img src="assets/img/img/white_minus.webp" class="darkMode" alt="">
+                                </span>
                                 
                             </div>
                             <div *ngIf="submitted && f.social_links.errors" class="invalid-feedback">

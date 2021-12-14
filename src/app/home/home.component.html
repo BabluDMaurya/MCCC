@@ -6,6 +6,7 @@
         <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="slideConfig"
         (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
         (beforeChange)="beforeChange($event)">
+        <div class="img_skeleton"></div>
         <div ngxSlickItem *ngFor="let slide of slides" class="banner main_banner" style="min-height: 132px;">
           <img src="{{ baseUrl+slide.banner_image_path+slide.casting_banner_image }}" alt="">
           <div class="banner_content">

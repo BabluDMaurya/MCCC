@@ -9,7 +9,7 @@
             <div class="in">
                 <strong>Hello {{currentUser.userDetails.name}} <!DOCTYPE html></strong>
             </div>
-            <a class="close-sidebar-button" data-bs-dismiss="offcanvas">
+            <a class="close-sidebar-button" #closebutton (click)="closeSide()" data-bs-dismiss="offcanvas">
                 <ion-icon name="close"></ion-icon>
             </a>
         </div>
@@ -17,7 +17,7 @@
 
         <ul class="listview flush transparent no-line image-listview mt-2">
             <li>
-                <a [routerLink]="['/my-applications']" class="item">
+                <a [routerLink]="['/my-applications']" (click)="closeSide" class="item">
                     <div class="in">
                         My Applications
                     </div>
@@ -112,7 +112,7 @@
                     <div class="in">
                         <div>Dark Mode</div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input dark-mode-switch" type="checkbox" id="darkmodesidebar">
+                            <input class="form-check-input clicksss dark-mode-switch" [checked]="checkboxVal" (click)="darkMode()" type="checkbox" id="darkmodesidebar">
                             <label class="form-check-label" for="darkmodesidebar"></label>
                         </div>
                     </div>

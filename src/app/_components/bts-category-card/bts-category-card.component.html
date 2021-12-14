@@ -1,9 +1,9 @@
 <ngx-slick-carousel class="carousel video_slider" #slickModal="slick-carousel" [config]="trns_sliders"
 (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
 (beforeChange)="beforeChange($event)">
-<div class="moreSlider" *ngFor="let catg of data; let i=index;" [routerLink]="['/bts-inner/',catg.id]" ngxSlickItem>
-<div [ngClass]="isOdd(i) ? 'more_V_box primaryColor' : 'more_V_box'">
-        <span>{{catg.category}}</span>
+    <div class="moreSlider" *ngFor="let catg of data; let i=index;" [routerLink]="['/bts-inner/',catg.id]" ngxSlickItem>
+        <div [ngClass]="isOdd(i) ? 'more_V_box primaryColor' : 'more_V_box'">
+            <span>{{catg.category}}</span>
+        </div>
     </div>
-</div>
 </ngx-slick-carousel>

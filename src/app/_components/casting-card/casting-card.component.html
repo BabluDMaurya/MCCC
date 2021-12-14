@@ -1,4 +1,5 @@
-<div class="boxs" id="card-{{data.id}}">
+
+<div class="boxs workshop" id="card-{{data.id}}">
     <div class="boxHead">
      <h5><a (click)="castingInner(data.id)">{{data.title | titlecase}}</a></h5>     
      <div class="shaveIcon" (click)="bookmarkCasting(data.id,data?.bookmark_status)">
@@ -13,6 +14,6 @@
          <li><i class="far fa-user" aria-hidden="true"></i>{{data.role}}</li>
      </ul>
      <div class="labelBtns">
-         <label *ngFor="let tag of data.tags;">{{tag}}</label>
+        <div class="slide" *ngFor="let tag of data.tags;"> <label>{{tag}}</label></div>
      </div>
  </div>

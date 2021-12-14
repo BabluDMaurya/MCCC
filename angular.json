@@ -49,7 +49,8 @@
               "src/assets/js/lib/bootstrap.min.js",
               "src/assets/js/plugins/splide/splide.min.js",
               "src/assets/js/plugins/progressbar-js/progressbar.min.js",
-              "src/assets/js/base.js"
+              "src/assets/js/base.js",
+              "src/assets/js/main.js"
             ]
           },
           "configurations": {

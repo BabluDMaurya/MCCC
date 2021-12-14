@@ -28,11 +28,14 @@
                 </div>
                 <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
                     <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
+                    <div class='multi-field'>
+                        <button type="button" class="close" (click)="removeSelectedImages(j)">X</button>
+                      </div>
                 </div>
                 
                 
             </div>
-            <div *ngIf="imgArray.length < 3">
+            <div *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
             <div class="imgs">
                 <input type="file" name="files[]" id="files" (change)="fileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/gif,">
                 <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
@@ -48,6 +51,10 @@
             <button  (click)="back()" class="next outline">Cancel</button>
         </div>
     </form>
+    <div *ngIf="uploading" class="loader">
+        <img src="../../../assets/img/img/Mccc-black.gif" class="lightMode" alt="">
+        <img src="../../../assets/img/img/Mccc-white.gif" alt="" class="darkMode">
+    </div>
     </div>
     <div class="backdrop" [ngStyle]="{'display':display}"></div>
                   
@@ -76,7 +83,9 @@
                     </div>
                 </div>
             </div>
+
             <div *ngIf="!loading" class="loader"><img src="../../../assets/img/img/MCCC-black.gif" alt=""></div>
+
         </div> 
 
 

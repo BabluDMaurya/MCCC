@@ -7,7 +7,8 @@ import { AuthenticationService } from 'src/app/_service/authentication.service';
 import { CommonService } from 'src/app/_service/common.service';
 import { Location } from '@angular/common';
 import { NotificationService } from 'src/app/_service/notification.service';
-
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-anatomy',
   templateUrl: './anatomy.component.html',
@@ -23,6 +24,8 @@ export class AnatomyComponent implements OnInit {
   submitted = false;
   uploading:boolean=false;
   active:any=0;
+  toastSuccess:string = 'toast-18';
+
   constructor( private notification : NotificationService, private alertService:AlertService,private formBuilder: FormBuilder,private location:Location,private route:Router,
     private authenticationService: AuthenticationService,private commonService:CommonService) {
       this.currentUser = this.authenticationService.currentUserValue;
@@ -67,7 +70,11 @@ export class AnatomyComponent implements OnInit {
         this.active=1;
         this.commonService.anatomyInnerUpdate(this.form.value).subscribe(
           data => {  
-            this.uploading = false;     
+            this.uploading = false;    
+            new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000); 
             this.active=0;   
             // this.notification.showSuccess('Updated Successfully','');
           },

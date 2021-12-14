@@ -31,14 +31,21 @@
             <!-- App Capsule -->
         <div id="appCapsule" class="extra-header-active">
             <div class="tab-content mt-1">
-                <!-- casting tab -->
+                <!-- casting tab -->                
                 <div class="tab-pane fade show active" id="casting" role="tabpanel">
+                    <!-- box-skeleton -->
+                    <div *ngIf="!bookmarkNoData && !loading">
+                        <div class="header_skelton"></div>
+                        <div class="box_skeleton"></div>
+                        <div class="box_skeleton"></div>
+                        <div class="box_skeleton"></div>
+                    </div>
                     <div class="section full mt-1">
                         <div class="casingCalls">
                             <app-bookmark-casting-card *ngFor="let c of castings; let idx=index" [data]="c"></app-bookmark-casting-card>
                         </div>
                     </div>
-                    <app-not-found-data *ngIf="bookmarkNoData"></app-not-found-data>
+                    <app-not-found-data *ngIf="bookmarkNoData && loading"></app-not-found-data>
                 </div>
                 
                 <!-- * casting tab -->

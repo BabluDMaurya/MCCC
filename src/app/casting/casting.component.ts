@@ -62,6 +62,7 @@ export class CastingComponent implements OnInit {
         this.castings = this.resData.data;  
         if(this.castings.length > 0 && this.castings != 'No data found'){
           // console.log("castingData 1 : ",this.castings.length);
+          this.loading = false;
           this.shownw = true;
           this.castingData = false;
         }else{

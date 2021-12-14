@@ -18,7 +18,7 @@ export class TrainingComponent implements OnInit {
   trainingVideo: any;
   title: any;
   constructor(private trainingService: TrainingService) { }
-  two_sliders = {"slidesToShow": 2, "slidesToScroll": 2,"dots": false,"infinite": false};
+  two_sliders = {"slidesToShow": 2.5, "slidesToScroll": 2,"dots": false,"infinite": false,'nextArrow':false,'prevArrow':false};
 
   ngOnInit(): void {
     this.trainingService.get_training_categories().subscribe(res => {

@@ -20,13 +20,14 @@ export class SigninSignupComponent implements OnInit {
     private route : Router,
     private authenticationService: AuthenticationService,
     private notification :NotificationService) {
-      // redirect to home if already logged in    
-    if (this.authenticationService.currentUserValue) {
-      let Auth =  JSON.stringify(this.authenticationService.currentUserValue.status);
-      if(Auth){
-          this.route.navigate([Config.AfterLogin]);
-      }
-     }
+       // redirect to home if already logged in
+       if (this.authenticationService.currentUserValue) {
+        let Auth =  JSON.stringify(this.authenticationService.currentUserValue.status);
+        console.log("Auth:",Auth);
+        if(Auth){
+            this.route.navigate([Config.AfterLogin]);
+        }
+        }
      }
 
   ngOnInit(): void {

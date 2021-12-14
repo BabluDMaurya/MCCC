@@ -27,7 +27,8 @@ export class SigninComponent implements OnInit {
        // redirect to home if already logged in
        if (this.authenticationService.currentUserValue) {
         let Auth =  JSON.stringify(this.authenticationService.currentUserValue.status);
-        if(Auth === 'true'){
+        console.log("Auth:",Auth);
+        if(Auth){
             this.router.navigate([Config.AfterLogin]);
         }
         }

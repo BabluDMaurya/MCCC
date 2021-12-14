@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from 'src/app/_service/dashboard.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dashboardService:DashboardService) { }
 
   ngOnInit(): void {
+  }
+  letEx(){
+    this.dashboardService.filter('applyed');
   }
 
 }

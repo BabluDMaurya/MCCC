@@ -68,11 +68,7 @@ const routes: Routes = [{
 },
 {    
   path: 'signin',component: SigninComponent,    
-  data: {title: 'registration'}    
-},
-{    
-  path: 'home',component: HomeComponent,    
-  data: {title: 'registration'}    
+  data: {title: 'signin'}    
 },
 {    
   path: 'bts',component: BtsComponent,    
@@ -149,11 +145,11 @@ const routes: Routes = [{
 },
 {   
   path: 'home',component: HomeComponent,canActivate: [AuthGuard],   
-  data: {title: 'registration'}    
+  data: {storeRoute: false,title: 'home'}    
 },
 {    
   path: 'games',component: GamesComponent,canActivate: [AuthGuard],   
-  data: {title: 'games'}    
+  data: {storeRoute: true,title: 'games'}    
 },
 {    
   path: 'bollywood-memory-game',component: BollywoodMemoryGameComponent,canActivate: [AuthGuard],   
@@ -161,7 +157,7 @@ const routes: Routes = [{
 },
 {    
   path: 'my-applications',component: MyApplicationsComponent,canActivate: [AuthGuard],   
-  data: {title: 'my applications'}    
+  data: {storeRoute: true,title: 'my applications'}    
 },
 {    
   path: 'my-application-inner/:id',component: MyApplicationInnerComponent,canActivate: [AuthGuard],   
@@ -169,23 +165,23 @@ const routes: Routes = [{
 },
 {    
   path: 'bookmark',component: BookmarkComponent,canActivate: [AuthGuard],   
-  data: {title: 'bookmark'}    
+  data: {storeRoute: true,title: 'bookmark'}    
 },
 {    
   path: 'about',component: AboutComponent,canActivate: [AuthGuard],   
-  data: {title: 'about'}    
+  data: {storeRoute: true,title: 'about'}    
 },
 {    
   path: 'faq',component: FaqComponent,canActivate: [AuthGuard],   
-  data: {title: 'faq'}    
+  data: {storeRoute: true,title: 'faq'}    
 },
 {    
   path: 'help',component: HelpComponent,canActivate: [AuthGuard],   
-  data: {title: 'help'}    
+  data: {storeRoute: true,title: 'help'}    
 },
 {    
   path: 'terms-condition',component: TermsConditionComponent,canActivate: [AuthGuard],   
-  data: {title: 'terms and condition'}    
+  data: {storeRoute: true,title: 'terms and condition'}    
 },
 {    
   path: 'no-internet',component: NoInternetComponent,   

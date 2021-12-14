@@ -12286,7 +12286,7 @@ body.dark-mode-active .main_wrppers .casingCalls .casingCallHeader p, body.dark-
 }
 
 .casting .main_wrppers {
-  margin-top: 105px;
+  margin-top: 130px;
 }
 
 .casting #appCapsule {
@@ -14127,3 +14127,6 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   padding: 5% 0;
 }
     /*# sourceMappingURL=style.css.map */
+.wrrpperNoInternet.notFound.notFoundData .imgContent .imgs img{
+  width: auto!important;
+}

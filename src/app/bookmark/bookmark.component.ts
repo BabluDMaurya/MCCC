@@ -63,7 +63,7 @@ export class BookmarkComponent implements OnInit {
               if(this.workshopBookmarkData.length > 0){
                 this.workshopbookmarkNoData = false;
               }
-              // console.log(this.workshopBookmarkData);
+              console.log(this.workshopBookmarkData);
         });
         
         this.dashboardService.getUserBookmarkBTS('')

@@ -85,7 +85,7 @@ export class BtsVideoViewComponent implements OnInit {
   }
 
   bookmarkBTS(id:any,status?:any){
-    this.dashboardService.bookmarkWorkshopEvents({bts_id:id,type:'BTS'})
+    this.dashboardService.bookmarkWorkshopEvents({event_id:id,type:'BTS'})
       .subscribe(res => {
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){

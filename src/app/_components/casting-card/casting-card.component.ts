@@ -42,6 +42,7 @@ export class CastingCardComponent implements OnInit {
           this.data.bookmark_status = 1;
           console.log('toast added',this.toastSuccess);
           new toastbox(this.toastSuccess, 2000);
+          this.dashboardService.filter('applyed');
             setTimeout(() => {
               $('#'+this.toastSuccess).removeClass('show');
           }, 2000);
@@ -49,6 +50,7 @@ export class CastingCardComponent implements OnInit {
         if(this.resData.data[0] == 'Bookmark removed'){
           this.data.bookmark_status = 0;
           new toastbox(this.toastDanger, 2000);
+          this.dashboardService.filter('applyed');
             setTimeout(() => {
               $('#'+this.toastDanger).removeClass('show');
           }, 2000);

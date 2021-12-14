@@ -28,7 +28,11 @@ export class BookmarkComponent implements OnInit {
   toastSuccess:string = 'toast-15';
   toastDanger:string = 'toast-16';
   constructor(private dashboardService:DashboardService,
-    private route : Router,) { }
+    private route : Router,) {
+      this.dashboardService.listen().subscribe((e:any)=>{
+        this.ngOnInit();
+      });
+     }
 
   ngOnInit(): void {
     this.catId = 1;

@@ -9,6 +9,13 @@ select:focus-visible, input:focus-visible {
   outline: none;
 }
 
+.darkMode {
+  display: none;
+}
+body.dark-mode-active{
+  background: #000!important;
+}
+
 body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 15px;
@@ -21,6 +28,9 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body.dark-mode-active{
+  background: #000!important;
 }
 
 select {
@@ -9287,6 +9297,9 @@ body.dark-mode-active {
   background: #0c1624 !important;
   color: #8195a6;
 }
+body.dark-mode-active .lightMode{
+  display: none;
+}
 
 body.dark-mode-active.bg-light, body.dark-mode-active.bg-white {
   background: #0c1624 !important;
@@ -9958,16 +9971,16 @@ body.dark-mode-active .chatFooter {
 }
 
 body.dark-mode-active .modalbox {
-  background: #0c1624;
+  background: #0005;
 }
 
 body.dark-mode-active .modalbox .modal-dialog .modal-content {
-  background: #0c1624;
+  background: #000;
 }
 
 body.dark-mode-active .modalbox .modal-dialog .modal-content .modal-header {
   border-bottom-color: #1B283B;
-  background: #0F1C2F;
+  background: #000;
 }
 
 body.dark-mode-active .modalbox .modal-dialog .modal-content .modal-header .modal-title {
@@ -10042,7 +10055,7 @@ body.dark-mode-active .panelbox .modal-dialog .modal-content .modal-header .moda
 }
 
 body.dark-mode-active .offcanvas {
-  background: #0F1C2F;
+  background: #000;
 }
 
 body.dark-mode-active .pagination.pagination-secondary .page-item .page-link {
@@ -10631,8 +10644,17 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
 .wrrpperSingUp {
   width: 85%;
   margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
+a.outline_btns{
+  background: transparent!important;
+  border: 1px solid #ff6454!important;
+  color: #000!important;
+}
 .wrrpperSingUp .logos {
   width: 40%;
   margin: 0 auto;
@@ -10722,6 +10744,7 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
   line-height: 55px;
   display: block;
   text-align: center;
+  display: none;
 }
 
 .darkMode {
@@ -10814,6 +10837,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   line-height: 40px;
   padding: 0 20px;
   font-size: 16px;
+  height: 45px;
 }
 
 .wrrpperRegisterForm .forms .formGroup .inputs input:focus-visible {
@@ -11298,6 +11322,9 @@ body.dark-mode-active .btnArea .btn_ctnt {
   height: auto;
   margin-top: 0px;
   margin-bottom: 30px;
+}
+.profilePhoto.upload_img_video .imgContent{
+  margin-top: 50px;
 }
 .profilePhoto .imgPrevw{
   position: relative;
@@ -11967,7 +11994,9 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;
+  border-radius: 20px;
 }
+
 
 .main_wrppers .banner .banner_content {
   position: absolute;
@@ -12001,8 +12030,10 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-top: 30px;
-  padding-bottom: 20px;
+  margin-top: 30px;
+  padding: 0;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .main_wrppers .casingCalls .casingCallHeader p {
@@ -12036,6 +12067,7 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   font-size: 14px;
   color: #000;
 }
+
 
 .main_wrppers .casingCalls .boxs {
   border: 1px solid #000;
@@ -12086,6 +12118,21 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   margin: 0;
   list-style: none;
   padding: 10px 0;
+}
+.main_wrppers .casingCalls .boxs .labelBtns::-webkit-scrollbar{
+  display: none;
+}
+.dark-mode-active .offcanvas-body .prof-nav a{
+  color: #fff;
+}
+.main_wrppers .casingCalls .boxs .labelBtns {
+  min-width: 100px;
+  width: 100%;
+  overflow: scroll;
+  white-space: nowrap;
+}
+.main_wrppers .casingCalls .boxs .labelBtns .slide{
+  display: inline-block;
 }
 
 .main_wrppers .casingCalls .boxs ul.userDetails li {
@@ -12496,17 +12543,27 @@ body.dark-mode-active .training .trainingWrapper .otherTrainingVid .videosWithCo
   padding-bottom: 8px;
   position: relative;
   border: none;
+  border-bottom: 2px solid #ff6454;     
   width: 100%;
+  background: transparent;
+  color: #000;
   /* padding: 0 20px; */
 }
-.input_text .modal-body form .basic .input-wrapper::after{
+.input_text .modal-body form .basic .input-wrapper .invalid-feedback{
+  text-align: left;
+}
+
+body.dark-mode-active .input_text .modal-body form .basic .input-wrapper input{
+color: #fff;
+}
+/* .input_text .modal-body form .basic .input-wrapper::after{
   content: '';
   position: absolute;
   left: 0;
   width: 100%;
   bottom: 0;
   border-bottom: 2px solid #ff6454;
-}
+} */
 
 .input_text .modal-body button.next{
   width: 100%;
@@ -12701,9 +12758,27 @@ body.dark-mode-active .casting_inner .castingContent .cating_details li .head i 
 .profile .profileWrpper .profiles input.innerDetail {
   height: 45px;
 }
+body.dark-mode-active .profile .profileWrpper .profiles input.innerDetail{
+  color: #fff;
+}
+body.dark-mode-active .profile .profileWrpper .profiles .profileDiv .dateBirth .select select,body.dark-mode-active .profile .profileWrpper .profiles .profileDiv .select select{
+  color: #fff;
+}
+/* body.dark-mode-active.profile .profileWrpper .profiles .profileDiv .dateBirth .select::after{
+  content: url(../img/img/white_arrow_down.webp) !important;
+} */
 .casting__profiles .castingProfile .profilePhotos {
   padding-top: 50px;
 }
+
+/* body.dark-mode-active.profile .profileWrpper .profiles .profileDiv .dateBirth .select::after */
+
+
+body.dark-mode-active .profile .profileWrpper .profiles .profileDiv .dateBirth .select::after, body.dark-mode-active .profile .profileWrpper .profiles .profileDiv .select::after{
+  content: url(../img/img/white__arrow_down.webp)!important;
+}
+
+
 
 .casting__profiles .castingProfile .profilePhotos label {
   padding-bottom: 15px;
@@ -12729,6 +12804,7 @@ body.dark-mode-active .casting_inner .castingContent .cating_details li .head i 
 .casting__profiles .castingProfile .profilePhotos .imgsArea p {
   font-size: 10px;
 }
+
 
 .casting__profiles .castingProfile .profileVideos {
   padding-top: 30px;
@@ -12784,9 +12860,12 @@ body.dark-mode-active .casting_inner .casting__profiles .castingProfile h2 {
   color: #ff6454;
 }
 
-body.dark-mode-active .casting_inner .casting__profiles .castingProfile h3, body.dark-mode-active .casting_inner .casting__profiles .castingProfile h4, body.dark-mode-active .casting_inner .casting__profiles .castingProfile p {
+body.dark-mode-active .casting_inner .casting__profiles .castingProfile h3, body.dark-mode-active .casting_inner .casting__profiles .castingProfile h4, body.dark-mode-active .casting_inner .casting__profiles .castingProfile p, body.dark-mode-active .casting_inner .casting__profiles .castingProfile .inputs input, body.dark-mode-active .casting_inner .casting__profiles .castingProfile .inputs textarea {
   color: #fff;
 }
+/* body.dark-mode-active .casting_inner .casting__profiles .castingProfile .inputs input::placeholder,body.dark-mode-active .casting_inner .casting__profiles .castingProfile .inputs textarea::placeholder{
+  color: #fff6;
+} */
 
 body.dark-mode-active .casting_inner .casting__profiles .castingProfile .profilePhotos label, body.dark-mode-active .casting_inner .casting__profiles .castingProfile .profileVideos label {
   color: #fff;
@@ -13053,7 +13132,7 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .head label {
 }
 
 body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesContent p, body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesContent span, body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesContent label {
-  color: #fff;
+  color: #fff!important;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers {
@@ -13188,11 +13267,11 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
 }
 
 body.dark-mode-active .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext label {
-  color: #fff;
+  color: #fff!important;
 }
 
 body.dark-mode-active .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vright p, body.dark-mode-active .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vright span, body.dark-mode-active .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vright a {
-  color: #fff;
+  color: #fff!important;
 }
 
 .my_application .bts_inners .bts__inner .head {
@@ -13204,7 +13283,7 @@ body.dark-mode-active .casting_inner.bts_inner_inner .main_wrppers .bts__inner_i
 }
 
 body.dark-mode-active .bts_inners .bts__inner .head label {
-  color: #fff;
+  color: #fff!important;
 }
 
 .wrrpperNoInternet {
@@ -13228,6 +13307,9 @@ body.dark-mode-active .bts_inners .bts__inner .head label {
 
 .wrrpperNoInternet .imgContent .imgs {
   text-align: center;
+}
+.wrrpperNoInternet .imgContent .imgs img{
+  width: 100%;
 }
 
 .wrrpperNoInternet .imgContent .ctnt h4 {
@@ -13264,7 +13346,7 @@ body.dark-mode-active .bts_inners .bts__inner .head label {
 }
 
 body.dark-mode-active .wrrpperNoInternet .imgContent .ctnt h4 {
-  color: #fff;
+  color: #fff!important;
 }
 
 .inviteFrnds .mainHeader .top_header .logo.middle label {
@@ -13677,6 +13759,9 @@ body.dark-mode-active .gameWrpper .gameHeader .classinghead {
   color: #000;
 }
 
+body.dark-mode-active .profile .profileWrpper .profiles .profileDiv label,body.dark-mode-active .profile .profileWrpper .profiles .profileDiv input{
+  color: #fff;
+}
 .profile .profileWrpper .profiles .profileDiv p {
   font-size: 17px;
   padding: 0;
@@ -13747,7 +13832,7 @@ body.dark-mode-active .profile .profileWrpper .profiles .profileDiv p.dob::befor
 }
 
 body.dark-mode-active .profile .profileWrpper .profiles .submit .btns.outline {
-  color: #fff;
+  color: #fff !important;
   font-weight: 600;
 }
 
@@ -13938,6 +14023,105 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
     position: relative;
     height: 45px;
     border-radius: 0px;
+}
+.img_skeleton{
+  width: 340px;
+  height: 185px;
+  background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+  border-radius: 20px;
+}
+.header_skelton{
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+  border-radius: 0px;
+  margin-bottom: 20px;
+}
+.box_skeleton{
+  width: 100%;
+  min-height: 255px;
+  background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+  border-radius: 20px;
+}
+.more_slider_skeleton{
+  width: 104px;
+  min-height: 104px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+  /* border-radius: 20px; */
+}
+.para_skeleton{
+  width: 100%;
+  min-height: 20px;
+  border-radius: 20px;  
+  background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+  margin-bottom: 10px;
+}
+.inner_imgskeleton{
+  width: 100%;
+  height: 375px;
+  /* border-radius: 20px;   */
+  background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+  margin-bottom: 10px;
+}
+/* .main_wrppers .casingCalls .boxs.skeleton{
+  position: relative;
+  overflow: hidden;
+}
+.main_wrppers .casingCalls .boxs.skeleton:before{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+  90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  content: '';
+}
+
+.banner.main_banner.skelton_banner_img {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+}
+.main_wrppers .casingCalls .casingCallHeader::before{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+  90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  content: '';
+} */
+
+@keyframes loader {
+  from {
+    background-position: -100% 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
 }
 .bts_inners .bookmaerkWrapper .bts__inner .moviesArea .moviesContent{
   padding: 5% 0;

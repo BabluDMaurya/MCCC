@@ -1,18 +1,21 @@
 <div class="wrrpperSingUp">
-    <div class="logos">
-        <img src="assets/img/black_logo.webp" alt="">
-    </div>
-    <div class="contentDetails">
-        <p>Welcome too MCCC, Your gateway to big Screen.</p>
-        <p>Sign up and Explore the whole new world<br>
-            of Indian Cinema.</p>
-    </div>
-    <div class="signUpButtons">
-        <a [routerLink]="['/registration']" class="signUp">SIGN UP</a>
-        <button class="signUpFacbook" (click)="loginWithFacebook()"> <i class="fab fa-facebook-f"></i> Login with Facebook</button>
-        <button class="signUpGoogle" (click)="loginWithGoogle()"> <img src="assets/img/img/googleIcon.webp" alt="">   Login with Google</button>
-    </div>
-    <div class="signIn">
-        <a [routerLink]="['/signin']">SIGN IN</a>
+    <div class="centers">
+        <div class="logos">
+            <img src="assets/img/black_logo.webp" alt="">
+        </div>
+        <div class="contentDetails">
+            <p>Welcome too MCCC, Your gateway to big Screen.</p>
+            <p>Sign up and Explore the whole new world<br>
+                of Indian Cinema.</p>
+        </div>
+        <div class="signUpButtons">
+            <a [routerLink]="['/registration']" class="signUp">SIGN UP</a>
+            <a [routerLink]="['/signin']" class="signUp outline_btns">SIGN IN</a>
+            <!-- <button class="signUpFacbook" (click)="loginWithFacebook()"> <i class="fab fa-facebook-f"></i> Login with Facebook</button>
+            <button class="signUpGoogle" (click)="loginWithGoogle()"> <img src="assets/img/img/googleIcon.webp" alt="">   Login with Google</button> -->
+        </div>
+        <div class="signIn">
+            <a [routerLink]="['/signin']">SIGN IN</a>
+        </div>
     </div>
 </div>

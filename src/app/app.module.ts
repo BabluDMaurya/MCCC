@@ -1,15 +1,21 @@
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConnectionServiceModule } from 'ng-connection-service';
-
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DatePipe } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from './_service/custom_reuse_strategy';
 import { MatDialogModule } from '@angular/material/dialog';
+import {VgCoreModule} from '@videogular/ngx-videogular/core';
+import {VgControlsModule} from '@videogular/ngx-videogular/controls';
+import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
+import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+import { FacebookLoginProvider } from 'angularx-social-login';
 
 import { LogoComponent } from './logo/logo.component';
 import { SplashComponent } from './splash/splash.component';
@@ -41,10 +47,6 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ImagesComponent } from './common/images/images.component';
 import { VideoComponent } from './common/video/video.component';
-import {VgCoreModule} from '@videogular/ngx-videogular/core';
-import {VgControlsModule} from '@videogular/ngx-videogular/controls';
-import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
-import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { NotificationComponent } from './notification/notification.component';
 import { AnatomyComponent } from './common/anatomy/anatomy.component';
@@ -83,6 +85,7 @@ import { BtsCategoryCardComponent } from './_components/bts-category-card/bts-ca
 import { BtsCardComponent } from './_components/bts-card/bts-card.component';
 import { BookmarkCastingCardComponent } from './_components/bookmark-casting-card/bookmark-casting-card.component';
 import { SupportComponent } from './support/support.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -173,10 +176,52 @@ import { SupportComponent } from './support/support.component';
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
+    SocialLoginModule,
+    NgbModule
     
   ],
-  providers: [DatePipe,
+  providers: [
+    DatePipe,
+    {
+      provide: RouteReuseStrategy,
+      useClass: CustomReuseStrategy
+      },
+    {
+      
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            // MCCC
+            // Client ID : 727905192800-hp1qn4bal47d4243tibbq4ie4dnnf4ih.apps.googleusercontent.com
+  
+            //  MCCC LOCALHOST https://localhost:4200/
+            //Client ID : 924038754600-c3g1f7vn84aipjnumsgs7uid0ovus5gr.apps.googleusercontent.com
+            provider: new GoogleLoginProvider(
+              '727905192800-hp1qn4bal47d4243tibbq4ie4dnnf4ih.apps.googleusercontent.com'
+            )
+          },{
+            id: FacebookLoginProvider.PROVIDER_ID,
+            // App Name : MCCCWD
+            // App id : 629080598116548
+            // this is the web platform App ID
+            // Site url : https://mcccapp.in/
+  
+  
+            // test app
+            // App id : 908282646448240
+            // App Name : MCCCWD-aws
+  
+            provider: new FacebookLoginProvider(
+              '499325081131217'
+            )          
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { DashboardService } from 'src/app/_service/dashboard.service';
-
+import { Config } from '../_config/config';
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-bookmark',
   templateUrl: './bookmark.component.html',
@@ -18,8 +20,19 @@ export class BookmarkComponent implements OnInit {
   bookmarkNoData : boolean = true;
   eventbookmarkNoData :boolean = true;
   workshopbookmarkNoData :boolean = true;
+  btsBookmarkData: any;
+  hostUrl:string = Config.Host+'backend2/';
+  expanded = 0;
+  resData: any;
+  
+  toastSuccess:string = 'toast-15';
+  toastDanger:string = 'toast-16';
   constructor(private dashboardService:DashboardService,
-    private route : Router,) { }
+    private route : Router,) {
+      this.dashboardService.listen().subscribe((e:any)=>{
+        this.ngOnInit();
+      });
+     }
 
   ngOnInit(): void {
     this.catId = 1;
@@ -35,11 +48,12 @@ export class BookmarkComponent implements OnInit {
         this.dashboardService.getUserBookmarkEvent('')
         .subscribe(res => {
           this.loading = true;
-              this.eventBookmarkData = res.data;
+          this.eventBookmarkData = res.data;
+
               if(this.eventBookmarkData.length > 0){
-                this.eventbookmarkNoData = false;
+              // this.eventBookmarkData = res.data;
               }
-              // console.log(this.eventBookmarkData);
+              // console.log(res.data);
         });
         this.dashboardService.getUserBookmarkWorkshop('')
         .subscribe(res => {
@@ -48,7 +62,17 @@ export class BookmarkComponent implements OnInit {
               if(this.workshopBookmarkData.length > 0){
                 this.workshopbookmarkNoData = false;
               }
-              console.log(this.workshopBookmarkData);
+              // console.log(this.workshopBookmarkData);
+        });
+        
+        this.dashboardService.getUserBookmarkBTS('')
+        .subscribe(data => {
+          this.loading = true;
+          this.btsBookmarkData = data.data;
+              if(this.btsBookmarkData.length > 0){
+                // this.btsBookmarkNoData = res.data;
+              }
+              console.log(data.data);
         });
   }
   castingInner(id:any){
@@ -60,5 +84,46 @@ export class BookmarkComponent implements OnInit {
   tab(data:any){
     this.catId = data;
   }
-
+  bookmarkBTS(id:any,index?:any){
+    this.dashboardService.bookmarkWorkshopEvents({event_id:id,type:'BTS'})
+      .subscribe(res => {
+        this.resData = res; 
+        if(this.resData.data[0] == 'Bookmark Added'){
+          this.btsBookmarkData[index].bookmark_status = 1;
+          console.log('toast added',this.toastSuccess);
+          new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
+        }
+        if(this.resData.data[0] == 'Bookmark removed'){
+          this.btsBookmarkData[index].bookmark_status = 0;
+          new toastbox(this.toastDanger, 2000);
+            setTimeout(() => {
+              $('#'+this.toastDanger).removeClass('show');
+          }, 2000);
+        }     
+      });
+  }
+  bookmarkEvent(id:any,index?:any){
+    this.dashboardService.bookmarkWorkshopEvents({event_id:id,type:'event'})
+      .subscribe(res => {
+        this.resData = res; 
+        if(this.resData.data[0] == 'Bookmark Added'){
+          this.eventBookmarkData[index].bookmark_status = 1;
+          console.log('toast added',this.toastSuccess);
+          new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
+        }
+        if(this.resData.data[0] == 'Bookmark removed'){
+          this.eventBookmarkData[index].bookmark_status = 0;
+          new toastbox(this.toastDanger, 2000);
+            setTimeout(() => {
+              $('#'+this.toastDanger).removeClass('show');
+          }, 2000);
+        }     
+      });
+  }
 }

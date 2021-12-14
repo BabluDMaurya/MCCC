@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Config } from 'src/app/_config/config';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../_service/authentication.service';
 
 @Component({
   selector: 'app-splash',
@@ -16,9 +17,9 @@ export class SplashComponent implements OnInit {
     {"no": 4,class1:"fourth",class2:"bTs-content",class3:"slide-btn4",logo: "../../assets/img/white_logo.webp",img: "../../assets/img/img/GirlImg.webp",title:"BTS",des:"Get the most of what's happening 'Behind The Screen'. Anywhere. Everywhere.",link:"/signin-signup", skipBtn:"Next"}
   ];
   //-----slick slider------------//    
-  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": true,"autoplay": false,"infinite": true,
+  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": true,"autoplay": true,"infinite": true,
   fade: true,
-  "autoplaySpeed": 3000,method:{
+  "autoplaySpeed": 10000,method:{
     "slickPause" : true
   }};
   slickInit(e:any) {
@@ -49,8 +50,17 @@ export class SplashComponent implements OnInit {
   }
   //-----slick slider------------//
   constructor(
-    private route : Router
-  ) { }
+    private route : Router,
+    private authenticationService: AuthenticationService,
+  ) { 
+     // redirect to home if already logged in    
+     if (this.authenticationService.currentUserValue) {
+      let Auth =  JSON.stringify(this.authenticationService.currentUserValue.status);
+      if(Auth){
+          this.route.navigate([Config.AfterLogin]);
+      }
+     }
+  }
 
   ngOnInit(): void {
   }

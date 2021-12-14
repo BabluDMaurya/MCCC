@@ -20,6 +20,9 @@
         <div class="main_wrppers">
             <div class="castingImg">
                 <img src="{{bgImage}}" alt="">
+                <div class="shaveIcon" (click)="bookmarkCasting(workshopData.id,workshopData?.bookmark_status)">
+                    <i [ngClass]="workshopData.bookmark_status == 1 ? 'fas fa-bookmark removecard' : 'far fa-bookmark'"></i>
+                </div> 
             </div>
             <div class="castingContent">
                 <div class="catingHeader">

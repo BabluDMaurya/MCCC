@@ -1,6 +1,6 @@
 <div class="main casting casting_inner inviteFrnds bookemark_main">
     <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
-    <div class=" main_wrppers bookmarke">
+    <div class=" main_wrppers bookmarke bts_inners ">
         <div class="bookmaerkWrapper">
             <!-- Extra Header -->
                 <div class="extraHeader p-0">
@@ -45,77 +45,11 @@
                 <!-- workshop tab -->
                 <div class="tab-pane fade" id="workshop" role="tabpanel">
                     <div class="section full mt-1">
-                         <div class="casingCalls">
-                            <!-- <div class="casingCallHeader">
-                                <p class="classinghead">New Casing Call</p>
-                                <span><a>View All</a></span>
-                            </div> -->
-                            <div class="boxs">
-                               <div class="boxHead">
-                                <h5><a href="#">Looking for a Foreigner</a></h5>
-                                <div class="shaveIcon">
-                                    <i class="far fa-bookmark"></i>
-                                </div>
-                               </div>
-                               <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                                adipiscing elit, sed....</a></p>
-                                <ul class="userDetails">
-                                    <li><i class="fas fa-transgender-alt"></i>Male</li>
-                                    <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                                    <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                                </ul>
-                                <div class="labelBtns">
-                                    <label>Male</label>
-                                    <label>Foreigner</label>
-                                    <label>Add Film</label>
-                                    <label>30-50 years</label>
-                                </div>
-                            </div>
-
-                            <div class="boxs">
-                                <div class="boxHead">
-                                 <h5><a href="#">Looking for a Foreigner</a></h5>
-                                 <div class="shaveIcon">
-                                     <i class="far fa-bookmark"></i>
-                                 </div>
-                                </div>
-                                <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                                 adipiscing elit, sed....</a></p>
-                                 <ul class="userDetails">
-                                     <li><i class="fas fa-transgender-alt"></i>Male</li>
-                                     <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                                     <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                                 </ul>
-                                 <div class="labelBtns">
-                                     <label>Male</label>
-                                     <label>Foreigner</label>
-                                     <label>Add Film</label>
-                                     <label>30-50 years</label>
-                                 </div>
-                             </div>
-
-                             <div class="boxs">
-                                <div class="boxHead">
-                                 <h5><a href="#">Looking for a Foreigner</a></h5>
-                                 <div class="shaveIcon">
-                                     <i class="far fa-bookmark"></i>
-                                 </div>
-                                </div>
-                                <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                                 adipiscing elit, sed....</a></p>
-                                 <ul class="userDetails">
-                                     <li><i class="fas fa-transgender-alt"></i>Male</li>
-                                     <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                                     <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                                 </ul>
-                                 <div class="labelBtns">
-                                     <label>Male</label>
-                                     <label>Foreigner</label>
-                                     <label>Add Film</label>
-                                     <label>30-50 years</label>
-                                 </div>
-                             </div>
-                             
+                         <div class="casingCalls" *ngIf="!workshopbookmarkNoData">
+                            <app-workshop-card *ngFor="let c of workshopBookmarkData; let idx=index" [data]="c"></app-workshop-card>
+                        </div>
+                        <div class="casingCalls" *ngIf="workshopbookmarkNoData">
+                            <app-not-found-data ></app-not-found-data>
                         </div>
                     </div>
 
@@ -124,77 +58,35 @@
                 <!-- bts tab -->
                 <div class="tab-pane fade" id="bts" role="tabpanel">
                     <div class="section full mt-1">
-                        <div class="casingCalls">
-                            <!-- <div class="casingCallHeader">
-                                <p class="classinghead">New Casing Call</p>
-                                <span><a>View All</a></span>
-                            </div> -->
-                            <div class="boxs">
-                               <div class="boxHead">
-                                <h5><a href="#">Looking for a Foreigner</a></h5>
-                                <div class="shaveIcon">
-                                    <i class="far fa-bookmark"></i>
+                        <div class="bts__inner">
+                            <div class="moviesArea" *ngFor="let data of btsBookmarkData; let idx=index">
+                                <div class="moviess"  [routerLink]="['/bts-video-view/',data.id,data.category_id]" >
+                                    <img *ngIf="data.youtube_thumbnail == null " src="{{hostUrl}}{{data.thumbnail_path}}{{data.thumbnail}}">
+                                    <img *ngIf="data.youtube_thumbnail != null " src="{{data.youtube_thumbnail}}">
+                                    <div class="play__ionc">
+                                        <img src="../../assets/img/img/play_icon.webp" alt="">
+                                    </div>
                                 </div>
-                               </div>
-                               <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                                adipiscing elit, sed....</a></p>
-                                <ul class="userDetails">
-                                    <li><i class="fas fa-transgender-alt"></i>Male</li>
-                                    <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                                    <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                                </ul>
-                                <div class="labelBtns">
-                                    <label>Male</label>
-                                    <label>Foreigner</label>
-                                    <label>Add Film</label>
-                                    <label>30-50 years</label>
+                                <div class="shaveIcon" (click)="bookmarkBTS(data.id,idx)">
+                                    <i [ngClass]="data.bookmark_status == 1 ? 'fas fa-bookmark removecard' : 'far fa-bookmark'"></i>
+                                </div> 
+                                <div class="moviesContent" *ngIf="data.description.length > 50 && expanded !=  data.id">
+                                    <p [innerHTML]="data.description.substr(0, 50) + '...'"></p>
+                                    <span (click)="expanded = data.id"
+                                              class="text-green"><b>{{expanded==  data.id ?'View less':'View more'}}</b></span>
+                                   
                                 </div>
+                                <div class="moviesContent" *ngIf="expanded ==  data.id ">
+                                    <p [innerHTML]="data.description"></p>
+                                    <span (click)="expanded =0"
+                                              class="text-green"><b>{{expanded==  data.id ?'View less':'View more'}}</b></span>
+                                    
+                                </div>
+                                <div class="moviesContent" *ngIf="data.description.length < 50 ">
+                                    <p [innerHTML]="data.description"></p>
+                                </div>
+
                             </div>
-
-                            <div class="boxs">
-                                <div class="boxHead">
-                                 <h5><a href="#">Looking for a Foreigner</a></h5>
-                                 <div class="shaveIcon">
-                                     <i class="far fa-bookmark"></i>
-                                 </div>
-                                </div>
-                                <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                                 adipiscing elit, sed....</a></p>
-                                 <ul class="userDetails">
-                                     <li><i class="fas fa-transgender-alt"></i>Male</li>
-                                     <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                                     <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                                 </ul>
-                                 <div class="labelBtns">
-                                     <label>Male</label>
-                                     <label>Foreigner</label>
-                                     <label>Add Film</label>
-                                     <label>30-50 years</label>
-                                 </div>
-                             </div>
-
-                             <div class="boxs">
-                                <div class="boxHead">
-                                 <h5><a href="#">Looking for a Foreigner</a></h5>
-                                 <div class="shaveIcon">
-                                     <i class="far fa-bookmark"></i>
-                                 </div>
-                                </div>
-                                <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                                 adipiscing elit, sed....</a></p>
-                                 <ul class="userDetails">
-                                     <li><i class="fas fa-transgender-alt"></i>Male</li>
-                                     <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                                     <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                                 </ul>
-                                 <div class="labelBtns">
-                                     <label>Male</label>
-                                     <label>Foreigner</label>
-                                     <label>Add Film</label>
-                                     <label>30-50 years</label>
-                                 </div>
-                             </div>
-                             
                         </div>
                     </div>
 
@@ -203,77 +95,35 @@
                  <!-- training tab -->
                  <div class="tab-pane fade" id="training" role="tabpanel">
                     <div class="section full mt-1">
-                        <div class="casingCalls">
-                            <!-- <div class="casingCallHeader">
-                                <p class="classinghead">New Casing Call</p>
-                                <span><a>View All</a></span>
-                            </div> -->
-                            <div class="boxs">
-                               <div class="boxHead">
-                                <h5><a href="#">Looking for a Foreigner</a></h5>
-                                <div class="shaveIcon">
-                                    <i class="far fa-bookmark"></i>
+                        <div class="bts__inner">
+                            
+                            <div class="moviesArea" *ngFor="let eventData of eventBookmarkData; let idx=index">
+                                <div class="moviess"  [routerLink]="['/training-video-view/',eventData.id,eventData.category_id]" >
+                                    <img *ngIf="eventData.youtube_thumbnail == null " src="{{hostUrl}}{{eventData.thumbnail_path}}{{eventData.thumbnail}}">
+                                    <img *ngIf="eventData.youtube_thumbnail != null " src="{{eventData.youtube_thumbnail}}">
+                                    <div class="play__ionc">
+                                        <img src="../../assets/img/img/play_icon.webp" alt="">
+                                    </div>
                                 </div>
-                               </div>
-                               <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                                adipiscing elit, sed....</a></p>
-                                <ul class="userDetails">
-                                    <li><i class="fas fa-transgender-alt"></i>Male</li>
-                                    <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                                    <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                                </ul>
-                                <div class="labelBtns">
-                                    <label>Male</label>
-                                    <label>Foreigner</label>
-                                    <label>Add Film</label>
-                                    <label>30-50 years</label>
+                                <div class="shaveIcon" (click)="bookmarkEvent(eventData.id,idx)">
+                                    <i [ngClass]="eventData.bookmark_status == 1 ? 'fas fa-bookmark removecard' : 'far fa-bookmark'"></i>
+                                </div> 
+                                <div class="moviesContent" *ngIf="eventData.description.length > 50 && expanded !=  eventData.id">
+                                    <p [innerHTML]="eventData.description.substr(0, 50) + '...'"></p>
+                                    <span (click)="expanded = eventData.id"
+                                              class="text-green"><b>{{expanded==  eventData.id ?'View less':'View more'}}</b></span>
+                                   
+                                </div>
+                                <div class="moviesContent" *ngIf="expanded ==  eventData.id ">
+                                    <p [innerHTML]="eventData.description"></p>
+                                    <span (click)="expanded =0"
+                                              class="text-green"><b>{{expanded==  eventData.id ?'View less':'View more'}}</b></span>
+                                    
+                                </div>
+                                <div class="moviesContent" *ngIf="eventData.description.length < 50 ">
+                                    <p [innerHTML]="eventData.description"></p>
                                 </div>
                             </div>
-
-                            <div class="boxs">
-                                <div class="boxHead">
-                                 <h5><a href="#">Looking for a Foreigner</a></h5>
-                                 <div class="shaveIcon">
-                                     <i class="far fa-bookmark"></i>
-                                 </div>
-                                </div>
-                                <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                                 adipiscing elit, sed....</a></p>
-                                 <ul class="userDetails">
-                                     <li><i class="fas fa-transgender-alt"></i>Male</li>
-                                     <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                                     <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                                 </ul>
-                                 <div class="labelBtns">
-                                     <label>Male</label>
-                                     <label>Foreigner</label>
-                                     <label>Add Film</label>
-                                     <label>30-50 years</label>
-                                 </div>
-                             </div>
-
-                             <div class="boxs">
-                                <div class="boxHead">
-                                 <h5><a href="#">Looking for a Foreigner</a></h5>
-                                 <div class="shaveIcon">
-                                     <i class="far fa-bookmark"></i>
-                                 </div>
-                                </div>
-                                <p><a href="">Lorem ipsum dolor sit amet, consectetuer 
-                                 adipiscing elit, sed....</a></p>
-                                 <ul class="userDetails">
-                                     <li><i class="fas fa-transgender-alt"></i>Male</li>
-                                     <li><i class="far fa-calendar-alt"></i>Nov 30, 2021</li>
-                                     <li><ion-icon name="location-outline"></ion-icon>Mumbai</li>
-                                 </ul>
-                                 <div class="labelBtns">
-                                     <label>Male</label>
-                                     <label>Foreigner</label>
-                                     <label>Add Film</label>
-                                     <label>30-50 years</label>
-                                 </div>
-                             </div>
-                             
                         </div>
                     </div>
 

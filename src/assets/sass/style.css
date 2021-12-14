@@ -10644,8 +10644,17 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
 .wrrpperSingUp {
   width: 85%;
   margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
+a.outline_btns{
+  background: transparent!important;
+  border: 1px solid #ff6454!important;
+  color: #000!important;
+}
 .wrrpperSingUp .logos {
   width: 40%;
   margin: 0 auto;
@@ -10735,6 +10744,7 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
   line-height: 55px;
   display: block;
   text-align: center;
+  display: none;
 }
 
 .darkMode {
@@ -10827,6 +10837,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   line-height: 40px;
   padding: 0 20px;
   font-size: 16px;
+  height: 45px;
 }
 
 .wrrpperRegisterForm .forms .formGroup .inputs input:focus-visible {
@@ -12910,6 +12921,7 @@ transform: rotate(270deg);
   -webkit-transform: rotate(270deg);
           transform: rotate(270deg);
   right: -25px;
+  display: none;
 }
 
 .notifications .notification_area .notificationDiv span {
@@ -13131,9 +13143,9 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeVideos .shaveIcon {
   position: absolute;
-  bottom: 10px;
-  right: 20px;
-  color: #fff;
+  bottom: -24px!important;
+  right: 10px!important;
+  color: #ff6554!important;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .videosTopPart {
@@ -14104,5 +14116,8 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   to {
     background-position: 100% 0;
   }
+}
+.bts_inners .bookmaerkWrapper .bts__inner .moviesArea .moviesContent{
+  padding: 5% 0;
 }
     /*# sourceMappingURL=style.css.map */

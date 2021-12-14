@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/_service/authentication.service';
 import { Router } from '@angular/router';
 import { Config } from 'src/app/_config/config';
 import {HttpErrorResponse} from '@angular/common/http';
+import { RegisterService } from '../_service/register.service';
 @Component({
   selector: 'app-support',
   templateUrl: './support.component.html',
   styleUrls: ['./support.component.scss']
 })
 export class SupportComponent implements OnInit {
+  @ViewChild('opendialog') opendialog:any;
   form: FormGroup | any;
   back_link :any =  "home";
   component_title : string = 'Support';
@@ -18,21 +20,14 @@ export class SupportComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route : Router,
-    private authenticationService: AuthenticationService
-    ) {
-    // redirect to home if already logged in
-    if (this.authenticationService.currentUserValue) {
-      let Auth =  JSON.stringify(this.authenticationService.currentUserValue.status);
-       if(Auth){
-           this.route.navigate([Config.AfterLogin]);
-       }
-     }
-   }
+    private authenticationService: AuthenticationService,
+    private registerService : RegisterService,
+    ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      options : ['',[Validators.required,Validators.pattern('^[a-zA-Z]{2,}(?: [a-zA-Z]+){0,2}$')]],
-      message : ['']
+      options : ['',[Validators.required]],
+      message : ['',[Validators.required]]
     });
   }
   get f(): { [key: string]: AbstractControl } {
@@ -45,22 +40,24 @@ export class SupportComponent implements OnInit {
       return;
     }else{        
       
-        // this.registerService.register_new(this.form.value).subscribe(
-        //         data => {     
-                                      
-        //           this.route.navigate(['/success']);
-        //         },
-        //         (errorResponse: HttpErrorResponse) => {
-        //           const validationErrors = errorResponse.error.errors;
-        //           Object.keys(validationErrors).forEach(prop => {
-        //             const formControl = this.form.get(prop);
-        //             if (formControl) {
-        //               formControl.setErrors({
-        //                 serverError: validationErrors[prop]
-        //               });
-        //             }
-        //           });                                   
-        //         });
+        this.registerService.support(this.form.value).subscribe(
+                data => {   
+                  this.submitted = false;                
+                  this.opendialog.nativeElement.click();
+                  this.form.reset(this.form.value.message);
+                  this.form.reset(this.form.value.options);
+                },
+                (errorResponse: HttpErrorResponse) => {
+                  const validationErrors = errorResponse.error.errors;
+                  Object.keys(validationErrors).forEach(prop => {
+                    const formControl = this.form.get(prop);
+                    if (formControl) {
+                      formControl.setErrors({
+                        serverError: validationErrors[prop]
+                      });
+                    }
+                  });                                   
+                });
     }
   }
 

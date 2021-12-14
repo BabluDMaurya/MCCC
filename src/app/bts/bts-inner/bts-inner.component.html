@@ -1,4 +1,4 @@
-    <div class="main casting_inner sidePaading0 bts_inner">
+<div class="main casting_inner sidePaading0 bts_inner">
         <div class="mainHeader">
             <div class="top_header">
                 <div class="arrowLeft" [routerLink]="['/bts']">
@@ -10,7 +10,7 @@
                 </div>
                 
                 <div class="lats_side">
-                    <div class="avtars">
+                    <div class="avtars" [routerLink]="['/home']">
                         <!-- <div class="avatar"> -->
                             <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
                         <!-- </div> -->
@@ -31,8 +31,8 @@
                             <img src="../../assets/img/img/play_icon.webp" alt="">
                         </div>
                     </div>
-                    <div class="moviesContent" *ngIf="data.description.length > 29 && expanded !=  data.id">
-                        <p [innerHTML]="data.description.substr(0, 29)"></p>
+                    <div class="moviesContent" *ngIf="data.description.length > 50 && expanded !=  data.id">
+                        <p [innerHTML]="data.description.substr(0, 50) + '...'"></p>
                         <span (click)="expanded = data.id"
                                   class="text-green"><b>{{expanded==  data.id ?'View less':'View more'}}</b></span>
                        
@@ -43,8 +43,14 @@
                                   class="text-green"><b>{{expanded==  data.id ?'View less':'View more'}}</b></span>
                         
                     </div>
+                    <div class="moviesContent" *ngIf="data.description.length < 50 ">
+                        <p [innerHTML]="data.description"></p>
+                    </div>
                 </div>
                 
+            </div>
+            <div *ngIf="videoNotFound">
+                <app-not-found-data ></app-not-found-data>
             </div>
         </div>
     </div>

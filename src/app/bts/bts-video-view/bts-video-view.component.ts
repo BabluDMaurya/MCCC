@@ -4,6 +4,9 @@ import {BtsVideosService} from '../../_service/bts-videos.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Config } from '../../_config/config';
 import { Location } from '@angular/common';
+import { DashboardService } from 'src/app/_service/dashboard.service';
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-bts-video-view',
   templateUrl: './bts-video-view.component.html',
@@ -18,11 +21,15 @@ export class BtsVideoViewComponent implements OnInit {
   hostUrl:string = Config.Host+'backend2/';
   videoNotFound :boolean = false;
   descLength: any;
+  resData: any;
+  toastSuccess:string = 'toast-15';
+  toastDanger:string = 'toast-16';
   constructor(private actRoute:ActivatedRoute,
     private route : Router,
     private btsVideosService: BtsVideosService,
     private dom:DomSanitizer,
-    private location:Location,) {
+    private location:Location,
+    private dashboardService:DashboardService) {
       this.actRoute.paramMap.subscribe((params: ParamMap) => {  
         this.ngOnInit();
       });
@@ -55,7 +62,7 @@ export class BtsVideoViewComponent implements OnInit {
                           // this.vid = this.BtsVideos[0].video_url+'?autoplay=1&mute=1&enablejsapi=1';
                           console.log("vid : ",this.vid);
                           this.desc = this.BtsVideos[0].description;
-                          this.descLength = this.desc;
+                          this.descLength = this.desc.length;
                           this.videoNotFound = false;
                         }else{
                           this.videoNotFound = true;
@@ -75,6 +82,28 @@ export class BtsVideoViewComponent implements OnInit {
   }
   back(){
     this.location.back()
+  }
+
+  bookmarkBTS(id:any,status?:any){
+    this.dashboardService.bookmarkWorkshopEvents({event_id:id,type:'BTS'})
+      .subscribe(res => {
+        this.resData = res; 
+        if(this.resData.data[0] == 'Bookmark Added'){
+          this.BtsVideos[0].bookmark_status = 1;
+          console.log('toast added',this.toastSuccess);
+          new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
+        }
+        if(this.resData.data[0] == 'Bookmark removed'){
+          this.BtsVideos[0].bookmark_status = 0;
+          new toastbox(this.toastDanger, 2000);
+            setTimeout(() => {
+              $('#'+this.toastDanger).removeClass('show');
+          }, 2000);
+        }     
+      });
   }
 
 }

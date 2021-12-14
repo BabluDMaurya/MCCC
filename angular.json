@@ -38,7 +38,6 @@
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/@videogular/ngx-videogular/fonts/videogular.css",
               "node_modules/slick-carousel/slick/slick-theme.scss",
-              "node_modules/@videogular/ngx-videogular/fonts/videogular.css",
               "src/styles.scss",
               "src/assets/css/style.css",
               "src/assets/sass/style.css"
@@ -58,13 +57,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4kb",
+                  "maximumError": "5kb"
                 }
               ],
               "fileReplacements": [

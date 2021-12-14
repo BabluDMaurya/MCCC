@@ -63,6 +63,9 @@ export class HomeComponent implements OnInit {
     } else {
       this.route.navigate(['/signin']);
     }
+    this.dashboardService.listen().subscribe((e:any)=>{
+      this.ngOnInit();
+    });
   }
   //-----slick slider------------//    
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,autoplay: true,autoplaySpeed: 2000,};

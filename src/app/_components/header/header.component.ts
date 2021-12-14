@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
     this.getUserNotificationCounter();
     setInterval(() => { 
      this.getUserNotificationCounter();
-    }, 1000 * 15)
+    }, 10000 * 15)
   }
   getUserNotificationCounter(){
     this.dashboardService.getUserNotificationCounter(null)

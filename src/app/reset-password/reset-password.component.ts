@@ -100,17 +100,29 @@ this.registerService.terms().subscribe(
     var strength = 0; 
   
     //If password contains both lower and uppercase characters, increase strength value.
-    if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+    if (password.match(/([a-z])/)) {
+          strength += 1;
+          $('.low-case').addClass('text-success');
+          $('.low-case i').removeClass('fa-circle').addClass('fa-check-circle');
+      } else {
+          $('.low-case').removeClass('text-success');
+          $('.low-case i').addClass('fa-circle').removeClass('fa-check-circle');
+      }
+
+      if (password.match(/([A-Z])/)) {
+        // if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
         strength += 1;
-        $('.low-upper-case').addClass('text-success');
-        $('.low-upper-case i').removeClass('fa-circle').addClass('fa-check-circle');
+        $('.low-uppercase').addClass('text-success');
+        $('.low-uppercase i').removeClass('fa-circle').addClass('fa-check-circle');
     } else {
-        $('.low-upper-case').removeClass('text-success');
-        $('.low-upper-case i').addClass('fa-circle').removeClass('fa-check-circle');
+        $('.low-uppercase').removeClass('text-success');
+        $('.low-uppercase i').addClass('fa-circle').removeClass('fa-check-circle');
     }
+
+
   
     //If it has numbers and characters, increase strength value.
-    if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) {
+    if (password.match(/([A-Z])/) && password.match(/([0-9])/)) {
         strength += 1;
         $('.one-number').addClass('text-success');
         $('.one-number i').removeClass('fa-circle').addClass('fa-check-circle');
@@ -119,7 +131,6 @@ this.registerService.terms().subscribe(
         $('.one-number').removeClass('text-success');
         $('.one-number i').addClass('fa-circle').removeClass('fa-check-circle');
     }
-  
     //If it has one special character, increase strength value.
     if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
         strength += 1;
@@ -187,14 +198,24 @@ this.registerService.terms().subscribe(
     var confirmstrength = 0;  
   
     //If password contains both lower and uppercase characters, increase strength value.
-    if (ConfirmPassword.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+    if (ConfirmPassword.match(/([a-z])/)) {
       confirmstrength += 1;
-        $('.confirm-low-upper-case').addClass('text-success');
-        $('.confirm-low-upper-case i').removeClass('fa-circle').addClass('fa-check-circle');
-    } else {
-        $('.confirm-low-upper-case').removeClass('text-success');
-        $('.confirm-low-upper-case i').addClass('fa-circle').removeClass('fa-check-circle');
-    }
+          $('.confirm-low-case').addClass('text-success');
+          $('.confirm-low-case i').removeClass('fa-circle').addClass('fa-check-circle');
+      } else {
+          $('.confirm-low-case').removeClass('text-success');
+          $('.confirm-low-case i').addClass('fa-circle').removeClass('fa-check-circle');
+      }
+
+      if (ConfirmPassword.match(/([A-Z])/)) {
+        // if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
+          confirmstrength += 1;
+          $('.confirm-low-uppercase').addClass('text-success');
+          $('.confirm-low-uppercase i').removeClass('fa-circle').addClass('fa-check-circle');
+      } else {
+          $('.confirm-low-uppercase').removeClass('text-success');
+          $('.confirm-low-uppercase i').addClass('fa-circle').removeClass('fa-check-circle');
+      }
   
     //If it has numbers and characters, increase strength value.
     if (ConfirmPassword.match(/([a-zA-Z])/) && ConfirmPassword.match(/([0-9])/)) {

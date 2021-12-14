@@ -17,9 +17,9 @@ export class BookmarkComponent implements OnInit {
   eventBookmarkData :any;
   workshopBookmarkData :any;
   catId:any;
-  bookmarkNoData : boolean = true;
+  bookmarkNoData : boolean = false;
   eventbookmarkNoData :boolean = true;
-  workshopbookmarkNoData :boolean = true;
+  workshopbookmarkNoData :boolean = false;
   btsBookmarkData: any;
   hostUrl:string = Config.Host+'backend2/';
   expanded = 0;
@@ -42,8 +42,9 @@ export class BookmarkComponent implements OnInit {
               this.castings = res.data;
               if(this.castings.length > 0){
                 this.bookmarkNoData = false;
+              }else{
+                this.bookmarkNoData = true;
               }
-              // console.log(this.castings);
         });
         this.dashboardService.getUserBookmarkEvent('')
         .subscribe(res => {
@@ -52,6 +53,8 @@ export class BookmarkComponent implements OnInit {
 
               if(this.eventBookmarkData.length > 0){
               // this.eventBookmarkData = res.data;
+              }else{
+
               }
               // console.log(res.data);
         });
@@ -61,6 +64,8 @@ export class BookmarkComponent implements OnInit {
               this.workshopBookmarkData = res.data;
               if(this.workshopBookmarkData.length > 0){
                 this.workshopbookmarkNoData = false;
+              }else{
+                this.workshopbookmarkNoData = true;
               }
               // console.log(this.workshopBookmarkData);
         });

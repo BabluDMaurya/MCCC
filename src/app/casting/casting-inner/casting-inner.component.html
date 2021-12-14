@@ -2,11 +2,11 @@
 <div class="main casting_inner sidePaading0">
     <app-sub-header [back]="back_link"></app-sub-header>
     <div class="main_wrppers">
-        <div class="castingImg">
+        <div class="castingImg" *ngIf="!Apiloading">
             <!-- <img *ngIf="Apiloading" src="../../../assets/img/white_logo.webp" class="hd-img"> -->
             <img *ngIf="!Apiloading" src="{{image}}" alt="">
         </div>
-        <div class="castingContent">
+        <div class="castingContent" *ngIf="!Apiloading">
             <div class="catingHeader">
                 <h5 [innerHTML]="castingTitle"></h5>
                 <div class="shaveIcon">
@@ -42,6 +42,23 @@
             </ul>
             <button *ngIf="applySt == 0" class="castingApply" (click)="apply()">Apply</button>
             <button *ngIf="applySt == 1" class="castingApply" >Applied</button>
+        </div>
+        <!-- innerPage_skeleton -->
+        <div *ngIf="Apiloading">
+            <div class="inner_imgskeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
         </div>
     </div>
 </div>

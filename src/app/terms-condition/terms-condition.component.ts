@@ -12,11 +12,14 @@ export class TermsConditionComponent implements OnInit {
   component_title : string = 'Terms & Conditions';
   all_terms: any;
   terms: any;
+  loading :boolean = false;
   constructor(private registerService: RegisterService) { }
 
   ngOnInit(): void {
+    this.loading = false;
     this.registerService.terms().pipe(first()).subscribe(
       data => {
+        this.loading = true;
         this.all_terms = data;
         this.terms = this.all_terms.firstFourTerms;  
         // if(this.all_terms.length > 4){
@@ -24,7 +27,7 @@ export class TermsConditionComponent implements OnInit {
         // }      
       },error => {
         // this.alertService.error(error);
-          // this.loading = false;
+          this.loading = false;
       });
   }
 

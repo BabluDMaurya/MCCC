@@ -11,18 +11,20 @@
             <span>(You can add only 3 Photos)</span>
         </div>
     </div>
-    <div  style="display:flex;max-width:600px;overflow: auto;">
-        <div class="imgPrevw" *ngFor="let item of ulpoadedFiles" style="margin:5px">
+    <div  style="display:flex;max-width:600px;overflow: auto;" class="prevw_img_slide">
+        <div class="imgPrevw" *ngFor="let item of ulpoadedFiles" style="margin:5px; margin-bottom: 30px; width: 150px; height: 150px; ">
           <span  (click)="cropImage(item.imgId)">
-            <img [src]="item.imgBase64" style="max-width:300px;max-height:300px ;border:2px solid gray; border-radius: 10px;" />
+            <img [src]="item.imgBase64" style="max-width:300px;max-height:300px ; box-shadow: 0px 0px 15px #0003; border-radius: 10px;" />
           </span>
-          <div class="close_btn" (click)="removeImage(item.imgId)"><span><i class="far fa-times-circle"></i></span></div>
+          <div class="close_btn" (click)="removeImage(item.imgId)"><span>
+            <i class="far fa-times-circle"></i>
+          </span></div>
           <div class="edit_btn"><a><i class="far fa-edit"></i></a></div>
         </div>  
       </div>
       <!-- Progress Bar -->
       <div class="pt-2 pb-2" *ngIf="progress">
-        <p>Video uploading on server please wait...</p>
+        <p>Images uploading on server please wait...</p>
         <div class="progress">
             <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
         </div>
@@ -59,12 +61,12 @@
       </div>
     </div>  -->
     <button data-bs-toggle="modal" data-bs-target="#ModalForm" #openbutton style="display: none;"> OpenModel</button>
-    <div class="modal fade modalbox input_text" id="ModalForm" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal fade modalbox input_text modeal_image" id="ModalForm" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-hidden="true">
       <div class="modal-dialog" role="document">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title">Image Cropper</h5>
-                  <a #closebutton data-bs-dismiss="modal">X</a>
+                  <h5 class="modal-title">Adjust Your Image</h5>
+                  <a #closebutton data-bs-dismiss="modal"><i class="far fa-times-circle"></i></a>
               </div>
               <div class="modal-body">
                 <image-cropper [imageChangedEvent]="imageChangedEvent"

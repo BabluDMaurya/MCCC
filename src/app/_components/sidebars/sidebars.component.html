@@ -4,8 +4,8 @@
         <!-- profile box -->
         <div class="profileBox">
             <div class="image-wrapper">
-                <img *ngIf="this.data.profile_pic == '' || this.data.profile_pic == 'Null' " src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
-                <img *ngIf="this.data.profile_pic != '' " src="{{baseUrl}}{{this.data.profile_pic_path}}{{this.data.profile_pic}}" alt="image" class="imaged rounded">
+                <img *ngIf="this.data.profile_pic == '' || this.data.profile_pic == null " src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
+                <img *ngIf="this.data.profile_pic != null " src="{{baseUrl}}{{this.data.profile_pic_path}}{{this.data.profile_pic}}" alt="image" class="imaged rounded">
             </div>
             <div class="in">
                 <strong>Hello {{currentUser.userDetails.name}} <!DOCTYPE html></strong>
@@ -130,7 +130,7 @@
         </ul>
     </div>
 </div>
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-right">
+<div class="offcanvas offcanvas-end right_sidebar" tabindex="-1" id="offcanvas-right">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title"><a >Hello {{currentUser.userDetails.name}}</a></h5>
         <a href="#" class="offcanvas-close" data-bs-dismiss="offcanvas">

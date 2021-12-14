@@ -4063,7 +4063,7 @@ a.badge-dark {
 
 .bg-danger {
   background: #EC4433 !important;
-  color: #FFF;
+  color: #FFF!important;
 }
 
 .bg-warning {
@@ -6741,7 +6741,7 @@ textarea,
   margin-top: env(safe-area-inset-top);
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
-  background: #2b3543;
+  background: #000;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.75);
   padding: 10px 16px;
@@ -10644,6 +10644,8 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
 .wrrpperSingUp {
   width: 85%;
   margin: 0 auto;
+}
+.wrrpperSingUp.signUp_page{
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11329,26 +11331,34 @@ body.dark-mode-active .btnArea .btn_ctnt {
 .profilePhoto .imgPrevw{
   position: relative;
   display: block;
+  height: 150px;
+  width: 150px;
+}
+.profilePhoto .imgPrevw img{
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  object-position: center;
 }
 .profilePhoto .imgPrevw .close_btn{
   position: absolute;
-    top: -6px;
-    right: -10px;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border-radius: 50%;
-    color: #ff6554;
+  top: -6px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 50%;
+  color: #ff6554;
 }
 .profilePhoto .imgPrevw .edit_btn{
   position: absolute;
-  bottom: -6px;
-  right: -8px;
-  width: 30px;
-  height: 30px;
+  bottom: -4px;
+  right: -6px;
+  width: 20px;
+  height: 20px;
   background: #fff;
   border-radius: 50%;
   display: flex;
@@ -11357,7 +11367,7 @@ body.dark-mode-active .btnArea .btn_ctnt {
   color: #ff6554;
 }
 .profilePhoto .imgPrevw .edit_btn i{
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .profilePhoto .imgContent .ctnt span {
@@ -11627,6 +11637,7 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 .profileBox .image-wrapper .imaged {
   width: 64px;
   height: 64px;
+  object-fit: cover;
 }
 
 .profileBox .in {
@@ -11693,6 +11704,7 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: 60px;
+  position: relative;
 }
 
 .main .mainHeader .top_header .lats_side {
@@ -11740,6 +11752,11 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   text-align: center;
   line-height: 14px;
   font-size: 11px;
+}
+.main .mainHeader .top_header .logo.middle{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .main .mainHeader .top_header .avtars .avatar {
@@ -11875,7 +11892,7 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   -webkit-transition-timing-function: cubic-bezier(0.68, 1.55, 0.265, 1);
           transition-timing-function: cubic-bezier(0.68, 1.55, 0.265, 1);
   top: 20px;
-  background: #c8c8c8;
+  background: linear-gradient(131deg, #d5eef2, #ddbdda);
   left: 0;
 }
 
@@ -12234,8 +12251,12 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 }
 
 .main_wrppers .casingCalls .moresliderVideos .moreSlider .more_V_box span {
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
+  line-height: 18px;
+}
+.right_sidebar{
+  background: linear-gradient(131deg, #d5eef2, #ddbdda);
 }
 
 .main_wrppers .casingCalls .moresliderVideos .moreSlider .more_V_box.primaryColor {
@@ -12280,7 +12301,7 @@ body.dark-mode-active .main_wrppers .casingCalls .casingCallHeader p, body.dark-
 }
 
 .casting .main_wrppers {
-  margin-top: 105px;
+  margin-top: 130px;
 }
 
 .casting #appCapsule {
@@ -12297,6 +12318,9 @@ body.dark-mode-active .main_wrppers .casingCalls .casingCallHeader p, body.dark-
   position: fixed;
   width: 100%;
   left: 0;
+}
+.wrrpperNoInternet.notFound.notFoundData .imgContent .imgs img{
+  width: auto!important;
 }
 
 body.dark-mode-active .mainHeader .extraHeader {
@@ -12337,6 +12361,9 @@ body.dark-mode-active .workShop .mainHeader .bottomHeader .tabs .box:nth-child(2
   margin-top: 50px!important;
 }
 
+.bts_mains .main_wrppers{
+  margin-top: 80px!important;
+}
 .bts .mainHeader .bottomHeader .tabs .box:nth-child(1) .label {
   color: #000;
 }
@@ -12469,6 +12496,7 @@ body.dark-mode-active .bts .mainHeader .bottomHeader .tabs .box:nth-child(4) .la
 
 .training .trainingWrapper .otherTrainingVid .videosWithContnt .imgPlayIcon {
   position: relative;
+  padding-top: 20px;
 }
 
 .training .trainingWrapper .otherTrainingVid .videosWithContnt .imgPlayIcon img {
@@ -13079,8 +13107,27 @@ body.dark-mode-active .workshop_innerProfile .casting__profiles .profileDetailsW
 
 .bts_inners .bts__inner .moviesArea .moviess {
   position: relative;
+  padding-bottom: 15px;
+}
+.bts_inners .bts__inner .moviesArea .bts_innersss{
+  display: flex;
+  /* align-items: flex-start; */
+  /* justify-content: space-between; */
+  padding:0;
+  position: relative;
+}
+.dark-mode-active .bts_inners .bts__inner .moviesArea .moviesContent p{
+  color: #fff;
+}
+.dark-mode-active .bts_inners .bts__inner .moviesArea .moviesContent span b{
+  color: #fff;
 }
 
+.bts_inners .bts__inner .moviesArea .bts_innersss .shaveIcon{
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 .bts_inners .bts__inner .moviesArea .moviess img {
   width: 100%;
   -o-object-fit: cover;
@@ -13158,6 +13205,14 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
   font-size: 16px;
   margin: 0;
   line-height: normal;
+  color: #000;
+}
+body.dark-mode-active .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent p {
+  color: #fff!important;
+}
+body.dark-mode-active .toast-box{
+ background: #fff;
+ color: #000; 
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent p a {
@@ -13752,9 +13807,16 @@ body.dark-mode-active .gameWrpper .gameHeader .classinghead {
   font-size: 12px;
   color: #000;
 }
+.profile.personal_profile .profileWrpper .profiles .profileDiv label{
+  font-size: 17px;
+  color: #000;
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
 
 body.dark-mode-active .profile .profileWrpper .profiles .profileDiv label,body.dark-mode-active .profile .profileWrpper .profiles .profileDiv input{
-  color: #fff;
+  color: #fff!important;
 }
 .profile .profileWrpper .profiles .profileDiv p {
   font-size: 17px;
@@ -14070,44 +14132,111 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   animation: loader 1s infinite reverse;
   margin-bottom: 10px;
 }
-/* .main_wrppers .casingCalls .boxs.skeleton{
-  position: relative;
-  overflow: hidden;
+
+.upload_img_video .modeal_image{
+  display: block;
+  height: 60vh;
+  top: inherit;
+  bottom: 0px;
 }
-.main_wrppers .casingCalls .boxs.skeleton:before{
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-  90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
-  background-size: 200%;
-  animation: loader 1s infinite reverse;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  content: '';
+.upload_img_video .modeal_image .modal-dialog{
+  height: 60vh;
+  top: inherit;
+  bottom: 0px;
+}
+.upload_img_video .modeal_image .modal-dialog .modal-header a i{
+  color: #ff6554;
+}
+.upload_img_video .modeal_image .modal-dialog .modal-header h5 {
+  color: #ff6554!important;
+}
+.profilePhoto.upload_img_video .prevw_img_slide .imgPrevw .prevw_img_slide{
+  margin-bottom: 30px;
+}
+.personal_profile .profileWrpper .profiles .profileDiv .inputFile{
+  position: relative;
+}
+.personal_profile .profileWrpper .profiles .profileDiv .inputFile #upkoadAdhPan{
+  opacity: 0;
+  height: 43px;
 }
 
-.banner.main_banner.skelton_banner_img {
+.personal_profile .profileWrpper .profiles .profileDiv .inputFile label{
   width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
-  background-size: 200%;
-  animation: loader 1s infinite reverse;
-}
-.main_wrppers .casingCalls .casingCallHeader::before{
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-  90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
-  background-size: 200%;
-  animation: loader 1s infinite reverse;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 999;
-  content: '';
-} */
+  height: 43px;
+  border: 2px solid #ff6454;
+  border-radius: 8px;
+  padding: 0 20px;
+  color: #000!important;
+  font-size: 16px!important;
+  display: flex;
+  line-height: 43px;
+}
+.personal_profile .profileWrpper .profiles .profileDiv .inputFile .fileUpIcon{
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  transform: translateY(-50%);
+}
+.personal_profile .profileWrpper .profiles .profileDiv .prvwImg{
+  margin-top: 50px;
+  text-align: center;
+}
+.personal_profile .profileWrpper .profiles .profileDiv .prvwImg img{
+  border-radius: 10px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+}
+.toast-info{
+  background-color: #ff6554;
+  color: #fff;
+  width: 100%;
+}
+
+.profile.personal_profile .profileWrpper .profiles .profileDiv label{
+  font-size: 17px!important;
+  color: #000!important;
+  padding-bottom: 5px!important;
+  display: flex!important;
+  align-items: center!important;
+}
+.profile .profileWrpper .profiles .profileDiv .innerDetail{
+  /* border:initial; */
+  width: 100%;
+  border: 2px solid #ff6454!important;
+  background: transparent;
+  border-radius: 5px;
+  line-height: 40px;
+  padding: 0 20px!important;
+  font-size: 16px!important;
+  height: 45px;
+}
+.profile .profileWrpper .profiles .profileDiv .dateBirth .select select, .profile .profileWrpper .profiles .profileDiv .select select{
+  width: 100%;
+  border: 2px solid #ff6454!important;
+  background: transparent;
+  border-radius: 5px!important;
+  line-height: 45px;
+  height: 45px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0 20px!important;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.profile .profileWrpper .profiles .profileDiv .dateBirth .select{
+  width: 30%!important;
+}
+.profile.personal_profile .profileWrpper .profiles .profileDiv .select::after{
+  top:12px!important;
+}
 
 @keyframes loader {
   from {
@@ -14118,6 +14247,7 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   }
 }
 .bts_inners .bookmaerkWrapper .bts__inner .moviesArea .moviesContent{
-  padding: 5% 0;
+  padding:0 0 5%;
+  padding-right: 15px;
 }
     /*# sourceMappingURL=style.css.map */

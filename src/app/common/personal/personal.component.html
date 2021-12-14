@@ -1,4 +1,4 @@
- <div class="main casting casting_inner profile">
+ <div class="main casting casting_inner profile personal_profile">
         <div class="mainHeader">
             <div class="top_header">
                 <div class="arrowLeft" (click)=back()>
@@ -34,31 +34,31 @@
                     <label>DOB<span>*</span></label>
                     <div class="dateBirth">
                         <div class="select">
-                            <select formControlName="day" [(ngModel)]="day" class="form-control" [ngClass]="{ 'is-invalid': submit && f.day.errors }">
-                                <option value="">Date</option>
-                                <option [value]="day" *ngFor="let day of dayList" >{{day}}</option>
-                             </select>
-                             <div *ngIf="submit && f.day.errors" class="invalid-feedback">
-                                 <div *ngIf="f.day.errors.required">Day is required</div>               
-                               </div>       
+                        <select formControlName="day" [(ngModel)]="day" class="form-control" [ngClass]="{ 'is-invalid': submit && f.day.errors }">
+                            <option value="">Date</option>
+                            <option [value]="day" *ngFor="let day of dayList" >{{day}}</option>
+                            </select>
+                            <div *ngIf="submit && f.day.errors" class="invalid-feedback">
+                                <div *ngIf="f.day.errors.required">Day is required</div>               
+                        </div>       
                         </div>
                         <div class="select">
                             <select formControlName="month" [(ngModel)]="month" class="form-control" [ngClass]="{ 'is-invalid': submit && f.month.errors }">
                                 <option value="">Month</option>
                                 <option [value]="month" *ngFor="let month of monthList" >{{month}}</option>
-                             </select>
-                             <div *ngIf="submit && f.month.errors" class="invalid-feedback">
-                                 <div *ngIf="f.month.errors.required">Month is required</div>               
-                               </div>
+                            </select>
+                            <div *ngIf="submit && f.month.errors" class="invalid-feedback">
+                                <div *ngIf="f.month.errors.required">Month is required</div>               
+                            </div>
                         </div>
                         <div class="select">
                             <select formControlName="year" [(ngModel)]="myYear" class="form-control" [ngClass]="{ 'is-invalid': submit && f.year.errors }">
                                 <option value="" disabled>Year</option>
                                 <option [value]="year" *ngFor="let year of yearList" >{{year}}</option>
-                             </select>
-                             <div *ngIf="submit && f.year.errors" class="invalid-feedback">
-                                 <div *ngIf="f.year.errors.required">Year is required</div>               
-                               </div>
+                                </select>
+                            <div *ngIf="submit && f.year.errors" class="invalid-feedback">
+                                <div *ngIf="f.year.errors.required">Year is required</div>               
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,35 +82,9 @@
                         </div>          
                     </div>
                 </div>
-                <!-- <div class="profileDiv">
-                    <label>Contact Number<span>*</span></label>
-                    <div class="mobileNumer">
-                        <div class="selects">
-                           
-                            <select formControlName="country_code" class="country Code" [(ngModel)]="selectedCode">
-                                <option [value]="code" *ngFor="let code of codeList">{{code}}</option>
-                             </select>
-                             <div *ngIf="submit && f.country_code.errors" class="invalid-feedback">
-                                <div *ngIf="f.country_code.errors.required">Country code is required</div>               
-                              </div>
-                              <div class="invalid-feedback error" style="display: block;" *ngIf="f.country_code.errors?.serverError">{{ f.country_code.errors?.serverError }}</div>
-                        
-                        </div>   
-                        <div class="inputs">
-                            <input autocomplete="off" formControlName="phone" type="tel" maxlength="10" class="form-control" [ngClass]="{ 'is-invalid': submit && f.phone.errors }">
-                            <div *ngIf="submit && f.phone.errors" class="invalid-feedback">
-                              <div *ngIf="f.phone.errors.required">Phone is required</div>
-                              <div *ngIf="f.phone.errors.pattern">Please Enter 10 digit's mobile number</div>
-                              <div *ngIf="f.phone.errors.phoneTaken">Phone number is already taken.</div>
-                            </div>
-                            <div class="invalid-feedback error" style="display: block;" *ngIf="f.phone.errors?.serverError">{{ f.phone.errors?.serverError }}</div> 
-                          
-                        </div>
-                    </div>
-                </div> -->
+
                 <div class="profileDiv">
                     <label>Language<span>*</span></label>
-                    
                     <div class="select">
                         <select class="form-control"  formControlName="language_id" [(ngModel)]="language_ids" multiple [ngClass]="{ 'is-invalid': submitted && f.language_id.errors }">
                             <option *ngFor="let language of languages;" value="{{language.id}}">{{language.name}}</option>

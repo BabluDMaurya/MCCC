@@ -4,7 +4,7 @@ import { AuthenticationService } from '../../_service/authentication.service';
 import { DashboardService } from '../../_service/dashboard.service';
 import { User } from '../../_models/user';
 import { Config } from 'src/app/_config/config';
-
+declare var $: any;
 @Component({
   selector: 'app-sidebars',
   templateUrl: './sidebars.component.html',
@@ -36,6 +36,9 @@ export class SidebarsComponent implements OnInit {
   logout(){
     this.authenticationService.logout();
     this.route.navigate(['/']);
+  }
+  sideBarClose(){
+    $('.mat-typography').css('overflow','inherit');
   }
 
 }

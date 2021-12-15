@@ -85,7 +85,7 @@ export class CompleteProfileComponent implements OnInit {
         // short_bio: ['', [Validators.required,Validators.maxLength(200)]],
         work_experiences: this.formBuilder.array([this.createExperience()]),
         qualifications: this.formBuilder.array([this.createQualification()]),
-        language_id: [''],
+        language_id: ['',Validators.required],
         social_links: this.formBuilder.array([this.createSocialLinks()]),
         // skin_color:['',Validators.required],
         height:['',[Validators.required,Validators.pattern("^[0-9]+(.[0-9]{0,2})?$")]]

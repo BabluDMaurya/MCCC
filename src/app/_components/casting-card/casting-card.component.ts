@@ -24,11 +24,11 @@ export class CastingCardComponent implements OnInit {
   }
   doHtmlDisplay(text:any, limit = 50) {
     if (text.length > limit) {
-     text = text.substring(0, limit) + '...<span>View More</span>';
+     text = text.substring(0, limit) + '...';
     } else {
      text;
     }
-    return text;
+    return text + ' <span>View More</span>';
    }
    castingInner(id:any){
     this.route.navigate(['casting-inner',id]);

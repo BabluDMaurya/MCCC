@@ -55,10 +55,10 @@
                                 <img src="assets/img/img/play_icon.webp" alt="">
                             </div>
                         </div>
-                        <div class="vright">
+                        <div class="vright" [routerLink]="['/bts-video-view/',data.id,btsCategoryId]">
                             <p>{{data.title | titlecase}}</p>
-                            <span [innerHTML]="data.description.substr(0, 35) | titlecase"></span>
-                            <a [routerLink]="['/bts-video-view/',data.id,btsCategoryId]" >More</a>
+                            <span [innerHTML]="data.description.substr(0, 35) + '...' | titlecase"></span>
+                            
                         </div>
                     </div>
                     

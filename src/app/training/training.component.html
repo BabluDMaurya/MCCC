@@ -22,16 +22,16 @@
                     <p class="classinghead primary__color">{{title}}</p>
                 </div>
                 <div class="videosWithContnt" *ngFor="let vid of trainingVideo">
-                    <div  *ngIf="vid.description.length > 50 && expanded !=  trainingVideo[0].id" >
+                    <div  *ngIf="vid.description.length > 50 && expanded !=  vid.id" >
                         <p [innerHTML]="vid.description.substr(0, 50) + '...' | titlecase"></p>
-                            <span (click)="expanded = trainingVideo[0].id"
-                            class="text-green"><b>{{expanded==  trainingVideo[0].id ?'View less':'View more'}}</b>
+                            <span (click)="expanded = vid.id"
+                            class="text-green"><b>{{expanded==  vid.id ?'View less':'View more'}}</b>
                             </span>
                         </div>
-                    <div  *ngIf="expanded ==  trainingVideo[0].id ">
+                    <div  *ngIf="expanded ==  vid.id ">
                         <p [innerHTML]="vid.description | titlecase"></p>
                         <span (click)="expanded = 0"
-                        class="text-green"><b>{{expanded ==  trainingVideo[0].id ?'View less':'View more'}}</b>
+                        class="text-green"><b>{{expanded ==  vid.id ?'View less':'View more'}}</b>
                         </span>
                     </div>
                     <div  *ngIf="vid.description.length < 50 " >

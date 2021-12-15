@@ -17,9 +17,9 @@ export class BookmarkComponent implements OnInit {
   eventBookmarkData :any;
   workshopBookmarkData :any;
   catId:any;
-  bookmarkNoData : boolean = true;
+  bookmarkNoData : boolean = false;
   eventbookmarkNoData :boolean = true;
-  workshopbookmarkNoData :boolean = true;
+  workshopbookmarkNoData :boolean = false;
   btsBookmarkData: any;
   hostUrl:string = Config.Host+'backend2/';
   expanded = 0;
@@ -27,6 +27,7 @@ export class BookmarkComponent implements OnInit {
   
   toastSuccess:string = 'toast-15';
   toastDanger:string = 'toast-16';
+  btsBookmarkNoData: boolean = true;
   constructor(private dashboardService:DashboardService,
     private route : Router,) {
       this.dashboardService.listen().subscribe((e:any)=>{
@@ -42,8 +43,9 @@ export class BookmarkComponent implements OnInit {
               this.castings = res.data;
               if(this.castings.length > 0){
                 this.bookmarkNoData = false;
+              }else{
+                this.bookmarkNoData = true;
               }
-              // console.log(this.castings);
         });
         this.dashboardService.getUserBookmarkEvent('')
         .subscribe(res => {
@@ -51,7 +53,7 @@ export class BookmarkComponent implements OnInit {
           this.eventBookmarkData = res.data;
 
               if(this.eventBookmarkData.length > 0){
-              // this.eventBookmarkData = res.data;
+              this.eventbookmarkNoData = false;
               }
               // console.log(res.data);
         });
@@ -61,8 +63,10 @@ export class BookmarkComponent implements OnInit {
               this.workshopBookmarkData = res.data;
               if(this.workshopBookmarkData.length > 0){
                 this.workshopbookmarkNoData = false;
+              }else{
+                this.workshopbookmarkNoData = true;
               }
-              // console.log(this.workshopBookmarkData);
+              console.log(this.workshopBookmarkData);
         });
         
         this.dashboardService.getUserBookmarkBTS('')
@@ -70,7 +74,7 @@ export class BookmarkComponent implements OnInit {
           this.loading = true;
           this.btsBookmarkData = data.data;
               if(this.btsBookmarkData.length > 0){
-                // this.btsBookmarkNoData = res.data;
+                this.btsBookmarkNoData = false;
               }
               console.log(data.data);
         });
@@ -90,6 +94,7 @@ export class BookmarkComponent implements OnInit {
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){
           this.btsBookmarkData[index].bookmark_status = 1;
+          this.dashboardService.filter('applyed');
           console.log('toast added',this.toastSuccess);
           new toastbox(this.toastSuccess, 2000);
             setTimeout(() => {
@@ -98,6 +103,7 @@ export class BookmarkComponent implements OnInit {
         }
         if(this.resData.data[0] == 'Bookmark removed'){
           this.btsBookmarkData[index].bookmark_status = 0;
+          this.dashboardService.filter('applyed');
           new toastbox(this.toastDanger, 2000);
             setTimeout(() => {
               $('#'+this.toastDanger).removeClass('show');
@@ -111,6 +117,7 @@ export class BookmarkComponent implements OnInit {
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){
           this.eventBookmarkData[index].bookmark_status = 1;
+          this.dashboardService.filter('applyed');
           console.log('toast added',this.toastSuccess);
           new toastbox(this.toastSuccess, 2000);
             setTimeout(() => {
@@ -119,6 +126,7 @@ export class BookmarkComponent implements OnInit {
         }
         if(this.resData.data[0] == 'Bookmark removed'){
           this.eventBookmarkData[index].bookmark_status = 0;
+          this.dashboardService.filter('applyed');
           new toastbox(this.toastDanger, 2000);
             setTimeout(() => {
               $('#'+this.toastDanger).removeClass('show');

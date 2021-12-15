@@ -12,7 +12,7 @@ export class BtsCardComponent implements OnInit {
   hostUrl:string = Config.Host+'backend2/';
 
   constructor() { }
-  two_sliders = {"slidesToShow": 2.5, "slidesToScroll": 2,"dots": false,"infinite": false};
+  two_sliders = {"slidesToShow": 2.5, "slidesToScroll": 2,"dots": false,"infinite": false,'nextArrow':false,'prevArrow':false};
   ngOnInit(): void {
   }
   isOdd(n:number) {

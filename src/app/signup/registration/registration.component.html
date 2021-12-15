@@ -29,7 +29,9 @@
             <app-select-your-gender [parent]="form" [submit]="submitted"></app-select-your-gender>
             <app-date-of-birth [parent]="form" [submit]="submitted"></app-date-of-birth>
             <app-your-country-state-city [parent]="form" [submit]="submitted"></app-your-country-state-city>
+
             <div class="formGroup">
+
                 <label>Home Town* <ion-icon name="information-circle-outline" placement="top" ngbTooltip="Tooltip on top"></ion-icon></label>
                 <div class="inputs">
                     <input autocomplete="off" formControlName="home_town" type="text"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">

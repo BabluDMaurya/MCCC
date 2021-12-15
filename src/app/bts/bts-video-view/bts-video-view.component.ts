@@ -90,6 +90,7 @@ export class BtsVideoViewComponent implements OnInit {
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){
           this.BtsVideos[0].bookmark_status = 1;
+          this.dashboardService.filter('applyed');
           console.log('toast added',this.toastSuccess);
           new toastbox(this.toastSuccess, 2000);
             setTimeout(() => {
@@ -98,6 +99,7 @@ export class BtsVideoViewComponent implements OnInit {
         }
         if(this.resData.data[0] == 'Bookmark removed'){
           this.BtsVideos[0].bookmark_status = 0;
+          this.dashboardService.filter('applyed');
           new toastbox(this.toastDanger, 2000);
             setTimeout(() => {
               $('#'+this.toastDanger).removeClass('show');

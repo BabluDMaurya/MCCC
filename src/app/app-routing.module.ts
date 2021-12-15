@@ -44,11 +44,17 @@ import { HelpComponent } from './help/help.component';
 import { AuthGuard } from './_helpers/auth.guard';
 import { NoInternetComponent } from './no-internet/no-internet.component';
 import { SupportComponent } from './support/support.component';
+import { PasswordComponent } from './password/password.component';
+
 
 const routes: Routes = [{    
   path: '',    
-  redirectTo: 'logo',    
+  redirectTo: 'password',    
   pathMatch: 'full',    
+},
+{    
+  path: 'password',component: PasswordComponent,    
+  data: {title: 'password'}    
 },
 {    
   path: 'logo',component: LogoComponent,    

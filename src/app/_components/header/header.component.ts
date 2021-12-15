@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   data : any;
   baseUrl :string = Config.Host;
   profile_pic_path: any;
+  profile_pic: any;
   constructor(
     private route:Router,
     private authenticationService: AuthenticationService,
@@ -39,7 +40,9 @@ export class HeaderComponent implements OnInit {
     this.dashboardService.userDetailsForPeofile()
         .subscribe(res => {
           this.resData = res;
-          // this.profile_pic_path =  this.resData.profile_pic_path;
+          this.profile_pic_path =  this.resData.data.user_details.profile_pic_path;
+          this.profile_pic =  this.resData.data.user_details.profile_pic;
+
           this.data = this.resData.data.user_details;
           console.log(this.resData.data.user_details);
         });

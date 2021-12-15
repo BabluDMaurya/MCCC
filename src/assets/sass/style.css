@@ -10865,7 +10865,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
           appearance: none;
   padding: 0 20px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .wrrpperRegisterForm .forms .formGroup .select select:focus-visible {
@@ -10948,7 +10948,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
           padding: 0;
   padding-left: 8px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .wrrpperRegisterForm .forms .formGroup .mobileNumer .selects select:focus-visible {
@@ -14049,10 +14049,10 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
 
 .login_wrpper .forms .formGroup .passwrd .eye {
   position: absolute;
-  top: 50%;
+  top: 22px;
   right: 20px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  /* -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); */
 }
 .offcanvas-body .prof-nav ion-icon {
   font-size: 22px;
@@ -14326,4 +14326,30 @@ i.far.fa-bookmark, i.fas.fa-bookmark.removecard{
   margin-bottom: 40px;
   display: block;
   margin-bottom: 50px;
+}
+
+.invalid {
+  animation: shake 300ms ease-in-out;
+  border: 2px solid red;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(10px) rotate(-5deg);
+  }
+  40% {
+    transform: translateX(-3px) rotate(4deg);
+  }
+  60% {
+    transform: translateX(10px) rotate(-3deg);
+  }
+  80% {
+    transform: translateX(-10px) rotate(2deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

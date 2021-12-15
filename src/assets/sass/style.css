@@ -10625,7 +10625,7 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
   opacity: 0;
   width: 15px;
   height: 15px;
-  line-height: 18px;
+  line-height: 15px;
 }
 
 .wrrpperHomeSlider .sliderss .slick-dots li.slick-active button:before {
@@ -10656,6 +10656,9 @@ a.outline_btns{
   background: transparent!important;
   border: 1px solid #ff6454!important;
   color: #000!important;
+}
+body.dark-mode-active a.outline_btns{
+  color: #fff!important;
 }
 .wrrpperSingUp .logos {
   width: 40%;
@@ -10894,7 +10897,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
 }
 
 .wrrpperRegisterForm .forms .formGroup .dateBirth .select select {
-  padding: 0 15px;
+  padding: 0 15px!important;
 }
 
 .wrrpperRegisterForm .forms .formGroup .dateBirth .select::after {
@@ -13107,7 +13110,7 @@ body.dark-mode-active .workshop_innerProfile .casting__profiles .profileDetailsW
 
 .bts_inners .bts__inner .moviesArea .moviess {
   position: relative;
-  padding-bottom: 15px;
+  padding-bottom: 0;
 }
 .bts_inners .bts__inner .moviesArea .bts_innersss{
   display: flex;
@@ -13911,6 +13914,18 @@ body.dark-mode-active .profile .profileWrpper .profiles .submit .btns.outline {
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+}
+.imges_wrpper .imgContent .imgPrevw.img_Prevw{
+  width: initial;
+}
+.imges_wrpper .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button{
+  opacity: 1;
+}
+.imges_wrpper .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button i{
+  font-size: 16px;
+}
+body.dark-mode-active .imges_wrpper .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button{
+ background: #000;
 }
 
 .imges_wrpper .imgContent .imgPrevw .prvwImg {

@@ -19,11 +19,13 @@
         </div>  
         <form [formGroup]="form">
         <div class="imgContent">
-            <div class="imgPrevw">
+            <div class="imgPrevw img_Prevw">
                 <div class="prvwImg" *ngFor="let img of datas;let i=index;">
                     <img src="{{imagePath+img.image}}" alt="">
                     <div class='multi-field'>
-                        <button type="button" class="close" (click)="removePrimaryImage(i)">X</button>
+                        <button type="button" class="close" (click)="removePrimaryImage(i)">
+                            <i class="far fa-times-circle"></i>
+                        </button>
                       </div>
                 </div>
                 <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>

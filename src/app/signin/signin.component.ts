@@ -18,6 +18,7 @@ export class SigninComponent implements OnInit {
   loading = false;
   returnUrl: string | undefined;
   splaceScreen : any = 0;
+  hide : boolean = true;  
   constructor(private formBuilder : FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -33,6 +34,9 @@ export class SigninComponent implements OnInit {
         }
         }
      }
+     passwordhideshow() {
+      this.hide = !this.hide;
+    }
 
   ngOnInit(): void {
     

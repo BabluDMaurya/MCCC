@@ -48,7 +48,7 @@ export class SidebarsComponent implements OnInit {
   logout(){
     $('.mat-typography').css('overflow','inherit');
     this.authenticationService.logout();
-    this.route.navigate(['/']);
+    this.route.navigate(['/signin']);
   }
   sideBarClose(){
     $('.mat-typography').css('overflow','inherit');

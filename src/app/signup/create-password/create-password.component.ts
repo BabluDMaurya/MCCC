@@ -22,6 +22,8 @@ export class CreatePasswordComponent implements OnInit {
   storeOTP : any;
   otp : string = '1111';
   all_terms : any;
+  hide : boolean = true;
+  chide : boolean = true;
   constructor(
     private formBuilder: FormBuilder,
     private route : Router,
@@ -36,7 +38,12 @@ export class CreatePasswordComponent implements OnInit {
        }
      }
   }
-
+  passwordhideshow() {
+    this.hide = !this.hide;
+  }
+  cpasswordhideshow() {
+    this.chide = !this.chide;
+  }
   ngOnInit(): void {
     this.storeOTP = sessionStorage.getItem('otp');
     this.form = this.formBuilder.group({

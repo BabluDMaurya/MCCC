@@ -10817,6 +10817,10 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   margin-top: 80px;
 }
 
+.supports .main_wrppers .forms{
+  margin-top: 0;
+}
+
 .wrrpperRegisterForm .forms .formGroup {
   margin-bottom: 40px;
   margin-top: 20px;
@@ -10932,7 +10936,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   top: 22px;
   /* -webkit-transform: translateY(-50%);
           transform: translateY(-50%); */
-  right: 10px;
+  right: 8px;
 }
 
 .wrrpperRegisterForm .forms .formGroup .mobileNumer .selects select {
@@ -10946,7 +10950,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
      -moz-appearance: none;
           appearance: none;
           padding: 0;
-  padding-left: 8px;
+  padding-left: 5px;
   font-size: 16px;
   font-weight: 400;
 }
@@ -11077,6 +11081,9 @@ body.dark-mode-active .wrrpperRegisterForm .forms .formGroup .mobileNumer .selec
 
 .passwords .forms .formGroup .otpInputs input:focus-visible {
   outline: none;
+}
+.rest_password{
+  overflow: hidden;
 }
 
 .passwords .forms .formGroup .otp_para {
@@ -11506,9 +11513,9 @@ body.dark-mode-active .profilePhoto .btnArea span {
   content: url(../img/img/downArrow.webp);
   pointer-events: none;
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  top: 22px;
+  /* -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); */
   right: 25px;
 }
 
@@ -12102,9 +12109,9 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: flex-start;
+      -ms-flex-align: flex-start;
+          align-items: flex-start;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -12640,6 +12647,25 @@ color: #fff;
 .casting_inner .main_wrppers .castingContent {
   padding: 20px 5% 0;
 }
+.casting_inner .main_wrppers .castingContent .labelBtns {
+  min-width: 100px;
+  width: 100%;
+  overflow: scroll;
+  white-space: nowrap;
+  margin-bottom: 30px;
+}
+.casting_inner .main_wrppers .castingContent .labelBtns .slide{
+  display: inline-block;
+}
+.casting_inner .main_wrppers .castingContent .labelBtns .slide label{
+  font-size: 12px;
+    color: #fff;
+    padding: 0 8px;
+    border-radius: 15px;
+    background: #ff6454;
+    /* line-height: 20px; */
+    margin-right: 5px;
+}
 
 .casting_inner .main_wrppers .castingContent h5 {
   font-size: 17px;
@@ -12659,7 +12685,7 @@ color: #fff;
   padding: 0;
   -webkit-column-count: 2;
           column-count: 2;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .casting_inner .main_wrppers .castingContent .cating_details .head {
@@ -12849,6 +12875,11 @@ body.dark-mode-active .profile .profileWrpper .profiles .profileDiv .dateBirth .
 
 .casting__profiles .castingProfile .profileVideos .videosArea {
   position: relative;
+  min-width: 300px;
+  height: 200px;
+}
+.profileImg_area.profile_videos{
+  height: 200px;
 }
 
 .casting__profiles .castingProfile .profileVideos .videosArea a {
@@ -13924,6 +13955,19 @@ body.dark-mode-active .profile .profileWrpper .profiles .submit .btns.outline {
 .imges_wrpper .imgContent .imgPrevw.img_Prevw{
   width: initial;
 }
+
+.videosPrfile .imges_wrpper .imgContent .imgPrevw.img_Prevw .video-player-wrapper{
+  max-height: 200px!important;
+  min-width: 300px!important;
+}
+.videosPrfile .imgContent .imgPrevw{
+  min-width: 300px;
+  /* max-height: 300px; */
+}
+.videosPrfile .imgContent .imgPrevw .video-player-wrapper{
+  max-height: 200px;
+  min-width: 300px;
+}
 .imges_wrpper .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button{
   opacity: 1;
 }
@@ -14275,6 +14319,7 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
 }
 i.far.fa-bookmark, i.fas.fa-bookmark.removecard{
   color: #ff6554!important;
+  font-size: 16px;
 }
 
 @keyframes loader {
@@ -14327,6 +14372,30 @@ i.far.fa-bookmark, i.fas.fa-bookmark.removecard{
   display: block;
   margin-bottom: 50px;
 }
+.btnss_r {
+  /* border: none; */
+  /* border-radius: 5px; */
+  /* padding: 12px 24px; */
+  /* font-size: 16px; */
+  cursor: pointer!important;
+  /* color: #fff; */
+  background-color: #ff6454!important;
+  outline: none;
+  -webkit-tap-highlight-color: transparent!important;
+}
+.btnss_r.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+.btnss_r.ripple:hover {
+  background: #ff6454 radial-gradient(circle, transparent 1%, #ff6554 1%) 50%/16000%!important;
+}
+.btnss_r.ripple:active {
+  background-color: #ff6454a6!important;
+  background-size: 100%!important;
+  transition: background 0s, transform 0.2s!important;
+  /* transform: translateY(1px); */
+}
 
 .invalid {
   animation: shake 300ms ease-in-out;
@@ -14353,3 +14422,4 @@ i.far.fa-bookmark, i.fas.fa-bookmark.removecard{
     transform: translateX(0);
   }
 }
+

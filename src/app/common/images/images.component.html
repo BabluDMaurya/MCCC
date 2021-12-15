@@ -31,7 +31,9 @@
                 <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
                     <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
                     <div class='multi-field'>
-                        <button type="button" class="close" (click)="removeSelectedImages(j)">X</button>
+                        <button type="button" class="close" (click)="removeSelectedImages(j)">
+                            <i class="far fa-times-circle"></i>
+                        </button>
                       </div>
                 </div>
                 

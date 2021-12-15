@@ -15,7 +15,7 @@
             <div class="addRemoveDivs work_experince">            
                 <div class="group">
                     <div class="formGroup addRemoveDivss workExperince" formArrayName="work_experiences" *ngFor="let item of form.get('work_experiences')['controls']; let i = index;">                   
-                        <label><img src="assets/img/img/work.webp" alt="">  Work Experince*</label>
+                        <label><img src="assets/img/img/work.webp" alt="">  Work Experience</label>
                         <div class="withIcon"  [formGroupName]="i">                        
                             <div  class="inputs">
                                 <input type="text" formControlName="experience" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.work_experiences.errors }">
@@ -78,7 +78,7 @@
             <div class="addRemoveDivs SocailLinks">
                 <div class="group">
                     <div class="formGroup addRemoveDivss SocailLinkss" formArrayName="social_links" *ngFor="let item of form.get('social_links')['controls']; let i = index;">
-                        <label><img src="assets/img/img/social_link.webp" alt="">  Social links /  Video links*</label>
+                        <label><img src="assets/img/img/social_link.webp" alt="">  Social links /  Video links</label>
                         <div class="withIcon" [formGroupName]="i">
                             <div class="inputs">
                                 <input type="text" formControlName="social_link" maxlength="200"  [ngClass]="{ 'is-invalid': submitted && f.social_links.errors }">

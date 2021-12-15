@@ -10625,7 +10625,7 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
   opacity: 0;
   width: 15px;
   height: 15px;
-  line-height: 18px;
+  line-height: 15px;
 }
 
 .wrrpperHomeSlider .sliderss .slick-dots li.slick-active button:before {
@@ -10656,6 +10656,9 @@ a.outline_btns{
   background: transparent!important;
   border: 1px solid #ff6454!important;
   color: #000!important;
+}
+body.dark-mode-active a.outline_btns{
+  color: #fff!important;
 }
 .wrrpperSingUp .logos {
   width: 40%;
@@ -10862,7 +10865,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
           appearance: none;
   padding: 0 20px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .wrrpperRegisterForm .forms .formGroup .select select:focus-visible {
@@ -10894,7 +10897,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
 }
 
 .wrrpperRegisterForm .forms .formGroup .dateBirth .select select {
-  padding: 0 15px;
+  padding: 0 15px!important;
 }
 
 .wrrpperRegisterForm .forms .formGroup .dateBirth .select::after {
@@ -10945,7 +10948,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
           padding: 0;
   padding-left: 8px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .wrrpperRegisterForm .forms .formGroup .mobileNumer .selects select:focus-visible {
@@ -13113,7 +13116,7 @@ body.dark-mode-active .workshop_innerProfile .casting__profiles .profileDetailsW
 
 .bts_inners .bts__inner .moviesArea .moviess {
   position: relative;
-  padding-bottom: 15px;
+  padding-bottom: 0;
 }
 .bts_inners .bts__inner .moviesArea .bts_innersss{
   display: flex;
@@ -13918,6 +13921,18 @@ body.dark-mode-active .profile .profileWrpper .profiles .submit .btns.outline {
       grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
 }
+.imges_wrpper .imgContent .imgPrevw.img_Prevw{
+  width: initial;
+}
+.imges_wrpper .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button{
+  opacity: 1;
+}
+.imges_wrpper .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button i{
+  font-size: 16px;
+}
+body.dark-mode-active .imges_wrpper .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button{
+ background: #000;
+}
 
 .imges_wrpper .imgContent .imgPrevw .prvwImg {
   border-radius: 5px;
@@ -14034,10 +14049,10 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
 
 .login_wrpper .forms .formGroup .passwrd .eye {
   position: absolute;
-  top: 50%;
+  top: 22px;
   right: 20px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  /* -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); */
 }
 .offcanvas-body .prof-nav ion-icon {
   font-size: 22px;
@@ -14311,4 +14326,30 @@ i.far.fa-bookmark, i.fas.fa-bookmark.removecard{
   margin-bottom: 40px;
   display: block;
   margin-bottom: 50px;
+}
+
+.invalid {
+  animation: shake 300ms ease-in-out;
+  border: 2px solid red;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(10px) rotate(-5deg);
+  }
+  40% {
+    transform: translateX(-3px) rotate(4deg);
+  }
+  60% {
+    transform: translateX(10px) rotate(-3deg);
+  }
+  80% {
+    transform: translateX(-10px) rotate(2deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

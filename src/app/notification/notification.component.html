@@ -34,6 +34,9 @@
                     </div>
                     <span>{{data.created_at}}</span>
                 </div>
+                <div *ngIf="dataLength <= 0">
+                    <app-not-found-data ></app-not-found-data>
+                </div>
             </div>
         </div>
     </div>

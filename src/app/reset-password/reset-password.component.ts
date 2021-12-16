@@ -89,9 +89,9 @@ this.registerService.terms().subscribe(
     }
   }
   resendOTP(){
-    this.otpService.get_resendotp({phone:sessionStorage.getItem('phone'),email:sessionStorage.getItem('email')}).subscribe((res: any) => {      
+    this.otpService.get_resendotp({email_or_mobile:sessionStorage.getItem('email_or_mobile')}).subscribe((res: any) => {      
       this.otp = res.otp;
-      sessionStorage.setItem('otp',this.otp);
+      sessionStorage.setItem('rotp',this.otp);
       this.ngOnInit();
     });
   }

@@ -26,13 +26,13 @@ export class MyApplicationsComponent implements OnInit {
           this.noData = true;
           this.resData = res;        
         this.applications = this.resData.data; 
-        console.log("My app :",this.applications.length);
+        // console.log("My app :",this.applications.length);
         if(this.applications.length > 0){
-          console.log("this.applications.length :   " + this.applications.length);
+          // console.log("this.applications.length :   " + this.applications.length);
           this.noData = true;
         }else{
           this.noData = false;
-          console.log("this.applications.length else :   " + this.applications.length);
+          // console.log("this.applications.length else :   " + this.applications.length);
         }
 
         },

@@ -113,7 +113,9 @@ export class ApplyCastingComponent implements OnInit {
         this.form.controls['phone'].setValue(this.userdetail.phone);
         this.form.controls['oldfileSource'].setValue(this.userdetail.images);
         this.form.controls['oldvideofileSource'].setValue(this.userdetail.videos);
-        
+        if(this.userdetail.hobbies != 'Enter'){
+          this.hobbiesForm.controls['hobbies'].setValue(this.userdetail.hobbies);
+        }
       });        
 }
 submit(){

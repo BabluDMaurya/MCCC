@@ -32,9 +32,10 @@
         <div class="forms">
             <form [formGroup]="form" (ngSubmit)="submit()">
                 <div class="formGroup">
+                    <label>Select Option *</label>
                     <div class="select">
                         <select formControlName="options" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.options.errors }">
-                            <option value="">Select</option>
+                            <!-- <option value="">Select</option> -->
                             <option [value]="options" *ngFor="let options of optionsList">{{options}}</option>
                         </select>
                         <div *ngIf="submitted && f.options.errors" class="invalid-feedback">
@@ -43,7 +44,7 @@
                     </div>
                 </div>
                 <div class="formGroup">
-                    <label>Message</label>
+                    <label>Message *</label>
                     <div class="inputs">
                         <textarea formControlName="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
                         <div *ngIf="submitted && f.message.errors" class="invalid-feedback">

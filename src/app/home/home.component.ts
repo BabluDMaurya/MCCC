@@ -168,7 +168,6 @@ export class HomeComponent implements OnInit {
 getRecomendedData(){
   this.dashboardService.recomendedCasting({limit:5})
     .subscribe(res => {
-      
       this.resData = res;        
       this.recomended = this.resData.data; 
       if(this.recomended == 'No Record Found'){

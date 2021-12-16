@@ -40,7 +40,8 @@ export class ForgotPasswordComponent implements OnInit {
       this.userService.forgot_password(this.form.value).subscribe(res => {
        this.responceData = res;
        if(this.responceData.status == 'true' && this.responceData.token != ''){   
-          sessionStorage.setItem('rotp',this.responceData.otp);    
+          sessionStorage.setItem('rotp',this.responceData.otp);  
+          sessionStorage.setItem('email_or_mobile',this.form.value.email_or_mobile);  
           this.route.navigate(['/reset-password',this.responceData.token]);
        }else{
         this.form.controls['email_or_mobile'].setErrors({ userNotExit: true   });

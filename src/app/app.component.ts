@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ConnectionService } from 'ng-connection-service';
 import { Router} from '@angular/router';
 import { Location } from '@angular/common';
+import { AuthenticationService } from './_service/authentication.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class AppComponent {
   title = 'MCCCSCSS';
   status = 'ONLINE';
   isConnected = true;
-  constructor(private connectionService: ConnectionService,
+  constructor(private connectionService: ConnectionService,private authenticationService: AuthenticationService,
     private route:Router,private location: Location) { 
      this.connectionService.monitor().subscribe(isConnected => {  
       this.isConnected = isConnected; 
@@ -25,8 +26,6 @@ export class AppComponent {
         this.status = "OFFLINE";
         this.route.navigate(['/no-internet']);
       }  
-    })  
-   
-    
+    });    
   } 
 }

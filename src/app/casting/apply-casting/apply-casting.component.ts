@@ -13,6 +13,7 @@ import { NotificationService } from 'src/app/_service/notification.service';
 export class ApplyCastingComponent implements OnInit {
   currentPlayingVideo: HTMLVideoElement | any;
   @ViewChild('closebutton') closebutton :any;
+  @ViewChild ('openmediadialogbox') openmediadialogbox:any;
   back_link :any;
   castingId:any;
   userdetail:any;
@@ -30,6 +31,8 @@ export class ApplyCastingComponent implements OnInit {
   uploadedImages :any;
   ShowUploadedImages :boolean = false;
   submitted = false;
+  mediaerrortitle:any;
+  mediaerrordescription:any;
   constructor(
     private actRoute:ActivatedRoute,
     private route : Router,
@@ -62,8 +65,8 @@ export class ApplyCastingComponent implements OnInit {
     this.casting_title = sessionStorage.getItem('casting_title');
     this.casting_date = sessionStorage.getItem('casting_date');
     this.form = this.formBuilder.group({    
-      oldfileSource : [''],
-      oldvideofileSource : [''],
+      oldfileSource : ['',Validators.required],
+      oldvideofileSource : ['',Validators.required],
       saveAsDraft : [0],  
       casting_id:[this.castingId],
       name : [''],
@@ -110,13 +113,23 @@ export class ApplyCastingComponent implements OnInit {
         this.form.controls['phone'].setValue(this.userdetail.phone);
         this.form.controls['oldfileSource'].setValue(this.userdetail.images);
         this.form.controls['oldvideofileSource'].setValue(this.userdetail.videos);
-        // console.log("UserDetails:",this.userdetail);   
         
       });        
 }
 submit(){
     this.submitted = true;
   if (this.form.invalid) {
+    let photoError:any = this.f.oldfileSource.errors;  
+    let videoError:any = this.f.oldvideofileSource.errors;  
+    if(photoError.required == true){
+      this.mediaerrortitle = 'Add Your Photos';
+      this.mediaerrordescription = 'To change Photos go to profile and update Photos from there';
+      this.openmediadialogbox.nativeElement.click();
+    }else if(videoError.required == true){
+      this.mediaerrortitle = 'Add Your Video';
+      this.mediaerrordescription = 'To change video go to profile and update video from there';
+      this.openmediadialogbox.nativeElement.click();
+    }
     return;
   }else{
     sessionStorage.removeItem('casting_title');

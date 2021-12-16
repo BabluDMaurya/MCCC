@@ -21,6 +21,7 @@ export class MyApplicationCardComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    console.log("data",this.data);
   }
   doHtmlDisplay(text:any, limit = 50) {
     if (text.length > limit) {

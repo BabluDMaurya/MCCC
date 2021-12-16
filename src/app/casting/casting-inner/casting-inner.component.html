@@ -40,22 +40,15 @@
                     <label>{{gender}}</label>
                 </li>
             </ul>
-            <button *ngIf="applySt == 0" class="castingApply" (click)="apply()">Apply</button>
-            <button *ngIf="applySt == 1" class="castingApply" >Applied</button>
+            <div class="labelBtns">
+                <div class="slide" *ngFor="let tag of casting.tags;"> <label>{{tag}}</label></div>
+             </div>
+            <button *ngIf="applySt == 0" class="castingApply btnss_r ripple" (click)="apply()">Apply</button>
+            <button *ngIf="applySt == 1" class="castingApply btnss_r ripple" >Applied</button>
         </div>
         <!-- innerPage_skeleton -->
         <div *ngIf="Apiloading">
             <div class="inner_imgskeleton"></div>
-            <div class="para_skeleton"></div>
-            <div class="para_skeleton"></div>
-            <div class="para_skeleton"></div>
-            <div class="para_skeleton"></div>
-            <div class="para_skeleton"></div>
-            <div class="para_skeleton"></div>
-            <div class="para_skeleton"></div>
-            <div class="para_skeleton"></div>
-            <div class="para_skeleton"></div>
-            <div class="para_skeleton"></div>
             <div class="para_skeleton"></div>
             <div class="para_skeleton"></div>
             <div class="para_skeleton"></div>

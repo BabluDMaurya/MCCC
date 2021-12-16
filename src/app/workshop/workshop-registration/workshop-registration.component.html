@@ -44,11 +44,11 @@
                     </li>
                 </ul>
                 <div class="training-btn" *ngIf="this.checkData.data == 'No Data' && prevDate ">
-                    <button class="castingApply" [routerLink] = "['/workshop-registration-form/',workshopData.id,2]"> ENROLL NOW </button>
+                    <button class="castingApply btnss_r ripple" [routerLink] = "['/workshop-registration-form/',workshopData.id,2]"> ENROLL NOW </button>
                   <!-- <h6 *ngIf="this.checkData.data == 'No Data' && prevDate ">Enroll now to confirm your seat</h6> -->
                 </div>
                 <div class="training-btn" *ngIf="this.checkData.data != 'No Data' && prevDate ">
-                    <a class="next"> ALREADY ENROLLED </a>
+                    <a class="next btnss_r ripple"> ALREADY ENROLLED </a>
                 </div>
             </div>
         </div>

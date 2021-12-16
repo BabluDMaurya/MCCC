@@ -4,7 +4,7 @@
         <!-- profile box -->
         <div class="profileBox">
             <div class="image-wrapper">
-                <img *ngIf="profile_pic == '' || profile_pic == null " src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
+                <img *ngIf="profile_pic == '' || profile_pic == null " src="assets/img/img/avatar_sidebar.webp" alt="image" class="imaged rounded">
                 <img *ngIf="profile_pic != null " src="{{baseUrl}}{{profile_pic_path}}{{profile_pic}}" alt="image" class="imaged rounded">
             </div>
             <div class="in">
@@ -59,13 +59,13 @@
                     </div>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a [routerLink]="['/bts-inner/5']" (click)="sideBarClose()" class="item">
                     <div class="in">
                         <div>Celeb Videos</div>
                     </div>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a [routerLink]="['/games']" (click)="sideBarClose()" class="item">
                     <div class="in">

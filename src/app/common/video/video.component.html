@@ -64,7 +64,7 @@
             </div>
         </div>
         <div *ngIf="newVideoAdded">
-            <div  class="imgPrevw" *ngFor='let url of videos'>
+            <div  class="imgPrevw video_uploading" *ngFor='let url of videos'>
                 <div class="video-player-wrapper">
               <vg-player>
                 <vg-overlay-play></vg-overlay-play>
@@ -127,7 +127,7 @@
         </div>
         <div class="btnArea">
             
-            <button (click)="submit()" class="next" type="button"> Save </button>
+            <button (click)="submit()" class="next btnss_r ripple" type="button"> Save </button>
             <a (click)="back()"  class="next outline"> Cancel</a>
 
         </div>

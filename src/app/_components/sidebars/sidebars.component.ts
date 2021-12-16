@@ -42,7 +42,7 @@ export class SidebarsComponent implements OnInit {
           this.resData = res;
           // this.profile_pic_path =  this.resData.profile_pic_path;
           this.data = this.resData.data.user_details;
-          console.log(this.resData.data.user_details);
+          // console.log(this.resData.data.user_details);
         });
   }
   logout(){

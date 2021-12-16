@@ -48,12 +48,12 @@ export class SidebarsComponent implements OnInit {
         });
   }
   logout(){
-    $('.mat-typography').css('overflow','inherit');
+    $('.mat-typography').css('overflow','inherit !important');
     this.authenticationService.logout();
     this.route.navigate(['/signin']);
   }
   sideBarClose(){
-    $('.mat-typography').css('overflow','inherit');
+    $('.mat-typography').css('overflow','inherit !important');
   }
   darkMode(){
     if(this.check == 1){

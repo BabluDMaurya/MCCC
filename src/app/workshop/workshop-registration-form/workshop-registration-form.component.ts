@@ -8,6 +8,8 @@ import { DashboardService } from '../../_service/dashboard.service';
 import { User } from '../../_models/user';
 import { NotificationService } from 'src/app/_service/notification.service';
 import { AbstractControl, FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-workshop-registration-form',
   templateUrl: './workshop-registration-form.component.html',
@@ -33,6 +35,7 @@ export class WorkshopRegistrationFormComponent implements OnInit {
   aadharfileName : any;
   panfileChoosen : boolean = false;
   panfileName : any;
+  toastSuccess:string = 'toast-18';
   constructor(private location: Location,private workshopService: WorkshopService,
     private route:Router,
     private actRoute:ActivatedRoute,
@@ -110,7 +113,7 @@ export class WorkshopRegistrationFormComponent implements OnInit {
             data => { 
               console.log(data);
               this.loading = true;
-              this.notification.showSuccess('Thank You.','');
+               
               this.route.navigate(['/thank-you-workshop/',this.workshopData.title]);
           });
       }
@@ -120,7 +123,7 @@ export class WorkshopRegistrationFormComponent implements OnInit {
           data => { 
             console.log(data);
             this.loading = true;
-            this.notification.showSuccess('Thank You.','');
+            
             this.route.navigate(['/thank-you-workshop',this.workshopData.title]);
         });
     }

@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("inc/bootstrap/bootstrap.min.css");
+/* @import url("inc/bootstrap/bootstrap.min.css"); */
 /* @import url("inc/splide/splide.min.css"); */
 /* @import url("inc/slick/slick.min.css"); */
 /* @import url("inc/slick/slick-theme.min.css"); */
@@ -17,7 +17,7 @@ body.dark-mode-active{
 }
 
 body {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Source Sans Pro", sans-serif!important;
   font-size: 15px;
   line-height: 1.55rem;
   letter-spacing: -0.015rem;
@@ -10461,6 +10461,8 @@ body.dark-mode-active .wrrpperHomeScreen {
 
 body.dark-mode-active .wrrpperHomeScreen .bottomContent h1 {
   color: #ff6454;
+  font-family: 'Source Sans Pro';
+  line-height: normal;
 }
 
 body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
@@ -10681,6 +10683,8 @@ body.dark-mode-active a.outline_btns{
   color: #ff6454;
   margin-bottom: 10px;
   font-weight: 400;
+  font-family: 'Source Sans Pro';
+  
 }
 
 .wrrpperSingUp .signUpButtons {
@@ -11011,10 +11015,10 @@ body.dark-mode-active .wrrpperRegisterForm .forms .formGroup .mobileNumer .selec
 
 .passwords .forms .formGroup .passwrd .eye {
   position: absolute;
-  top: 50%;
+  top: 22px;
   right: 20px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  /* -webkit-transform: translateY(-50%);
+          transform: translateY(-50%); */
 }
 
 .passwords .forms .formGroup .instructions {
@@ -12242,8 +12246,8 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 }
 
 .main_wrppers .casingCalls .moresliderVideos .moreSlider .more_V_box {
-  width: 104px;
-  height: 104px;
+  width: 115px;
+  height: 115px;
   background: #2790cf;
   border-radius: 50%;
   display: -webkit-box;

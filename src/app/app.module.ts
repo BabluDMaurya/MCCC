@@ -86,6 +86,7 @@ import { BtsCardComponent } from './_components/bts-card/bts-card.component';
 import { BookmarkCastingCardComponent } from './_components/bookmark-casting-card/bookmark-casting-card.component';
 import { SupportComponent } from './support/support.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   declarations: [
@@ -152,7 +153,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BtsCardComponent,
     NoInternetComponent,
     BookmarkCastingCardComponent,
-    SupportComponent
+    SupportComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,

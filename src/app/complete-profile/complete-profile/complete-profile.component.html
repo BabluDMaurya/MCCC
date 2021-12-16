@@ -32,7 +32,7 @@
                                 
                             </div>                              
                             <div *ngIf="submitted && f.work_experiences.errors" class="invalid-feedback">
-                                <div *ngIf="f.work_experiences.errors.required">Worke experience is required</div>
+                                <div *ngIf="f.work_experiences.errors.required">Worke experience experience is required</div>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
             <div class="addRemoveDivs qaulifications">
                 <div class="group">
                     <div class="formGroup addRemoveDivss qaulificationss" formArrayName="qualifications" *ngFor="let item of form.get('qualifications')['controls']; let j = index;">
-                        <label><img src="assets/img/img/qualification.webp" alt=""> Qaulifications</label>
+                        <label><img src="assets/img/img/qualification.webp" alt=""> Qualification*</label>
                         <div class="withIcon" [formGroupName]="j">
                             <div class="inputs">
                                 <input type="text" formControlName="qualification" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.qualifications.errors }">

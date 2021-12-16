@@ -4,8 +4,8 @@
         <!-- profile box -->
         <div class="profileBox">
             <div class="image-wrapper">
-                <img *ngIf="this.data.profile_pic == '' || this.data.profile_pic == null " src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
-                <img *ngIf="this.data.profile_pic != null " src="{{baseUrl}}{{this.data.profile_pic_path}}{{this.data.profile_pic}}" alt="image" class="imaged rounded">
+                <img *ngIf="profile_pic == '' || profile_pic == null " src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged rounded">
+                <img *ngIf="profile_pic != null " src="{{baseUrl}}{{profile_pic_path}}{{profile_pic}}" alt="image" class="imaged rounded">
             </div>
             <div class="in">
                 <strong>Hello {{currentUser.userDetails.name}} <!DOCTYPE html></strong>
@@ -48,7 +48,7 @@
             <li>
                 <a [routerLink]="['/bookmark']" (click)="sideBarClose()" class="item">
                     <div class="in">
-                        <div>Bookmark</div>
+                        <div>Bookmarks</div>
                     </div>
                 </a>
             </li>
@@ -73,13 +73,13 @@
                     </div>
                 </a>
             </li>
-            <li>
-                <a (click)="sideBarClose()" class="item">
+            <!-- <li>
+                <a href="page-chat.html" (click)="sideBarClose()" class="item">
                     <div class="in">
                         <div>Classified</div>
                     </div>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a [routerLink]="['/about']" (click)="sideBarClose()" class="item">
                     <div class="in">
@@ -113,7 +113,7 @@
                     <div class="in">
                         <div>Dark Mode</div>
                         <div class="form-check form-switch">
-                            <input class="form-check-input clicksss dark-mode-switch" [checked]="checkboxVal" (click)="darkMode()" type="checkbox" id="darkmodesidebar">
+                            <input class="form-check-input clicksss dark-mode-switch" [checked]="checkboxVal" (change)="darkMode()" type="checkbox" id="darkmodesidebar">
                             <label class="form-check-label" for="darkmodesidebar"></label>
                         </div>
                     </div>

@@ -48,7 +48,7 @@
     {"id": 47, "name": "Colombia", "code": "CO", "status": "1", "mobileCountryCode" : "+57" },
     {"id": 48, "name": "Comoros", "code": "KM", "status": "1", "mobileCountryCode" : "+269" },
     {"id": 49, "name": "Congo", "code": "CG", "status": "1", "mobileCountryCode" : "+1" },
-    {"id": 50, "name": "Congo The Democratic Republic Of The", "code": "CD", "status": "1", "mobileCountryCode" : "+243" },
+    {"id": 50, "name": "Democratic Republic of the Congo", "code": "CD", "status": "1", "mobileCountryCode" : "+243" },
     {"id": 51, "name": "Cook Islands", "code": "CK", "status": "1", "mobileCountryCode" : "+682" },
     {"id": 52, "name": "Costa Rica", "code": "CR", "status": "1", "mobileCountryCode" : "+506" },
     {"id": 53, "name": "Cote D'Ivoire (Ivory Coast)", "code": "CI", "status": "1", "mobileCountryCode" : "+1" },

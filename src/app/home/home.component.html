@@ -99,7 +99,6 @@
             </div>
             <div class="bts_popular_slider bts_popular_sliderSecond">      
                 <app-bts-card  [data]="popularBtsVideos"></app-bts-card>          
-                
             </div>
         </div>
         
@@ -117,9 +116,8 @@
                 </div>
             </div>          
             <div class="moresliderVideos" *ngIf="loadingbts">
-            <app-bts-category-card  [data]="categories"></app-bts-category-card>
+                <app-bts-category-card  [data]="categories"></app-bts-category-card>
             </div>
-            
         </div>
     </div>
 </div>

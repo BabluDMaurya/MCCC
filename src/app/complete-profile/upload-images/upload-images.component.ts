@@ -19,7 +19,7 @@ export class UploadImagesComponent implements OnInit {
   @ViewChild('closebutton') closebutton :any;
   progress: number = 0;
   back_link :any =  "signin";
-  component_title : string = 'Complete your Profile';
+  component_title : string = 'Complete Your Profile';
   form: FormGroup | any;
   display = 'none';
   ulpoadedFiles: any = [];

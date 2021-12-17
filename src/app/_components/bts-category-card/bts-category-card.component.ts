@@ -10,7 +10,7 @@ export class BtsCategoryCardComponent implements OnInit {
 
   constructor() {
    }
-   trns_sliders = {"slidesToShow": 3.5, "slidesToScroll": 3,"initial":0.5,"dots": false,"infinite": false,'nextArrow':false,'prevArrow':false};
+   trns_sliders = {"slidesToShow": 2.8, "slidesToScroll": 2.8,"initial":0.5,"dots": false,"infinite": false,'nextArrow':false,'prevArrow':false};
   @Input() data:any;
   ngOnInit(): void {
     console.log(this.data);

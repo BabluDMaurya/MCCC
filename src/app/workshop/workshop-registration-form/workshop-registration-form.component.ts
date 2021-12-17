@@ -17,6 +17,7 @@ declare var $: any;
 })
 export class WorkshopRegistrationFormComponent implements OnInit {
   pageName = "Workshop";
+  fileTypes = ['png','jpg','jpeg'];  //acceptable file types
   id: any;
   type:any;
   bgImage: any;
@@ -111,6 +112,7 @@ export class WorkshopRegistrationFormComponent implements OnInit {
       if(this.type == 2){
           this.workshopService.user_apply_for_workshop(data).subscribe(
             data => { 
+              this.dashboardService.filter('applyed');
               console.log(data);
               this.loading = true;
                
@@ -121,6 +123,7 @@ export class WorkshopRegistrationFormComponent implements OnInit {
         
         this.dashboardService.user_apply_for_events(data).subscribe(
           data => { 
+            this.dashboardService.filter('applyed');
             console.log(data);
             this.loading = true;
             
@@ -142,6 +145,9 @@ export class WorkshopRegistrationFormComponent implements OnInit {
 
   onFileChange(event: any) {
     if (event.target.files && event.target.files[0]) {
+      var extension = event.target.files[0].name.split('.').pop().toLowerCase();
+        var isSuccess = this.fileTypes.indexOf(extension) > -1;
+        if (isSuccess) { 
       this.panfileChoosen = true;
       this.panfileName = event.target.files[0].name; 
       const file = event.target.files && event.target.files[0];
@@ -158,11 +164,17 @@ export class WorkshopRegistrationFormComponent implements OnInit {
         }
         reader.readAsDataURL(event.target.files[i]);
       }
+    }else{
+      this.notification.showInfo('Select image (jpg,jpeg,png) only.','');
     }
+  }
   }
 
   onFileChange2(event: any) {
     if (event.target.files && event.target.files[0]) {
+      var extension = event.target.files[0].name.split('.').pop().toLowerCase();
+        var isSuccess = this.fileTypes.indexOf(extension) > -1;
+        if (isSuccess) { 
       this.aadharfileChoosen = true;
       this.aadharfileName = event.target.files[0].name;      
       const file = event.target.files && event.target.files[0];
@@ -180,7 +192,10 @@ export class WorkshopRegistrationFormComponent implements OnInit {
         }
         reader.readAsDataURL(event.target.files[i]);
       }
+    }else{
+      this.notification.showInfo('Select image (jpg,jpeg,png) only.','');
     }
+  }
   }
 
 }

@@ -24,7 +24,7 @@ export class DateOfBirthComponent implements OnInit {
     return this.parent.controls;
   }
   year(startYear:number) {
-    var currentYear = new Date().getFullYear(), years = [];
+    var currentYear = new Date().getFullYear()-13, years = [];
     startYear = startYear || 1971;  
     while ( startYear <= currentYear ) {
         this.yearList.push(startYear++);

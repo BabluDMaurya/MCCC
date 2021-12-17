@@ -43,6 +43,9 @@ export class HomeComponent implements OnInit {
   upcomingData: any;
   hostUrl:string = Config.Host+'backend2/';
   topBTSVideos: any;
+  localData : any;
+  upcomingNoData: boolean = true;
+  eventForYouNoData: boolean = true;
   constructor(
     private authenticationService: AuthenticationService,
     private route: Router,
@@ -50,6 +53,7 @@ export class HomeComponent implements OnInit {
     private dashboardService : DashboardService,
     private workshopService: WorkshopService,
     ) {
+      this.localData = localStorage.getItem('currentUser');
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       let Auth = JSON.stringify(this.authenticationService.currentUserValue.status);
@@ -96,6 +100,8 @@ export class HomeComponent implements OnInit {
     this.castingSliderApi();
     this.newCastingCallApi();
     this.getRecomendedData();
+    var udata = this.authenticationService.login_with_token(this.localData.token);
+    console.log(udata);
     this.btsVideosService.get_categories().subscribe(
       data => { 
         this.loadingbts = true;
@@ -119,6 +125,10 @@ export class HomeComponent implements OnInit {
             this.eventForYouData = this.workshsopData.event_for_u;
             this.onGoingData = this.workshsopData.on_going;
             this.upcoming = this.workshsopData.upcoming;
+            this.upcomingNoData = this.upcoming[0].noData;
+            this.eventForYouNoData = this.eventForYouData[0].noData;
+
+            
             this.loading = true;
             if(this.upcomingData == 'No Data'){
               this.upcomingData = [];

@@ -41,7 +41,7 @@
             </div>
             <div *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
             <div class="imgs">
-                <input type="file" name="files[]" id="files" (change)="fileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/gif,">
+                <input type="file" name="files[]" id="files" (change)="fileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/jpg,">
                 <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
             </div>
             <div class="ctnt">

@@ -37,7 +37,8 @@ export class AuthenticationService {
     login_with_token(token: any) {
         console.log("autologin API");
         return this.http.post<any>(`${Config.BasePath}/login_with_token`, { token })
-            .pipe(map(user => {               
+            .pipe(map(user => {       
+                console.log(user);        
                 if(user.status != 'false'){
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));

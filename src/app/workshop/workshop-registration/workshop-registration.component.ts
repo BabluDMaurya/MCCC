@@ -29,7 +29,11 @@ export class WorkshopRegistrationComponent implements OnInit {
   toastSuccess:string = 'toast-15';
   toastDanger:string = 'toast-16';
   constructor(private notifyService : NotificationService,private location: Location,private workshopService: WorkshopService,
-    private route:Router,private actRoute:ActivatedRoute,public datepipe: DatePipe,private dashboardService : DashboardService) { }
+    private route:Router,private actRoute:ActivatedRoute,public datepipe: DatePipe,private dashboardService : DashboardService) {
+      this.dashboardService.listen().subscribe((e:any)=>{
+        this.ngOnInit();
+      });
+     }
 
   ngOnInit(): void {
     this.actRoute.paramMap.subscribe((params: ParamMap) => {                 

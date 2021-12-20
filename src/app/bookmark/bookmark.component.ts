@@ -11,7 +11,7 @@ declare var $: any;
 })
 export class BookmarkComponent implements OnInit {
   back_link :any =  "home";
-  component_title : string = 'Bookmark';
+  component_title : string = 'Bookmarks';
   loading: boolean = false;
   castings: any;
   eventBookmarkData :any;

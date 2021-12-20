@@ -48,12 +48,12 @@ export class SidebarsComponent implements OnInit {
         });
   }
   logout(){
-    $('.mat-typography').css('overflow','inherit !important');
+    $('.mccc').css('overflow','inherit');
     this.authenticationService.logout();
     this.route.navigate(['/signin']);
   }
   sideBarClose(){
-    $('.mat-typography').css('overflow','inherit !important');
+    $('.mccc').css('overflow','inherit');
   }
   darkMode(){
     if(this.check == 1){
@@ -75,7 +75,7 @@ export class SidebarsComponent implements OnInit {
     // localStorage.setItem("MobilekitDarkMode", "1");
   }
   closeSide(){
-    $('.mat-typography').css('overflow','inherit');
+    $('.mccc').css('overflow','inherit');
   }
   
 }

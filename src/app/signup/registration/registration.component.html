@@ -18,9 +18,9 @@
                 <div class="inputs">
                     <input autocomplete="off" formControlName="email" type="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">Email is required.</div> 
-                        <div *ngIf="f.email.errors.emailTaken">Email is already taken.</div>
-                        <div *ngIf="f.email.errors.pattern">Email must be a valid email address.</div>
+                        <div *ngIf="f.email.errors.required">Email is required</div> 
+                        <div *ngIf="f.email.errors.emailTaken">Email is already taken</div>
+                        <div *ngIf="f.email.errors.pattern">Email must be a valid email id</div>
                       </div> 
                       <div class="invalid-feedback error" style="display: block;" *ngIf="f.email.errors?.serverError">{{ f.email.errors?.serverError }}</div>
                 </div>
@@ -36,7 +36,7 @@
                 <div class="inputs">
                     <input autocomplete="off" formControlName="home_town" type="text"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">
                     <div *ngIf="submitted && f.home_town.errors" class="invalid-feedback">
-                        <div *ngIf="f.home_town.errors.required">Home town is required.</div> 
+                        <div *ngIf="f.home_town.errors.required">Home town is required</div> 
                       </div> 
                       <div class="invalid-feedback error" style="display: block;" *ngIf="f.email.errors?.serverError">{{ f.home_town.errors?.serverError }}</div>
                 </div>

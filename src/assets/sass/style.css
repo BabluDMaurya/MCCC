@@ -96,6 +96,22 @@ button:hover, button:active, button:focus {
   z-index: 9999;
   box-shadow: 0px 0px 5px 2px #0002;
 }
+.main.casting_inner.sidePaading0.bts_inner_inner.videos_play{
+  margin-top: 0;
+}
+.main.casting_inner.sidePaading0.bts_inner_inner.videos_play .mainHeader.video_header{
+  background: transparent!important;
+  box-shadow: inherit!important;
+}
+/* .main.casting_inner.sidePaading0.bts_inner_inner.videos_play .mainHeader.video_header .top_header .heading.sticky .arrowLeft ion-icon{
+  color: #fff;
+} */
+.main .mainHeader.video_header .top_header .heading.sticky {
+  background: transparent;
+  box-shadow: none!important;
+  justify-content: flex-start;
+  margin-left: 10px;
+}
 
 .heading.sticky .arrowLeft {
   left: 15px !important;
@@ -10793,6 +10809,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
 .wrrpperRegisterForm {
   width: 85%;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .wrrpperRegisterForm .heading {
@@ -10866,7 +10883,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   border: 2px solid #ff6454;
   background: transparent;
   border-radius: 5px;
-  line-height: 45px;
+  line-height: normal;
   height: 45px;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -10887,7 +10904,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   top: 22px;
   /* -webkit-transform: translateY(-50%);
           transform: translateY(-50%); */
-  right: 25px;
+  right: 10px;
 }
 
 .wrrpperRegisterForm .forms .formGroup .dateBirth {
@@ -10915,7 +10932,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   top: 22px;
   /* -webkit-transform: translateY(-50%);
           transform: translateY(-50%); */
-  right: 20px;
+  right: 10px;
 }
 
 .wrrpperRegisterForm .forms .formGroup .mobileNumer {
@@ -11460,7 +11477,8 @@ body.dark-mode-active .profilePhoto .btnArea span {
   border: 2px solid #ff6454;
   background: transparent;
   border-radius: 5px;
-  line-height: 40px;
+  line-height: 45px;
+  height: 45px;
   padding: 0 20px;
   font-size: 16px;
 }
@@ -11536,8 +11554,14 @@ body.dark-mode-active .profilePhoto .btnArea span {
   display: block;
 }
 
+
 body.dark-mode-active .mainHeader {
   background: #000;
+}
+
+
+body.dark-mode-active .completeProfile .forms_input .select select{
+  color: #fff!important;
 }
 
 body.dark-mode-active .mainHeader .bottomHeader .tabs .box img.darkMode {
@@ -11585,6 +11609,9 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 }
 
 .nav-tabs.lined .nav-item .nav-link {
+  display: block;
+  line-height: 46px;
+  height: 56px;
   font-size: 12px;
 }
 
@@ -12120,6 +12147,9 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+.main_wrppers .casingCalls .boxs .boxHead .shaveIcon{
+  display: flex;
+}
 
 .main_wrppers .casingCalls .boxs .boxHead h5 a {
   font-size: 17px;
@@ -12271,9 +12301,10 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 }
 
 .main_wrppers .casingCalls .moresliderVideos .moreSlider .more_V_box span {
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
-  line-height: 18px;
+  line-height: 15px;
+  padding: 0 5px;
 }
 .right_sidebar{
   background: linear-gradient(131deg, #d5eef2, #ddbdda);
@@ -13137,6 +13168,7 @@ body.dark-mode-active .workshop_innerProfile .casting__profiles .profileDetailsW
   margin: 0;
   position: relative;
   padding-left: 10px;
+  font-weight: 600;
 }
 
 .bts_inners .bts__inner .head label::after {
@@ -13199,7 +13231,7 @@ body.dark-mode-active .workshop_innerProfile .casting__profiles .profileDetailsW
 }
 
 .bts_inners .bts__inner .moviesArea .moviesContent span {
-  font-size: 16px;
+  font-size: 12px!important;
   color: #000;
   display: block;
   line-height: normal;
@@ -13231,25 +13263,27 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeVideos {
   position: relative;
 }
-
-.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeVideos .shaveIcon {
+.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent{
+  position: relative;
+  padding: 0 5%;
+}
+.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent .shaveIcon {
   position: absolute;
-  bottom: -24px!important;
+  top: 0!important;
   right: 10px!important;
   color: #ff6554!important;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .videosTopPart {
-  min-height: 315px;
+  min-height: 250px!important;
 }
 
-
-
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent p {
-  font-size: 16px;
+  font-size: 14px!important;
   margin: 0;
   line-height: normal;
   color: #000;
+  padding-right: 8px;
 }
 body.dark-mode-active .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent p {
   color: #fff!important;
@@ -13266,17 +13300,21 @@ body.dark-mode-active .toast-box{
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent span {
-  font-size: 16px;
+  font-size: 12px!important;
   margin: 0;
   line-height: normal;
+  display: block;
 }
 
+.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent .shaveIcon ~ span{
+  padding-top: 5px;
+}
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext {
-  padding: 0 5%;
-  max-height: calc(100vh - 315px);
+  padding: 0!important;
+  max-height: calc(100vh - 215px)!important;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding-bottom: 115px;
+  padding-bottom: 25px!important;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .shavIcon_training{
@@ -13303,11 +13341,12 @@ body.dark-mode-active .toast-box{
   display: flex;
   align-items: stretch !important;
   padding-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vLeft {
   position: relative;
-  width: 35%;
+  width: 100%!important;
 
 }
 
@@ -13315,7 +13354,7 @@ body.dark-mode-active .toast-box{
   width: 100%;
   -o-object-fit: cover !important;
      object-fit: cover !important;
-  border-radius: 5px;
+  border-radius: 0px!important;
   height: 100%!important;
 }
 
@@ -13328,8 +13367,9 @@ body.dark-mode-active .toast-box{
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vright {
-  width: 65%;
+  width: 100%!important;
   padding: 0 5%;
+  padding-top: 10px!important;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vright p {
@@ -13446,6 +13486,7 @@ body.dark-mode-active .wrrpperNoInternet .imgContent .ctnt h4 {
   font-size: 16px;
   color: #000;
   font-weight: 400;
+  margin-bottom: 0;
 }
 
 .inviteFrnds .topImg {
@@ -13711,6 +13752,7 @@ body.dark-mode-active .faq .faqWrapper .accordion .accordion-item .accordion-col
 
 .term__Conditions .accordion .accordion-item .accordion-header button.accordion-button {
   padding-left: 45px;
+  line-height: normal;
 }
 
 .term__Conditions .accordion .accordion-item .accordion-header button::after {
@@ -13731,9 +13773,15 @@ body.dark-mode-active .nav-tabs.lined .nav-item .nav-link {
 }
 
 .gameWrpper {
-  padding: 0 5%;
+  padding: 0 0;
 }
-
+.gameWrpper .grids{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px;
+  gap: 16px;
+  justify-content: center;
+}
 .gameWrpper .gamesArea .gameHeader {
   display: -webkit-box;
   display: -ms-flexbox;

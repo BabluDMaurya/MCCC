@@ -14,6 +14,8 @@ declare var $: any;
 })
 export class BtsVideoViewComponent implements OnInit {
   @ViewChild("iframe") iframe: ElementRef | any;
+  back_link :any =  "bts-inner/1";
+  component_title : string = '';
   btsCategoryId: any;
   btsVideoId: any;
   dataLoad: any = false;

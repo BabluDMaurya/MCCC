@@ -7,7 +7,9 @@
             <h3>{{casting_title | titlecase}}</h3>
             <h4><label> Date : </label> {{casting_date}}</h4>
             <p><span>*</span> You can change your profile details in My Profile section</p>
+            <form [formGroup]="form" (ngSubmit)="submit()">
             <div class="profileDetailsWrpper">
+               
                 <div class="profileDiv">
                     <label>Name<span>*</span></label>
                     <p class="innerDetail">{{userdetail.name}}</p>
@@ -50,7 +52,7 @@
                     <img src="assets/img/img/castingProfileImg.webp" alt="">
                     <img src="assets/img/img/castingProfileImg.webp" alt="">
                     <img src="assets/img/img/castingProfileImg.webp" alt="">
-                </div>
+                </div>                
                 <p><span>*</span> To change images go to profile and update images from there</p>
             </div>
             <div class="profileVideos">
@@ -100,7 +102,7 @@
 
                 </div>
                 <div class="videosArea" *ngIf="!ShowUploadedVideo">
-                    <a href="#">
+                    <a>
                         <img src="assets/img/img/castingPrfolieVide.webp" alt="">
                         <div class="play__ionc">
                             <img src="assets/img/img/play_icon.webp" alt="">
@@ -109,11 +111,32 @@
                 </div>
                 <p><span>*</span> To change video go to profile and update video from there</p>
             </div>
-            <button class="btnss mt-2" (click)="submit()">Submit</button>
+            <button class="btnss mt-2">Submit</button>
+        </form>
         </div>
     </div>
 </div>
-
+<button type="button" class="btn btn-secondary" #openmediadialogbox data-bs-toggle="modal" data-bs-target="#mediarequird" style="display: none;">required</button>
+                <div class="modal fade dialogbox" id="mediarequird" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-icon text-danger">
+                                <ion-icon name="checkmark-circle" role="img" class="md hydrated" aria-label="checkmark circle"></ion-icon>
+                            </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title">{{mediaerrortitle}}</h5>
+                            </div>
+                            <div class="modal-body">
+                                {{mediaerrordescription}}
+                            </div>
+                            <div class="modal-footer">
+                                <div class="btn-inline">
+                                    <a href="#" class="btn" data-bs-dismiss="modal">CLOSE</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 <div class="modal fade modalbox input_text" id="ModalForm" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -127,8 +150,8 @@
                         <form [formGroup]="hobbiesForm" (ngSubmit)="updateHobbies($event)">
                             <div class="form-group basic">                                
                                 <div class="input-wrapper">
-                                    <label class="form-label" for="hobbies">Hobbies</label>                                    
-                                    <input formControlName="hobbies" type="text" [ngClass]="{ 'is-invalid': submitted && h.hobbies.errors }" maxlength="100">
+                                    <label class="form-label" for="hobbies">Hobbies</label>
+                                    <input [placeholder]="userdetail.hobbies == 'Enter' ? 'Add your hobbies' : ''" formControlName="hobbies" type="text" [ngClass]="{ 'is-invalid': submitted && h.hobbies.errors }" maxlength="100">
                                     <div *ngIf="submitted && h.hobbies.errors" class="invalid-feedback">
                                         <div *ngIf="h.hobbies.errors.required">Hobbies is required</div>
                                         <div *ngIf="h.hobbies.errors.maxlength">It's length should be maximum 100 characters</div>

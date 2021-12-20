@@ -29,7 +29,7 @@
                             {{term.title}}
                         </button>
                     </h2>
-                    <div [id]="'accordion'+i" class="accordion-collapse collapse " [attr.data-bs-parent]="'#accordionExample'+i">
+                    <div [id]="'accordion'+i" class="accordion-collapse collapse " [ngClass]="{ 'show': i == 0 }" [attr.data-bs-parent]="'#accordionExample'+i">
                         <div class="accordion-body">
                             {{term.description}}
                         </div>

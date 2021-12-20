@@ -79,6 +79,8 @@ export class UploadVideoComponent implements OnInit {
   }
   onFileChange(event: any) {
     if (event.target.files && event.target.files[0]) {
+      this.images = [];
+      this.url = '';
       const file = event.target.files && event.target.files[0];
       var filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {

@@ -27,8 +27,15 @@ export class ResetPasswordComponent implements OnInit {
   rotp : any;
   all_terms : any;
   otp : string = '1111';
+  hide : boolean = true;
+  chide : boolean = true;
   constructor(public otpService:OtpService,private registerService : RegisterService,private userService:UserService,private actRoute:ActivatedRoute ,private formBuilder: FormBuilder, private route : Router,private authenticationService: AuthenticationService) { }
-
+  passwordhideshow() {
+    this.hide = !this.hide;
+  }
+  cpasswordhideshow() {
+    this.chide = !this.chide;
+  }
   ngOnInit(): void {
     this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
       this.token = params.get('token');
@@ -82,9 +89,9 @@ this.registerService.terms().subscribe(
     }
   }
   resendOTP(){
-    this.otpService.get_resendotp({phone:sessionStorage.getItem('phone'),email:sessionStorage.getItem('email')}).subscribe((res: any) => {      
+    this.otpService.get_resendotp({email_or_mobile:sessionStorage.getItem('email_or_mobile')}).subscribe((res: any) => {      
       this.otp = res.otp;
-      sessionStorage.setItem('otp',this.otp);
+      sessionStorage.setItem('rotp',this.otp);
       this.ngOnInit();
     });
   }

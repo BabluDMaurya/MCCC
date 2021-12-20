@@ -44,16 +44,16 @@ export class SidebarsComponent implements OnInit {
           this.profile_pic_path =  this.resData.data.user_details.profile_pic_path;
           this.profile_pic = this.resData.data.user_details.profile_pic;
           this.data = this.resData.data.user_details;
-          console.log(this.resData.data.user_details);
+          // console.log(this.resData.data.user_details);
         });
   }
   logout(){
-    $('.mat-typography').css('overflow','inherit');
+    $('.mat-typography').css('overflow','inherit !important');
     this.authenticationService.logout();
-    this.route.navigate(['/']);
+    this.route.navigate(['/signin']);
   }
   sideBarClose(){
-    $('.mat-typography').css('overflow','inherit');
+    $('.mat-typography').css('overflow','inherit !important');
   }
   darkMode(){
     if(this.check == 1){

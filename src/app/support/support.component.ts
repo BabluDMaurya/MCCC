@@ -16,7 +16,9 @@ export class SupportComponent implements OnInit {
   back_link :any =  "home";
   component_title : string = 'Support';
   submitted = false;
-  optionsList = ['Female', 'Male', 'Transgender', 'Genderqueer'];
+  optionsList = ['What Whappen Next', 'App Not Working', 'What do casting agencies do', 'What types of Casting?'];
+
+
   constructor(
     private formBuilder: FormBuilder,
     private route : Router,
@@ -26,7 +28,7 @@ export class SupportComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      options : ['',[Validators.required]],
+      options : ['What Whappen Next',[Validators.required]],
       message : ['',[Validators.required]]
     });
   }

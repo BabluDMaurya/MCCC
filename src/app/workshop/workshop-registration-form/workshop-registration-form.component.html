@@ -53,7 +53,7 @@
                     <div class="profileDiv">
                         <label>Secondary Contact<span>*</span></label>
                         <div class="inputs">
-                            <input type="text" formControlName="sos_phone" value="" minlength="10" maxlength="10" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
+                            <input type="tel" formControlName="sos_phone" value="" minlength="10" maxlength="10" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
                             <div *ngIf="submitted && f.sos_phone.errors" class="invalid-feedback">
                                 <div *ngIf="f.sos_phone.errors.required">Please provide your secondary contact number.</div>
                                 <div *ngIf="f.sos_phone.errors.minlength">
@@ -94,7 +94,7 @@
                     <div class="profileDiv">
                         <label>Adhaar Card<span>*</span></label>
                         <div class="inputFile">
-                            <input #fileInput type="file" accept="image/*"  id="upkoadAdhPan" formControlName="aadhar_file" (change)="onFileChange2($event)" [ngClass]="{ 'is-invalid': submitted && f.aadhar_file.errors }">
+                            <input #fileInput type="file" accept="image/jpeg, image/png, image/jpg"  id="upkoadAdhPan" formControlName="aadhar_file" (change)="onFileChange2($event)" [ngClass]="{ 'is-invalid': submitted && f.aadhar_file.errors }">
                             <div *ngIf="aadharfileChoosen" class="file-name">{{aadharfileName}}</div>
                             <label for="upkoadAdhPan">Upload Adhaar</label>
                             <div class="fileUpIcon">
@@ -109,7 +109,7 @@
                     <div class="profileDiv uploadPan">
                         <label>Pan Card<span>*</span></label>
                         <div class="inputFile">
-                            <input #fileInput type="file" accept="image/*" formControlName="pan_file" id="upkoadPan" class="upkoadPans" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.pan_file.errors }">
+                            <input #fileInput type="file" accept="image/jpeg, image/png, image/jpg" formControlName="pan_file" id="upkoadPan" class="upkoadPans" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.pan_file.errors }">
                             <div *ngIf="panfileChoosen" class="file-name">{{panfileName}}</div>
                             <label for="upkoadPan">Upload Pan</label>
                             <div class="fileUpIcon">
@@ -136,5 +136,9 @@
                 <button type="submit" (click)="submit()" class="btnss btnss_r ripple">Submit</button>
             </form>
             </div>
+        </div>
+        <div *ngIf="!loading" class="loader">
+            <img src="../../../assets/img/img/Mccc-black.gif" class="lightMode" alt="">
+            <img src="../../../assets/img/img/Mccc-white.gif" alt="" class="darkMode">
         </div>
     </div>

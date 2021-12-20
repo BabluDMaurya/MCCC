@@ -12,12 +12,11 @@ export class YourCountryStateCityComponent implements OnInit {
 
   title = 'json-file-read-angular';
   public countryList:{id:number, name:string, code:string}[] = countries;
-
+  public selectedCountry = 'India';
   @Input() parent: FormGroup | any;
   @Input() submit: any;
   cityList : any;
-  stateList : any; 
-  selectedCountry = 'Select';  
+  stateList : any;  
   selectedState = 'Select';
   selectedCity = 'Select';
   response : any;
@@ -26,15 +25,25 @@ export class YourCountryStateCityComponent implements OnInit {
   constructor(private registerService : RegisterService) { }
 
   ngOnInit(): void {        
-    this.parent.addControl('country',new FormControl('', [Validators.required]));     
+    this.parent.addControl('country',new FormControl('101', [Validators.required]));     
       this.parent.addControl('state',new FormControl('',[Validators.required]));
       this.parent.addControl('city',new FormControl('', [Validators.required]));
+      this.registerService.states({country_id:101}).subscribe(res=>{
+        this.response = res;
+        if(this.response.data !== 'undefined' && this.response.data.length > 0){
+          this.stateList = this.response.data;  
+        }else{          
+          this.dataTrue = false;
+        }
+      },error=>{
+       
+      });
   }
   get f(): { [key: string]: AbstractControl } {
     return this.parent.controls;
   }
   changeSuitState(e:any) {
-    console.log("changeSuitState");
+    console.log("changeSuitState:", e);
     if(e.target.value > 0){      
       this.registerService.states({country_id:e.target.value}).subscribe(res=>{
         this.response = res;

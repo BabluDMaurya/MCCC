@@ -24,11 +24,11 @@ export class CastingCardComponent implements OnInit {
   }
   doHtmlDisplay(text:any, limit = 50) {
     if (text.length > limit) {
-     text = text.substring(0, limit) + '...<span>View More</span>';
+     text = text.substring(0, limit) + '...';
     } else {
      text;
     }
-    return text;
+    return text + ' <span>View More</span>';
    }
    castingInner(id:any){
     this.route.navigate(['casting-inner',id]);
@@ -40,7 +40,7 @@ export class CastingCardComponent implements OnInit {
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){
           this.data.bookmark_status = 1;
-          console.log('toast added',this.toastSuccess);
+          // console.log('toast added',this.toastSuccess);
           new toastbox(this.toastSuccess, 2000);
           this.dashboardService.filter('applyed');
             setTimeout(() => {

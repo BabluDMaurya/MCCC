@@ -52,7 +52,7 @@
                 <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
             </div>            
         </div>
-        <div class="casingCalls" *ngIf="!upcoming[0].noData">
+        <div class="casingCalls" *ngIf="!upcomingNoData">
             <div class="casingCallHeader">
                 <p class="classinghead">Upcoming Workshop</p>
                 <span><a [routerLink]="['/workshop/2']">View All</a></span>
@@ -62,7 +62,7 @@
             </div>
             <app-workshop-card *ngFor="let c of upcoming; let idx=index" [data]="c"></app-workshop-card>
         </div>
-        <div class="casingCalls" *ngIf="!eventForYouData[0].noData">
+        <div class="casingCalls" *ngIf="!eventForYouNoData">
             <div class="casingCallHeader">
                 <p class="classinghead recomded primary__color">Workshop for you</p>
                 <span><a [routerLink]="['/workshop/3']">View All</a></span>

@@ -6757,7 +6757,7 @@ textarea,
   margin-top: env(safe-area-inset-top);
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
-  background: #000;
+  /* background: #34C759; */
   font-size: 13px;
   color: rgba(255, 255, 255, 0.75);
   padding: 10px 16px;
@@ -11689,7 +11689,7 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 
 .profileBox .close-sidebar-button ion-icon {
   font-size: 30px;
-  color: #fff;
+  color: #ff6554;
 }
 
 .listview a.item {
@@ -12722,10 +12722,22 @@ color: #fff;
 .casting_inner .main_wrppers .castingContent .cating_details .head {
   font-size: 14px;
   color: #000;
+  position: relative;
+  padding-left: 20px;
 }
 
 .casting_inner .main_wrppers .castingContent .cating_details .head i {
   padding-right: 4px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.casting_inner .main_wrppers .castingContent .cating_details .head ion-icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 
 .casting_inner .main_wrppers .castingContent .cating_details label {
@@ -12832,6 +12844,7 @@ body.dark-mode-active .casting_inner .castingContent .cating_details li .head i 
   padding: 0;
   padding-bottom: 8px;
   position: relative;
+  word-break: break-word;
 }
 
 .casting__profiles .castingProfile .profileDetailsWrpper .profileDiv p.innerDetail::after {
@@ -14471,3 +14484,10 @@ i.far.fa-bookmark, i.fas.fa-bookmark.removecard{
   }
 }
 
+.toast-box.toast-bottom{
+  z-index: 99999;
+  /* bottom: 0; */
+}
+.toast-box.toast-bottom.show{
+  bottom: 0;
+}

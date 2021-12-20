@@ -24,7 +24,7 @@
             <div class="accordion" *ngFor="let term of all_terms.allTerms; let i=index;" [id]="'accordionExample'+i">
                 <div class="accordion-item" >
                     <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             [attr.data-bs-target]="'#accordion'+i">
                             {{term.title}}
                         </button>

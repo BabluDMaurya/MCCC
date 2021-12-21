@@ -9,52 +9,56 @@
                 </div>
                 <div class="lats_side">
                     <div class="avtars">
-                            <a [routerLink]="['/home']">
-                                <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
-                            </a>
+                        <a [routerLink]="['/home']">
+                            <!-- <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded"> -->
+                            <ion-icon name="home-outline"></ion-icon>
+                        </a>
                         <!-- </div> -->
                     </div>
                 </div>
             </div>
         </div>  
         <form [formGroup]="form">
-        <div class="imgContent">
-            <div class="imgPrevw img_Prevw">
-                <div class="prvwImg" *ngFor="let img of datas;let i=index;">
-                    <img src="{{imagePath+img.image}}" alt="">
-                    <div class='multi-field'>
-                        <button type="button" class="close" (click)="removePrimaryImage(i)">
-                            <i class="far fa-times-circle"></i>
-                        </button>
-                      </div>
+            <div class="imgContent">
+                <div class="imgPrevw img_Prevw">
+                    <div class="prvwImg" *ngFor="let img of datas;let i=index;">
+                        <img src="{{imagePath+img.image}}" alt="">
+                        <div class='multi-field'>
+                            <button type="button" class="close" (click)="removePrimaryImage(i)">
+                                <i class="far fa-times-circle"></i>
+                            </button>
+                        </div>
+                        <div class="edit_btn">
+                            <a><i class="far fa-edit"></i></a>
+                        </div>
+                    </div>
+                    <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
+                        <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
+                        <div class='multi-field'>
+                            <button type="button" class="close" (click)="removeSelectedImages(j)">
+                                <i class="far fa-times-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    
                 </div>
-                <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
-                    <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
-                    <div class='multi-field'>
-                        <button type="button" class="close" (click)="removeSelectedImages(j)">
-                            <i class="far fa-times-circle"></i>
-                        </button>
-                      </div>
+                <div *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
+                <div class="imgs">
+                    <input type="file" name="files[]" id="files" (change)="fileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/jpg,">
+                    <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
                 </div>
-                
-                
+                <div class="ctnt">
+                    <p>Take a Photo or choose From <br>your library</p>
+                    <span>(You can add only 3 Photos)</span>
+                </div>
+                </div>
             </div>
-            <div *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
-            <div class="imgs">
-                <input type="file" name="files[]" id="files" (change)="fileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/jpg,">
-                <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
+            <div class="btnArea">
+                <a (click)="submit()" type="button" [attr.disabled] = "active === 1 ? 'disabled' : null" class="next">Save</a>
+                <button  (click)="back()" class="next outline">Cancel</button>
             </div>
-            <div class="ctnt">
-                <p>Take a Photo or choose From <br>your library</p>
-                <span>(You can add only 3 Photos)</span>
-            </div>
-            </div>
-        </div>
-        <div class="btnArea">
-            <a (click)="submit()" type="button" [attr.disabled] = "active === 1 ? 'disabled' : null" class="next">Save</a>
-            <button  (click)="back()" class="next outline">Cancel</button>
-        </div>
-    </form>
+        </form>
     <div *ngIf="uploading" class="loader">
         <img src="../../../assets/img/img/Mccc-black.gif" class="lightMode" alt="">
         <img src="../../../assets/img/img/Mccc-white.gif" alt="" class="darkMode">

@@ -54,8 +54,8 @@ export class ImagesComponent implements OnInit {
     imageerror:any;
     closeResult:any;
     saveCropImage : boolean = false;
-  totalupimg: any;
-  toastSuccess:string = 'toast-18';
+    totalupimg: any;
+    toastSuccess:string = 'toast-18';
 
   constructor(  private notification : NotificationService,private modalService: NgbModal,private alertService:AlertService,private formBuilder: FormBuilder,private location:Location,private route:Router,
     private authenticationService: AuthenticationService,private commonService:CommonService) {

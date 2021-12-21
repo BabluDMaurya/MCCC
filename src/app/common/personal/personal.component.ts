@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, AbstractControl, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Config } from 'src/app/_config/config';
 import { RegisterService } from 'src/app/_service/register.service';
@@ -23,8 +23,13 @@ declare var $: any;
 })
 export class PersonalComponent implements OnInit {
   public countryList:{id:number,name:string, code:string}[] = countries;
-
+  workCount : number = 1;
+  qualiCount : number = 1;
+  socialCount : number = 1;
   form: FormGroup | any;
+  experiences: FormArray | any;
+  qualifs: FormArray | any;
+  slinks: FormArray | any;
   back_link :any =  "signin-signup";
   component_title : string = 'Fill Your Details';
   submitted = false;
@@ -101,6 +106,9 @@ export class PersonalComponent implements OnInit {
       country:['',[Validators.required]],
       state:['',[Validators.required]],
       select_city:['',[Validators.required]],
+      work_experiences: this.formBuilder.array([this.createExperience()]),
+      qualifications: this.formBuilder.array([this.createQualification()]),
+      social_links: this.formBuilder.array([this.createSocialLinks()]),
       // phone:['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       height:['',[Validators.required,Validators.pattern("^[0-9]+(.[0-9]{0,2})?$")]],
       day:['', [Validators.required]],     
@@ -139,6 +147,56 @@ export class PersonalComponent implements OnInit {
     }   
     return this.yearList;
 }
+  createExperience(): FormGroup {
+    return this.formBuilder.group({
+      experience: ['']
+    });
+  }
+  addExperience(): void {
+    if(this.workCount < 5){
+      console.log(this.workCount)
+        this.experiences = this.form.get('work_experiences') as FormArray;
+        this.experiences.push(this.createExperience());
+        this.workCount = this.workCount + 1;
+    }
+  }
+  removeExperience(i: number) {
+    this.experiences.removeAt(i);
+    this.workCount = this.workCount - 1;
+  }
+  createQualification(): FormGroup {
+    return this.formBuilder.group({
+      qualification: ['']
+    });
+  }
+  addQualification(): void {
+    if(this.qualiCount < 5){
+    this.qualifs = this.form.get('qualifications') as FormArray;
+    this.qualifs.push(this.createQualification());
+    this.qualiCount = this.qualiCount + 1;
+    }
+  }
+  removeQualification(i: number) {
+    this.qualiCount = this.qualiCount - 1;
+    this.qualifs.removeAt(i);
+  }
+
+  createSocialLinks(): FormGroup {
+    return this.formBuilder.group({
+      social_link: ['']
+    });
+  }
+  addSocialLinks(): void {
+    if(this.socialCount < 5){
+      this.slinks = this.form.get('social_links') as FormArray;
+      this.slinks.push(this.createSocialLinks());
+      this.socialCount = this.socialCount + 1;
+    }
+  }
+  removeSocialLinks(i: number) {
+    this.socialCount = this.socialCount - 1;
+    this.slinks.removeAt(i);
+  }
   submit(){
     this.submitted = true;
     if (this.form.invalid) {

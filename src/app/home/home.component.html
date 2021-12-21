@@ -70,7 +70,7 @@
             <app-workshop-card *ngFor="let c of eventForYouData; let idx=index" [data]="c"></app-workshop-card>
         </div>
         
-        <div class="casingCalls">
+        <div class="casingCalls" *ngIf="topBTSV">
             <div class="casingCallHeader">
                 <p class="classinghead recomded">Behind The Scene</p>
                 <span><a [routerLink]="['/bts-inner/2']">View All</a></span>

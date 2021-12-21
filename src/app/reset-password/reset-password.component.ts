@@ -42,12 +42,12 @@ export class ResetPasswordComponent implements OnInit {
     });
     this.rotp = sessionStorage.getItem('rotp');
     this.form = this.formBuilder.group({
-      password: ['',[Validators.required,Validators.minLength(8),Validators.maxLength(20),Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$")]],
-      confirm_password: ['',Validators.required],
+      password: ['',[Validators.required,Validators.maxLength(20)]],
+      
       otp : ['',[Validators.required]],
-      terms:['',Validators.required],
+      // terms:['',Validators.required],
     }, {
-      validator: [MustMatchOTP(this.rotp,'otp'),MustMatch('password','confirm_password')]
+      validator: [MustMatchOTP(this.rotp,'otp')]
   });
 
   // fetch terms and condtion from server
@@ -63,6 +63,7 @@ this.registerService.terms().subscribe(
     return this.form.controls;
   } 
   submit(){
+    console.log("submit");
     this.submitted = true;
     if (this.form.invalid) {
         return;

@@ -30,8 +30,8 @@ export class PersonalComponent implements OnInit {
   experiences: FormArray | any;
   qualifs: FormArray | any;
   slinks: FormArray | any;
-  back_link :any =  "signin-signup";
-  component_title : string = 'Fill Your Details';
+  back_link :any =  "home";
+  component_title : string = 'Your Profile';
   submitted = false;
   submitt :any = 1;
   phoneTaken : boolean = false;

@@ -14,7 +14,7 @@
     <div class="btom_file mb-4">
         <div class="profileImg_area profile_videos">
             <!-- <video [src]="url" *ngIf="format==='video' && url" height="200" controls controlsList="nodownload noplaybackrate" disablePictureInPicture></video> -->
-            <vg-player>
+            <vg-player *ngIf="format==='video' && url">
                 <vg-overlay-play></vg-overlay-play>
                 <vg-buffering></vg-buffering>
             
@@ -41,7 +41,7 @@
                   <vg-fullscreen></vg-fullscreen>
                 </vg-controls>
             
-                <video [vgMedia]="$any(media)" *ngIf="format==='video' && url" #media id="singleVideo" preload="auto" >
+                <video [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" >
                   <source src="{{url}}" type="video/mp4">            
                 </video>
               </vg-player>

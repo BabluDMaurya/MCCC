@@ -1,5 +1,5 @@
 <div class="section full mt-1 personal_prfile_wrapper">
-    <div class="mainHeader">
+    <!-- <div class="mainHeader">
         <div class="top_header">
             <div class="arrowLeft" (click)=back()>
                 <ion-icon name="chevron-back-outline"></ion-icon>
@@ -15,7 +15,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
     <div class="head_tabs">
         <ul class="nav nav-tabs lined" role="tablist">
             <li class="nav-item">
@@ -52,36 +53,8 @@
                                 
                             </div>
                             <div class="profileDiv">
-                                <label>DOB<span>*</span></label>
-                                <div class="dateBirth">
-                                    <div class="select">
-                                    <select formControlName="day" [(ngModel)]="day" class="form-control" [ngClass]="{ 'is-invalid': submit && f.day.errors }">
-                                        <option value="">Date</option>
-                                        <option [value]="day" *ngFor="let day of dayList" >{{day}}</option>
-                                        </select>
-                                        <div *ngIf="submit && f.day.errors" class="invalid-feedback">
-                                            <div *ngIf="f.day.errors.required">Day is required</div>               
-                                    </div>       
-                                    </div>
-                                    <div class="select">
-                                        <select formControlName="month" [(ngModel)]="month" class="form-control" [ngClass]="{ 'is-invalid': submit && f.month.errors }">
-                                            <option value="">Month</option>
-                                            <option [value]="month" *ngFor="let month of monthList" >{{month}}</option>
-                                        </select>
-                                        <div *ngIf="submit && f.month.errors" class="invalid-feedback">
-                                            <div *ngIf="f.month.errors.required">Month is required</div>               
-                                        </div>
-                                    </div>
-                                    <div class="select">
-                                        <select formControlName="year" [(ngModel)]="myYear" class="form-control" [ngClass]="{ 'is-invalid': submit && f.year.errors }">
-                                            <option value="" disabled>Year</option>
-                                            <option [value]="year" *ngFor="let year of yearList" >{{year}}</option>
-                                            </select>
-                                        <div *ngIf="submit && f.year.errors" class="invalid-feedback">
-                                            <div *ngIf="f.year.errors.required">Year is required</div>               
-                                        </div>
-                                    </div>
-                                </div>
+                                <app-date-of-birth [parent]="form" [submit]="submitted"></app-date-of-birth>
+                                
                             </div>
                             <div class="profileDiv">
                                 <label>Height<span>*</span></label>

@@ -11207,6 +11207,10 @@ body.dark-mode-active .wrrpperRegisterForm .forms .formGroup .mobileNumer .selec
   margin-top: 40px;
   font-size: 17px;
   color: #000;
+  font-weight: 600;
+}
+body.dark-mode-active .passwords .forms .termConditions .term_conditons .modal-dialog .modal-content .modal-header .modal-title{
+  color: #fff!important;
 }
 
 .passwords .forms .termConditions .term_conditons .modal-dialog .modal-content .modal-body {
@@ -11330,6 +11334,11 @@ body.dark-mode-active .passwords .forms .termConditions input[type="checkbox"] +
   padding: 8px 0;
   font-weight: 600;
   display: block;
+}
+.imges_wrpper.successs .btnArea .next{
+  height: 45px;
+  line-height: 45px;
+  padding: 0;
 }
 
 body.dark-mode-active .imgContent .ctnt p {
@@ -11804,7 +11813,9 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   left: 50%;
   transform: translate(-50%);
 }
-
+.main .mainHeader .top_header .logo.middle label{
+  margin: 0;
+}
 .main .mainHeader .top_header .avtars .avatar {
   width: 34px;
   height: 34px;
@@ -12313,6 +12324,10 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 }
 .right_sidebar{
   background: linear-gradient(131deg, #d5eef2, #ddbdda);
+  width: 230px;
+}
+.right_sidebar .offcanvas-header h5 a{
+  font-weight: 600;
 }
 
 .main_wrppers .casingCalls .moresliderVideos .moreSlider .more_V_box.primaryColor {
@@ -12490,6 +12505,9 @@ body.dark-mode-active .bts .mainHeader .bottomHeader .tabs .box:nth-child(4) .la
 }
 
 .training .trainingWrapper .trainngSlider .traning_slide {
+  margin-right: 10px;
+}
+.training .trainingWrapper .trainngSlider .btsSlioder{
   margin-right: 10px;
 }
 .training .trainingWrapper .trainngSlider .btsSlioder img{
@@ -13157,6 +13175,12 @@ body.dark-mode-active .thankyou_casting .imgContent .btn_ctnt {
           transform: translateY(-50%); */
   right: 20px;
 }
+.inputFile .fileUpIcon{
+  z-index: -1;
+}
+.inputFile .fileUpIcon i{
+  color: #ff6554;
+}
 
 .workshop_innerProfile .profileDetailsWrpper .profileDiv.uploadPan {
   margin-bottom: 20px;
@@ -13288,7 +13312,7 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent .shaveIcon {
   position: absolute;
   top: 0!important;
-  right: 10px!important;
+  right: 15px!important;
   color: #ff6554!important;
 }
 
@@ -13925,6 +13949,10 @@ body.dark-mode-active .gameWrpper .gameHeader .classinghead {
   align-items: center;
 }
 
+.profile.personal_profile .profileWrpper .profiles .profileDiv.uploades label {
+  padding-bottom: 0!important;
+}
+
 body.dark-mode-active .profile .profileWrpper .profiles .profileDiv label,body.dark-mode-active .profile .profileWrpper .profiles .profileDiv input{
   color: #fff!important;
 }
@@ -14042,7 +14070,7 @@ body.dark-mode-active .profile .profileWrpper .profiles .submit .btns.outline {
   opacity: 1;
 }
 .imges_wrpper .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button i{
-  font-size: 16px;
+  font-size: 17px;
 }
 body.dark-mode-active .imges_wrpper .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button{
  background: #000;
@@ -14050,14 +14078,16 @@ body.dark-mode-active .imges_wrpper .imgContent .imgPrevw.img_Prevw .prvwImg .mu
 
 .imges_wrpper .imgContent .imgPrevw .prvwImg {
   border-radius: 5px;
-  overflow: hidden;
+  overflow: inherit;
   position: relative;
 }
 
 .imges_wrpper .imgContent .imgPrevw .prvwImg img {
   width: 100%;
   object-fit: cover;
-  height: 100%;
+  max-height: 150px;
+  object-position:center;
+  border-radius: 10px;
 }
 .imges_wrpper .imgContent .imgPrevw .prvwImg .multi-field{
   position: absolute;
@@ -14282,7 +14312,41 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   animation: loader 1s infinite reverse;
   margin-bottom: 10px;
 }
-
+.personal_prfile_wrapper .mainHeader{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  z-index: 9999;
+  padding: 0 5%;
+  box-shadow: 0px 0px 8px #0004;
+}
+.personal_prfile_wrapper .mainHeader .top_header{
+  /* height: 25px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: relative;
+}
+.personal_prfile_wrapper .mainHeader .top_header .arrowLeft ion-icon{
+  font-size: 25px;
+  color: #ff6454;
+}
+.personal_prfile_wrapper .head_tabs ul{
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  z-index: 99;
+}
+.personal_prfile_wrapper .head_tabs .personal_profilesDivs{
+  padding-top: 80px;
+}
+.head_tabs{
+  margin-top: 60px;
+}
 .upload_img_video .modeal_image{
   display: block;
   height: 60vh;
@@ -14300,6 +14364,9 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
 .upload_img_video .modeal_image .modal-dialog .modal-header h5 {
   color: #ff6554!important;
 }
+.personal_prfile_wrapper .main{
+   margin-top: 0;
+}
 .profilePhoto.upload_img_video .prevw_img_slide .imgPrevw .prevw_img_slide{
   margin-bottom: 30px;
 }
@@ -14309,8 +14376,19 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
 .personal_profile .profileWrpper .profiles .profileDiv .inputFile #upkoadAdhPan{
   opacity: 0;
   height: 43px;
+  width: 100%;
 }
-
+.personal_profile .completeProfile .forms_input {
+  min-height: inherit;
+  margin-top: inherit;
+}
+.personal_profile .completeProfile .forms_input .formGroup{
+  margin-bottom: 20px;
+}
+.personal_profile .completeProfile .forms_input .inputs input{
+  height: 43px;
+  line-height: 43px;
+}
 .personal_profile .profileWrpper .profiles .profileDiv .inputFile label{
   width: 100%;
   position: absolute;

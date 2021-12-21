@@ -229,7 +229,7 @@ export class VideoComponent implements OnInit {
           }
         }
       }else{
-        this.notification.showInfo('please select mp4 video.','');
+        this.notification.showInfo('Please select mp4 video.','');
       }
       }
     }

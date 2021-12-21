@@ -42,7 +42,7 @@ export class ResetPasswordComponent implements OnInit {
     });
     this.rotp = sessionStorage.getItem('rotp');
     this.form = this.formBuilder.group({
-      password: ['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}')]],
+      password: ['',[Validators.required,Validators.minLength(8),Validators.maxLength(20),Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$")]],
       confirm_password: ['',Validators.required],
       otp : ['',[Validators.required]],
       terms:['',Validators.required],

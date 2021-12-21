@@ -16,7 +16,7 @@ export class YourMobileNumberComponent implements OnInit {
   selectedCode = '+91';
   constructor() { }
   ngOnInit(): void {        
-    this.parent.addControl('phone',new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
+    this.parent.addControl('phone',new FormControl('', [Validators.required, Validators.minLength(8),Validators.maxLength(16),Validators.pattern("^[0-9]*$")],
       ));
       this.parent.addControl('country_code',new FormControl('', Validators.required,
       ));

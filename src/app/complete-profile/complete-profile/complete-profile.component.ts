@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray,AbstractControl} from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../_service/authentication.service';
 import { AlertService } from '../../_service/alert.service';
@@ -8,6 +8,7 @@ import { Config } from '../../_config/config';
 import { UserService } from 'src/app/_service/user.service';
 import { RegisterService } from 'src/app/_service/register.service';
 import{ AgeBetween13To54 } from "../../_helpers/custom-DOB.validator";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-complete-profile',
@@ -18,7 +19,7 @@ export class CompleteProfileComponent implements OnInit {
   workCount : number = 1;
   qualiCount : number = 1;
   socialCount : number = 1;
-  back_link :any =  "upload-video";
+  back_link :any =  "";
   component_title : string = 'Complete your Profile';
   submitted: boolean = false;
   form: FormGroup | any;
@@ -36,6 +37,7 @@ export class CompleteProfileComponent implements OnInit {
   statesTrue = false;
   uploading:boolean=false;
   constructor(private formBuilder: FormBuilder,
+    public datepipe: DatePipe,
     private router: ActivatedRoute,
     private route: Router,
     private authenticationService: AuthenticationService,
@@ -88,7 +90,9 @@ export class CompleteProfileComponent implements OnInit {
         language_id: ['',Validators.required],
         social_links: this.formBuilder.array([this.createSocialLinks()]),
         // skin_color:['',Validators.required],
-        height:['',[Validators.required,Validators.pattern("^[0-9]+(.[0-9]{0,2})?$")]]
+        height:['',[Validators.required,Validators.pattern("^[0-9]+(.[0-9]{0,2})?$")]],
+        home_town : ['', Validators.required],
+        dob : [''],
       });
     }
     if (sessionStorage.getItem('social_login')) {
@@ -131,6 +135,7 @@ export class CompleteProfileComponent implements OnInit {
     }
   }
   removeExperience(i: number) {
+    this.workCount = this.workCount - 1;
     this.experiences.removeAt(i);
   }
   createQualification(): FormGroup {
@@ -146,6 +151,7 @@ export class CompleteProfileComponent implements OnInit {
     }
   }
   removeQualification(i: number) {
+    this.qualiCount = this.qualiCount - 1;
     this.qualifs.removeAt(i);
   }
 
@@ -162,6 +168,7 @@ export class CompleteProfileComponent implements OnInit {
     }
   }
   removeSocialLinks(i: number) {
+    this.socialCount = this.socialCount - 1;
     this.slinks.removeAt(i);
   }
 
@@ -182,7 +189,9 @@ export class CompleteProfileComponent implements OnInit {
       });
     }
   }
-  get f() { return this.form?.controls; }
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
 
   onSubmit() {
     this.uploading = true;
@@ -195,6 +204,8 @@ export class CompleteProfileComponent implements OnInit {
       return;
     }
     this.loading = true;
+    let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
+      this.form.controls['dob'].setValue(DOB); 
     this.userService.profile_final_stap(this.form.value).pipe(first()).subscribe(
       data => {
         this.uploading = false;
@@ -205,7 +216,7 @@ export class CompleteProfileComponent implements OnInit {
           item['profileStatus']='true';
           localStorage.setItem('currentUser', JSON.stringify(item));
           this.authenticationService.currentUserValue.profileStatus = "true";
-          this.route.navigate(['/final-success']);
+          this.route.navigate(['/upload-images']);
         } else {
           this.alertService.success(this.responseData.data);
         }

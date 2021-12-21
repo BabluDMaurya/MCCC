@@ -16,6 +16,7 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
+import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 
 import { LogoComponent } from './logo/logo.component';
 import { SplashComponent } from './splash/splash.component';
@@ -180,7 +181,8 @@ import { PasswordComponent } from './password/password.component';
     VgOverlayPlayModule,
     VgBufferingModule,
     SocialLoginModule,
-    NgbModule
+    NgbModule,
+    BackButtonDisableModule.forRoot()
     
   ],
   providers: [

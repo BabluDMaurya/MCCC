@@ -58,9 +58,9 @@ export class HomeComponent implements OnInit {
     if (this.authenticationService.currentUserValue) {
       let Auth = JSON.stringify(this.authenticationService.currentUserValue.status);
       if (Auth) {
-        if (this.authenticationService.currentUserValue.profileStatus  === 'false') {
-          this.route.navigate(['/upload-images']);
-        }
+        // if (this.authenticationService.currentUserValue.profileStatus  === 'false') {
+        //   this.route.navigate(['/upload-images']);
+        // }
       } else {
         this.route.navigate(['/signin']);
       }

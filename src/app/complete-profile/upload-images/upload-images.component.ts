@@ -18,7 +18,7 @@ export class UploadImagesComponent implements OnInit {
   @ViewChild('openbutton') openbutton :any;
   @ViewChild('closebutton') closebutton :any;
   progress: number = 0;
-  back_link :any =  "signin";
+  back_link :any =  "";
   component_title : string = 'Complete Your Profile';
   form: FormGroup | any;
   display = 'none';

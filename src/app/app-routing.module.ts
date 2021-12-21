@@ -211,19 +211,19 @@ const routes: Routes = [{
   data: {title: 'reset password'}    
 },
 {    
-  path: 'upload-images',component: UploadImagesComponent,canActivate: [AuthGuard], 
+  path: 'upload-images',component: UploadImagesComponent, 
   data: {title: 'Upload Images'}    
 },
 {    
-  path: 'upload-video',component: UploadVideoComponent,canActivate: [AuthGuard],
+  path: 'upload-video',component: UploadVideoComponent,
   data: {title: 'Upload Video'}    
 },
 {    
-  path: 'complete-profile',component: CompleteProfileComponent,canActivate: [AuthGuard],  
+  path: 'complete-profile',component: CompleteProfileComponent,  
   data: {title: 'complete profile'}    
 },
 {    
-  path: 'final-success',component: FinalSuccessComponent,canActivate: [AuthGuard],
+  path: 'final-success',component: FinalSuccessComponent,
   data: {title: 'final success'}
 },
 {    

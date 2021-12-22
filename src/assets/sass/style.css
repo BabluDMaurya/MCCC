@@ -744,6 +744,12 @@ button:hover, button:active, button:focus {
   border: 1px solid #E1E1E1;
   border-radius: 6px;
 }
+.profilesWrpper .progresBaar{
+  position: relative;
+  z-index: 99999;
+  margin-top: 0px;
+  width: 100%;
+}
 
 .profileBox {
   width: 300px;
@@ -760,12 +766,24 @@ button:hover, button:active, button:focus {
   -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
           box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.08);
   position: fixed;
+  flex-wrap: wrap;
   z-index: 100;
+  height: 120px;
   left: 0;
   top: 0;
   margin-top: env(safe-area-inset-top);
+  padding-bottom: 5px;
 }
-
+.profileBox .profileWrpper{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.progresBaar .section-title{
+  padding: 0 16px 0 0!important;
+  font-size: 12px;
+  color: #000;
+}
 .profileBox:before {
   background: #ff6454;
   content: '';
@@ -779,7 +797,7 @@ button:hover, button:active, button:focus {
 
 .profileBox .image-wrapper {
   margin-right: 16px;
-  padding: 16px 0;
+  padding: 5px 0 5px;
 }
 
 .profileBox .image-wrapper .imaged {
@@ -866,7 +884,7 @@ button:hover, button:active, button:focus {
           justify-content: center;
   height: 36px;
   right: 10px;
-  top: 50%;
+  top: 40px;
   color: rgba(255, 255, 255, 0.5) !important;
   margin-top: -18px;
 }
@@ -10883,7 +10901,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   border: 2px solid #ff6454;
   background: transparent;
   border-radius: 5px;
-  line-height: normal;
+  line-height: 45px;
   height: 45px;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -11420,6 +11438,20 @@ body.dark-mode-active .btnArea .btn_ctnt {
 .profilePhoto .imgContent .imgs {
   position: relative;
 }
+.profilePhoto .imgContent .imgs .ctnt{
+  position: absolute;
+  top: 180px;
+  left: 50%;
+  TRANSFORM: translateX(-50%);
+}
+.profilePhoto .imgContent .imgs .ctnt label{
+  font-size: 14px;
+  font-weight: 600;
+  color: #ff6554;
+  padding: 0;
+  display: block;
+  margin: 0;
+}
 
 .profilePhoto .imgContent .imgs input {
   width: 100%;
@@ -11601,6 +11633,9 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   height: 88vh;
 }
 
+.finalSuccess .imgContent .imgs img{
+  width: 150px;
+}
 .finalSuccess .btnArea {
   height: calc(100vh - 88vh);
 }
@@ -11669,7 +11704,9 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 .offcanvas {
   z-index: 99999;
 }
-
+.leftSideBar#sidebarPanel .offcanvas-body {
+  padding-top: 120px;
+} 
 #sidebarPanel .offcanvas-body {
   margin-top: 0px;
   padding-top: 80px;
@@ -11909,6 +11946,14 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   line-height: 3.9;
   cursor: pointer;
   outline: 0;
+}
+
+.circular-menu .floating-btn .logoMenuImg{
+  width: 56px;
+  height: auto;
+}
+.circular-menu .floating-btn .logoMenuImg img{
+  width: 100%;
 }
 
 .circular-menu.active .floating-btn {
@@ -12323,8 +12368,26 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   padding: 0 5px;
 }
 .right_sidebar{
-  background: linear-gradient(131deg, #d5eef2, #ddbdda);
+  background: linear-gradient(131deg, #d5eef2, #ddbdda)!important;
   width: 230px;
+}
+body.dark-mode-active .section-title{
+  color:#000;
+}
+body.dark-mode-active .progress{
+  background: #e9ecef!important;
+}
+.right_sidebar .offcanvas-header{
+  flex-wrap: wrap;
+}
+body.dark-mode-active .right_sidebar .offcanvas-header h5{
+  color: #000;
+}
+body.dark-mode-active .right_sidebar .offcanvas-body .prof-nav a{
+  color: #000;
+}
+.right_sidebar .offcanvas-header .progresBaar{
+  width: 100%;
 }
 .right_sidebar .offcanvas-header h5 a{
   font-weight: 600;
@@ -13728,7 +13791,7 @@ body.dark-mode-active .about p {
   background: transparent;
   position: absolute;
   left: 0px;
-  bottom: 1px;
+  bottom: 0px;
   right: 0;
   background: #ff6454;
   width: 92%;
@@ -13775,7 +13838,7 @@ body.dark-mode-active .faq .faqWrapper .accordion {
 }
 
 body.dark-mode-active .faq .faqWrapper .accordion .accordion-item .accordion-header button.accordion-button {
-  background: #000 !important;
+  background: inherit !important;
   color: #fff;
 }
 
@@ -13813,10 +13876,14 @@ body.dark-mode-active .bookemark_main .bookmarke .bookmaerkWrapper .extraHeader 
 body.dark-mode-active .nav-tabs.lined .nav-item .nav-link {
   color: #fff;
 }
+.gammings .gameWrpper{
+  padding: 0 5%;
+}
 
 .gameWrpper {
   padding: 0 0;
 }
+
 .gameWrpper .grids{
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -14402,6 +14402,9 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   font-size: 25px;
   color: #ff6454;
 }
+body.dark-mode-active .personal_prfile_wrapper .head_tabs ul{
+  background: #000;
+}
 .personal_prfile_wrapper .head_tabs ul{
   position: fixed;
   width: 100%;

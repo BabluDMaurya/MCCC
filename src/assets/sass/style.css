@@ -13018,6 +13018,7 @@ body.dark-mode-active .profile .profileWrpper .profiles .profileDiv .dateBirth .
 
 .casting__profiles .castingProfile .profileVideos .videosArea a {
   display: block;
+  height: 100%;
 }
 
 .casting__profiles .castingProfile .profileVideos .videosArea a img {
@@ -13025,6 +13026,7 @@ body.dark-mode-active .profile .profileWrpper .profiles .profileDiv .dateBirth .
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
+  height: 100%;
 }
 
 .casting__profiles .castingProfile .profileVideos .videosArea a .play__ionc {

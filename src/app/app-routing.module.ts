@@ -46,6 +46,10 @@ import { NoInternetComponent } from './no-internet/no-internet.component';
 import { SupportComponent } from './support/support.component';
 import { PasswordComponent } from './password/password.component';
 
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+
+// RouterModule.forRoot(Router, {scrollPositionRestoration: 'enabled'})
+
 
 const routes: Routes = [{    
   path: '',    
@@ -233,7 +237,9 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [ RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled', // Add options right here
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,18 +1,29 @@
 <!-- sidebars -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarPanel">
+<div class="offcanvas offcanvas-start leftSideBar" tabindex="-1" id="sidebarPanel">
     <div class="offcanvas-body">
         <!-- profile box -->
-        <div class="profileBox">
-            <div class="image-wrapper">
-                <img *ngIf="profile_pic == '' || profile_pic == null " src="assets/img/img/avatar_sidebar.webp" alt="image" class="imaged rounded">
-                <img *ngIf="profile_pic != null " src="{{baseUrl}}{{profile_pic_path}}{{profile_pic}}" alt="image" class="imaged rounded">
+        <div class="profilesWrpper">
+            <div class="profileBox">
+                <div class="profileWrpper">
+                    <div class="image-wrapper">
+                        <img *ngIf="profile_pic == '' || profile_pic == null " src="assets/img/img/avatar_sidebar.webp" alt="image" class="imaged rounded">
+                        <img *ngIf="profile_pic != null " src="{{baseUrl}}{{profile_pic_path}}{{profile_pic}}" alt="image" class="imaged rounded">
+                    </div>
+                    <div class="in">
+                        <strong>Hello {{currentUser.userDetails.name}} <!DOCTYPE html></strong>
+                    </div>
+                    <a class="close-sidebar-button" #closebutton (click)="closeSide()" data-bs-dismiss="offcanvas">
+                        <ion-icon name="close"></ion-icon>
+                    </a>
+                </div>
+                <div class="section full progresBaar">
+                    <div class="section-title">Your Profile Completion </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">25%</div>
+                    </div>
+                </div>
             </div>
-            <div class="in">
-                <strong>Hello {{currentUser.userDetails.name}} <!DOCTYPE html></strong>
-            </div>
-            <a class="close-sidebar-button" #closebutton (click)="closeSide()" data-bs-dismiss="offcanvas">
-                <ion-icon name="close"></ion-icon>
-            </a>
         </div>
         <!-- * profile box -->
 
@@ -137,6 +148,13 @@
             <!-- <ion-icon name="close-outline"></ion-icon> -->
             <ion-icon name="close"></ion-icon>
         </a>
+        <div class="section full progresBaar">
+            <div class="section-title">Your Profile Completion </div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100">25%</div>
+            </div>
+        </div>
     </div>
     <div class="offcanvas-body">
         

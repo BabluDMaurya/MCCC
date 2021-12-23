@@ -1,5 +1,11 @@
 <div class="wrrpperRegisterForm completeProfile">
-    <app-top-header-bt [back]="back_link" [title]="component_title"></app-top-header-bt>
+    <div class="heading sticky">
+        <p>{{component_title}}</p>
+        <div class="lats_side">
+            <a [routerLink]="['/home']">Skip</a>
+        </div>
+    </div>
+    <!-- <app-top-header-bt [back]="back_link" [title]="component_title"></app-top-header-bt> -->
     <div class="forms">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="forms_input">     

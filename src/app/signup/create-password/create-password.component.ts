@@ -8,13 +8,14 @@ import { AuthenticationService } from 'src/app/_service/authentication.service';
 import { OtpService } from 'src/app/_service/otp.service';
 import { MustMatch,MustMatchOTP } from '../../_helpers/must-match.validator';
 declare var $: any;
-
+declare var toastbox: any;
 @Component({
   selector: 'app-create-password',
   templateUrl: './create-password.component.html',
   styleUrls: ['./create-password.component.scss']
 })
 export class CreatePasswordComponent implements OnInit {
+  toastSuccess:string = 'toast-14';
   form: FormGroup | any;
   back_link :any =  "registration";
   component_title : string = 'Create Password';
@@ -144,8 +145,13 @@ this.registerService.terms().subscribe(
   resendOTP(){
     this.otpService.get_resendotp({phone:sessionStorage.getItem('phone'),email:sessionStorage.getItem('email')}).subscribe((res: any) => {      
       this.otp = res.otp;
-      sessionStorage.setItem('otp',this.otp);
+      new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
+      sessionStorage.setItem('otp',this.otp);      
       this.ngOnInit();
+
     });
   }
 

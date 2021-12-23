@@ -12,7 +12,7 @@
                
                 <div class="profileDiv">
                     <label>Name<span>*</span></label>
-                    <p class="innerDetail">{{userdetail.name}}</p>
+                    <p class="innerDetail">{{name}}</p>
                 </div>
                 <div class="profileDiv">
                     <label>Age<span>*</span></label>
@@ -20,27 +20,27 @@
                 </div>
                 <div class="profileDiv">
                     <label>Height<span>*</span></label>
-                    <p class="innerDetail">{{userdetail.height}}</p>
+                    <p class="innerDetail">{{height}}</p>
                 </div>
                 <div class="profileDiv">
                     <label>Contact Number<span>*</span></label>
-                    <p class="innerDetail">+91 {{userdetail.phone}}</p>
+                    <p class="innerDetail">+91 {{phone}}</p>
                 </div>
                 <div class="profileDiv">
                     <label>Language<span>*</span></label>
-                    <p class="innerDetail">{{userdetail.language}}</p>
+                    <p class="innerDetail">{{language}}</p>
                 </div>
                 <div class="profileDiv">
                     <label>Current City<span>*</span></label>
-                    <p class="innerDetail">{{userdetail.city_name}}</p>
+                    <p class="innerDetail">{{city_name}}</p>
                 </div>
                 <div class="profileDiv">
                     <label>Home Town<span>*</span></label>
-                    <p class="innerDetail">{{userdetail.home_town}}</p>
+                    <p class="innerDetail">{{home_town}}</p>
                 </div>
                 <div class="profileDiv">
                     <label>Hobbies<span>*</span></label>
-                    <p class="innerDetail">{{userdetail.hobbies}}<i class="fas fa-pencil-alt" data-bs-toggle="modal" data-bs-target="#ModalForm"></i></p>
+                    <p class="innerDetail">{{hobbies}}</p>
                 </div>                
             </div>
             <div class="profilePhotos">
@@ -137,21 +137,26 @@
                         </div>
                     </div>
                 </div>
+                <i class="fas fa-pencil-alt" data-bs-toggle="modal" #openmodal data-bs-target="#ModalForm" style="display:none;"></i>
 <div class="modal fade modalbox input_text" id="ModalForm" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Enter Your Hobbies</h5>
+                <h5 class="modal-title">Complete Your Profile</h5>
                 <a #closebutton data-bs-dismiss="modal"><i class="far fa-times-circle"></i></a>
             </div>
             <div class="modal-body">
                 <div class="login-form">
                     <div class="section mt-4 mb-5">
-                        <form [formGroup]="hobbiesForm" (ngSubmit)="updateHobbies($event)">
+                        <div class="is-invalid error">Your profile is not completed, please complete your profile then you can submite the casting call.</div>
+                        <div class="mt-2">
+                            <button type="button" class="next btn-block" (click)="completeProfile()">Complete Profile</button>
+                        </div>
+                        <!-- <form [formGroup]="hobbiesForm" (ngSubmit)="updateHobbies($event)">
                             <div class="form-group basic">                                
                                 <div class="input-wrapper">
                                     <label class="form-label" for="hobbies">Hobbies</label>
-                                    <input [placeholder]="userdetail.hobbies == 'Enter' ? 'Add your hobbies' : ''" formControlName="hobbies" type="text" [ngClass]="{ 'is-invalid': submitted && h.hobbies.errors }" maxlength="100">
+                                    <input [placeholder]="hobbies == 'Enter' ? 'Add your hobbies' : ''" formControlName="hobbies" type="text" [ngClass]="{ 'is-invalid': submitted && h.hobbies.errors }" maxlength="100">
                                     <div *ngIf="submitted && h.hobbies.errors" class="invalid-feedback">
                                         <div *ngIf="h.hobbies.errors.required">Hobbies is required</div>
                                         <div *ngIf="h.hobbies.errors.maxlength">It's length should be maximum 100 characters</div>
@@ -161,7 +166,7 @@
                             <div class="mt-2">
                                 <button type="submit" class="next btn-block">Submit</button>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>

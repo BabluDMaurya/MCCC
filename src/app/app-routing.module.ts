@@ -115,7 +115,7 @@ const routes: Routes = [{
 },
 {    
   path: 'casting-inner/:id',component: CastingInnerComponent,canActivate: [AuthGuard],
-  data: {title: 'casting inner'}    
+  data: {storeRoute: true,title: 'casting inner'}    
 },
 {    
   path: 'apply-casting/:id',component: ApplyCastingComponent,canActivate: [AuthGuard],    

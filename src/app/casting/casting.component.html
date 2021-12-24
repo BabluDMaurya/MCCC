@@ -20,7 +20,7 @@
                             <div class="casingCallHeader">
                                 <p class="classinghead">New Casting Call</p>
                             </div>
-                            <app-casting-card *ngFor="let c of castings; let idx=index" [data]="c"></app-casting-card>
+                            <app-casting-card *ngFor="let c of castings; let idx=index" [data]="c" [tab]="1"></app-casting-card>
                         </div>
                     </div>
                     <app-not-found-data *ngIf="!castingData && !shownw"></app-not-found-data>
@@ -40,7 +40,7 @@
                             <div class="casingCallHeader">
                                 <p class="classinghead recomded primary__color">Recommended Calls</p>
                             </div>
-                            <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
+                            <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c" [tab]="2"></app-casting-card>
                         </div>
                     </div>
                     <app-not-found-data *ngIf="!recommendData && !showre"></app-not-found-data>
@@ -60,7 +60,7 @@
                             <div class="casingCallHeader">
                                 <p class="classinghead">Call Ending Soon</p>
                             </div>
-                            <app-casting-card *ngFor="let c of callEndingSoon; let idx=index" [data]="c"></app-casting-card>
+                            <app-casting-card *ngFor="let c of callEndingSoon; let idx=index" [data]="c" [tab]="3"></app-casting-card>
                         </div>
                     </div>
                     <app-not-found-data *ngIf="!endingSoonData && !showen"></app-not-found-data>

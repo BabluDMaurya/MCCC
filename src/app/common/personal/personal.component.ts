@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, AbstractControl, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Config } from 'src/app/_config/config';
@@ -21,6 +21,8 @@ declare var $: any;
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
+  @ViewChild('openbutton') openbutton :any;
+  @ViewChild('closebutton') closebutton :any;
   public countryList:{id:number,name:string, code:string}[] = countries;
   workCount : number = 1;
   qualiCount : number = 1;
@@ -461,7 +463,8 @@ idatas:any
     });
   }
   openModal() {
-    this.display = 'block';
+    // this.display = 'block';
+    this.openbutton.nativeElement.click();
   }
   cropperReady() {
     // cropper ready
@@ -478,7 +481,8 @@ idatas:any
   }
   onCloseHandled() {
     this.imageChangedEvent = null;
-    this.display = 'none';
+    // this.display = 'none';
+    this.closebutton.nativeElement.click();
   }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;    

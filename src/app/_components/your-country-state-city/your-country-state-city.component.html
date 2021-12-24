@@ -1,5 +1,5 @@
 <div class="formGroup" [formGroup]="parent">
-    <label>Your Country</label>
+    <label>Your Country*</label>
     <div class="select">
         <select formControlName="country" (change)="changeSuitState($event)" class="form-control" [ngClass]="{ 'is-invalid': submit && f.country.errors }">            
             <option value="">Select</option>
@@ -13,7 +13,7 @@
     </div>
 </div>
 <div class="formGroup" [formGroup]="parent">
-    <label>Your State</label>
+    <label>Your State*</label>
     <div class="select">
         <select formControlName="state" (change)="changeSuit($event)" class="form-control" [ngClass]="{ 'is-invalid': submit && f.state.errors }">
             <option value="">Select</option>
@@ -25,7 +25,7 @@
     </div>
 </div>
 <div class="formGroup" [formGroup]="parent">
-    <label>Your City</label>
+    <label>Your City*</label>
     <div class="select">
         <select formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': submit && f.city.errors }">
             <option value="">Select</option>

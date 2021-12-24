@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray,AbstractControl} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray,AbstractControl,ValidationErrors} from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../../_service/authentication.service';
 import { AlertService } from '../../_service/alert.service';
@@ -9,13 +9,15 @@ import { UserService } from 'src/app/_service/user.service';
 import { RegisterService } from 'src/app/_service/register.service';
 import{ AgeBetween13To54 } from "../../_helpers/custom-DOB.validator";
 import { DatePipe } from '@angular/common';
-
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-complete-profile',
   templateUrl: './complete-profile.component.html',
   styleUrls: ['./complete-profile.component.scss']
 })
 export class CompleteProfileComponent implements OnInit {
+  toastSuccess:string = 'toast-11';
   workCount : number = 1;
   qualiCount : number = 1;
   socialCount : number = 1;
@@ -201,6 +203,7 @@ export class CompleteProfileComponent implements OnInit {
     // stop here if form is invalid
     if (this.form?.invalid) {
       this.uploading = false;
+      this.getFormValidationErrors();
       return;
     }
     this.loading = true;
@@ -225,6 +228,21 @@ export class CompleteProfileComponent implements OnInit {
         this.alertService.error(error);
         this.loading = false;
       });
+  }
+  getFormValidationErrors() {
+    Object.keys(this.form.controls).forEach(key => {
+      const controlErrors: ValidationErrors = this.form.get(key).errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach(keyError => {
+          new toastbox(this.toastSuccess, 2000);
+          $('#form-error-id').text(key+': '+keyError)
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
+        //  console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+        });
+      }
+    });
   }
 
 }

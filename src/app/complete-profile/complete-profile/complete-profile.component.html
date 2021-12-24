@@ -13,7 +13,7 @@
             <app-date-of-birth [parent]="form" [submit]="submitted"></app-date-of-birth>
             <app-your-country-state-city [parent]="form" [submit]="submitted"></app-your-country-state-city>
             <div class="formGroup">
-                <label>Home Town <ion-icon name="information-circle-outline" placement="top" ngbTooltip="Tooltip on top"></ion-icon></label>
+                <label>Home Town* <ion-icon name="information-circle-outline" placement="top" ngbTooltip="Tooltip on top"></ion-icon></label>
                 <div class="inputs">
                     <input autocomplete="off" formControlName="home_town" type="text"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">
                     <div *ngIf="submitted && f.home_town.errors" class="invalid-feedback">
@@ -22,7 +22,7 @@
                     </div>
             </div>   
             <div class="formGroup">
-                <label><img src="assets/img/img/height.webp" alt="">  Height <span>(e.g.5.8)</span></label>
+                <label><img src="assets/img/img/height.webp" alt="">  Height <span>(e.g.5.8) *</span></label>
                 <div class="inputs">
                     <input type="tel" class="form-control" formControlName="height" maxlength="5" [ngClass]="{ 'is-invalid': submitted && f.height.errors }">
                     <div *ngIf="submitted && f.height.errors" class="invalid-feedback">
@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="formGroup">
-                <label> <img src="assets/img/img/languages.webp" alt=""> Languages you know</label>
+                <label> <img src="assets/img/img/languages.webp" alt=""> Languages you know*</label>
                 <div class="select">
                     <select class="form-control"  formControlName="language_id" multiple [ngClass]="{ 'is-invalid': submitted && f.language_id.errors }">
                         <option *ngFor="let language of languages;" value="{{language.id}}">{{language.name}}</option>

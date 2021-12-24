@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators,ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MustMatch,SecurityCheck,SecurityCheckNew } from '../_helpers/must-match.validator';
 import { AuthenticationService } from '../_service/authentication.service';
@@ -11,6 +11,7 @@ import { OtpService } from '../_service/otp.service';
   styleUrls: ['./password.component.scss']
 })
 export class PasswordComponent implements OnInit {
+  
   form: FormGroup | any;
   submitted = false;
   storeOTP : any;
@@ -32,11 +33,12 @@ export class PasswordComponent implements OnInit {
   }
   submit(){
     this.submitted = true;
-    if (this.form.invalid) {
+    if (this.form.invalid) {      
       return;
     }else{                
 
         this.route.navigate(['/logo']);
     }
   }
+  
 }

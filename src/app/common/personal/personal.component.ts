@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, AbstractControl, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+import { FormBuilder, AbstractControl, FormGroup, Validators, FormControl, FormArray,ValidationErrors } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Config } from 'src/app/_config/config';
 import { RegisterService } from 'src/app/_service/register.service';
@@ -21,6 +21,7 @@ declare var $: any;
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
+  toastError:string = 'toast-11';
   @ViewChild('openbutton') openbutton :any;
   @ViewChild('closebutton') closebutton :any;
   public countryList:{id:number,name:string, code:string}[] = countries;
@@ -248,8 +249,7 @@ idatas:any
     this.submitted = true;
     this.disabledv = true;
     if (this.form.invalid) {
-      console.log('invalid');
-      console.log(this.form);
+      this.getFormValidationErrors();
       this.disabledv = false;
       return;
     }else{
@@ -562,6 +562,7 @@ idatas:any
     ($event.target as HTMLButtonElement).disabled = true;
     this.disabledv = true;
   if (this.vform.invalid) {
+    this.getFormValidationErrors();
     ($event.target as HTMLButtonElement).disabled = false;
     this.disabledv = false;
     return;
@@ -625,6 +626,7 @@ idatas:any
     ($event.target as HTMLButtonElement).disabled = true;
     this.disabledv = true;
     if (this.iform.invalid) {
+      this.getFormValidationErrors();
       ($event.target as HTMLButtonElement).disabled = false;
     this.disabledv = false;
       return;
@@ -720,6 +722,21 @@ idatas:any
   ipatchValues(){
     this.iform.patchValue({
        newfileSource: this.finalImageList,
+    });
+  }
+  getFormValidationErrors() {
+    Object.keys(this.form.controls).forEach(key => {
+      const controlErrors: ValidationErrors = this.form.get(key).errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach(keyError => {
+          new toastbox(this.toastError, 2000);
+          $('#form-error-id').text(key+': '+keyError)
+            setTimeout(() => {
+              $('#'+this.toastError).removeClass('show');
+          }, 2000);
+        //  console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+        });
+      }
     });
   }
 }

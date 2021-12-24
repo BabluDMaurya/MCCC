@@ -1,10 +1,13 @@
 <div class="wrrpperRegisterForm successs profilePhoto upload_img_video">
-    <app-top-header-bt [back]="back_link" [title]="component_title"></app-top-header-bt>
+    <div class="heading sticky">
+      <p>Complete Your Profile</p>
+    </div>
     <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="imgContent">
         <div class="imgs">
             <input type="file" formControlName="files" (change)="fileChangeEvent($event)" id="files" multiple accept="image/jpeg, image/png, image/jpg,">
             <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
+            <div class="ctnt"><label>Take a picture</label></div>
         </div>
         <div class="ctnt">
             <p>Take a photo or choose From <br>your library</p>

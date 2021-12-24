@@ -17,6 +17,7 @@ declare var toastbox: any;
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
+  toastSuccess14:string = 'toast-14';
   toastSuccess:string = 'toast-12';
   back_link :any =  "forgot-password";
   component_title : string = 'Reset Password';
@@ -92,6 +93,10 @@ this.registerService.terms().subscribe(
   resendOTP(){
     this.otpService.get_resendotp({email_or_mobile:sessionStorage.getItem('email_or_mobile')}).subscribe((res: any) => {      
       this.otp = res.otp;
+      new toastbox(this.toastSuccess14, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess14).removeClass('show');
+          }, 2000);
       sessionStorage.setItem('rotp',this.otp);
       this.ngOnInit();
     });

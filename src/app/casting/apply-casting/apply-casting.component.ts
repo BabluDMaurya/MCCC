@@ -84,14 +84,14 @@ export class ApplyCastingComponent implements OnInit {
       oldvideofileSource : ['',Validators.required],
       saveAsDraft : [0],  
       casting_id:[this.castingId],
-      name : [''],
-      age : [''],
-      height : [''],
-      phone : [''],
-      language : [''],
-      city : [''],
-      home_town : [''],
-      hobbies : [''],
+      name : ['',Validators.required],
+      age : ['',Validators.required],
+      height : ['',Validators.required],
+      phone : ['',Validators.required],
+      language : ['',Validators.required],
+      city : ['',Validators.required],
+      home_town : ['',Validators.required],
+      hobbies : ['',Validators.required],
     });
 
     this.hobbiesForm = this.formBuilder.group({

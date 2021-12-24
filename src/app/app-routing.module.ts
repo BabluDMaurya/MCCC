@@ -122,6 +122,10 @@ const routes: Routes = [{
   data: {title: 'casting inner'}    
 },
 {    
+  path: 'casting-inner/:id/:tab',component: CastingInnerComponent,canActivate: [AuthGuard],
+  data: {title: 'casting inner'}    
+},
+{    
   path: 'apply-casting/:id',component: ApplyCastingComponent,canActivate: [AuthGuard],    
   data: {title: 'Apply Casting'}   
 },

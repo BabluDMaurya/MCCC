@@ -14400,6 +14400,12 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   height: 60px;
   position: relative;
 }
+.personal_prfile_wrapper .mainHeader .top_header .middle label{
+  margin: 0;
+}
+.personal_prfile_wrapper .mainHeader .top_header .arrowLeft{
+  height: 25px;
+}
 .personal_prfile_wrapper .mainHeader .top_header .arrowLeft ion-icon{
   font-size: 25px;
   color: #ff6454;
@@ -14484,6 +14490,11 @@ body.dark-mode-active .personal_prfile_wrapper .head_tabs ul{
 .personal_profile .profileWrpper .profiles .profileDiv .prvwImg{
   margin-top: 50px;
   text-align: center;
+  width: 150px;
+  margin: 50px auto 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
 }
 .personal_profile .profileWrpper .profiles .profileDiv .prvwImg img{
   border-radius: 10px;
@@ -14491,6 +14502,22 @@ body.dark-mode-active .personal_prfile_wrapper .head_tabs ul{
   height: 150px;
   object-fit: cover;
   object-position: center;
+}
+.personal_profile .profileWrpper .profiles .profileDiv .prvwImg .edit_btn{
+  position: absolute;
+  bottom: -1px;
+  right: -4px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border-bottom-right-radius: 0;
+}
+.personal_profile .profileWrpper .profiles .profileDiv .prvwImg .edit_btn a i{
+  color: #ff6554;
 }
 .toast-info{
   background-color: #ff6554;
@@ -14528,7 +14555,7 @@ body.dark-mode-active .personal_prfile_wrapper .head_tabs ul{
   appearance: none;
   padding: 0 20px!important;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .profile .profileWrpper .profiles .profileDiv .dateBirth .select{

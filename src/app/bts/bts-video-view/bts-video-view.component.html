@@ -17,13 +17,23 @@
             </div>
         </div>
         <div class="main_wrppers bts_inners_inner">
-            <div class="bts__inner_inner">
+            <div *ngIf="dataLoad && !videoNotFound" >
+                <div class="box_skeleton"></div>
+            </div>
+            <div *ngIf="dataLoad && !getUpnextVideos">
+                    <div class="header_skelton"></div>
+                    <div class="box_skeleton"></div>
+                    <div class="box_skeleton"></div>
+                    <div class="box_skeleton"></div>
+                </div>                
+            <div class="bts__inner_inner">                
                 <div class="videosTopPart">
                     <div class="youtubeVideos">
                         <iframe #iframe  width="100%" height="250" class="e2e-trusted-url ivideo"  src="about:blank" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;" allowfullscreen=""></iframe>
                     </div>
                 </div>
-                <div class="upNext">
+                
+                <div class="upNext">                    
                     <div class="youtubeContent">
                         <div  *ngIf="descLength > 50 && expanded !=  BtsVideos[0].id" >
                             <p [innerHTML]="desc.substr(0, 50) + '...' | titlecase"></p>
@@ -60,8 +70,8 @@
                             
                         </div>
                     </div>
-                    
                 </div>
+
             </div>
         </div>
     </div>

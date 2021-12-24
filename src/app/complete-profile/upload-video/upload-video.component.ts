@@ -15,7 +15,7 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
 export class UploadVideoComponent implements OnInit {
   progress: number = 0;
   currentPlayingVideo: HTMLVideoElement | any;
-  back_link :any =  "upload-images";
+  back_link :any =  "";
   component_title : string = 'Complete your Profile';
   form: FormGroup | any;
   submitted = false;
@@ -125,7 +125,7 @@ export class UploadVideoComponent implements OnInit {
           case HttpEventType.Response:
               this.uploading = false; 
               if (event.body.status == 'true') {
-                this.route.navigate(['/complete-profile']);
+                this.route.navigate(['/final-success']);
               } else {
               }
             setTimeout(() => {

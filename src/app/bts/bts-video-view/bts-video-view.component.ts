@@ -66,13 +66,13 @@ export class BtsVideoViewComponent implements OnInit {
                           this.desc = this.BtsVideos[0].description;
                           this.descLength = this.desc.length;
                           this.videoNotFound = false;
+                          this.dataLoad = false;
                         }else{
+                          this.dataLoad = false;
                           this.videoNotFound = true;
                           console.log("vid not found: ");
-                        }
-                       
+                        }                       
                       }); 
-
     this.btsVideosService.get_bts_videos({'limit': null,'category_id':this.btsCategoryId})
           .subscribe(
                     data => { 

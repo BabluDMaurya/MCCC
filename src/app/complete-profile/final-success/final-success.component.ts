@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./final-success.component.scss']
 })
 export class FinalSuccessComponent implements OnInit {
-  back_link :any =  "signin";
+  back_link :any =  "";
   component_title : string = '';
   constructor() { }
 

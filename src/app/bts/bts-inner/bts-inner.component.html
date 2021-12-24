@@ -47,6 +47,12 @@
                         <p [innerHTML]="data.description"></p>
                     </div>
                 </div>
+                <div *ngIf="!loadData && !videoNotFound">
+                    <div class="header_skelton"></div>
+                    <div class="box_skeleton"></div>
+                    <div class="box_skeleton"></div>
+                    <div class="box_skeleton"></div>
+                </div>
                 
             </div>
             <div *ngIf="videoNotFound">

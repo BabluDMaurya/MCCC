@@ -1,21 +1,6 @@
 <div class="section full mt-1 personal_prfile_wrapper">
-    <div class="mainHeader">
-        <div class="top_header">
-            <div class="arrowLeft" (click)=back()>
-                <ion-icon name="chevron-back-outline"></ion-icon>
-            </div>
-            <div class="logo middle">
-                <label>Your Profile</label>
-            </div>
-            <div class="lats_side">
-                <div class="avtars">
-                        <a [routerLink]="['/home']">
-                            <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
-                        </a>
-                </div>
-            </div>
-        </div>
-    </div>
+      
+    <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
     <div class="head_tabs">
         <ul class="nav nav-tabs lined" role="tablist">
             <li class="nav-item">
@@ -170,47 +155,16 @@
                             <div class="profileDiv uploades">
                                 <label>Profile Picture</label>
                                 <div class="inputFile">
-                                    <input #fileInput type="file" accept="image/*"  id="upkoadAdhPan" formControlName="newfileSource" (change)="fileChangeEvent($event)">
-                                    <!-- <div *ngIf="aadharfileChoosen" class="file-name">{{aadharfileName}}</div> -->
+                                    <input #fileInput type="file" accept="image/*"  id="upkoadAdhPan" (change)="fileChangeEvent($event)">
                                     <label for="upkoadAdhPan">Profile Picture</label>
                                     <div class="fileUpIcon">
-                                        <!-- <img src="assets/img/img/uploadFile.webp" alt=""> -->
                                         <i class="fas fa-upload"></i>
                                     </div>
                                 </div>
                                 <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
                                     <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
-                                </div>
-            
+                                </div>            
                                 <div class="backdrop" [ngStyle]="{'display':display}"></div>
-                              
-                    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Image Cropper</h4>
-                                    <!-- <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button> -->
-                                </div>
-                                <div class="modal-body">
-                                    <image-cropper [imageChangedEvent]="imageChangedEvent"
-                                                    [maintainAspectRatio]="true"
-                                                    [aspectRatio]="4 / 3"
-                                                    [resizeToWidth]="500"
-                                                    format="png"
-                                                    (imageCropped)="imageCropped($event)"
-                                                    (imageLoaded)="imageLoaded()"
-                                                    (cropperReady)="cropperReady()"
-                                                    (loadImageFailed)="loadImageFailed()" style="max-height:500px">
-                                   </image-cropper>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" (click)="SaveCropedImage()">Save</button>
-                                    <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                                
                             </div>
                             <div class="forms_input">
                                 <div class="addRemoveDivs work_experince">            
@@ -295,8 +249,8 @@
                                 </div> 
                             </div>
                             <div class="submit">
-                                <button type="submit" class="btns btnss_r ripple">Submit</button>
-                                <a class="btns outline" (click)="back()"> Cancel</a>
+                                <button [disabled]="disabledv" type="submit" class="btns btnss_r ripple">Submit</button>
+                                <a [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}" class="btns outline" [routerLink]="['/home']"> Close</a>
                             </div>
                         </form>
                         </div>
@@ -309,15 +263,203 @@
             </div>
             
             <div class="tab-pane fade" id="images" role="tabpanel">
-                tfvgybhunijmok
+                <div class="main casting casting_inner profile personal_profile">
+                    <div class=" main_wrppers profileWrpper completeProfile">
+                        <div class="profiles">
+                <form [formGroup]="iform">
+                    <div class="imgContent">
+                        <div class="imgPrevw img_Prevw">
+                            <div class="prvwImg" *ngFor="let img of idatas;let i=index;">
+                                <img src="{{imagePath+img.image}}" alt="">
+                                <div class='multi-field'>
+                                    <button type="button" class="close" (click)="removePrimaryImage(i)">
+                                        <i class="far fa-times-circle"></i>
+                                    </button>
+                                </div>                                
+                            </div>
+                            <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
+                                <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
+                                <div class='multi-field'>
+                                    <button type="button" class="close" (click)="removeSelectedImages(j)">
+                                        <i class="far fa-times-circle"></i>
+                                    </button>
+                                </div>
+                                <div class="edit_btn" (click)="cropImage(url.imgId)">
+                                    <a><i class="far fa-edit"></i></a>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        <div *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
+                        <div class="imgs">
+                            <input type="file" [disabled]="disabledv" name="files[]" id="files" (change)="fileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/jpg,">
+                            <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
+                        </div>
+                        <div class="ctnt">
+                            <p>Take a Photo or choose From <br>your library</p>
+                            <span>(You can add only 3 Photos)</span>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- Progress Bar -->
+                    <div class="pt-2 pb-2" *ngIf="progress">
+                        <p>Video uploading on server please wait...</p>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+                        </div>
+                    </div>
+                    <div class="btnArea" *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
+                        <a [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next">Save</a>
+                        <button type="button" [routerLink]="['/home']" [disabled]="disabledv" class="next outline">Close</button>
+                    </div>
+                    <div class="btnArea" *ngIf="imgArray.length == 3">
+                        <button type="button" [routerLink]="['/home']" [disabled]="disabledv" class="next outline">Close</button>
+                    </div>
+                </form>
+                </div>
+                </div>
+                </div>
             </div>
 
             <div class="tab-pane fade" id="videos" role="tabpanel">
-                Vestibulum sed facilisis diam, vel sodales leo. Aenean lacinia, nisi sit amet iaculis
-                maximus, nibh orci iaculis risus, vitae faucibus dui orci quis elit.
+                <div class="main casting casting_inner profile personal_profile">
+                    <div class=" main_wrppers profileWrpper completeProfile">
+                        <div class="profiles">
+                <form [formGroup]="vform"> 
+                    <div class="imgContent">
+                        <div *ngIf="!newVideoAdded">
+                        <div class="imgPrevw img_Prevw" *ngFor="let video of vdatas;let i=index;">
+                            <div class="video-player-wrapper">
+                
+                                <vg-player>
+                                  <vg-overlay-play></vg-overlay-play>
+                                  <vg-buffering></vg-buffering>
+                              
+                                  <vg-scrub-bar>
+                                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                    <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                                  </vg-scrub-bar>
+                              
+                                  <vg-controls>
+                                    <vg-play-pause></vg-play-pause>
+                                    <vg-playback-button></vg-playback-button>
+                              
+                                    <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                              
+                                    <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+                               <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                               <vg-mute></vg-mute>
+                                    <vg-volume></vg-volume>
+                              
+                                    <vg-fullscreen></vg-fullscreen>
+                                  </vg-controls>
+                              
+                                  <video [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" >
+                                    <source src="{{videoPath+video.videos}}" type="video/mp4">
+                              
+                                  
+                                  </video>
+                                </vg-player>
+                              
+                              </div>
+                        </div>
+                    </div>
+                    <div *ngIf="newVideoAdded">
+                        <div  class="imgPrevw video_uploading" *ngFor='let url of videos'>
+                            <div class="video-player-wrapper">
+                          <vg-player>
+                            <vg-overlay-play></vg-overlay-play>
+                            <vg-buffering></vg-buffering>
+                        
+                            <vg-scrub-bar>
+                              <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                              <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                            </vg-scrub-bar>
+                        
+                            <vg-controls>
+                              <vg-play-pause></vg-play-pause>
+                              <vg-playback-button></vg-playback-button>
+                        
+                              <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                        
+                              <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+                        
+                             <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                        
+                             <vg-mute></vg-mute>
+                              <vg-volume></vg-volume>
+                        
+                              <vg-fullscreen></vg-fullscreen>
+                            </vg-controls>
+                        
+                            <video [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" >
+                              <source src="{{url}}" type="video/mp4">
+                        
+                            </video>
+                          </vg-player>
+                          
+                        </div>
+                        </div>  
+                        </div>
+                        <div class="imgs">
+                            <input [disabled]="disabledv" type="file" name="files[]" id="files" accept="video/*"  (change)="onVideoFileChange($event)" />
+                            <img src="assets/img/img/takeVideo.webp" alt="" for="photo">
+                        </div>
+                        <div class="error" *ngIf="fileSizeaInKB">Please Select file less then 100 MB</div>
+                        <div class="ctnt">
+                            <p>Take a Video or choose From <br>your library</p>
+                            <span>(You can add only 1 Video)</span>
+                        </div>
+                    </div>
+                    <div class="loader_screen" *ngIf="!loading"></div>
+                    <div class="loader" *ngIf="!videoloading">
+                      <img src="../../../assets/img/img/Mccc-black.gif" class="lightMode" alt="">
+                      <img src="../../../assets/img/img/Mccc-white.gif" alt="" class="darkMode">
+                    </div>
+                     <!-- Progress Bar -->
+                        <div class="pt-2 pb-2" *ngIf="progress">
+                            <p>Video uploading on server please wait...</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+                            </div>
+                        </div>
+                    <div class="btnArea">                        
+                        <button (click)="videoSubmit($event)" class="next btnss_r ripple" type="button"> Save </button>
+                        <a [routerLink]="['/home']"  class="next outline" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}"> Close</a>            
+                    </div>
+                </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
+    </div>
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Image Cropper</h4>
+                    <!-- <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button> -->
+                </div>
+                <div class="modal-body">
+                    <image-cropper [imageChangedEvent]="imageChangedEvent"
+                                    [maintainAspectRatio]="true"
+                                    [aspectRatio]="4 / 3"
+                                    [resizeToWidth]="500"
+                                    format="png"
+                                    (imageCropped)="imageCropped($event)"
+                                    (imageLoaded)="imageLoaded()"
+                                    (cropperReady)="cropperReady()"
+                                    (loadImageFailed)="loadImageFailed()" style="max-height:500px">
+                   </image-cropper>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="SaveCropedImage()">Save</button>
+                    <button type="button" class="btn btn-default" (click)="onCloseHandled()">Cancel</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

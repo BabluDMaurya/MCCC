@@ -13,6 +13,7 @@ export class TopHeaderBTComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    console.log("back:",this.back);
     this.link = "/"+this.back;
   }
 

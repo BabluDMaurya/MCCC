@@ -23,7 +23,7 @@
                             <app-casting-card *ngFor="let c of castings; let idx=index" [data]="c"></app-casting-card>
                         </div>
                     </div>
-                    <app-not-found-data *ngIf="!castingData"></app-not-found-data>
+                    <app-not-found-data *ngIf="!castingData && !shownw"></app-not-found-data>
                 </div>
                 <!-- * photos tab -->
                 <!-- videos tab -->
@@ -43,7 +43,7 @@
                             <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
                         </div>
                     </div>
-                    <app-not-found-data *ngIf="!recommendData"></app-not-found-data>
+                    <app-not-found-data *ngIf="!recommendData && !showre"></app-not-found-data>
                 </div>
                 <!-- * videos tab -->
                 <!-- sounds tab -->
@@ -63,7 +63,7 @@
                             <app-casting-card *ngFor="let c of callEndingSoon; let idx=index" [data]="c"></app-casting-card>
                         </div>
                     </div>
-                    <app-not-found-data *ngIf="!endingSoonData"></app-not-found-data>
+                    <app-not-found-data *ngIf="!endingSoonData && !showen"></app-not-found-data>
                 </div>
                 <!-- * sounds tab -->
             </div>

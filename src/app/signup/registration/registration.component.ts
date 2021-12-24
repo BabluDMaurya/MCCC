@@ -43,8 +43,8 @@ export class RegistrationComponent implements OnInit {
         // Validators.email,
         Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
       ]],
-      dob : [''],
-      home_town : ['', Validators.required]
+      // dob : [''],
+      // home_town : ['', Validators.required]
     });
     
   }
@@ -56,20 +56,21 @@ export class RegistrationComponent implements OnInit {
     if (this.form.invalid) {      
       return;
     }else{ 
-      let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
-      this.form.controls['dob'].setValue(DOB);      
+      // let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
+      // this.form.controls['dob'].setValue(DOB);      
         this.registerService.check_email_mobile(this.form.value).subscribe(
                 (data:any) => {
                   sessionStorage.setItem('otp',data.otp);
                   sessionStorage.setItem('name',data.userDetails.name);
                   sessionStorage.setItem('email',data.userDetails.email);
                   sessionStorage.setItem('phone',data.userDetails.phone);
-                  sessionStorage.setItem('dob',data.userDetails.dob);
-                  sessionStorage.setItem('gender',data.userDetails.gender);
-                  sessionStorage.setItem('country_id',data.userDetails.country_id);
-                  sessionStorage.setItem('state_id',data.userDetails.state_id);
-                  sessionStorage.setItem('city_id',data.userDetails.city_id);
-                  sessionStorage.setItem('home_town',data.userDetails.home_town);
+                  sessionStorage.setItem('country_code',data.userDetails.country_code);
+                  // sessionStorage.setItem('dob',data.userDetails.dob);
+                  // sessionStorage.setItem('gender',data.userDetails.gender);
+                  // sessionStorage.setItem('country_id',data.userDetails.country_id);
+                  // sessionStorage.setItem('state_id',data.userDetails.state_id);
+                  // sessionStorage.setItem('city_id',data.userDetails.city_id);
+                  // sessionStorage.setItem('home_town',data.userDetails.home_town);
                   this.route.navigate(['/create-password']);
                 },
                 (errorResponse: HttpErrorResponse) => {                  

@@ -17,6 +17,7 @@ declare var toastbox: any;
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
+  toastSuccess14:string = 'toast-14';
   toastSuccess:string = 'toast-12';
   back_link :any =  "forgot-password";
   component_title : string = 'Reset Password';
@@ -42,12 +43,12 @@ export class ResetPasswordComponent implements OnInit {
     });
     this.rotp = sessionStorage.getItem('rotp');
     this.form = this.formBuilder.group({
-      password: ['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}')]],
-      confirm_password: ['',Validators.required],
+      password: ['',[Validators.required,Validators.maxLength(20)]],
+      
       otp : ['',[Validators.required]],
-      terms:['',Validators.required],
+      // terms:['',Validators.required],
     }, {
-      validator: [MustMatchOTP(this.rotp,'otp'),MustMatch('password','confirm_password')]
+      validator: [MustMatchOTP(this.rotp,'otp')]
   });
 
   // fetch terms and condtion from server
@@ -63,6 +64,7 @@ this.registerService.terms().subscribe(
     return this.form.controls;
   } 
   submit(){
+    console.log("submit");
     this.submitted = true;
     if (this.form.invalid) {
         return;
@@ -91,6 +93,10 @@ this.registerService.terms().subscribe(
   resendOTP(){
     this.otpService.get_resendotp({email_or_mobile:sessionStorage.getItem('email_or_mobile')}).subscribe((res: any) => {      
       this.otp = res.otp;
+      new toastbox(this.toastSuccess14, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess14).removeClass('show');
+          }, 2000);
       sessionStorage.setItem('rotp',this.otp);
       this.ngOnInit();
     });

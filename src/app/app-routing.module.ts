@@ -81,35 +81,35 @@ const routes: Routes = [{
   data: {title: 'signin'}    
 },
 {    
-  path: 'bts',component: BtsComponent,    
+  path: 'bts',component: BtsComponent,canActivate: [AuthGuard],  
   data: {title: 'BTS'}    
 },
 {    
-  path: 'bts-inner/:id',component: BtsInnerComponent,    
+  path: 'bts-inner/:id',component: BtsInnerComponent,canActivate: [AuthGuard],  
   data: {storeRoute: false, title: 'BTS Inner'}    
 },
 {    
-  path: 'bts-video-view/:id/:type',component: BtsVideoViewComponent,
+  path: 'bts-video-view/:id/:type',component: BtsVideoViewComponent,canActivate: [AuthGuard],
   data: {storeRoute: false,title: 'BTS Inner'}    
 },
 {    
-  path: 'training-video-view/:id/:type',component: TrainingInnerComponent,
+  path: 'training-video-view/:id/:type',component: TrainingInnerComponent,canActivate: [AuthGuard],
   data: {storeRoute: false,title: 'Training Video'}    
 },
 {    
-  path: 'training',component: TrainingComponent,    
+  path: 'training',component: TrainingComponent,canActivate: [AuthGuard],  
   data: {title: 'training'}    
 },
 {    
-  path: 'workshop/:id',component: WorkshopComponent,    
+  path: 'workshop/:id',component: WorkshopComponent,canActivate: [AuthGuard],    
   data: {storeRoute: false,title: 'Workshop'}    
 },
 {
-  path: 'workshop-registration/:id',component: WorkshopRegistrationComponent,    
+  path: 'workshop-registration/:id',component: WorkshopRegistrationComponent,canActivate: [AuthGuard],    
   data: {storeRoute: true,title: 'Workshop Registration'}    
 },
 {    
-  path: 'workshop-registration-form/:id/:type',component: WorkshopRegistrationFormComponent,   
+  path: 'workshop-registration-form/:id/:type',component: WorkshopRegistrationFormComponent,canActivate: [AuthGuard],   
   data: {title: 'Workshop Registration Form'}    
 },
 //----casting----------//
@@ -122,6 +122,10 @@ const routes: Routes = [{
   data: {title: 'casting inner'}    
 },
 {    
+  path: 'casting-inner/:id/:tab',component: CastingInnerComponent,canActivate: [AuthGuard],
+  data: {title: 'casting inner'}    
+},
+{    
   path: 'apply-casting/:id',component: ApplyCastingComponent,canActivate: [AuthGuard],    
   data: {title: 'Apply Casting'}   
 },
@@ -130,27 +134,27 @@ const routes: Routes = [{
   data: {title: 'Thank You Casting'}    
 },
 {    
-  path: 'thank-you-workshop/:name',component: ThankYouPageComponent,  
+  path: 'thank-you-workshop/:name',component: ThankYouPageComponent,canActivate: [AuthGuard],  
   data: {title: 'Thank You'}    
 },
 {    
-  path: 'images',component: ImagesComponent,  
+  path: 'images',component: ImagesComponent,canActivate: [AuthGuard],  
   data: {title: 'Images'}    
 },
 {    
-  path: 'anatomy',component: AnatomyComponent,    
+  path: 'anatomy',component: AnatomyComponent,canActivate: [AuthGuard],    
   data: {storeRoute: true,title: 'Anatomy'}    
 },
 {    
-  path: 'personal',component: PersonalComponent,    
+  path: 'personal',component: PersonalComponent,canActivate: [AuthGuard],   
   data: {storeRoute: false,title: 'personal'}    
 },
 {    
-  path: 'video',component: VideoComponent,    
+  path: 'video',component: VideoComponent,canActivate: [AuthGuard],    
   data: {storeRoute: false,title: 'Video'}    
 },
 {
-  path: 'notification',component: NotificationComponent,    
+  path: 'notification',component: NotificationComponent,canActivate: [AuthGuard],    
   data: {title: 'Notification Panel'} 
 },
 {   
@@ -215,7 +219,7 @@ const routes: Routes = [{
   data: {title: 'reset password'}    
 },
 {    
-  path: 'upload-images',component: UploadImagesComponent,canActivate: [AuthGuard], 
+  path: 'upload-images',component: UploadImagesComponent,canActivate: [AuthGuard],
   data: {title: 'Upload Images'}    
 },
 {    
@@ -231,7 +235,7 @@ const routes: Routes = [{
   data: {title: 'final success'}
 },
 {    
-  path: 'support',component: SupportComponent,   
+  path: 'support',component: SupportComponent,canActivate: [AuthGuard],   
   data: {title: 'support'}    
 },
 ];

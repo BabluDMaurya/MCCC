@@ -31,7 +31,7 @@
             <div *ngIf="!loadingnc">
                 <div class="box_skeleton"></div>
             </div>
-            <div *ngIf="loadingnc"><app-casting-card *ngFor="let c of newCasting; let idx=index" [data]="c"></app-casting-card></div>
+            <div *ngIf="loadingnc"><app-casting-card *ngFor="let c of newCasting; let idx=index" [data]="c" [tab]="1"></app-casting-card></div>
             
         </div>    
         <!-- box-skeleton -->
@@ -49,7 +49,7 @@
                 <div class="box_skeleton"></div>
             </div> 
             <div *ngIf="loadingnr">
-                <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c"></app-casting-card>
+                <app-casting-card *ngFor="let c of recomended; let idx=index" [data]="c" [tab]="2"></app-casting-card>
             </div>            
         </div>
         <div class="casingCalls" *ngIf="!upcomingNoData">
@@ -70,7 +70,7 @@
             <app-workshop-card *ngFor="let c of eventForYouData; let idx=index" [data]="c"></app-workshop-card>
         </div>
         
-        <div class="casingCalls">
+        <div class="casingCalls" *ngIf="topBTSV">
             <div class="casingCallHeader">
                 <p class="classinghead recomded">Behind The Scene</p>
                 <span><a [routerLink]="['/bts-inner/2']">View All</a></span>

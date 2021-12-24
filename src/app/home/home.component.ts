@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
   localData : any;
   upcomingNoData: boolean = true;
   eventForYouNoData: boolean = true;
+  topBTSV : boolean = false;
   constructor(
     private authenticationService: AuthenticationService,
     private route: Router,
@@ -58,9 +59,9 @@ export class HomeComponent implements OnInit {
     if (this.authenticationService.currentUserValue) {
       let Auth = JSON.stringify(this.authenticationService.currentUserValue.status);
       if (Auth) {
-        if (this.authenticationService.currentUserValue.profileStatus  === 'false') {
-          this.route.navigate(['/upload-images']);
-        }
+        // if (this.authenticationService.currentUserValue.profileStatus  === 'false') {
+        //   this.route.navigate(['/upload-images']);
+        // }
       } else {
         this.route.navigate(['/signin']);
       }
@@ -115,6 +116,11 @@ export class HomeComponent implements OnInit {
       this.btsVideosService.get_bts_videos({'limit': 1,'category_id':2}).subscribe(
         data => { 
             this.topBTSVideos = data.data;
+            if(this.topBTSVideos.length > 0){
+              this.topBTSV = true;
+            }else{
+              this.topBTSV = false;
+            }
             this.loadData = true;
         });
         this.workshopService.get_all_workshop_data({'limit': 5}).subscribe(

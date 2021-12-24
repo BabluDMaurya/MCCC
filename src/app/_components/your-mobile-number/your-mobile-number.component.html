@@ -11,10 +11,12 @@
               <div class="invalid-feedback error" style="display: block;" *ngIf="f.country_code.errors?.serverError">{{ f.country_code.errors?.serverError }}</div>
         </div>   
         <div class="inputs">
-            <input autocomplete="off" formControlName="phone" type="tel" maxlength="10" class="form-control" [ngClass]="{ 'is-invalid': submit && f.phone.errors }">
+            <input autocomplete="off" formControlName="phone" type="tel" maxlength="16" class="form-control" [ngClass]="{ 'is-invalid': submit && f.phone.errors }">
             <div *ngIf="submit && f.phone.errors" class="invalid-feedback">
               <div *ngIf="f.phone.errors.required">Phone is required</div>
-              <div *ngIf="f.phone.errors.pattern">Please Enter 10 digit's mobile number</div>
+              <div *ngIf="f.phone.errors.maxlength">Not more then 16 digit's</div>
+              <div *ngIf="f.phone.errors.minlength">Minimum 8 digit's requirted</div>
+              <div *ngIf="f.phone.errors.pattern">Only digit's allowed</div>
               <div *ngIf="f.phone.errors.phoneTaken">Phone number is already taken.</div>
             </div>
             <div class="invalid-feedback error" style="display: block;" *ngIf="f.phone.errors?.serverError">{{ f.phone.errors?.serverError }}</div> 

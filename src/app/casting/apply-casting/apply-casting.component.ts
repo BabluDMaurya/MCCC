@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild} from '@angular/core';
 import { AbstractControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router,ParamMap } from '@angular/router';
 import { Config } from 'src/app/_config/config';
+import { AuthenticationService } from 'src/app/_service/authentication.service';
 import { DashboardService } from 'src/app/_service/dashboard.service';
 import { NotificationService } from 'src/app/_service/notification.service';
+import { User } from '../../_models/user';
 
 @Component({
   selector: 'app-apply-casting',
@@ -14,6 +16,7 @@ export class ApplyCastingComponent implements OnInit {
   currentPlayingVideo: HTMLVideoElement | any;
   @ViewChild('closebutton') closebutton :any;
   @ViewChild ('openmediadialogbox') openmediadialogbox:any;
+  @ViewChild ('openmodal') openmodal:any;
   back_link :any;
   castingId:any;
   userdetail:any;
@@ -33,13 +36,25 @@ export class ApplyCastingComponent implements OnInit {
   submitted = false;
   mediaerrortitle:any;
   mediaerrordescription:any;
+
+  name:any;
+  height:any;
+  city_name:any;
+  home_town:any;
+  language:any;
+  phone:any;
+  hobbies:any;
+  currentUser: User;
   constructor(
     private actRoute:ActivatedRoute,
     private route : Router,
     private dashboardService:DashboardService,
     private formBuilder:FormBuilder,
     private notification : NotificationService,
+    private authenticationService: AuthenticationService,
   ) {
+    this.currentUser = this.authenticationService.currentUserValue;
+    this.name=this.currentUser.userDetails.name;
     this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
       this.castingId = params.get('id');
       this.back_link = "casting-inner/"+this.castingId;
@@ -69,14 +84,14 @@ export class ApplyCastingComponent implements OnInit {
       oldvideofileSource : ['',Validators.required],
       saveAsDraft : [0],  
       casting_id:[this.castingId],
-      name : [''],
-      age : [''],
-      height : [''],
-      phone : [''],
-      language : [''],
-      city : [''],
-      home_town : [''],
-      hobbies : [''],
+      name : ['',Validators.required],
+      age : ['',Validators.required],
+      height : ['',Validators.required],
+      phone : ['',Validators.required],
+      language : ['',Validators.required],
+      city : ['',Validators.required],
+      home_town : ['',Validators.required],
+      hobbies : ['',Validators.required],
     });
 
     this.hobbiesForm = this.formBuilder.group({
@@ -90,7 +105,14 @@ export class ApplyCastingComponent implements OnInit {
       .subscribe(res => {
         this.resData = res;       
         this.age = this.resData.data.age; 
-        this.userdetail = this.resData.data.user_details;  
+        this.userdetail = this.resData.data.user_details; 
+        this.name = this.userdetail.name;
+        this.height = this.userdetail.height;
+        this.phone = this.userdetail.phone;
+        this.language = this.userdetail.language;
+        this.city_name = this.userdetail.city_name;
+        this.home_town = this.userdetail.home_town; 
+        this.hobbies = this.userdetail.hobbies;
         if(this.userdetail.images.length > 0){
           this.uploadedImages = this.userdetail.images;
           this.ShowUploadedImages = true;
@@ -118,20 +140,25 @@ export class ApplyCastingComponent implements OnInit {
         }
       });        
 }
+completeProfile(){
+  this.closebutton.nativeElement.click();
+  this.route.navigate(['/personal']);
+}
 submit(){
     this.submitted = true;
-  if (this.form.invalid) {
-    let photoError:any = this.f.oldfileSource.errors;  
-    let videoError:any = this.f.oldvideofileSource.errors;  
-    if(photoError.required == true){
-      this.mediaerrortitle = 'Add Your Photos';
-      this.mediaerrordescription = 'To change Photos go to profile and update Photos from there';
-      this.openmediadialogbox.nativeElement.click();
-    }else if(videoError.required == true){
-      this.mediaerrortitle = 'Add Your Video';
-      this.mediaerrordescription = 'To change video go to profile and update video from there';
-      this.openmediadialogbox.nativeElement.click();
-    }
+  if (this.form.invalid) {    
+    this.openmodal.nativeElement.click();
+    // let photoError:any = this.f.oldfileSource.errors;  
+    // let videoError:any = this.f.oldvideofileSource.errors;  
+    // if(photoError.required == true){
+    //   this.mediaerrortitle = 'Add Your Photos';
+    //   this.mediaerrordescription = 'To change Photos go to profile and update Photos from there';
+    //   this.openmediadialogbox.nativeElement.click();
+    // }else if(videoError.required == true){
+    //   this.mediaerrortitle = 'Add Your Video';
+    //   this.mediaerrordescription = 'To change video go to profile and update video from there';
+    //   this.openmediadialogbox.nativeElement.click();
+    // }
     return;
   }else{
     sessionStorage.removeItem('casting_title');
@@ -151,6 +178,7 @@ get h(): { [key: string]: AbstractControl } {
 }
 updateHobbies(event: any){
   this.submitted = true;
+  console.log(this.hobbiesForm.value);
   this.hobbiesForm.controls['profile_id'].setValue(this.userdetail.user_profile_id);
   if (this.hobbiesForm.invalid) {
     return;

@@ -61,12 +61,14 @@ export class CastingComponent implements OnInit {
         this.resData = res;        
         this.castings = this.resData.data;  
         if(this.castings.length > 0 && this.castings != 'No data found'){
-          // console.log("castingData 1 : ",this.castings.length);
+          console.log("castingData 1 : ",this.castings.length);
           this.loading = false;
           this.shownw = true;
           this.castingData = false;
         }else{
+          console.log("castingData 1 : ",this.castings.length);
           this.shownw = false;
+          this.castingData = false;
         }
       });
   }
@@ -91,11 +93,13 @@ export class CastingComponent implements OnInit {
         this.loading = true;
         this.resData = res;        
         this.recomended = this.resData.data;  
-        if(this.recomended.length > 0 && this.recomended != 'No data found'){
-          // console.log("castingData 3 : ",this.recomended.length);
+        if(this.recomended.length > 0 && this.recomended != 'No Record Found'){
+          console.log("castingData 3 : ",this.recomended.length);
           this.recommendData = false;
           this.showre = true;
         }else{
+          console.log("castingData 3 : ",this.recomended.length);
+          this.recommendData = false;
           this.showre = false;
         }       
       });

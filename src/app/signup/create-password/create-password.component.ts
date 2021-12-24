@@ -8,13 +8,14 @@ import { AuthenticationService } from 'src/app/_service/authentication.service';
 import { OtpService } from 'src/app/_service/otp.service';
 import { MustMatch,MustMatchOTP } from '../../_helpers/must-match.validator';
 declare var $: any;
-
+declare var toastbox: any;
 @Component({
   selector: 'app-create-password',
   templateUrl: './create-password.component.html',
   styleUrls: ['./create-password.component.scss']
 })
 export class CreatePasswordComponent implements OnInit {
+  toastSuccess:string = 'toast-14';
   form: FormGroup | any;
   back_link :any =  "registration";
   component_title : string = 'Create Password';
@@ -47,35 +48,34 @@ export class CreatePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.storeOTP = sessionStorage.getItem('otp');
     this.form = this.formBuilder.group({
-      //^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$
-      password: ['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}') ]],
-      // password: ['',[Validators.required,Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$') ]],
-      confirm_password: ['',Validators.required],
+      password: ['',[Validators.required,Validators.maxLength(20)]],
       otp : ['', [Validators.required]],
       terms:['',Validators.required],
       name : [''],
       email : [''],
       phone : [''],
-      gender: [''],
-      dob: [''],
-      country: [''],
-      state: [''],
-      city: [''],
-      home_town: ['']
+      country_code : [''],
+      // gender: [''],
+      // dob: [''],
+      // country: [''],
+      // state: [''],
+      // city: [''],
+      // home_town: ['']
     },{
-    validator: [MustMatchOTP(this.storeOTP,'otp'),MustMatch('password','confirm_password')]
+    validator: [MustMatchOTP(this.storeOTP,'otp')]
     
 });
 //set the form value
 this.form.controls['name'].setValue(sessionStorage.getItem('name'));
 this.form.controls['email'].setValue(sessionStorage.getItem('email'));
 this.form.controls['phone'].setValue(sessionStorage.getItem('phone'));
-this.form.controls['dob'].setValue(sessionStorage.getItem('dob'));
-this.form.controls['gender'].setValue(sessionStorage.getItem('gender'));
-this.form.controls['country'].setValue(sessionStorage.getItem('country_id'));
-this.form.controls['state'].setValue(sessionStorage.getItem('state_id'));
-this.form.controls['city'].setValue(sessionStorage.getItem('city_id'));
-this.form.controls['home_town'].setValue(sessionStorage.getItem('home_town'));
+this.form.controls['country_code'].setValue(sessionStorage.getItem('country_code'));
+// this.form.controls['dob'].setValue(sessionStorage.getItem('dob'));
+// this.form.controls['gender'].setValue(sessionStorage.getItem('gender'));
+// this.form.controls['country'].setValue(sessionStorage.getItem('country_id'));
+// this.form.controls['state'].setValue(sessionStorage.getItem('state_id'));
+// this.form.controls['city'].setValue(sessionStorage.getItem('city_id'));
+// this.form.controls['home_town'].setValue(sessionStorage.getItem('home_town'));
 
 // fetch terms and condtion from server
 this.registerService.terms().subscribe(
@@ -90,6 +90,23 @@ this.registerService.terms().subscribe(
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
+  completeYourProfile(){
+    this.authenticationService.login(sessionStorage.getItem('email'), sessionStorage.getItem('password'))
+            .subscribe(
+                data => {
+                  //clear all the session data
+                  sessionStorage.clear();
+                  sessionStorage.setItem('profile_status',data.profileStatus);
+                  if(data.profileStatus === 'false'){
+                    this.route.navigate(['/complete-profile']);
+                  }else{
+                    this.route.navigate(['/home']);
+                  }
+                },
+                error => {
+                  
+                });
+  }
   submit(){
     this.submitted = true;
     if (this.form.invalid) {
@@ -98,18 +115,19 @@ this.registerService.terms().subscribe(
         sessionStorage.setItem('password',this.form.value.password);
         this.registerService.register_new(this.form.value).subscribe(
                 data => {     
-                  sessionStorage.removeItem('city_id');
-                  sessionStorage.removeItem('otp');
-                  sessionStorage.removeItem('gender');
-                  sessionStorage.removeItem('state_id');
-                  sessionStorage.removeItem('home_town');
-                  sessionStorage.removeItem('dob');
+                  // sessionStorage.removeItem('city_id');
+                  // sessionStorage.removeItem('otp');
+                  // sessionStorage.removeItem('gender');
+                  // sessionStorage.removeItem('state_id');
+                  // sessionStorage.removeItem('home_town');
+                  // sessionStorage.removeItem('dob');
                   sessionStorage.removeItem('phone');
                   sessionStorage.removeItem('name');
-                  sessionStorage.removeItem('country_id'); 
+                  sessionStorage.removeItem('country_code'); 
                   // sessionStorage.removeItem('email');
-                  // sessionStorage.removeItem('password');                    
-                  this.route.navigate(['/success']);
+                  // sessionStorage.removeItem('password');    
+                  this.completeYourProfile();                
+                  
                 },
                 (errorResponse: HttpErrorResponse) => {
                   const validationErrors = errorResponse.error.errors;
@@ -127,8 +145,13 @@ this.registerService.terms().subscribe(
   resendOTP(){
     this.otpService.get_resendotp({phone:sessionStorage.getItem('phone'),email:sessionStorage.getItem('email')}).subscribe((res: any) => {      
       this.otp = res.otp;
-      sessionStorage.setItem('otp',this.otp);
+      new toastbox(this.toastSuccess, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
+      sessionStorage.setItem('otp',this.otp);      
       this.ngOnInit();
+
     });
   }
 

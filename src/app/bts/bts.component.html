@@ -17,7 +17,7 @@
                     <app-bts-card  [data]="popularBtsVideos"></app-bts-card>  
                 </div>
             </div>
-            <div class="casingCalls">
+            <div class="casingCalls" *ngIf="topBTSV">
                 <div class="casingCallHeader">
                     <p class="classinghead primary__color recomded">Top BTS</p>
                     <span><a [routerLink]="['/bts-inner/2']">View All</a></span>

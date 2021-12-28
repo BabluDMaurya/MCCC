@@ -24,7 +24,7 @@
             <div class="formGroup">
                 <label><img src="assets/img/img/height.webp" alt="">  Height <span>(e.g.5.8) *</span></label>
                 <div class="inputs">
-                    <input type="tel" class="form-control" formControlName="height" maxlength="5" [ngClass]="{ 'is-invalid': submitted && f.height.errors }">
+                    <input type="text" class="form-control" formControlName="height" maxlength="5" [ngClass]="{ 'is-invalid': submitted && f.height.errors }">
                     <div *ngIf="submitted && f.height.errors" class="invalid-feedback">
                         <div *ngIf="f.height.errors.required">Height is required</div>
                         <div *ngIf="f.height.errors.pattern">Height must be numeric</div>

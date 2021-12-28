@@ -15,6 +15,7 @@ export class BtsComponent implements OnInit {
   loadData: any = false;
   popularBtsVideos : any;
   topBtsVideos: any;
+  topBTSV :boolean = false;
   categories : any;
   hostUrl:string = Config.Host+'backend2/';
   category_color: any = ['hsl(7deg 88% 68%)','hsl(88deg 47% 64%)','hsl(42deg 76% 64%)','hsl(201deg 100% 73%)','hsl(7deg 88% 68%)','hsl(88deg 47% 64%)','hsl(42deg 76% 64%)','hsl(201deg 100% 73%)'];
@@ -49,10 +50,12 @@ export class BtsComponent implements OnInit {
                   data => { 
                     this.loadData = true;
                     if(data.data.length > 0){
+                      this.topBTSV = true;
                       this.loadingtopbts = true;
                       // console.log(data.data);
                       this.topBtsVideos = data.data;
                     }else{
+                      this.topBTSV = false;
                       this.loadingtopbts = false;
                     }
                   });    

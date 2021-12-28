@@ -12,7 +12,7 @@
         <label>Your Email Id or Phone*</label>
         <div class="inputs">
           <input type="text" formControlName="email_or_mobile" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.email_or_mobile.errors }" />
+            [ngClass]="{ 'is-invalid': submitted && f.email_or_mobile.errors }" (keyup)="onKeyUp($event)"/>
           <div *ngIf="submitted && f.email_or_mobile.errors" class="invalid-feedback">
             <div *ngIf="f.email_or_mobile.errors.required">Phone or Email is required</div>
           </div>
@@ -22,7 +22,7 @@
         <label>Password*</label>
         <div class="inputs passwrd">
           <input [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" (keyup)="onKeyUp($event)"/>
             <div class="eye" (click)="passwordhideshow()">
               <i [ngClass]="hide ? 'fas fa-eye-slash showPasswd' : 'fas fa-eye showPasswd'"></i>
             </div>

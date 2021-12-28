@@ -46,8 +46,7 @@ export class SupportComponent implements OnInit {
                 data => {   
                   this.submitted = false;                
                   this.opendialog.nativeElement.click();
-                  this.form.reset(this.form.value.message);
-                  this.form.reset(this.form.value.options);
+                  this.ngOnInit();                  
                 },
                 (errorResponse: HttpErrorResponse) => {
                   const validationErrors = errorResponse.error.errors;

@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
           this.profile_pic =  this.resData.data.user_details.profile_pic;
 
           this.data = this.resData.data.user_details;
-          console.log(this.resData.data.user_details);
+          // console.log(this.resData.data.user_details);
         });
   }
   getUserNotificationCounter(){

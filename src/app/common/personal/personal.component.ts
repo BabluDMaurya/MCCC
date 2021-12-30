@@ -281,6 +281,7 @@ disabledi : boolean = false;
           }, 2000);
           sessionStorage.setItem('name',this.form.value.name);
           this.authenticationService.currentUserValue.userDetails.name = this.form.value.name;
+          this.authenticationService.currentUserValue.percentage = this.resData.percentage;
           sessionStorage.setItem('dob',this.form.value.dob);
           sessionStorage.setItem('height',this.form.value.height);
           sessionStorage.setItem('phone',this.form.value.phone);         
@@ -603,6 +604,11 @@ disabledi : boolean = false;
             $('#'+this.toastSuccess).removeClass('show');
         }, 2000); 
           this.resData = event;
+          let percentage = JSON.stringify(event.body.percentage);
+          this.authenticationService.currentUserValue.percentage = percentage;
+          // var currentUser :any = localStorage.getItem('currentUser');
+          //     currentUser['percentage'] = percentage;
+          //     localStorage.setItem('currentUser',currentUser  );    
           ($event.target as HTMLButtonElement).disabled = false;
           this.disabledv = false;
         }
@@ -671,25 +677,7 @@ disabledi : boolean = false;
         this.patchOldImageValues();
         this.uploading = true;
         this.commonService.updateImages(this.iform.value).subscribe(
-    //     data => {  
-    //       this.loading = true;
-    //       this.uploading = false;
-    //       new toastbox(this.toastSuccess, 2000);
-    //       setTimeout(() => {
-    //         $('#'+this.toastSuccess).removeClass('show');
-    //     }, 2000);
-    //     this.ngOnInit();
-    //     ($event.target as HTMLButtonElement).disabled = false;
-    // this.disabledv = false;
-    //     },
-    //     error => {
-    //       this.loading = true;
-    //       this.notification.showError(error.error.message,true);
-    //         this.uploading = false;
-    //         ($event.target as HTMLButtonElement).disabled = false;
-    // this.disabledv = false;
-    //     }
-    (event: HttpEvent<any>) => {
+          (event: HttpEvent<any>) => {
       if (event.type == HttpEventType.UploadProgress) {
         let total:any = event.total;
         this.progress = Math.round((100 / total) * event.loaded);
@@ -704,6 +692,8 @@ disabledi : boolean = false;
           $('#'+this.toastSuccess).removeClass('show');
       }, 2000); 
         this.resData = event;
+        let percentage = JSON.stringify(event.body.percentage);
+        this.authenticationService.currentUserValue.percentage = percentage;
         ($event.target as HTMLButtonElement).disabled = false;
         this.disabledi = false;
       }

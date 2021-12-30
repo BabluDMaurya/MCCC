@@ -22,12 +22,15 @@ export class SidebarsComponent implements OnInit {
   baseUrl :string = Config.Host;
   profile_pic_path: any;
   profile_pic: any;
+  progress: number = 0;
 
   constructor(
     private route:Router,
     private authenticationService: AuthenticationService,
     private dashboardService: DashboardService
-    ) {this.currentUser = this.authenticationService.currentUserValue; }
+    ) {this.currentUser = this.authenticationService.currentUserValue; 
+      this.progress = this.currentUser.percentage;
+    }
 
   ngOnInit(): void {
     this.check = localStorage.getItem("MobilekitDarkMode"); 
@@ -37,7 +40,7 @@ export class SidebarsComponent implements OnInit {
       this.checkboxVal = false;
     }
     
-    console.log(this.currentUser);
+    // console.log(this.currentUser);
     this.dashboardService.userDetailsForPeofile()
         .subscribe(res => {
           this.resData = res;

@@ -3,4 +3,5 @@ export class User {
     profileStatus : string | undefined;
     userDetails : any | undefined;
     status :any;
+    percentage :any;
 }

@@ -293,7 +293,7 @@
                         </div>
                         <div *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
                         <div class="imgs">
-                            <input type="file" [disabled]="disabledv" name="files[]" id="files" (change)="fileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/jpg,">
+                            <input type="file" name="files[]" id="files" (change)="ifileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/jpg,">
                             <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
                         </div>
                         <div class="ctnt">
@@ -304,17 +304,17 @@
                     </div>
                     <!-- Progress Bar -->
                     <div class="pt-2 pb-2" *ngIf="progress">
-                        <p>Video uploading on server please wait...</p>
+                        <p>Image uploading on server please wait...</p>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
                         </div>
                     </div>
                     <div class="btnArea" *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
-                        <a [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next">Save</a>
-                        <button type="button" [routerLink]="['/home']" [disabled]="disabledv" class="next outline">Close</button>
+                        <a [ngStyle]="{'pointer-events': disabledi ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next">Save</a>
+                        <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Close</button>
                     </div>
                     <div class="btnArea" *ngIf="imgArray.length == 3">
-                        <button type="button" [routerLink]="['/home']" [disabled]="disabledv" class="next outline">Close</button>
+                        <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Close</button>
                     </div>
                 </form>
                 </div>

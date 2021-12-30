@@ -16,7 +16,7 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
-import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
+// import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 
 import { LogoComponent } from './logo/logo.component';
 import { SplashComponent } from './splash/splash.component';
@@ -182,7 +182,7 @@ import { PasswordComponent } from './password/password.component';
     VgBufferingModule,
     SocialLoginModule,
     NgbModule,
-    BackButtonDisableModule.forRoot()
+    // BackButtonDisableModule.forRoot()
     
   ],
   providers: [
@@ -227,7 +227,7 @@ import { PasswordComponent } from './password/password.component';
       } as SocialAuthServiceConfig,
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

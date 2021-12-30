@@ -48,7 +48,7 @@ export class CreatePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.storeOTP = sessionStorage.getItem('otp');
     this.form = this.formBuilder.group({
-      password: ['',[Validators.required,Validators.maxLength(20)]],
+      password: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(12)]],
       otp : ['', [Validators.required]],
       terms:['',Validators.required],
       name : [''],

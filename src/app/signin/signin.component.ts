@@ -6,6 +6,7 @@ import { AuthenticationService } from '../_service/authentication.service';
 import { AlertService } from '../_service/alert.service';
 import { Config } from '../_config/config';
 import { DashboardService } from '../_service/dashboard.service';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-signin',
@@ -97,9 +98,16 @@ export class SigninComponent implements OnInit {
                     }
                   }
                 },
-                error => {
-                  this.alertService.error(error);
-                  this.loading = false;
+                (errorResponse: HttpErrorResponse) => {                  
+                  const validationErrors = errorResponse.error.errors;
+                  Object.keys(validationErrors).forEach(prop => {
+                    const formControl = this.f.get(prop);
+                    if (formControl) {
+                      formControl.setErrors({
+                        serverError: validationErrors[prop]
+                      });
+                    }
+                  });                                   
                 });
   }
   signup(){
@@ -115,5 +123,7 @@ export class SigninComponent implements OnInit {
     sessionStorage.removeItem('confirm_password');
     this.router.navigate(['/registration']);
   }
-
+  onKeyUp(x:any) {
+    this.signinForm.controls['password'].setValue(this.f.password.value);
+  }
 }

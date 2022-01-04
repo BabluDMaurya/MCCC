@@ -9,6 +9,13 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from './_service/custom_reuse_strategy';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import {BdcWalkModule} from 'bdc-walkthrough';
+
 import {VgCoreModule} from '@videogular/ngx-videogular/core';
 import {VgControlsModule} from '@videogular/ngx-videogular/controls';
 import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
@@ -175,6 +182,11 @@ import { PasswordComponent } from './password/password.component';
     }),
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatDialogModule,
     VgCoreModule,
     VgControlsModule,
@@ -182,6 +194,7 @@ import { PasswordComponent } from './password/password.component';
     VgBufferingModule,
     SocialLoginModule,
     NgbModule,
+    BdcWalkModule,
     // BackButtonDisableModule.forRoot()
     
   ],

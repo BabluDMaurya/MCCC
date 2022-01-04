@@ -4,7 +4,7 @@ import { AuthenticationService } from '../_service/authentication.service';
 import { BtsVideosService } from '../_service/bts-videos.service';
 import { DashboardService } from '../_service/dashboard.service';
 import {WorkshopService} from '../_service/workshop.service';
-
+import {BdcWalkService} from 'bdc-walkthrough';
 import { Config } from '../_config/config';
 
 @Component({
@@ -53,6 +53,7 @@ export class HomeComponent implements OnInit {
     private btsVideosService: BtsVideosService,
     private dashboardService : DashboardService,
     private workshopService: WorkshopService,
+    private bdcWalkService: BdcWalkService
     ) {
       this.localData = localStorage.getItem('currentUser');
     // redirect to home if already logged in
@@ -97,12 +98,13 @@ export class HomeComponent implements OnInit {
     // console.log('beforeChange');
   } 
   //-----slick slider------------//
+
   ngOnInit(): void {
     this.castingSliderApi();
     this.newCastingCallApi();
     this.getRecomendedData();
     var udata = this.authenticationService.login_with_token(this.localData.token);
-    console.log(udata);
+    // console.log(udata);
     this.btsVideosService.get_categories().subscribe(
       data => { 
         this.loadingbts = true;
@@ -126,7 +128,7 @@ export class HomeComponent implements OnInit {
         this.workshopService.get_all_workshop_data({'limit': 5}).subscribe(
           data => { 
             this.workshsopData = data.data;
-            console.log(this.workshsopData , 'workshop');
+            // console.log(this.workshsopData , 'workshop');
             
             this.eventForYouData = this.workshsopData.event_for_u;
             this.onGoingData = this.workshsopData.on_going;

@@ -31,21 +31,21 @@
     </div>
     <div class="bottomHeader">
         <div class="tabs">
-            <div class="box">
+            <div class="box" [bdcWalkTriggerFor]="example2Step1">
                <a [routerLink]="['/casting/1']">
                     <img src="assets/img/img/casting.webp" class="lightMode" alt="">
                     <img src="assets/img/img/white_casting.webp" class="darkMode" alt="">
                     <div class="label">Casting</div>
                </a>
             </div>
-            <div class="box">
+            <div class="box" [bdcWalkTriggerFor]="example2Step2">
                <a [routerLink]="['/workshop/1']">
                 <img src="assets/img/img/workshop.webp"  class="lightMode" alt="">
                 <img src="assets/img/img/white_workshop.webp" class="darkMode" alt="">
                 <div class="label">Workshop</div>
                </a>
             </div>
-            <div class="box">
+            <div class="box" [bdcWalkTriggerFor]="example2Step3">
                <a [routerLink]="['/bts']">
                     <img src="assets/img/img/bts.webp"  class="lightMode" alt="">
                     <img src="assets/img/img/white_bts.webp" class="darkMode" alt="">
@@ -103,4 +103,15 @@
         </ul>
     </div>
     <!-- * Extra Header -->
+    <bdc-walk-popup #example2Step1 name="example2Step1" header="Step 1" xPosition="after" sideNoteText="1/3" [showButton]="true" buttonText="Next" [mustCompleted]="{dialogWelcome: true}" [onButtonCompleteTask]="{example2Next: 1}">
+        The next popup will only be displayed if you click <b>Next</b>.
+      </bdc-walk-popup>
+      
+      <bdc-walk-popup #example2Step2 name="example2Step2" header="Step 2" xPosition="after" sideNoteText="2/3" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 1}" [onButtonCompleteTask]="{example2Next: 2}">
+        The next popup will only be displayed if you click <b>Next</b>.
+      </bdc-walk-popup>
+      
+      <bdc-walk-popup #example2Step3 name="example2Step3" header="Step 3" xPosition="after" sideNoteText="3/3" [showButton]="true" [mustCompleted]="{example2Next: 2}" [onButtonCompleteTask]="{example2Next: 3}">
+        This is the last popup.
+      </bdc-walk-popup>
 </div>

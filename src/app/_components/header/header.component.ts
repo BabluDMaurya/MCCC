@@ -5,7 +5,7 @@ import { AuthenticationService } from '../../_service/authentication.service';
 import { DashboardService } from '../../_service/dashboard.service';
 import { User } from '../../_models/user';
 import { Config } from 'src/app/_config/config';
-
+import {BdcWalkService} from 'bdc-walkthrough';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +22,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private route:Router,
     private authenticationService: AuthenticationService,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private bdcWalkService: BdcWalkService
   ) {
     
    }
@@ -30,7 +31,7 @@ export class HeaderComponent implements OnInit {
   @Input() tab : any;
   @Input() workshoptab : any;
 
-
+   
   ngOnInit(): void {
     this.getUserNotificationCounter();
     setInterval(() => { 

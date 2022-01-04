@@ -29,5 +29,4 @@ export class NoInternetComponent implements OnInit {
         }  
       });      
       }
-
 }

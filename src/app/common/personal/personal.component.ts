@@ -117,6 +117,8 @@ imageerror:any;
 uploading:boolean=false;
 iresData:any;   
 idatas:any
+totalupimg: any;
+disabledi : boolean = false;
 
   constructor(private location:Location,
     public datepipe: DatePipe,
@@ -158,7 +160,7 @@ idatas:any
     //----------video ------------//
     this.vform = this.formBuilder.group({
       oldvideofileSource:[''],
-      newvideofileSource:[''],
+      newvideofileSource:['',Validators.required],
     });    
     this.commonService.myVideo().subscribe(
       res => {
@@ -174,6 +176,7 @@ idatas:any
       oldfileSource : [''],
       newfileSource : [''], 
     });    
+    this.disabledi = true;
     this.commonService.myImages().subscribe(res => {
       this.iresData = res;   
       this.idatas = this.iresData.data;
@@ -278,6 +281,7 @@ idatas:any
           }, 2000);
           sessionStorage.setItem('name',this.form.value.name);
           this.authenticationService.currentUserValue.userDetails.name = this.form.value.name;
+          this.authenticationService.currentUserValue.percentage = this.resData.percentage;
           sessionStorage.setItem('dob',this.form.value.dob);
           sessionStorage.setItem('height',this.form.value.height);
           sessionStorage.setItem('phone',this.form.value.phone);         
@@ -562,7 +566,7 @@ idatas:any
     ($event.target as HTMLButtonElement).disabled = true;
     this.disabledv = true;
   if (this.vform.invalid) {
-    this.getFormValidationErrors();
+    this.getvFormValidationErrors();
     ($event.target as HTMLButtonElement).disabled = false;
     this.disabledv = false;
     return;
@@ -600,6 +604,11 @@ idatas:any
             $('#'+this.toastSuccess).removeClass('show');
         }, 2000); 
           this.resData = event;
+          let percentage = JSON.stringify(event.body.percentage);
+          this.authenticationService.currentUserValue.percentage = percentage;
+          // var currentUser :any = localStorage.getItem('currentUser');
+          //     currentUser['percentage'] = percentage;
+          //     localStorage.setItem('currentUser',currentUser  );    
           ($event.target as HTMLButtonElement).disabled = false;
           this.disabledv = false;
         }
@@ -621,14 +630,38 @@ idatas:any
     });
   }  
   //--------Image------------
+  ifileChangeEvent(event: any): void {    
+      this.totalupimg = this.imgArray.length+this.cropimages.length;
+      var cnt = 3 - (this.imgArray.length + this.cropimages.length);
+      for (var i = 0; i < event.target.files.length; i++) {
+        if(i < cnt){
+          var extension = event.target.files[i].name.split('.').pop().toLowerCase();
+          var isSuccess = this.fileTypes.indexOf(extension) > -1;
+          if (isSuccess) { 
+            this.disabledi = false;
+              this.imageProcess(event, event.target.files[i]);
+              this.imagenotload = false;
+          }else{
+            this.disabledi = true;
+            new toastbox(this.toastError, 2000);
+            $('#form-error-id').text('Select image (jpg,jpeg,png) only.')
+              setTimeout(() => {
+                $('#'+this.toastError).removeClass('show');
+            }, 2000);
+              // this.notification.showInfo('Select image (jpg,jpeg,png) only.','');
+          }
+        
+      }
+    }
+  }
   imageSubmit($event: MouseEvent){
     this.submitted = true;
     ($event.target as HTMLButtonElement).disabled = true;
-    this.disabledv = true;
+    this.disabledi = true;
     if (this.iform.invalid) {
-      this.getFormValidationErrors();
+      this.getiFormValidationErrors();
       ($event.target as HTMLButtonElement).disabled = false;
-    this.disabledv = false;
+    this.disabledi = false;
       return;
     }else{
       this.loading = false;
@@ -644,25 +677,7 @@ idatas:any
         this.patchOldImageValues();
         this.uploading = true;
         this.commonService.updateImages(this.iform.value).subscribe(
-    //     data => {  
-    //       this.loading = true;
-    //       this.uploading = false;
-    //       new toastbox(this.toastSuccess, 2000);
-    //       setTimeout(() => {
-    //         $('#'+this.toastSuccess).removeClass('show');
-    //     }, 2000);
-    //     this.ngOnInit();
-    //     ($event.target as HTMLButtonElement).disabled = false;
-    // this.disabledv = false;
-    //     },
-    //     error => {
-    //       this.loading = true;
-    //       this.notification.showError(error.error.message,true);
-    //         this.uploading = false;
-    //         ($event.target as HTMLButtonElement).disabled = false;
-    // this.disabledv = false;
-    //     }
-    (event: HttpEvent<any>) => {
+          (event: HttpEvent<any>) => {
       if (event.type == HttpEventType.UploadProgress) {
         let total:any = event.total;
         this.progress = Math.round((100 / total) * event.loaded);
@@ -677,8 +692,10 @@ idatas:any
           $('#'+this.toastSuccess).removeClass('show');
       }, 2000); 
         this.resData = event;
+        let percentage = JSON.stringify(event.body.percentage);
+        this.authenticationService.currentUserValue.percentage = percentage;
         ($event.target as HTMLButtonElement).disabled = false;
-        this.disabledv = false;
+        this.disabledi = false;
       }
     }
         );
@@ -691,7 +708,7 @@ idatas:any
           this.imageerror = 'Please Select Only Three Photos';
         this.threeimgerror = true;
         ($event.target as HTMLButtonElement).disabled = false;
-    this.disabledv = false;
+    this.disabledi = false;
         }          
       }
     }
@@ -731,6 +748,36 @@ idatas:any
         Object.keys(controlErrors).forEach(keyError => {
           new toastbox(this.toastError, 2000);
           $('#form-error-id').text(key+': '+keyError)
+            setTimeout(() => {
+              $('#'+this.toastError).removeClass('show');
+          }, 2000);
+        //  console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+        });
+      }
+    });
+  }
+  getiFormValidationErrors() {
+    Object.keys(this.iform.controls).forEach(key => {
+      const controlErrors: ValidationErrors = this.iform.get(key).errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach(keyError => {
+          new toastbox(this.toastError, 2000);
+          $('#form-error-id').text('Image: '+keyError)
+            setTimeout(() => {
+              $('#'+this.toastError).removeClass('show');
+          }, 2000);
+        //  console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+        });
+      }
+    });
+  }
+  getvFormValidationErrors() {
+    Object.keys(this.vform.controls).forEach(key => {
+      const controlErrors: ValidationErrors = this.vform.get(key).errors;
+      if (controlErrors != null) {
+        Object.keys(controlErrors).forEach(keyError => {
+          new toastbox(this.toastError, 2000);
+          $('#form-error-id').text('Video: '+keyError)
             setTimeout(() => {
               $('#'+this.toastError).removeClass('show');
           }, 2000);

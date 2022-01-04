@@ -9,6 +9,13 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from './_service/custom_reuse_strategy';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import {BdcWalkModule} from 'bdc-walkthrough';
+
 import {VgCoreModule} from '@videogular/ngx-videogular/core';
 import {VgControlsModule} from '@videogular/ngx-videogular/controls';
 import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
@@ -16,7 +23,7 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
-import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
+// import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 
 import { LogoComponent } from './logo/logo.component';
 import { SplashComponent } from './splash/splash.component';
@@ -175,6 +182,11 @@ import { PasswordComponent } from './password/password.component';
     }),
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatDialogModule,
     VgCoreModule,
     VgControlsModule,
@@ -182,7 +194,8 @@ import { PasswordComponent } from './password/password.component';
     VgBufferingModule,
     SocialLoginModule,
     NgbModule,
-    BackButtonDisableModule.forRoot()
+    BdcWalkModule,
+    // BackButtonDisableModule.forRoot()
     
   ],
   providers: [
@@ -227,7 +240,7 @@ import { PasswordComponent } from './password/password.component';
       } as SocialAuthServiceConfig,
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

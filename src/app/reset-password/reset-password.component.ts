@@ -43,7 +43,7 @@ export class ResetPasswordComponent implements OnInit {
     });
     this.rotp = sessionStorage.getItem('rotp');
     this.form = this.formBuilder.group({
-      password: ['',[Validators.required,Validators.maxLength(20)]],
+      password: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(12)]],
       
       otp : ['',[Validators.required]],
       // terms:['',Validators.required],

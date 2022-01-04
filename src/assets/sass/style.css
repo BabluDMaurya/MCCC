@@ -10852,6 +10852,12 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   line-height: normal;
 }
 
+.wrrpperRegisterForm .heading .lats_side{
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
 .wrrpperRegisterForm .forms {
   margin-top: 80px;
 }
@@ -11806,11 +11812,20 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
           justify-content: space-between;
 }
 .main .mainHeader .top_header .lats_side .avtars ion-icon{
-  font-size: 20px;
+  font-size: 22px;
   color: #ff6554;
   padding-right: 5px;
 }
 
+.completeProfilesModal .modal-header a {
+  color: #ff6554;
+}
+.completeProfilesModal .modal-body .login-form button{
+  margin-top: 40px!important;
+}
+.completeProfilesModal .modal-dialog{
+  top: 68%!important;
+}
 .main .mainHeader .top_header .lats_side .notification {
   display: -webkit-box;
   display: -ms-flexbox;

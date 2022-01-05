@@ -1,497 +1,467 @@
 <div class="section full mt-1 personal_prfile_wrapper">
-      
     <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
     <div class="head_tabs">
-        <ul class="nav nav-tabs lined" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#personal" role="tab">
-                    Personal
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#images" role="tab">
-                    Images
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#videos" role="tab">
-                    Video
-                </a>
-            </li>
-        </ul>
-        <div class="tab-content personal_profilesDivs">
-            <div class="tab-pane fade show active" id="personal" role="tabpanel">
-                <div class="main casting casting_inner profile personal_profile">
-                    <div class=" main_wrppers profileWrpper completeProfile">
-                        <div class="profiles">
-                            <form [formGroup]="form" (ngSubmit)="submit()">
-                            <div class="profileDiv">
-                                <label>Name<span>*</span></label>
-                               
-                                    <input autocomplete="off" formControlName="name" type="text" class="innerDetail" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" maxlength="28">
-                                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                                        <div *ngIf="f.name.errors.required">Name is required</div>
-                                        <div *ngIf="f.name.errors.pattern">Characters and space are allowed, It's length should be minimum two characters</div>
-                                      </div>
-                                      <div class="invalid-feedback error" style="display: block;" *ngIf="f.name.errors?.serverError">{{ f.name.errors?.serverError }}</div>
-                                
+       <ul class="nav nav-tabs lined" role="tablist">
+          <li class="nav-item">
+             <a class="nav-link active" data-bs-toggle="tab" href="#personal" role="tab">
+             Personal
+             </a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="tab" href="#images" role="tab">
+             Images
+             </a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="tab" href="#videos" role="tab">
+             Video
+             </a>
+          </li>
+       </ul>
+       <div class="tab-content personal_profilesDivs">
+          <div class="tab-pane fade show active" id="personal" role="tabpanel">
+             <div class="main casting casting_inner profile personal_profile">
+                <div class=" main_wrppers profileWrpper completeProfile">
+                   <div class="profiles">
+                      <form [formGroup]="form" (ngSubmit)="submit()">
+                      <div class="profileDiv">
+                         <label>Name<span>*</span></label>
+                         <input autocomplete="off" formControlName="name" type="text" class="innerDetail" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" maxlength="28">
+                         <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                            <div *ngIf="f.name.errors.pattern">Characters and space are allowed, It's length should be minimum two characters</div>
+                         </div>
+                         <div class="invalid-feedback error" style="display: block;" *ngIf="f.name.errors?.serverError">{{ f.name.errors?.serverError }}</div>
+                      </div>
+                      <div class="profileDiv">
+                         <label>DOB<span>*</span></label>
+                         <div class="dateBirth">
+                            <div class="select">
+                               <select formControlName="day" [(ngModel)]="day" class="form-control" [ngClass]="{ 'is-invalid': submit && f.day.errors }">
+                               <option value="">Date</option>
+                               <option [value]="day" *ngFor="let day of dayList" >{{day}}</option>
+                               </select>
+                               <div *ngIf="submit && f.day.errors" class="invalid-feedback">
+                                  <div *ngIf="f.day.errors.required">Day is required</div>
+                               </div>
                             </div>
-                            <div class="profileDiv">
-                                <label>DOB<span>*</span></label>
-                                <div class="dateBirth">
-                                    <div class="select">
-                                    <select formControlName="day" [(ngModel)]="day" class="form-control" [ngClass]="{ 'is-invalid': submit && f.day.errors }">
-                                        <option value="">Date</option>
-                                        <option [value]="day" *ngFor="let day of dayList" >{{day}}</option>
-                                        </select>
-                                        <div *ngIf="submit && f.day.errors" class="invalid-feedback">
-                                            <div *ngIf="f.day.errors.required">Day is required</div>               
-                                    </div>       
-                                    </div>
-                                    <div class="select">
-                                        <select formControlName="month" [(ngModel)]="month" class="form-control" [ngClass]="{ 'is-invalid': submit && f.month.errors }">
-                                            <option value="">Month</option>
-                                            <option [value]="month" *ngFor="let month of monthList" >{{month}}</option>
-                                        </select>
-                                        <div *ngIf="submit && f.month.errors" class="invalid-feedback">
-                                            <div *ngIf="f.month.errors.required">Month is required</div>               
-                                        </div>
-                                    </div>
-                                    <div class="select">
-                                        <select formControlName="year" [(ngModel)]="myYear" class="form-control" [ngClass]="{ 'is-invalid': submit && f.year.errors }">
-                                            <option value="" disabled>Year</option>
-                                            <option [value]="year" *ngFor="let year of yearList" >{{year}}</option>
-                                            </select>
-                                        <div *ngIf="submit && f.year.errors" class="invalid-feedback">
-                                            <div *ngIf="f.year.errors.required">Year is required</div>               
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="select">
+                               <select formControlName="month" [(ngModel)]="month" class="form-control" [ngClass]="{ 'is-invalid': submit && f.month.errors }">
+                               <option value="">Month</option>
+                               <option [value]="month" *ngFor="let month of monthList" >{{month}}</option>
+                               </select>
+                               <div *ngIf="submit && f.month.errors" class="invalid-feedback">
+                                  <div *ngIf="f.month.errors.required">Month is required</div>
+                               </div>
                             </div>
-                            <div class="profileDiv">
-                                <label>Height<span>*</span></label>
-                                <input type="tel" class="innerDetail" formControlName="height" maxlength="50" [ngClass]="{ 'is-invalid': submitted && f.height.errors }">
-                                <div *ngIf="submitted && f.height.errors" class="invalid-feedback">
-                                    <div *ngIf="f.height.errors.required">Height is required</div>
-                                    <div *ngIf="f.height.errors.pattern">Height must be numeric</div>
-                                </div>
+                            <div class="select">
+                               <select formControlName="year" [(ngModel)]="myYear" class="form-control" [ngClass]="{ 'is-invalid': submit && f.year.errors }">
+                               <option value="" disabled>Year</option>
+                               <option [value]="year" *ngFor="let year of yearList" >{{year}}</option>
+                               </select>
+                               <div *ngIf="submit && f.year.errors" class="invalid-feedback">
+                                  <div *ngIf="f.year.errors.required">Year is required</div>
+                               </div>
                             </div>
-                            <div class="profileDiv">
-                                <label>Select Your Gender*</label>
-                                <div class="select">
-                                    <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submit && f.gender.errors }">
-                                        <option value="" [disabled]="true">Select</option>
-                                        <option [value]="gender" *ngFor="let gender of genderList">{{gender}}</option>
-                                    </select>
-                                    <div *ngIf="submit && f.gender.errors" class="invalid-feedback">
-                                        <div *ngIf="f.gender.errors.required">Gender is required</div>               
-                                    </div>          
-                                </div>
+                         </div>
+                      </div>
+                      <div class="profileDiv">
+                         <label>Height<span>*</span></label>
+                         <input type="tel" class="innerDetail" formControlName="height" maxlength="50" [ngClass]="{ 'is-invalid': submitted && f.height.errors }">
+                         <div *ngIf="submitted && f.height.errors" class="invalid-feedback">
+                            <div *ngIf="f.height.errors.required">Height is required</div>
+                            <div *ngIf="f.height.errors.pattern">Height must be numeric</div>
+                         </div>
+                      </div>
+                      <div class="profileDiv">
+                         <label>Select Your Gender*</label>
+                         <div class="select">
+                            <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submit && f.gender.errors }">
+                               <option value="" [disabled]="true">Select</option>
+                               <option [value]="gender" *ngFor="let gender of genderList">{{gender}}</option>
+                            </select>
+                            <div *ngIf="submit && f.gender.errors" class="invalid-feedback">
+                               <div *ngIf="f.gender.errors.required">Gender is required</div>
                             </div>
-            
-                            <div class="profileDiv">
-                                <label>Language<span>*</span></label>
-                                <div class="select">
-                                    <select class="form-control"  formControlName="language_id" [(ngModel)]="language_ids" multiple [ngClass]="{ 'is-invalid': submitted && f.language_id.errors }">
-                                        <option *ngFor="let language of languages;" value="{{language.id}}">{{language.name}}</option>
-                                    </select>
-                                    <div *ngIf="submitted && f.language_id.errors" class="invalid-feedback">
-                                        <div *ngIf="f.language_id.errors.required">Language is required</div>
-                                    </div>
-                                </div>
+                         </div>
+                      </div>
+                      <div class="profileDiv">
+                         <label>Language<span>*</span></label>
+                         <div class="select">
+                            <select class="form-control"  formControlName="language_id" [(ngModel)]="language_ids" multiple [ngClass]="{ 'is-invalid': submitted && f.language_id.errors }">
+                            <option *ngFor="let language of languages;" value="{{language.id}}">{{language.name}}</option>
+                            </select>
+                            <div *ngIf="submitted && f.language_id.errors" class="invalid-feedback">
+                               <div *ngIf="f.language_id.errors.required">Language is required</div>
                             </div>
-                            <div class="profileDiv">
-                                <label>Your Country*</label>
-                                <div class="select">
-                                    <select formControlName="country" (change)="changeSuitState($event)" class="form-control" [ngClass]="{ 'is-invalid': submit && f.country.errors }">            
-                                        <option value="">Select</option>
-                                        <!-- <option value="101">India</option>      -->
-                                               
-                                        <option value="{{country.id}}" *ngFor="let country of countryList" >{{country.name}}</option>
-                                    </select>
-                                    <div *ngIf="submit && f.country.errors" class="invalid-feedback">
-                                        <div *ngIf="f.country.errors.required">Country is required</div>               
-                                    </div>
-                                </div>
+                         </div>
+                      </div>
+                      <div class="profileDiv">
+                         <label>Your Country*</label>
+                         <div class="select">
+                            <select formControlName="country" (change)="changeSuitState($event)" class="form-control" [ngClass]="{ 'is-invalid': submit && f.country.errors }">            
+                            <option value="">Select</option>
+                            <!-- <option value="101">India</option>      -->
+                            <option value="{{country.id}}" *ngFor="let country of countryList" >{{country.name}}</option>
+                            </select>
+                            <div *ngIf="submit && f.country.errors" class="invalid-feedback">
+                               <div *ngIf="f.country.errors.required">Country is required</div>
                             </div>
-                            <div class="profileDiv">
-                                <label>State<span>*</span></label>
-                                <div class="select">
-                                    <select formControlName="state" (change)="changeSuit($event)" class="form-control" [ngClass]="{ 'is-invalid': submit && f.state.errors }">
-                                        <option value="">Select</option>
-                                        <option value="{{state.id}}" *ngFor="let state of stateList" >{{state.name}}</option>
-                                     </select>
-                                     <div *ngIf="submit && f.state.errors" class="invalid-feedback">
-                                         <div *ngIf="f.state.errors.required">State is required</div>               
-                                       </div>
-                                </div>
+                         </div>
+                      </div>
+                      <div class="profileDiv">
+                         <label>State<span>*</span></label>
+                         <div class="select">
+                            <select formControlName="state" (change)="changeSuit($event)" class="form-control" [ngClass]="{ 'is-invalid': submit && f.state.errors }">
+                            <option value="">Select</option>
+                            <option value="{{state.id}}" *ngFor="let state of stateList" >{{state.name}}</option>
+                            </select>
+                            <div *ngIf="submit && f.state.errors" class="invalid-feedback">
+                               <div *ngIf="f.state.errors.required">State is required</div>
                             </div>
-                            <div class="profileDiv">
-                                <label>City<span>*</span></label>
-                                <div class="select">
-                                    <select formControlName="select_city" class="form-control" [ngClass]="{ 'is-invalid': submit && f.select_city.errors }">
-                                        <option value="">Select</option>
-                                        <option *ngFor="let city of cityList" value="{{city.id}}">{{city.name}}</option>
-                                     </select>
-                                     <div *ngIf="submit && f.select_city.errors" class="invalid-feedback">
-                                         <div *ngIf="f.select_city.errors.required">City is required</div>               
-                                       </div>
-                                </div>
+                         </div>
+                      </div>
+                      <div class="profileDiv">
+                         <label>City<span>*</span></label>
+                         <div class="select">
+                            <select formControlName="select_city" class="form-control" [ngClass]="{ 'is-invalid': submit && f.select_city.errors }">
+                               <option value="">Select</option>
+                               <option *ngFor="let city of cityList" value="{{city.id}}">{{city.name}}</option>
+                            </select>
+                            <div *ngIf="submit && f.select_city.errors" class="invalid-feedback">
+                               <div *ngIf="f.select_city.errors.required">City is required</div>
                             </div>
-                            <div class="profileDiv">
-                                <label>Home Town<span>*</span></label>
-                                <input class="innerDetail" type="text" formControlName="home_town" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">
-                                <div *ngIf="submitted && f.home_town.errors" class="invalid-feedback">
-                                    <div *ngIf="f.home_town.errors.required">Home Town is required</div>
-                                </div>
+                         </div>
+                      </div>
+                      <div class="profileDiv">
+                         <label>Home Town<span>*</span></label>
+                         <input class="innerDetail" type="text" formControlName="home_town" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">
+                         <div *ngIf="submitted && f.home_town.errors" class="invalid-feedback">
+                            <div *ngIf="f.home_town.errors.required">Home Town is required</div>
+                         </div>
+                      </div>
+                      <div class="profileDiv">
+                         <label>Hobbies<span>*</span></label>
+                         <input type="text" class="innerDetail" formControlName="hobbies" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.hobbies.errors }">
+                         <div *ngIf="submitted && f.hobbies.errors" class="invalid-feedback">
+                            <div *ngIf="f.hobbies.errors.required">Hobbies is required</div>
+                         </div>
+                      </div>
+                      <div class="profileDiv uploades">
+                         <label>Profile Picture</label>
+                         <div class="inputFile">
+                            <input #fileInput type="file" accept="image/*"  id="upkoadAdhPan" (change)="fileChangeEvent($event)">
+                            <label for="upkoadAdhPan">Profile Picture</label>
+                            <div class="fileUpIcon">
+                               <i class="fas fa-upload"></i>
                             </div>
-                            <div class="profileDiv">
-                                <label>Hobbies<span>*</span></label>
-                                <input type="text" class="innerDetail" formControlName="hobbies" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.hobbies.errors }">
-                                <div *ngIf="submitted && f.hobbies.errors" class="invalid-feedback">
-                                    <div *ngIf="f.hobbies.errors.required">Hobbies is required</div>
-                                </div> 
+                         </div>
+                         <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
+                            <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
+                         </div>
+                         <div class="backdrop" [ngStyle]="{'display':display}"></div>
+                      </div>
+                      <div class="forms_input">
+                         <div class="addRemoveDivs work_experince">
+                            <div class="group">
+                               <div class="formGroup addRemoveDivss workExperince" formArrayName="work_experiences" *ngFor="let item of form.get('work_experiences')['controls']; let i = index;">
+                                  <label><img src="assets/img/img/work.webp" alt="">  Work Experience</label>
+                                  <div class="withIcon"  [formGroupName]="i">
+                                     <div  class="inputs">
+                                        <input type="text" formControlName="experience" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.work_experiences.errors }">
+                                     </div>
+                                     <div class="plus_icon_workWxperince">
+                                        <span  *ngIf="i == 0" (click)="addExperience()">
+                                        <img src="assets/img/img/plus.webp" alt="" class="lightMode">
+                                        <img src="assets/img/img/white_plus.webp" class="darkMode" alt="">
+                                        </span>
+                                        <span *ngIf="i > 0"(click)="removeExperience(i)">
+                                        <img src="assets/img/img/minus.webp" class="lightMode" alt="">
+                                        <img src="assets/img/img/white_minus.webp" class="darkMode" alt="">
+                                        </span>
+                                     </div>
+                                     <div *ngIf="submitted && f.work_experiences.errors" class="invalid-feedback">
+                                        <div *ngIf="f.work_experiences.errors.required">Worke experience experience is required</div>
+                                     </div>
+                                  </div>
+                               </div>
                             </div>
-                            <div class="profileDiv uploades">
-                                <label>Profile Picture</label>
-                                <div class="inputFile">
-                                    <input #fileInput type="file" accept="image/*"  id="upkoadAdhPan" (change)="fileChangeEvent($event)">
-                                    <label for="upkoadAdhPan">Profile Picture</label>
-                                    <div class="fileUpIcon">
-                                        <i class="fas fa-upload"></i>
-                                    </div>
-                                </div>
-                                <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
-                                    <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
-                                </div>            
-                                <div class="backdrop" [ngStyle]="{'display':display}"></div>
+                         </div>
+                         <div class="addRemoveDivs qaulifications">
+                            <div class="group">
+                               <div class="formGroup addRemoveDivss qaulificationss" formArrayName="qualifications" *ngFor="let item of form.get('qualifications')['controls']; let j = index;">
+                                  <label><img src="assets/img/img/qualification.webp" alt=""> Qualification</label>
+                                  <div class="withIcon" [formGroupName]="j">
+                                     <div class="inputs">
+                                        <input type="text" formControlName="qualification" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.qualifications.errors }">
+                                     </div>
+                                     <div class="plus_icon_qualificationsPlus">
+                                        <span  *ngIf="j == 0" (click)="addQualification()">
+                                        <img src="assets/img/img/plus.webp" alt="" class="lightMode">
+                                        <img src="assets/img/img/white_plus.webp" class="darkMode" alt="">
+                                        </span>
+                                        <span *ngIf="j > 0" (click)="removeQualification(j)">
+                                        <img src="assets/img/img/minus.webp" class="lightMode" alt="">
+                                        <img src="assets/img/img/white_minus.webp" class="darkMode" alt="">
+                                        </span>
+                                     </div>
+                                     <div *ngIf="submitted && f.qualifications.errors" class="invalid-feedback">
+                                        <div *ngIf="f.qualifications.errors.required">Qualificaton is required</div>
+                                     </div>
+                                  </div>
+                               </div>
                             </div>
-                            <div class="forms_input">
-                                <div class="addRemoveDivs work_experince">            
-                                    <div class="group">
-                                        <div class="formGroup addRemoveDivss workExperince" formArrayName="work_experiences" *ngFor="let item of form.get('work_experiences')['controls']; let i = index;">                   
-                                            <label><img src="assets/img/img/work.webp" alt="">  Work Experience</label>
-                                            <div class="withIcon"  [formGroupName]="i">                        
-                                                <div  class="inputs">
-                                                    <input type="text" formControlName="experience" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.work_experiences.errors }">
-                                                </div>  
-                                                <div class="plus_icon_workWxperince">
-                                                    <span  *ngIf="i == 0" (click)="addExperience()">
-                                                        <img src="assets/img/img/plus.webp" alt="" class="lightMode">
-                                                        <img src="assets/img/img/white_plus.webp" class="darkMode" alt="">
-                                                    </span>
-                                                    <span *ngIf="i > 0"(click)="removeExperience(i)">
-                                                        <img src="assets/img/img/minus.webp" class="lightMode" alt="">
-                                                        <img src="assets/img/img/white_minus.webp" class="darkMode" alt="">
-                                                    </span>
-                                                    
-                                                </div>                              
-                                                <div *ngIf="submitted && f.work_experiences.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.work_experiences.errors.required">Worke experience experience is required</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                
-                                <div class="addRemoveDivs qaulifications">
-                                    <div class="group">
-                                        <div class="formGroup addRemoveDivss qaulificationss" formArrayName="qualifications" *ngFor="let item of form.get('qualifications')['controls']; let j = index;">
-                                            <label><img src="assets/img/img/qualification.webp" alt=""> Qualification</label>
-                                            <div class="withIcon" [formGroupName]="j">
-                                                <div class="inputs">
-                                                    <input type="text" formControlName="qualification" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.qualifications.errors }">
-                                                </div>
-                                                <div class="plus_icon_qualificationsPlus">
-                                                    <span  *ngIf="j == 0" (click)="addQualification()">
-                                                        <img src="assets/img/img/plus.webp" alt="" class="lightMode">
-                                                        <img src="assets/img/img/white_plus.webp" class="darkMode" alt="">
-                                                    </span>
-                                                    <span *ngIf="j > 0" (click)="removeQualification(j)">
-                                                        <img src="assets/img/img/minus.webp" class="lightMode" alt="">
-                                                        <img src="assets/img/img/white_minus.webp" class="darkMode" alt="">
-                                                    </span>
-                                                    
-                                                </div>
-                                                <div *ngIf="submitted && f.qualifications.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.qualifications.errors.required">Qualificaton is required</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                
-                                <div class="addRemoveDivs SocailLinks">
-                                    <div class="group">
-                                        <div class="formGroup addRemoveDivss SocailLinkss" formArrayName="social_links" *ngFor="let item of form.get('social_links')['controls']; let i = index;">
-                                            <label><img src="assets/img/img/social_link.webp" alt="">  Social links /  Video links</label>
-                                            <div class="withIcon" [formGroupName]="i">
-                                                <div class="inputs">
-                                                    <input type="text" formControlName="social_link" maxlength="200"  [ngClass]="{ 'is-invalid': submitted && f.social_links.errors }">
-                                                </div>
-                                                <div class="plus_icon_SocailLinks">
-                                                    <span  *ngIf="i == 0" (click)="addSocialLinks()">
-                                                        <img src="assets/img/img/plus.webp" alt="" class="lightMode">
-                                                        <img src="assets/img/img/white_plus.webp" class="darkMode" alt="">
-                                                    </span>
-                                                    <span *ngIf="i > 0"(click)="removeSocialLinks(i)">
-                                                        <img src="assets/img/img/minus.webp" class="lightMode" alt="">
-                                                        <img src="assets/img/img/white_minus.webp" class="darkMode" alt="">
-                                                    </span>
-                                                    
-                                                </div>
-                                                <div *ngIf="submitted && f.social_links.errors" class="invalid-feedback">
-                                                    <div *ngIf="f.social_links.errors.required">Social link is required</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
+                         </div>
+                         <div class="addRemoveDivs SocailLinks">
+                            <div class="group">
+                               <div class="formGroup addRemoveDivss SocailLinkss" formArrayName="social_links" *ngFor="let item of form.get('social_links')['controls']; let i = index;">
+                                  <label><img src="assets/img/img/social_link.webp" alt="">  Social links /  Video links</label>
+                                  <div class="withIcon" [formGroupName]="i">
+                                     <div class="inputs">
+                                        <input type="text" formControlName="social_link" maxlength="200"  [ngClass]="{ 'is-invalid': submitted && f.social_links.errors }">
+                                     </div>
+                                     <div class="plus_icon_SocailLinks">
+                                        <span  *ngIf="i == 0" (click)="addSocialLinks()">
+                                        <img src="assets/img/img/plus.webp" alt="" class="lightMode">
+                                        <img src="assets/img/img/white_plus.webp" class="darkMode" alt="">
+                                        </span>
+                                        <span *ngIf="i > 0"(click)="removeSocialLinks(i)">
+                                        <img src="assets/img/img/minus.webp" class="lightMode" alt="">
+                                        <img src="assets/img/img/white_minus.webp" class="darkMode" alt="">
+                                        </span>
+                                     </div>
+                                     <div *ngIf="submitted && f.social_links.errors" class="invalid-feedback">
+                                        <div *ngIf="f.social_links.errors.required">Social link is required</div>
+                                     </div>
+                                  </div>
+                               </div>
                             </div>
-                            <div class="submit">
-                                <button [disabled]="disabledv" type="submit" class="btns btnss_r ripple">Submit</button>
-                                <a [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}" class="btns outline" [routerLink]="['/home']"> Close</a>
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-                    <div *ngIf="loading" class="loader">
-                        <img src="../../../assets/img/img/Mccc-black.gif" class="lightMode" alt="">
-                        <img src="../../../assets/img/img/Mccc-white.gif" alt="" class="darkMode">
-                    </div>
+                         </div>
+                      </div>
+                      <div class="submit">
+                         <button [disabled]="disabledv" type="submit" class="btns btnss_r ripple">Submit</button>
+                         <a [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}" class="btns outline" [routerLink]="['/home']"> Close</a>
+                      </div>
+                      </form>
+                   </div>
                 </div>
-            </div>
-            
-            <div class="tab-pane fade" id="images" role="tabpanel">
-                <div class="main casting casting_inner profile personal_profile">
-                    <div class=" main_wrppers profileWrpper completeProfile">
-                        <div class="profiles">
-                <form [formGroup]="iform">
-                    <div class="imgContent">
-                        <div class="imgPrevw img_Prevw">
-                            <div class="prvwImg" *ngFor="let img of idatas;let i=index;">
-                                <img src="{{imagePath+img.image}}" alt="">
-                                <div class='multi-field'>
-                                    <button type="button" class="close" (click)="removePrimaryImage(i)">
-                                        <i class="far fa-times-circle"></i>
-                                    </button>
-                                </div>                                
+                <div *ngIf="loading" class="loader">
+                   <img src="../../../assets/img/img/Mccc-black.gif" class="lightMode" alt="">
+                   <img src="../../../assets/img/img/Mccc-white.gif" alt="" class="darkMode">
+                </div>
+             </div>
+          </div>
+          <div class="tab-pane fade" id="images" role="tabpanel">
+             <div class="main casting casting_inner profile personal_profile">
+                <div class=" main_wrppers profileWrpper completeProfile">
+                   <div class="profiles">
+                      <form [formGroup]="iform">
+                         <div class="imgContent">
+                            <div class="imgPrevw img_Prevw">
+                               <div class="prvwImg" *ngFor="let img of idatas;let i=index;">
+                                  <img src="{{imagePath+img.image}}" alt="">
+                                  <div class='multi-field'>
+                                     <button type="button" class="close" (click)="removePrimaryImage(i)">
+                                     <i class="far fa-times-circle"></i>
+                                     </button>
+                                  </div>
+                               </div>
+                               <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
+                                  <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
+                                  <div class='multi-field'>
+                                     <button type="button" class="close" (click)="removeSelectedImages(j)">
+                                     <i class="far fa-times-circle"></i>
+                                     </button>
+                                  </div>
+                                  <div class="edit_btn" (click)="cropImage(url.imgId)">
+                                     <a><i class="far fa-edit"></i></a>
+                                  </div>
+                               </div>
                             </div>
-                            <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
-                                <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
-                                <div class='multi-field'>
-                                    <button type="button" class="close" (click)="removeSelectedImages(j)">
-                                        <i class="far fa-times-circle"></i>
-                                    </button>
+                            <div *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
+                               <div class="imgs">
+                                  <input type="file" name="files[]" id="files" (change)="ifileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/jpg,">
+                                  <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
+                                  <div class="images_contentPAra">
+                                     <p class="images_contentPAra_txt">Take a photo</p>
+                                  </div>
+                               </div>
+                               <div class="ctnt">
+                                  <p>Take a Photo or choose From <br>your library</p>
+                                  <span>(You can add only 3 Photos)</span>
+                               </div>
+                            </div>
+                         </div>
+                         <!-- Progress Bar -->
+                         <div class="pt-2 pb-2" *ngIf="progress">
+                            <p>Image uploading on server please wait...</p>
+                            <div class="progress">
+                               <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+                            </div>
+                         </div>
+                         <div class="btnArea" *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
+                            <a [ngStyle]="{'pointer-events': disabledi ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next">Save</a>
+                            <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Close</button>
+                         </div>
+                         <div class="btnArea" *ngIf="imgArray.length == 3">
+                            <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Close</button>
+                         </div>
+                      </form>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="tab-pane fade" id="videos" role="tabpanel">
+             <div class="main casting casting_inner profile personal_profile">
+                <div class=" main_wrppers profileWrpper completeProfile">
+                   <div class="profiles">
+                      <form [formGroup]="vform">
+                         <div class="imgContent">
+                            <div *ngIf="!newVideoAdded">
+                               <div class="imgPrevw img_Prevw" *ngFor="let video of vdatas;let i=index;">
+                                  <div class="video-player-wrapper">
+                                     <vg-player>
+                                        <vg-overlay-play></vg-overlay-play>
+                                        <vg-buffering></vg-buffering>
+                                        <vg-scrub-bar>
+                                           <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                           <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                                        </vg-scrub-bar>
+                                        <vg-controls>
+                                           <vg-play-pause></vg-play-pause>
+                                           <vg-playback-button></vg-playback-button>
+                                           <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                                           <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+                                           <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                                           <vg-mute></vg-mute>
+                                           <vg-volume></vg-volume>
+                                           <vg-fullscreen></vg-fullscreen>
+                                        </vg-controls>
+                                        <video [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" >
+                                        <source src="{{videoPath+video.videos}}" type="video/mp4">
+                                        </video>
+                                     </vg-player>
+                                  </div>
+                               </div>
+                            </div>
+                            <div *ngIf="newVideoAdded">
+                               <div  class="imgPrevw video_uploading" *ngFor='let url of videos'>
+                                  <div class="video-player-wrapper">
+                                     <vg-player>
+                                        <vg-overlay-play></vg-overlay-play>
+                                        <vg-buffering></vg-buffering>
+                                        <vg-scrub-bar>
+                                           <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                           <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+                                        </vg-scrub-bar>
+                                        <vg-controls>
+                                           <vg-play-pause></vg-play-pause>
+                                           <vg-playback-button></vg-playback-button>
+                                           <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+                                           <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+                                           <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+                                           <vg-mute></vg-mute>
+                                           <vg-volume></vg-volume>
+                                           <vg-fullscreen></vg-fullscreen>
+                                        </vg-controls>
+                                        <video [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" >
+                                        <source src="{{url}}" type="video/mp4">
+                                        </video>
+                                     </vg-player>
+                                  </div>
+                               </div>
+                               <div class="edit_btn">
+                                   <a>
+                                       <i class="far fa-edit" aria-hidden="true"></i>
+                                    </a>
                                 </div>
-                                <div class="edit_btn" (click)="cropImage(url.imgId)">
-                                    <a><i class="far fa-edit"></i></a>
-                                </div>
                             </div>
-                            
-                            
-                        </div>
-                        <div *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
-                        <div class="imgs">
-                            <input type="file" name="files[]" id="files" (change)="ifileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/jpg,">
-                            <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
-                            <div class="images_contentPAra">
-                                <p class="images_contentPAra_txt">Take a photo</p>
+                            <div class="imgs">
+                               <input [disabled]="disabledv" type="file" name="files[]" id="files" accept="video/*"  (change)="onVideoFileChange($event)" />
+                               <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
+                               <div class="images_contentPAra">
+                                  <p class="images_contentPAra_txt">Take a video</p>
+                               </div>
                             </div>
-                        </div>
-                        <div class="ctnt">
-                            <p>Take a Photo or choose From <br>your library</p>
-                            <span>(You can add only 3 Photos)</span>
-                        </div>
-                        </div>
-                    </div>
-                    <!-- Progress Bar -->
-                    <div class="pt-2 pb-2" *ngIf="progress">
-                        <p>Image uploading on server please wait...</p>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
-                        </div>
-                    </div>
-                    <div class="btnArea" *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
-                        <a [ngStyle]="{'pointer-events': disabledi ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next">Save</a>
-                        <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Close</button>
-                    </div>
-                    <div class="btnArea" *ngIf="imgArray.length == 3">
-                        <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Close</button>
-                    </div>
-                </form>
-                </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="tab-pane fade" id="videos" role="tabpanel">
-                <div class="main casting casting_inner profile personal_profile">
-                    <div class=" main_wrppers profileWrpper completeProfile">
-                        <div class="profiles">
-                <form [formGroup]="vform"> 
-                    <div class="imgContent">
-                        <div *ngIf="!newVideoAdded">
-                        <div class="imgPrevw img_Prevw" *ngFor="let video of vdatas;let i=index;">
-                            <div class="video-player-wrapper">
-                
-                                <vg-player>
-                                  <vg-overlay-play></vg-overlay-play>
-                                  <vg-buffering></vg-buffering>
-                              
-                                  <vg-scrub-bar>
-                                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                                    <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-                                  </vg-scrub-bar>
-                              
-                                  <vg-controls>
-                                    <vg-play-pause></vg-play-pause>
-                                    <vg-playback-button></vg-playback-button>
-                              
-                                    <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-                              
-                                    <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-                               <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
-                               <vg-mute></vg-mute>
-                                    <vg-volume></vg-volume>
-                              
-                                    <vg-fullscreen></vg-fullscreen>
-                                  </vg-controls>
-                              
-                                  <video [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" >
-                                    <source src="{{videoPath+video.videos}}" type="video/mp4">
-                              
-                                  
-                                  </video>
-                                </vg-player>
-                              
-                              </div>
-                        </div>
-                    </div>
-                    <div *ngIf="newVideoAdded">
-                        <div  class="imgPrevw video_uploading" *ngFor='let url of videos'>
-                            <div class="video-player-wrapper">
-                          <vg-player>
-                            <vg-overlay-play></vg-overlay-play>
-                            <vg-buffering></vg-buffering>
-                        
-                            <vg-scrub-bar>
-                              <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-                              <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-                            </vg-scrub-bar>
-                        
-                            <vg-controls>
-                              <vg-play-pause></vg-play-pause>
-                              <vg-playback-button></vg-playback-button>
-                        
-                              <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
-                        
-                              <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-                        
-                             <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
-                        
-                             <vg-mute></vg-mute>
-                              <vg-volume></vg-volume>
-                        
-                              <vg-fullscreen></vg-fullscreen>
-                            </vg-controls>
-                        
-                            <video [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" >
-                              <source src="{{url}}" type="video/mp4">
-                        
-                            </video>
-                          </vg-player>
-                          
-                        </div>
-                        </div>  
-                        </div>
-                        <div class="imgs">
-                            <input [disabled]="disabledv" type="file" name="files[]" id="files" accept="video/*"  (change)="onVideoFileChange($event)" />
-                            <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
-                            <div class="images_contentPAra">
-                                <p class="images_contentPAra_txt">Take a video</p>
+                            <div class="error" *ngIf="fileSizeaInKB">Please Select file less then 100 MB</div>
+                            <div class="ctnt">
+                               <p>Take a Video or choose From <br>your library</p>
+                               <span>(You can add only 1 Video)</span>
                             </div>
-                        </div>
-                        <div class="error" *ngIf="fileSizeaInKB">Please Select file less then 100 MB</div>
-                        <div class="ctnt">
-                            <p>Take a Video or choose From <br>your library</p>
-                            <span>(You can add only 1 Video)</span>
-                        </div>
-                    </div>
-                    <div class="loader_screen" *ngIf="!loading"></div>
-                    <div class="loader" *ngIf="!videoloading">
-                      <img src="../../../assets/img/img/Mccc-black.gif" class="lightMode" alt="">
-                      <img src="../../../assets/img/img/Mccc-white.gif" alt="" class="darkMode">
-                    </div>
-                     <!-- Progress Bar -->
-                        <div class="pt-2 pb-2" *ngIf="progress">
+                         </div>
+                         <div class="loader_screen" *ngIf="!loading"></div>
+                         <div class="loader" *ngIf="!videoloading">
+                            <img src="../../../assets/img/img/Mccc-black.gif" class="lightMode" alt="">
+                            <img src="../../../assets/img/img/Mccc-white.gif" alt="" class="darkMode">
+                         </div>
+                         <!-- Progress Bar -->
+                         <div class="pt-2 pb-2" *ngIf="progress">
                             <p>Video uploading on server please wait...</p>
                             <div class="progress">
-                                <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+                               <div class="progress-bar" role="progressbar" [style.width]="progress + '%'" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
                             </div>
-                        </div>
-                    <div class="btnArea">                        
-                        <a (click)="videoSubmit($event)" class="next btnss_r ripple" type="button"> Save </a>
-                        <biutton [routerLink]="['/home']"  class="next outline" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}"> Close</biutton>            
-                    </div>
-                </form>
-                        </div>
-                    </div>
+                         </div>
+                         <div class="btnArea">                        
+                            <a (click)="videoSubmit($event)" class="next btnss_r ripple" type="button"> Save </a>
+                            <biutton [routerLink]="['/home']"  class="next outline" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}"> Close</biutton>            
+                         </div>
+                      </form>
+                   </div>
                 </div>
-            </div>
-        </div>
+             </div>
+          </div>
+       </div>
     </div>
-    <!-- <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Image Cropper</h4>
-                </div>
-                <div class="modal-body">
-                    <image-cropper [imageChangedEvent]="imageChangedEvent"
-                                    [maintainAspectRatio]="true"
-                                    [aspectRatio]="4 / 3"
-                                    [resizeToWidth]="500"
-                                    format="png"
-                                    (imageCropped)="imageCropped($event)"
-                                    (imageLoaded)="imageLoaded()"
-                                    (cropperReady)="cropperReady()"
-                                    (loadImageFailed)="loadImageFailed()" style="max-height:500px">
-                   </image-cropper>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" (click)="SaveCropedImage()">Save</button>
-                    <button type="button" class="btn btn-default" (click)="onCloseHandled()">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
+    <!-- <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h4 class="modal-title">Image Cropper</h4>
+               </div>
+               <div class="modal-body">
+                   <image-cropper [imageChangedEvent]="imageChangedEvent"
+                                   [maintainAspectRatio]="true"
+                                   [aspectRatio]="4 / 3"
+                                   [resizeToWidth]="500"
+                                   format="png"
+                                   (imageCropped)="imageCropped($event)"
+                                   (imageLoaded)="imageLoaded()"
+                                   (cropperReady)="cropperReady()"
+                                   (loadImageFailed)="loadImageFailed()" style="max-height:500px">
+                  </image-cropper>
+               </div>
+               <div class="modal-footer">
+                   <button type="button" class="btn btn-default" (click)="SaveCropedImage()">Save</button>
+                   <button type="button" class="btn btn-default" (click)="onCloseHandled()">Cancel</button>
+               </div>
+           </div>
+       </div>
+       </div> -->
     <button data-bs-toggle="modal" data-bs-target="#ModalForm" #openbutton style="display: none;"> OpenModel</button>
     <div class="modal fade modalbox input_text modeal_image" id="ModalForm" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Adjust Your Image</h5>
-                    <a #closebutton data-bs-dismiss="modal"><i class="far fa-times-circle"></i></a>
-                </div>
-                <div class="modal-body">
-                  <image-cropper [imageChangedEvent]="imageChangedEvent"
-                  [maintainAspectRatio]="true"
-                  [aspectRatio]="4 / 3"
-                  [resizeToWidth]="500"
-                  format="png"
-                  (imageCropped)="imageCropped($event)"
-                  (imageLoaded)="imageLoaded()"
-                  (cropperReady)="cropperReady()"
-                  (loadImageFailed)="loadImageFailed()" style="max-height:500px">
-                 </image-cropper>
-                </div>
-                <div class="modal-footer">
-                  <button type="button btnss_r ripple" class="btn btn-default" (click)="SaveCropedImage()">Save</button>
-                  <button type="button  btnss_r ripple" class="btn btn-default" (click)="onCloseHandled()">Close</button>
-                </div>
-            </div>
-        </div>
+       <div class="modal-dialog" role="document">
+          <div class="modal-content">
+             <div class="modal-header">
+                <h5 class="modal-title">Adjust Your Image</h5>
+                <a #closebutton data-bs-dismiss="modal"><i class="far fa-times-circle"></i></a>
+             </div>
+             <div class="modal-body">
+                <image-cropper [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="4 / 3"
+                [resizeToWidth]="500"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()"
+                (loadImageFailed)="loadImageFailed()" style="max-height:500px">
+                </image-cropper>
+             </div>
+             <div class="modal-footer">
+                <button type="button btnss_r ripple" class="btn btn-default" (click)="SaveCropedImage()">Save</button>
+                <button type="button  btnss_r ripple" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+             </div>
+          </div>
+       </div>
     </div>
-</div>
-
+ </div>

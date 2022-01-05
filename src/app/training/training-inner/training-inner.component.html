@@ -48,7 +48,8 @@
                         <p [innerHTML]="desc | titlecase"></p>
                         </div>
                 </div>
-                <label>Up Next</label>
+                <!-- <div *ngIf="upNext.length > 0"> -->
+                <label>Up Next</label>                
                 <div class="upNextVideos" *ngFor="let data of upNext">
                     <div class="vLeft" [routerLink]="['/training-video-view/',data.id,data.category_id]">
                         <img *ngIf="data.youtube_thumbnail == null " src="{{hostUrl}}{{data.thumbnail_path}}{{data.thumbnail}}">
@@ -62,7 +63,7 @@
                         <span [innerHTML]="data.description.substr(0, 35) + '...' | titlecase"></span>
                     </div>
                 </div>
-                
+                <!-- </div> -->
             </div>
         </div>
     </div>

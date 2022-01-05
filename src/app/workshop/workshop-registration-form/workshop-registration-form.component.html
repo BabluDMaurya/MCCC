@@ -36,11 +36,11 @@
                     </div>
                     <div class="profileDiv">
                         <label>Sex<span>*</span></label>
-                        <p class="innerDetail">{{currentUser.userDetails.gender}}</p>
+                        <p class="innerDetail">{{userData.data.user_details.gender}}</p>
                     </div>
                     <div class="profileDiv">
                         <label>Date of Birth<span>*</span></label>
-                        <p class="innerDetail">{{currentUser.userDetails.dob}}</p>
+                        <p class="innerDetail">{{userData.data.user_details.dob}}</p>
                     </div>
                     <div class="profileDiv">
                         <label>Email Id<span>*</span></label>
@@ -95,6 +95,9 @@
                         <label>Adhaar Card<span>*</span></label>
                         <div class="inputFile">
                             <input #fileInput type="file" accept="image/jpeg, image/png, image/jpg"  id="upkoadAdhPan" formControlName="aadhar_file" (change)="onFileChange2($event)" [ngClass]="{ 'is-invalid': submitted && f.aadhar_file.errors }">
+                            <div *ngIf="submitted && f.aadhar_file.errors" class="invalid-feedback">
+                                <div *ngIf="f.aadhar_file.errors.required" class="error-dw">Please upload Aadhar card photo.</div>
+                            </div>
                             <div *ngIf="aadharfileChoosen" class="file-name">{{aadharfileName}}</div>
                             <label for="upkoadAdhPan">Upload Adhaar</label>
                             <div class="fileUpIcon">
@@ -102,27 +105,24 @@
                                 <i class="fas fa-upload"></i>
                             </div>
                         </div>
-                        <div *ngIf="submitted && f.aadhar_file.errors" class="invalid-feedback">
-                            <div *ngIf="f.aadhar_file.errors.required" class="error-dw">Please upload Aadhar card photo.</div>
-                        </div>
+                        
                     </div>
 
                     <div class="profileDiv uploadPan">
                         <label>Pan Card<span>*</span></label>
                         <div class="inputFile">
                             <input #fileInput type="file" accept="image/jpeg, image/png, image/jpg" formControlName="pan_file" id="upkoadPan" class="upkoadPans" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.pan_file.errors }">
+                            <div *ngIf="submitted && f.pan_file.errors" class="invalid-feedback">
+                                <div *ngIf="f.pan_file.errors.required" class="error-dw">Please upload Pan card photo.</div>
+                            </div>
                             <div *ngIf="panfileChoosen" class="file-name">{{panfileName}}</div>
                             <label for="upkoadPan">Upload Pan</label>
                             <div class="fileUpIcon">
                                 <!-- <img src="assets/img/img/uploadFile.webp" alt=""> -->
                                 <i class="fas fa-upload"></i>
                             </div>
-                        </div>
-                        <div *ngIf="submitted && f.pan_file.errors" class="invalid-feedback">
-                            <div *ngIf="f.pan_file.errors.required" class="error-dw">Please upload Pan card photo.</div>
-                        </div>
+                        </div>                        
                     </div>
-
                     <div class="profileDiv">
                         <label *ngIf="type == 2">Why you want to attend this workshop?<span class="text-danger">*</span></label>
                         <div class="inputs">

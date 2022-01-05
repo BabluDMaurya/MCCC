@@ -10437,11 +10437,24 @@ body.dark-mode-active.rtl-mode .notification-dialog.android-style .notification-
 }
 
 .wrrpperHomeScreen .bottomContent h1 {
-  font-style: italic;
+  font-style: normal;
   color: #fff;
   margin-bottom: 0;
   font-size: 36px;
   font-weight: 700;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.wrrpperHomeScreen .bottomContent h1 i{
+  font-size: 14px;
+  position: absolute;
+  left: -15px;
+}
+.wrrpperHomeScreen .bottomContent h1 i:last-child{
+  left: initial;
+  right: -20px;
+  /* bottom: 0; */
 }
 
 .wrrpperHomeScreen .bottomContent p {
@@ -10520,28 +10533,28 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
 }
 
 .wrrpperHomeSlider .sliderss .homeSliders.first {
-  background: url("../../assets/img/img/slider1.webp");
+  background: url("../../assets/img/img/casting.png");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .wrrpperHomeSlider .sliderss .homeSliders.second {
-  background: url("../../assets/img/img/slider2.webp");
+  background: url("../../assets/img/img/training.png");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .wrrpperHomeSlider .sliderss .homeSliders.third {
-  background: url("../../assets/img/img/slider3.webp");
+  background: url("../../assets/img/img/events.png");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .wrrpperHomeSlider .sliderss .homeSliders.fourth {
-  background: url("../../assets/img/img/slider4.webp");
+  background: url("../../assets/img/img/bts.png");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10596,6 +10609,7 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  color: #ff6554;
 }
 
 .wrrpperHomeSlider .sliderss .bottomContent button {
@@ -14451,6 +14465,162 @@ body.dark-mode-active .personal_prfile_wrapper .head_tabs ul{
   top: inherit;
   bottom: 0px;
 }
+.personal_profilesDivs .imgContent{
+  height: inherit;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.personal_profilesDivs #images .imgContent .imgPrevw{
+  width: initial;
+  margin-top: 30px;
+  margin-bottom: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  position: relative;
+}
+.personal_profilesDivs #images .imgContent .imgPrevw .prvwImg{
+  border-radius: 5px;
+  overflow: inherit;
+  position: relative;
+}
+
+.personal_profilesDivs #images .imgContent .imgPrevw .prvwImg img {
+  width: 100%;
+  object-fit: cover;
+  max-height: 150px;
+  object-position: center;
+  border-radius: 10px;
+}
+
+.personal_profilesDivs #images .imgContent .imgPrevw .prvwImg .multi-field {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+}
+
+.personal_profilesDivs #images .imgContent .imgPrevw .prvwImg .multi-field button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #ff6554;
+  opacity: 1;
+}
+.personal_profilesDivs #images .imgContent .imgPrevw .prvwImg img {
+  width: 100%;
+  object-fit: cover;
+  height:150px;
+  max-height: 150px;
+  object-position: center;
+  border-radius: 10px;
+}
+
+.personal_profilesDivs #images .imgContent .imgPrevw .prvwImg .edit_btn, .personal_profilesDivs #videos .imgContent .imgPrevw .prvwImg .edit_btn {
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+}
+
+.personal_profilesDivs #images .imgContent .imgPrevw .prvwImg .edit_btn a, .personal_profilesDivs #videos .imgContent .imgPrevw .prvwImg .edit_btn a{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #ff6554;
+  opacity: 1;
+}
+
+
+.personal_profilesDivs #images .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button i, .personal_profilesDivs #videos .imgContent .imgPrevw.img_Prevw .prvwImg .multi-field button i {
+  font-size: 17px;
+}
+
+.personal_profilesDivs .imgContent .imgs{
+  position: relative;
+}
+
+.personal_profilesDivs .imgContent .imgs input{
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.personal_profilesDivs .ctnt P{
+  font-size: 15px;
+  color: #000;
+  text-align: center;
+  line-height: normal;
+}
+.personal_profilesDivs .ctnt span {
+  font-size: 12px;
+  color: #000;
+  line-height: normal;
+  display: block;
+  text-align: center;
+}
+.personal_profilesDivs .btnArea {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: initial;
+}
+
+.personal_profilesDivs .btnArea .next {
+  height: 45px;
+  line-height: 45px;
+  padding: 0;
+}
+
+.personal_profilesDivs .btnArea .next.outline {
+  background: transparent;
+  color: #000;
+  border: 1px solid #ff6454;
+}
+
+.personal_profilesDivs #images .btnArea .next, .personal_profilesDivs #videos .btnArea .next{
+  width: 44%;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 50px;
+  font-weight: 600;
+  display: block;
+  padding: 0;
+  line-height: 45px;
+}
+.personal_profilesDivs .images_contentPAra {
+  position: absolute;
+  top: 64%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+
+.personal_profilesDivs .images_contentPAra .images_contentPAra_txt {
+  font-size: 14px;
+  color: #ff6554;
+  font-weight: 600;
+  pointer-events: none;
+}
+
 .upload_img_video .modeal_image .modal-dialog .modal-header a i{
   color: #ff6554;
 }
@@ -14538,6 +14708,18 @@ body.dark-mode-active .personal_prfile_wrapper .head_tabs ul{
   background-color: #ff6554;
   color: #fff;
   width: 100%;
+}
+
+.personal_profilesDivs .imgContent .imgPrevw {
+  grid: initial;
+  position: relative;
+  min-width: 300px;
+  height: 150px;
+}
+.personal_profilesDivs .imgContent  .imgPrevw .video-player-wrapper {
+  max-height: 200px;
+  min-width: 300px;
+  height: 150px;
 }
 
 .profile.personal_profile .profileWrpper .profiles .profileDiv label{

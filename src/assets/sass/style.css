@@ -14835,12 +14835,12 @@ div.mat-menu-panel.bdc-walk-popup .buttons .sideNote{
 /* div.mat-menu-panel.bdc-walk-popup.ng-tns-c95-0.arrow.mat-menu-after:not(.horizontal):after, div.mat-menu-panel.bdc-walk-popup.ng-tns-c95-0.arrow.mat-menu-after:not(.horizontal):before{
   left: 20px!important;
 } */
-/* div.mat-menu-panel.bdc-walk-popup.ng-tns-c95-1.arrow.mat-menu-after:not(.horizontal):after, div.mat-menu-panel.bdc-walk-popup.ng-tns-c95-1.arrow.mat-menu-after:not(.horizontal):before{
+div.mat-menu-panel.bdc-walk-popup.ng-tns-c95-1.arrow.mat-menu-after:not(.horizontal):after, div.mat-menu-panel.bdc-walk-popup.ng-tns-c95-1.arrow.mat-menu-after:not(.horizontal):before{
   left: 60px!important;
 }
 div.mat-menu-panel.bdc-walk-popup.ng-tns-c95-2.arrow.mat-menu-after:not(.horizontal):after, div.mat-menu-panel.bdc-walk-popup.ng-tns-c95-2.arrow.mat-menu-after:not(.horizontal):before{
-  left: 210px!important;
-} */
+  left: 175px!important;
+}
 /* .cdk-global-overlay-wrapper {
 display: flex;
 justify-content: center;

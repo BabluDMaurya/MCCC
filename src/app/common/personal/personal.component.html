@@ -295,6 +295,9 @@
                         <div class="imgs">
                             <input type="file" name="files[]" id="files" (change)="ifileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/jpg,">
                             <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
+                            <div class="images_contentPAra">
+                                <p class="images_contentPAra_txt">Take a photo</p>
+                            </div>
                         </div>
                         <div class="ctnt">
                             <p>Take a Photo or choose From <br>your library</p>
@@ -404,7 +407,11 @@
                         </div>
                         <div class="imgs">
                             <input [disabled]="disabledv" type="file" name="files[]" id="files" accept="video/*"  (change)="onVideoFileChange($event)" />
-                            <img src="assets/img/img/takeVideo.webp" alt="" for="photo">
+                            <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
+                            <div class="images_contentPAra">
+                                <p class="images_contentPAra_txt" *ngIf="!videoFound">Take a video</p>
+                                <p class="images_contentPAra_txt" *ngIf="videoFound">Change the video</p>
+                            </div>
                         </div>
                         <div class="error" *ngIf="fileSizeaInKB">Please Select file less then 100 MB</div>
                         <div class="ctnt">
@@ -425,8 +432,8 @@
                             </div>
                         </div>
                     <div class="btnArea">                        
-                        <button (click)="videoSubmit($event)" class="next btnss_r ripple" type="button"> Save </button>
-                        <a [routerLink]="['/home']"  class="next outline" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}"> Close</a>            
+                        <a (click)="videoSubmit($event)" class="next btnss_r ripple" type="button"> Save </a>
+                        <biutton [routerLink]="['/home']"  class="next outline" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}"> Close</biutton>            
                     </div>
                 </form>
                         </div>

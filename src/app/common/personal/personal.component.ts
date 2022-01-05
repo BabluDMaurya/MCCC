@@ -21,7 +21,7 @@ declare var $: any;
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
-  toastError:string = 'toast-11';
+  toastError:string = 'toast-6';
   @ViewChild('openbutton') openbutton :any;
   @ViewChild('closebutton') closebutton :any;
   public countryList:{id:number,name:string, code:string}[] = countries;

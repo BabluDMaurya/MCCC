@@ -60,7 +60,7 @@ export class WorkshopRegistrationFormComponent implements OnInit {
     this.dashboardService.userDetails({casting_id:''}).subscribe(
       data => { 
         this.userData = data;
-        console.log(data);
+        console.log("User Data:",data);
     });
 
     if(this.type == 1){

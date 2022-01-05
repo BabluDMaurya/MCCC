@@ -1,6 +1,6 @@
 <div class="mainHeader">
     <div class="top_header">
-        <div class="hamburger left">
+        <div class="hamburger left" [bdcWalkTriggerFor]="example2Step1">
             <div id="nav-icon4" class="headerButton" data-bs-toggle="offcanvas" data-bs-target="#sidebarPanel">
                 <span></span>
                 <span></span>
@@ -12,13 +12,13 @@
             <img src="assets/img/img/white_logo.webp" class="darkMode" alt="">
         </div>
         <div class="lats_side">
-            <div class="notification" [routerLink]="['/notification']">
+            <div class="notification" [routerLink]="['/notification']" [bdcWalkTriggerFor]="example2Step2">
                 <ion-icon name="notifications-outline"></ion-icon>
                 <div class="notificationsCount">
                     <span>{{getCount}}</span>
                 </div>
             </div>
-            <div class="avtars">
+            <div class="avtars" [bdcWalkTriggerFor]="example2Step3">
                 <div class="avatar">
                     <a data-bs-toggle="offcanvas" href="#offcanvas-right">
                         <!-- <img src="assets/img/img/avtar.webp" alt="avatar" class="rounded"> -->
@@ -27,25 +27,26 @@
                     </a>
                 </div>
             </div>
+            
         </div>
     </div>
     <div class="bottomHeader">
         <div class="tabs">
-            <div class="box" [bdcWalkTriggerFor]="example2Step1">
+            <div class="box" [bdcWalkTriggerFor]="example2Step4">
                <a [routerLink]="['/casting/1']">
                     <img src="assets/img/img/casting.webp" class="lightMode" alt="">
                     <img src="assets/img/img/white_casting.webp" class="darkMode" alt="">
                     <div class="label">Casting</div>
                </a>
             </div>
-            <div class="box" [bdcWalkTriggerFor]="example2Step2">
+            <div class="box" [bdcWalkTriggerFor]="example2Step5">
                <a [routerLink]="['/workshop/1']">
                 <img src="assets/img/img/workshop.webp"  class="lightMode" alt="">
                 <img src="assets/img/img/white_workshop.webp" class="darkMode" alt="">
                 <div class="label">Workshop</div>
                </a>
             </div>
-            <div class="box" [bdcWalkTriggerFor]="example2Step3">
+            <div class="box" [bdcWalkTriggerFor]="example2Step6">
                <a [routerLink]="['/bts']">
                     <img src="assets/img/img/bts.webp"  class="lightMode" alt="">
                     <img src="assets/img/img/white_bts.webp" class="darkMode" alt="">
@@ -53,7 +54,7 @@
                </a>
             </div>
             <div class="box">
-                <a [routerLink]="['/training']">
+                <a [routerLink]="['/training']" [bdcWalkTriggerFor]="example2Step7">
                     <img src="assets/img/img/training.webp"  class="lightMode" alt="">
                     <img src="assets/img/img/white_training.webp" class="darkMode" alt="">
                     <div class="label">Training</div>
@@ -102,23 +103,36 @@
             </li>
         </ul>
     </div>
-    <!-- * Extra Header -->
-
-
-    <bdc-walk-popup #example2Step1 name="example2Step1" header="Casting" xPosition="after" sideNoteText="1/3" [showButton]="true" buttonText="Next" [mustCompleted]="{dialogWelcome: true}" [onButtonCompleteTask]="{example2Next: 1}">
+    <!-- * Extra Header --> 
+      <bdc-walk-popup #example2Step1 name="example2Step1" header="Menu" xPosition="after" yPosition="below" sideNoteText="1/8" [showButton]="true" buttonText="Next" [mustCompleted]="{dialogWelcome: true}" [onButtonCompleteTask]="{example2Next: 1}">
         The next popup will only be displayed if you click <b>Next</b>.
       </bdc-walk-popup>
       
-      <bdc-walk-popup #example2Step2 name="example2Step2" header="Workshop" xPosition="after" sideNoteText="2/3" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 1}" [onButtonCompleteTask]="{example2Next: 2}">
+      <bdc-walk-popup #example2Step2 name="example2Step2" header="Notification" xPosition="before" yPosition="below" sideNoteText="2/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 1}" [onButtonCompleteTask]="{example2Next: 2}">
+        The next popup will only be displayed if you click <b>Next</b>.
+      </bdc-walk-popup>
+
+      <bdc-walk-popup #example2Step3 name="example2Step3" header="Profile" xPosition="before" yPosition="below" sideNoteText="3/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 2}" [onButtonCompleteTask]="{example2Next: 3}">
+        The next popup will only be displayed if you click <b>Next</b>.
+      </bdc-walk-popup>
+
+      <bdc-walk-popup #example2Step4 name="example2Step4" header="Casting" xPosition="after" yPosition="below" sideNoteText="4/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 3}" [onButtonCompleteTask]="{example2Next: 4}">
         The next popup will only be displayed if you click <b>Next</b>.
       </bdc-walk-popup>
       
-      <bdc-walk-popup #example2Step3 name="example2Step3" header="BTS" xPosition="after" sideNoteText="3/3" [showButton]="true" [mustCompleted]="{example2Next: 2}" [onButtonCompleteTask]="{example2Next: 3}">
-        This is the last popup.
+      <bdc-walk-popup #example2Step5 name="example2Step5" header="Workshop" xPosition="after" yPosition="below" sideNoteText="5/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 4}" [onButtonCompleteTask]="{example2Next: 5}">
+        The next popup will only be displayed if you click <b>Next</b>.
+      </bdc-walk-popup>
+      
+      <bdc-walk-popup #example2Step6 name="example2Step6" header="BTS" xPosition="before" yPosition="below" sideNoteText="6/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 5}" [onButtonCompleteTask]="{example2Next: 6}">
+        The next popup will only be displayed if you click <b>Next</b>.
       </bdc-walk-popup>
 
-
-
+      <bdc-walk-popup #example2Step7 name="example2Step7" header="Training" xPosition="before" yPosition="below" sideNoteText="7/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 6}" [onButtonCompleteTask]="{example2Next: 7}">
+        The next popup will only be displayed if you click <b>Next</b>.
+      </bdc-walk-popup>
+      
+      
     <!-- <bdc-walk-popup #example2Step1 name="example2Step1" header="Casting" xPosition="after" sideNoteText="1/4" [showButton]="true" buttonText="Next" [mustCompleted]="{dialogWelcome: true}" [onButtonCompleteTask]="{example2Next: 1}">
         The next popup will only be displayed if you click <b>Next</b>.
       </bdc-walk-popup>

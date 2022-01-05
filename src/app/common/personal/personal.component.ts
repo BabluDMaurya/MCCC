@@ -21,6 +21,7 @@ declare var $: any;
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
+
   toastError:string = 'toast-6';
   @ViewChild('openbutton') openbutton :any;
   @ViewChild('closebutton') closebutton :any;
@@ -119,6 +120,7 @@ iresData:any;
 idatas:any
 totalupimg: any;
 disabledi : boolean = false;
+videoFound : boolean = false;
 
   constructor(private location:Location,
     public datepipe: DatePipe,
@@ -167,6 +169,13 @@ disabledi : boolean = false;
       this.vresData = res;   
       this.vdatas = this.vresData.data;
       this.videoArray = this.vdatas;
+      console.log("video length :",this.videoArray);
+      if(this.videoArray == 'No Record Found'){
+        this.videoFound = false;
+      }else{
+        this.videoFound = true;
+      }
+      
     },error=>{
 
     });
@@ -551,6 +560,7 @@ disabledi : boolean = false;
             this.videosaved = newVideo;   
             this.videos = this.videosaved;
             this.newVideoAdded = true;      
+            this.videoFound = true;
             // this.newVideoAdded = false;           
           }
           reader.readAsDataURL(event.target.files[i]);

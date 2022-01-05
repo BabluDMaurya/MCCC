@@ -134,15 +134,12 @@ export class HomeComponent implements OnInit {
         this.workshopService.get_all_workshop_data({'limit': 5}).subscribe(
           data => { 
             this.workshsopData = data.data;
-            // console.log(this.workshsopData , 'workshop');
-            
+            // console.log(this.workshsopData , 'workshop');            
             this.eventForYouData = this.workshsopData.event_for_u;
             this.onGoingData = this.workshsopData.on_going;
             this.upcoming = this.workshsopData.upcoming;
             this.upcomingNoData = this.upcoming[0].noData;
-            this.eventForYouNoData = this.eventForYouData[0].noData;
-
-            
+            this.eventForYouNoData = this.eventForYouData[0].noData;            
             this.loading = true;
             if(this.upcomingData == 'No Data'){
               this.upcomingData = [];

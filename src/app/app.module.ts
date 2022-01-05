@@ -95,6 +95,7 @@ import { BookmarkCastingCardComponent } from './_components/bookmark-casting-car
 import { SupportComponent } from './support/support.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PasswordComponent } from './password/password.component';
+import { InnerSplashComponent } from './inner-splash/inner-splash.component';
 
 @NgModule({
   declarations: [
@@ -162,7 +163,8 @@ import { PasswordComponent } from './password/password.component';
     NoInternetComponent,
     BookmarkCastingCardComponent,
     SupportComponent,
-    PasswordComponent
+    PasswordComponent,
+    InnerSplashComponent
   ],
   imports: [
     BrowserModule,

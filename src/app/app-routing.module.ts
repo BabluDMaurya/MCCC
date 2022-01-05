@@ -47,6 +47,7 @@ import { SupportComponent } from './support/support.component';
 import { PasswordComponent } from './password/password.component';
 
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { InnerSplashComponent } from './inner-splash/inner-splash.component';
 
 // RouterModule.forRoot(Router, {scrollPositionRestoration: 'enabled'})
 
@@ -67,6 +68,10 @@ const routes: Routes = [{
 {    
   path: 'splash',component: SplashComponent,    
   data: {title: 'splash'}    
+},
+{    
+  path: 'inner-splash',component: InnerSplashComponent,    
+  data: {title: 'inner splash'}    
 },
 {    
   path: 'signin-signup',component: SigninSignupComponent,    

@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
   upcomingNoData: boolean = true;
   eventForYouNoData: boolean = true;
   topBTSV : boolean = false;
+  innerSlide : any = false;
   constructor(
     private authenticationService: AuthenticationService,
     private route: Router,
@@ -55,6 +56,10 @@ export class HomeComponent implements OnInit {
     private workshopService: WorkshopService,
     private bdcWalkService: BdcWalkService
     ) {
+      this.innerSlide = localStorage.getItem('innerSlide');
+      if(!this.innerSlide){
+        this.route.navigate(['/inner-splash']);
+      }else{   
       this.localData = localStorage.getItem('currentUser');
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -72,6 +77,7 @@ export class HomeComponent implements OnInit {
     this.dashboardService.listen().subscribe((e:any)=>{
       this.ngOnInit();
     });
+    }
   }
   //-----slick slider------------//    
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,autoplay: true,autoplaySpeed: 2000,'nextArrow':false,'prevArrow':false};

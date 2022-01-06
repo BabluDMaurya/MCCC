@@ -10411,6 +10411,7 @@ body.dark-mode-active.rtl-mode .notification-dialog.android-style .notification-
 
 .wrrpperHomeScreen .logos {
   width: 50%;
+  margin-bottom: 100px;
 }
 
 .wrrpperHomeScreen .logos img {
@@ -10442,7 +10443,7 @@ body.dark-mode-active.rtl-mode .notification-dialog.android-style .notification-
   margin-bottom: 0;
   font-size: 36px;
   font-weight: 700;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   position: relative;
 }
 

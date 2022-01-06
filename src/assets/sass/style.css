@@ -99,7 +99,7 @@ button:hover, button:active, button:focus {
 .main.casting_inner.sidePaading0.bts_inner_inner.videos_play{
   margin-top: 0;
 }
-.main.casting_inner.sidePaading0.bts_inner_inner.videos_play .mainHeader.video_header{
+.mainHeader.video_header{
   background: transparent!important;
   box-shadow: inherit!important;
 }
@@ -10921,7 +10921,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   border: 2px solid #ff6454;
   background: transparent;
   border-radius: 5px;
-  line-height: 45px;
+  line-height: 40px;
   height: 45px;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -11003,7 +11003,7 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   border: 2px solid #ff6454;
   background: transparent;
   border-radius: 5px;
-  line-height: 45px;
+  line-height: 40px;
   height: 45px;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -11722,7 +11722,7 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 }
 
 .offcanvas {
-  z-index: 99999;
+  z-index: 999999;
 }
 .leftSideBar#sidebarPanel .offcanvas-body {
   padding-top: 120px;
@@ -11829,6 +11829,9 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   font-size: 22px;
   color: #ff6554;
   padding-right: 5px;
+}
+ .mainHeader .top_header .lats_side .avtars a ion-icon{
+  font-size: 22px;
 }
 
 .completeProfilesModal .modal-header a {
@@ -11940,8 +11943,17 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   left: 32px;
 }
 
+.cdk-overlay-connected-position-bounding-box{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0006; 
+}
+
 .circleMenu {
-  height: 70px;
+  height: 67px;
   position: fixed;
   left: 50%;
   bottom: 0;
@@ -11972,7 +11984,7 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
           box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   color: white;
   text-align: center;
-  line-height: 3.9;
+  line-height: 3.5;
   cursor: pointer;
   outline: 0;
 }
@@ -11980,6 +11992,9 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 .circular-menu .floating-btn .logoMenuImg{
   width: 56px;
   height: auto;
+}
+.circular-menu.active .floating-btn .logoMenuImg {
+  width: 45px;
 }
 .circular-menu .floating-btn .logoMenuImg img{
   width: 100%;
@@ -12051,7 +12066,7 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 
 .circular-menu.active a.floating-btn .cross__Menu {
   display: block;
-  font-size: 45px;
+  /* font-size: 56px; */
 }
 
 .circular-menu.active a.floating-btn .logo__Menu {
@@ -12716,10 +12731,30 @@ body.dark-mode-active .training .trainingWrapper .otherTrainingVid .videosWithCo
   height: 25px;
 }
 
-.casting_inner .mainHeader .top_header .arrowLeft ion-icon {
+.casting_inner .mainHeader .top_header .arrowLeft.back_header ion-icon {
   font-size: 25px;
-  color: #ff6454;
+  color: #fff;
+  background: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  transform: translate(0px,2px);
 }
+
+.casting_inner .mainHeader .top_header .arrowLeft.back_header ion-icon:before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: #000;
+  border-radius: 50%!important;
+  box-shadow: 0px 0px 45px #000;
+  opacity: 0.7;
+  z-index: -1;
+}
+
 .input_text .modal-body form .basic .input-wrapper label{
   font-size: 12px;
   color: #ff6454;
@@ -13394,6 +13429,8 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner {
   position: fixed;
+  width: 100%;
+  top: 0;
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeVideos {
@@ -13419,7 +13456,7 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
   margin: 0;
   line-height: normal;
   color: #000;
-  padding-right: 8px;
+  padding-right: 12px;
 }
 body.dark-mode-active .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent p {
   color: #fff!important;
@@ -13469,6 +13506,7 @@ body.dark-mode-active .toast-box{
   line-height: normal;
   padding-bottom: 15px;
   font-weight: 600;
+  /* padding-left: 20px; */
 }
 
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos {
@@ -13798,8 +13836,8 @@ body.dark-mode-active .about p {
   font-size: 16px;
   color: #000;
   line-height: normal;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 30px;
+  padding-bottom: 10px;
   padding-left: 16px;
   font-weight: 600;
 }
@@ -14978,9 +15016,9 @@ i.far.fa-bookmark, i.fas.fa-bookmark.removecard{
   max-width: 100%;
   max-height: 100%;
   text-align: center;
+  color: #000;
 }
 div.mat-menu-panel.bdc-walk-popup.arrow, .mat-dialog-container{
-  /* position: absolute!important; */
   background: #fff;
 }
 .cdk-overlay-pane .mat-dialog-container .ng-star-inserted h1{
@@ -15011,10 +15049,84 @@ div.mat-menu-panel.bdc-walk-popup .buttons button{
   border: none;
   color: #fff!important;
   background: #ff6454;
+  padding: 0 5px!important;
+  min-width: 40px;
+  line-height: 25px!important;
+}
+
+.dark-mode-active .personal_profilesDivs #images .btnArea .next, .personal_profilesDivs #videos .btnArea .next{
+  color: #fff!important;
+}
+
+div.mat-menu-panel.bdc-walk-popup .buttons button span{
+  font-size: 12px;
+}
+div.mat-menu-panel.bdc-walk-popup .title .header{
+  font-size: 16px;
+}
+div.mat-menu-panel.bdc-walk-popup p{
+  margin: 0;
+  line-height: 21px;
+  font-size: 14px;
 }
 div.mat-menu-panel.bdc-walk-popup .buttons .sideNote{
   color: #ff6554!important;
 }
+
+.back_btns {
+  background: #ff6554;
+  color: #fff;
+  padding: 0 25px;
+  border-radius: 20px;
+}
+.outline_btns {
+  border: 1px solid #000;
+  border-radius: 25px;
+  padding: 0px 25px;
+  color: #000;
+}
+.dark-mode-active .outline_btns{
+  border: 1px solid #fff;
+  color: #fff;
+}
+div#ModalForm .modal-header .modal-title{
+  color: #ff6554;
+}
+div#ModalForm .modal-header a i{
+  color: #ff6554;
+}
+#training .moviesArea .youtubeContent{
+  display: flex;
+  position: relative;
+}
+#training .moviesArea .youtubeContent .shaveIcon{
+  position: absolute;
+    right: 0;
+}
+/* .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeVideos .shaveIcon{
+  bottom: initial;
+} */
+#cdk-overlay-7{
+  right: initial!important;
+  left: 50%;
+  transform: translateX(-50%)!important;
+}
+#cdk-overlay-7 div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, #cdk-overlay-7 div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before{
+  right: initial;
+  left: 50%;
+  transform: translateX(-50%);
+}
+div.mat-menu-panel.bdc-walk-popup{
+  min-width: initial!important;
+  width: 250px!important;
+}
+
+/* div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before */
+/* #cdk-overlay-7 .mat-menu-panel.bdc-walk-popup.modal_steps.arrow {
+  right: inherit;
+  left: 50%;
+  transform: translateX(-50%);
+} */
 /* div.mat-menu-panel.bdc-walk-popup.ng-tns-c95-0.arrow.mat-menu-after:not(.horizontal):after, div.mat-menu-panel.bdc-walk-popup.ng-tns-c95-0.arrow.mat-menu-after:not(.horizontal):before{
   left: 20px!important;
 } */
@@ -15050,3 +15162,46 @@ z-index: 1000;
   min-height: inherit;
   max-height: inherit;
 } */
+
+
+
+
+
+/* youtube__back__button */
+/* .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeVideos:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 30px;
+  height: 35px;
+  background: #fff;
+  border-bottom-right-radius: 50px;
+  z-index: 99;
+}
+
+.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeVideos:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+  width: 35px;
+  height: 40px;
+  z-index: 9;
+  border-bottom-right-radius: 50px;
+}
+
+.casting_inner .mainHeader .top_header .arrowLeft ion-icon {
+  font-size: 20px;
+  color: #ff6454;
+  transform: translate(-8px, -16px);
+} */
+/* youtube__back__button-end*/
+
+@media (max-width:340px){
+  div.mat-menu-panel.bdc-walk-popup {
+      min-width: initial!important;
+      width: 230px!important;
+  }
+}

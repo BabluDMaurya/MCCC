@@ -6,7 +6,7 @@ import { DashboardService } from '../../_service/dashboard.service';
 import { User } from '../../_models/user';
 import { Config } from 'src/app/_config/config';
 import {BdcWalkService} from 'bdc-walkthrough';
-
+declare var $: any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -47,6 +47,10 @@ export class HeaderComponent implements OnInit {
           this.data = this.resData.data.user_details;
           // console.log(this.resData.data.user_details);
         });
+
+        // $('.clickClass').on('click',function(){
+          
+        // });
   }
   getUserNotificationCounter(){
     this.dashboardService.getUserNotificationCounter(null)
@@ -55,5 +59,7 @@ export class HeaderComponent implements OnInit {
       // console.log(this.getCount + 'count');
     });
   }
-
+  // clickClass(){
+  //   $('.mccc').addClass('popUpClass');
+  // }
 }

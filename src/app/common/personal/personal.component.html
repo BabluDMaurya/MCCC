@@ -240,7 +240,7 @@
                       </div>
                       <div class="submit">
                          <button [disabled]="disabledv" type="submit" class="btns btnss_r ripple">Submit</button>
-                         <a [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}" class="btns outline" [routerLink]="['/home']"> Close</a>
+                         <a [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}" class="btns outline" [routerLink]="['/home']"> Cancel</a>
                       </div>
                       </form>
                    </div>
@@ -265,6 +265,9 @@
                                      <i class="far fa-times-circle"></i>
                                      </button>
                                   </div>
+                                  <div class="edit_btn" (click)="cropImage(url.imgId)">
+                                    <a><i class="far fa-edit"></i></a>
+                                 </div>
                                </div>
                                <div class="prvwImg" *ngFor='let url of cropimages; let j=index;'>
                                   <img src="{{url.imgBase64}}" (click)="cropImage(url.imgId)" alt="">
@@ -301,10 +304,10 @@
                          </div>
                          <div class="btnArea" *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
                             <a [ngStyle]="{'pointer-events': disabledi ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next">Save</a>
-                            <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Close</button>
+                            <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Cancel</button>
                          </div>
                          <div class="btnArea" *ngIf="imgArray.length == 3">
-                            <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Close</button>
+                            <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Cancel</button>
                          </div>
                       </form>
                    </div>
@@ -370,17 +373,13 @@
                                      </vg-player>
                                   </div>
                                </div>
-                               <div class="edit_btn">
-                                   <a>
-                                       <i class="far fa-edit" aria-hidden="true"></i>
-                                    </a>
-                                </div>
                             </div>
                             <div class="imgs">
                                <input [disabled]="disabledv" type="file" name="files[]" id="files" accept="video/*"  (change)="onVideoFileChange($event)" />
                                <img src="assets/img/img/photoUpload.webp" alt="" for="photo">
                                <div class="images_contentPAra">
-                                  <p class="images_contentPAra_txt">Take a video</p>
+                                    <p class="images_contentPAra_txt" *ngIf="!videoFound">Take a video</p>
+                                    <p class="images_contentPAra_txt" *ngIf="videoFound">Change the video</p>
                                </div>
                             </div>
                             <div class="error" *ngIf="fileSizeaInKB">Please Select file less then 100 MB</div>
@@ -403,7 +402,7 @@
                          </div>
                          <div class="btnArea">                        
                             <a (click)="videoSubmit($event)" class="next btnss_r ripple" type="button"> Save </a>
-                            <biutton [routerLink]="['/home']"  class="next outline" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}"> Close</biutton>            
+                            <biutton [routerLink]="['/home']"  class="next outline" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}"> Cancel</biutton>            
                          </div>
                       </form>
                    </div>
@@ -458,8 +457,8 @@
                 </image-cropper>
              </div>
              <div class="modal-footer">
-                <button type="button btnss_r ripple" class="btn btn-default" (click)="SaveCropedImage()">Save</button>
-                <button type="button  btnss_r ripple" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+                <button type="button btnss_r ripple" class="btn btn-default back_btns" (click)="SaveCropedImage()">Save</button>
+                <button type="button  btnss_r ripple" class="btn btn-default outline_btns" (click)="onCloseHandled()">Cancel</button>
              </div>
           </div>
        </div>

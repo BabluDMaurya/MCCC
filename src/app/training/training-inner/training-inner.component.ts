@@ -56,10 +56,12 @@ export class TrainingInnerComponent implements OnInit {
         this.trainingVideo = res.data;
         this.vid = this.trainingVideo[0].video_url+'?autoplay=1&modestbranding=1&showinfo=0&amp&controls=0';
         this.iframe.nativeElement.contentWindow.location.replace(this.vid);
+        
         this.upNext = res.category_videos;
+        console.log("Next:",this.upNext);
         this.desc = this.trainingVideo[0].description;
         this.length = this.desc.length;
-        console.log(this.desc.length);
+        console.log("desc length:",this.desc.length);
       }
      
       console.log(this.trainingVideo);

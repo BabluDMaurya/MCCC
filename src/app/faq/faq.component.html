@@ -15,7 +15,7 @@
                 <div class="para_skeleton"></div>           
             </div>
             <div class="accordion" id="accordionCasting">
-                <div class="accordion-item" *ngFor="let item of casting_calls; let i = index">
+                <div class="accordion-item" *ngFor="let item of casting_calls; let i = index" [id]="'accordionExample'+i">
                     <h2 class="accordion-header">
                         <button class="accordion-button" [ngClass]="{ 'collapsed': i != 0 }" type="button" data-bs-toggle="collapse"
                             [attr.data-bs-target]="'#accordioncc'+i" [innerHTML]="item.title"></button>

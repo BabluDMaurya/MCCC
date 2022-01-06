@@ -22,7 +22,7 @@ export class CompleteProfileComponent implements OnInit {
   qualiCount : number = 1;
   socialCount : number = 1;
   back_link :any =  "";
-  component_title : string = 'Complete your Profile';
+  component_title : string = 'Complete Your Profile';
   submitted: boolean = false;
   form: FormGroup | any;
   experiences: FormArray | any;

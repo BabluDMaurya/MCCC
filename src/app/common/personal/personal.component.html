@@ -306,7 +306,7 @@
                             <a [ngStyle]="{'pointer-events': disabledi ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next">Save</a>
                             <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Cancel</button>
                          </div>
-                         <div class="btnArea" *ngIf="imgArray.length == 3">
+                         <div class="btnArea flexingBtn" *ngIf="imgArray.length == 3">
                             <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Cancel</button>
                          </div>
                       </form>

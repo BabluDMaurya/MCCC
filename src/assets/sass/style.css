@@ -15122,6 +15122,51 @@ div.mat-menu-panel.bdc-walk-popup{
   width: 250px!important;
 }
 
+
+.thank_sliders .banner_content p {
+  font-size: 16px;
+  color: #ff6554;
+  line-height: normal;
+  text-align: center;
+  padding: 0 20px;
+  margin-bottom: 0;
+  position: relative;
+  font-style: italic;
+  margin: 0 5px;
+}
+
+.thank_sliders .banner_content p i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ff6554;
+}
+
+.thank_sliders .banner_content p i:last-child {
+  position: absolute;
+  top: initial;
+  left: initial;
+  right:0;
+  bottom: 0;
+  color: #ff6554;
+}
+
+.thank_you_slider {
+  max-height: 90px;
+}
+
+.btnArea.flexingBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successs.thankyou_casting .btnArea{
+  display: flex;
+  align-items: center;
+}
+
+
 /* div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before */
 /* #cdk-overlay-7 .mat-menu-panel.bdc-walk-popup.modal_steps.arrow {
   right: inherit;

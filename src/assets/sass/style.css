@@ -9838,7 +9838,7 @@ body.dark-mode-active .dialogbox .modal-dialog .modal-content .btn-inline {
 
 body.dark-mode-active .dialogbox .modal-dialog .modal-content .btn-inline .btn {
   background: #0F1C2F;
-  color: #8195a6;
+  color: #fff;
   border-right-color: #1B283B !important;
 }
 
@@ -10676,7 +10676,7 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
   opacity: 0;
   width: 15px;
   height: 15px;
-  line-height: 15px;
+  line-height: 16px;
 }
 
 .wrrpperHomeSlider .sliderss .slick-dots li.slick-active button:before {
@@ -15055,7 +15055,7 @@ div.mat-menu-panel.bdc-walk-popup .buttons button{
   line-height: 25px!important;
 }
 
-.dark-mode-active .personal_profilesDivs #images .btnArea .next, .personal_profilesDivs #videos .btnArea .next{
+.dark-mode-active .personal_profilesDivs #images .btnArea .next, .dark-mode-active.personal_profilesDivs #videos .btnArea .next{
   color: #fff!important;
 }
 
@@ -15107,12 +15107,12 @@ div#ModalForm .modal-header a i{
 /* .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeVideos .shaveIcon{
   bottom: initial;
 } */
-#cdk-overlay-7{
+.cdk-overlay-pane.pgpg{
   right: initial!important;
   left: 50%;
   transform: translateX(-50%)!important;
 }
-#cdk-overlay-7 div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, #cdk-overlay-7 div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before{
+.cdk-overlay-pane.pgpg div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, .cdk-overlay-pane.pgpg div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before{
   right: initial;
   left: 50%;
   transform: translateX(-50%);

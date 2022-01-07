@@ -13,7 +13,7 @@
             <app-date-of-birth [parent]="form" [submit]="submitted"></app-date-of-birth>
             <app-your-country-state-city [parent]="form" [submit]="submitted"></app-your-country-state-city>
             <div class="formGroup">
-                <label>Home Town* <ion-icon name="information-circle-outline" placement="top" ngbTooltip="Tooltip on top"></ion-icon></label>
+                <label>Home Town* <ion-icon name="information-circle-outline" placement="top" ngbTooltip="This will make it easier for the casting team to understand your native language for the role you’ll be auditioning for."></ion-icon></label>
                 <div class="inputs">
                     <input autocomplete="off" formControlName="home_town" type="text"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">
                     <div *ngIf="submitted && f.home_town.errors" class="invalid-feedback">

@@ -155,6 +155,10 @@ const routes: Routes = [{
   data: {storeRoute: false,title: 'personal'}    
 },
 {    
+  path: 'personal/:page/:id',component: PersonalComponent,canActivate: [AuthGuard],   
+  data: {storeRoute: false,title: 'personal'}    
+},
+{    
   path: 'video',component: VideoComponent,canActivate: [AuthGuard],    
   data: {storeRoute: false,title: 'Video'}    
 },

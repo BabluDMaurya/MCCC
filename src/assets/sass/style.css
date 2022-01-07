@@ -14652,6 +14652,9 @@ body.dark-mode-active .personal_prfile_wrapper .head_tabs ul{
   padding: 0;
   line-height: 45px;
 }
+.dark-mode-active .personal_profilesDivs #images .btnArea .next, .dark-mode-active .personal_profilesDivs #videos .btnArea .next{
+  color: #fff;
+}
 .personal_profilesDivs .images_contentPAra {
   position: absolute;
   top: 64%;
@@ -15164,6 +15167,17 @@ div.mat-menu-panel.bdc-walk-popup{
 .successs.thankyou_casting .btnArea{
   display: flex;
   align-items: center;
+}
+
+p.info_contnt {
+  margin-top: 20px;
+  margin-bottom: 0;
+  color: #ff6554;
+  font-size: 12px;
+}
+
+.dark-mode-active p.info_contnt{
+  color: #ff6554;
 }
 
 

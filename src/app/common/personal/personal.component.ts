@@ -640,7 +640,7 @@ videoFound : boolean = false;
           this.progress = 0;
           this.waitText = false;
           new toastbox(this.toastSuccess, 2000);
-          $('#success_tosterMsg').text('Video Saved.')
+          $('#success_tosterMsg').text('Video Saved')
             setTimeout(() => {
               $('#'+this.toastSuccess).removeClass('show');
           }, 2000);
@@ -729,7 +729,7 @@ videoFound : boolean = false;
         this.progress = 0;
         this.waitText = false;
         new toastbox(this.toastSuccess, 2000);
-          $('#success_tosterMsg').text('Images Saved.')
+          $('#success_tosterMsg').text('Images Saved')
             setTimeout(() => {
               $('#'+this.toastSuccess).removeClass('show');
           }, 2000);

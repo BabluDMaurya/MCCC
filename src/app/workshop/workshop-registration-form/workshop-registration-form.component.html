@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="profileDiv">
-                        <label>Adhaar Card<span>*</span></label>
+                        <label>Aadhar Card<span>*</span></label>
                         <div class="inputFile">
                             <input #fileInput type="file" accept="image/jpeg, image/png, image/jpg"  id="upkoadAdhPan" formControlName="aadhar_file" (change)="onFileChange2($event)" [ngClass]="{ 'is-invalid': submitted && f.aadhar_file.errors }">
                             <div *ngIf="submitted && f.aadhar_file.errors" class="invalid-feedback">

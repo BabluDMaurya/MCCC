@@ -13,6 +13,7 @@ import { base64ToFile, Dimensions, ImageCroppedEvent, ImageTransform } from 'ngx
 import countries from '../../_files/countries.json';
 import { CommonService } from 'src/app/_service/common.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 declare var toastbox: any;
 declare var $: any;
 @Component({
@@ -85,6 +86,7 @@ export class PersonalComponent implements OnInit {
   works:any = [];
   qualifications :any = [];
   socialLink :any = [];
+  pageName : any;
 
 //----------video-------------//
 vform: FormGroup | any;
@@ -123,6 +125,7 @@ disabledi : boolean = false;
 videoFound : boolean = false;
 
   constructor(private location:Location,
+    private actRoute:ActivatedRoute,
     public datepipe: DatePipe,
     private formBuilder: FormBuilder,
     private dashboardService: DashboardService,
@@ -131,7 +134,15 @@ videoFound : boolean = false;
     private alertService: AlertService,
     private notification: NotificationService,
     private commonService:CommonService
-    ) { }
+    ) {
+      // this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
+      //   this.castingId = params.get('id');
+      //   this.pageName = params.get('page');        
+      //   if(this.pageName != '' && this.pageName != null){          
+      //     this.back_link = this.pageName+"/"+this.castingId;
+      //   }        
+      // });
+     }
   ngOnInit(): void {
     //--------profile-------------//
     this.year(1971);    
@@ -545,7 +556,12 @@ videoFound : boolean = false;
       const fileSizeInKB = Math.round(file.size / 1024);
       if(fileSizeInKB > 102400){
         this.fileSizeaInKB = true;             
-        this.notification.showInfo('Please Select file less then 100 MB.','');
+        new toastbox(this.toastError, 2000);
+            $('#form-error-id').text('Please Select file less then 100 MB.')
+              setTimeout(() => {
+                $('#'+this.toastError).removeClass('show');
+            }, 2000);
+        // this.notification.showInfo('Please Select file less then 100 MB.','');
       }else{
         var filesAmount = event.target.files.length;
         this.format = 'video';
@@ -567,7 +583,12 @@ videoFound : boolean = false;
         }
       }
     }else{
-      this.notification.showInfo('Please select mp4 video.','');
+      new toastbox(this.toastError, 2000);
+            $('#form-error-id').text('Please select mp4 video.')
+              setTimeout(() => {
+                $('#'+this.toastError).removeClass('show');
+            }, 2000);
+      // this.notification.showInfo('Please select mp4 video.','');
     }
     }
   }

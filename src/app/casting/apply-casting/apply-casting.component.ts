@@ -143,6 +143,7 @@ export class ApplyCastingComponent implements OnInit {
 completeProfile(){
   this.closebutton.nativeElement.click();
   this.route.navigate(['/personal']);
+  // this.route.navigate(['/personal/apply-casting/'+this.castingId]);
 }
 submit(){
     this.submitted = true;

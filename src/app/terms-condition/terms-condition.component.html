@@ -21,22 +21,24 @@
                 <div class="para_skeleton"></div>
                 <div class="para_skeleton"></div>         
             </div>
-            <div class="accordion" *ngFor="let term of all_terms.allTerms; let i=index;" [id]="'accordionExample'+i">
-                <div class="accordion-item" >
+
+            <div class="accordion" id="accordionCasting" >
+                <div class="accordion-item" *ngFor="let term of all_terms.allTerms; let i=index;" [id]="'accordionExample'+i">
                     <h2 class="accordion-header">
                         <button class="accordion-button" [ngClass]="{ 'collapsed': i != 0 }" type="button" data-bs-toggle="collapse"
                             [attr.data-bs-target]="'#accordion'+i">
                             {{term.title}}
                         </button>
                     </h2>
-                    <div [id]="'accordion'+i" class="accordion-collapse collapse " [ngClass]="{ 'show': i == 0 }" [attr.data-bs-parent]="'#accordionExample'+i">
+                    <div [id]="'accordion'+i" class="accordion-collapse collapse " [ngClass]="{ 'show': i == 0 }" data-bs-parent="#accordionCasting">
                         <div class="accordion-body">
                             {{term.description}}
                         </div>
                     </div>
-                </div>
-                
+                </div> 
             </div>
+            
+            
         </div>
     </div>
 </div>

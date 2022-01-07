@@ -117,20 +117,18 @@
                                         <img src="../../assets/img/img/play_icon.webp" alt="">
                                     </div>
                                 </div>
-                                <div class="shaveIcon" (click)="bookmarkEvent(eventData.id,idx)">
-                                    <i [ngClass]="eventData.bookmark_status == 1 ? 'fas fa-bookmark removecard' : 'far fa-bookmark'"></i>
-                                </div> 
-                                <div class="moviesContent" *ngIf="eventData.description.length > 50 && expanded !=  eventData.id">
-                                    <p [innerHTML]="eventData.description.substr(0, 50) + '...'"></p>
-                                    <span (click)="expanded = eventData.id"
-                                              class="text-green"><b>{{expanded==  eventData.id ?'View less':'View more'}}</b></span>
-                                   
-                                </div>
-                                <div class="moviesContent" *ngIf="expanded ==  eventData.id ">
-                                    <p [innerHTML]="eventData.description"></p>
-                                    <span (click)="expanded =0"
-                                              class="text-green"><b>{{expanded==  eventData.id ?'View less':'View more'}}</b></span>
-                                    
+                                <div class="youtubeContent">
+                                    <div class="shaveIcon" (click)="bookmarkEvent(eventData.id,idx)">
+                                        <i [ngClass]="eventData.bookmark_status == 1 ? 'fas fa-bookmark removecard' : 'far fa-bookmark'"></i>
+                                    </div> 
+                                    <div class="moviesContent" *ngIf="eventData.description.length > 50 && expanded !=  eventData.id">
+                                        <p [innerHTML]="eventData.description.substr(0, 50) + '...'"></p>
+                                        <span (click)="expanded = eventData.id" class="text-green"><b>{{expanded==  eventData.id ?'View less':'View more'}}</b></span>
+                                    </div>
+                                    <div class="moviesContent" *ngIf="expanded ==  eventData.id ">
+                                        <p [innerHTML]="eventData.description"></p>
+                                        <span (click)="expanded =0" class="text-green"><b>{{expanded==  eventData.id ?'View less':'View more'}}</b></span>
+                                    </div>
                                 </div>
                                 <div class="moviesContent" *ngIf="eventData.description.length < 50 ">
                                     <p [innerHTML]="eventData.description"></p>

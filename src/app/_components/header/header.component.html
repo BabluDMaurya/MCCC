@@ -104,32 +104,34 @@
         </ul>
     </div>
     <!-- * Extra Header --> 
-      <bdc-walk-popup #example2Step1 name="example2Step1" header="Menu" xPosition="after" yPosition="below" sideNoteText="1/8" [showButton]="true" buttonText="Next" [mustCompleted]="{dialogWelcome: true}" [onButtonCompleteTask]="{example2Next: 1}">
-        The next popup will only be displayed if you click <b>Next</b>.
+    <!-- <div class="cdk-overlay-backdrop cdk-overlay-dark-backdrop cdk-overlay-backdrop-showing"></div> -->
+      <bdc-walk-popup #example2Step1 class="modal_steps" name="example2Step1" header="Menu" xPosition="after" yPosition="below" sideNoteText="1/8" [showButton]="true" buttonText="Next" [mustCompleted]="{dialogWelcome: true}" [onButtonCompleteTask]="{example2Next: 1}">
+        <p>The next popup will only be displayed if you click <b>Next</b>.</p>
+        <!-- <p (click)="clickClass()"> clock</p> -->
       </bdc-walk-popup>
       
-      <bdc-walk-popup #example2Step2 name="example2Step2" header="Notification" xPosition="before" yPosition="below" sideNoteText="2/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 1}" [onButtonCompleteTask]="{example2Next: 2}">
-        The next popup will only be displayed if you click <b>Next</b>.
+      <bdc-walk-popup #example2Step2 class="modal_steps" name="example2Step2" header="Notification" xPosition="before" yPosition="below" sideNoteText="2/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 1}" [onButtonCompleteTask]="{example2Next: 2}">
+        <p>The next popup will only be displayed if you click <b>Next</b>.</p>
       </bdc-walk-popup>
 
       <bdc-walk-popup #example2Step3 name="example2Step3" header="Profile" xPosition="before" yPosition="below" sideNoteText="3/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 2}" [onButtonCompleteTask]="{example2Next: 3}">
-        The next popup will only be displayed if you click <b>Next</b>.
+        <p>The next popup will only be displayed if you click <b>Next</b>.</p>
       </bdc-walk-popup>
 
       <bdc-walk-popup #example2Step4 name="example2Step4" header="Casting" xPosition="after" yPosition="below" sideNoteText="4/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 3}" [onButtonCompleteTask]="{example2Next: 4}">
-        The next popup will only be displayed if you click <b>Next</b>.
+        <p>The next popup will only be displayed if you click <b>Next</b>.</p>
       </bdc-walk-popup>
       
       <bdc-walk-popup #example2Step5 name="example2Step5" header="Workshop" xPosition="after" yPosition="below" sideNoteText="5/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 4}" [onButtonCompleteTask]="{example2Next: 5}">
-        The next popup will only be displayed if you click <b>Next</b>.
+        <p>The next popup will only be displayed if you click <b>Next</b>.</p>
       </bdc-walk-popup>
       
       <bdc-walk-popup #example2Step6 name="example2Step6" header="BTS" xPosition="before" yPosition="below" sideNoteText="6/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 5}" [onButtonCompleteTask]="{example2Next: 6}">
-        The next popup will only be displayed if you click <b>Next</b>.
+        <p>The next popup will only be displayed if you click <b>Next</b>.</p>
       </bdc-walk-popup>
 
       <bdc-walk-popup #example2Step7 name="example2Step7" header="Training" xPosition="before" yPosition="below" sideNoteText="7/8" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 6}" [onButtonCompleteTask]="{example2Next: 7}">
-        The next popup will only be displayed if you click <b>Next</b>.
+        <p>The next popup will only be displayed if you click <b>Next</b>.</p>
       </bdc-walk-popup>
       
       
@@ -152,4 +154,5 @@
       <bdc-walk-popup #example2Step4 name="example2Step4" header="Training" xPosition="after" sideNoteText="4/4" [showButton]="true" [mustCompleted]="{example2Next: 3}" [onButtonCompleteTask]="{example2Next: 4}">
         This is the last popup.
       </bdc-walk-popup> -->
+      
 </div>

@@ -11036,6 +11036,12 @@ body.dark-mode-active .wrrpperSingUp .signUpButtons .signUpGoogle {
   resize: none;
 }
 
+vg-overlay-play .vg-overlay-play .overlay-play-container.vg-icon-play_arrow{
+  font-size: 40px!important;
+}
+.dark-mode-active .wrrpperRegisterForm .forms .formGroup textarea{
+  color: #fff!important;
+}
 .wrrpperRegisterForm .forms .formGroup textarea:focus-visible {
   outline: none;
 }

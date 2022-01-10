@@ -53,7 +53,7 @@
                     <div class="profileDiv">
                         <label>Secondary Contact<span>*</span></label>
                         <div class="inputs">
-                            <input type="tel" formControlName="sos_phone" value="" minlength="10" maxlength="10" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
+                            <input type="number" formControlName="sos_phone" value="" minlength="10" maxlength="10" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
                             <div *ngIf="submitted && f.sos_phone.errors" class="invalid-feedback">
                                 <div *ngIf="f.sos_phone.errors.required">Please provide your secondary contact number.</div>
                                 <div *ngIf="f.sos_phone.errors.minlength">
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="profileDiv">
-                        <label>Adhaar Card<span>*</span></label>
+                        <label>Aadhar Card<span>*</span></label>
                         <div class="inputFile">
                             <input #fileInput type="file" accept="image/jpeg, image/png, image/jpg"  id="upkoadAdhPan" formControlName="aadhar_file" (change)="onFileChange2($event)" [ngClass]="{ 'is-invalid': submitted && f.aadhar_file.errors }">
                             <div *ngIf="submitted && f.aadhar_file.errors" class="invalid-feedback">

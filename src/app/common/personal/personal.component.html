@@ -280,7 +280,9 @@
                                      <a><i class="far fa-edit"></i></a>
                                   </div>
                                </div>
-                            </div>
+                              </div>
+                              <p class="info_contnt">(Remove existing photo to add new photo.)*</p>
+
                             <div *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
                                <div class="imgs">
                                   <input type="file" name="files[]" id="files" (change)="ifileChangeEvent($event)" multiple accept="image/jpeg, image/png, image/jpg,">
@@ -306,7 +308,7 @@
                             <a [ngStyle]="{'pointer-events': disabledi ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next">Save</a>
                             <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Cancel</button>
                          </div>
-                         <div class="btnArea" *ngIf="imgArray.length == 3">
+                         <div class="btnArea flexingBtn" *ngIf="imgArray.length == 3">
                             <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Cancel</button>
                          </div>
                       </form>

@@ -10,18 +10,18 @@
         <p class="btn_ctnt">We will get back to you soon!!<br>Your Application No. is <span>{{applicationNo}}</span></p>
         
     </div>
-        <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="slideConfig"
+        <ngx-slick-carousel class="carousel slick_sliders thank_you_slider" #slickModal="slick-carousel" [config]="slideConfig"
         (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
         (beforeChange)="beforeChange($event)">                
-        <div ngxSlickItem *ngFor="let slide of slides" class="banner main_banner" style="min-height: 132px;">
+        <div ngxSlickItem *ngFor="let slide of slides" class="banner thank_sliders main_banner" style="min-height: 132px;">
          <div class="banner_content">
             <!-- <h2>{{slide.title}}</h2> -->
-                    <p>"{{slide.des}}"</p> 
+                    <p><i class="fas fa-quote-left"></i>{{slide.des}}<i class="fas fa-quote-right"></i></p> 
         </div>
         </div>        
       </ngx-slick-carousel>
 
     <div class="btnArea">
-        <button class="next btnss_r ripple" (click)="letEx()">Let's Explore</button>
+        <button class="next btnss_r ripple" (click)="letEx()">Let's Explore!</button>
     </div>
 </div>

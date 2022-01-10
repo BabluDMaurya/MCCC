@@ -9838,7 +9838,7 @@ body.dark-mode-active .dialogbox .modal-dialog .modal-content .btn-inline {
 
 body.dark-mode-active .dialogbox .modal-dialog .modal-content .btn-inline .btn {
   background: #0F1C2F;
-  color: #8195a6;
+  color: #fff;
   border-right-color: #1B283B !important;
 }
 
@@ -10676,7 +10676,7 @@ body.dark-mode-active .wrrpperHomeScreen .bottomContent a {
   opacity: 0;
   width: 15px;
   height: 15px;
-  line-height: 15px;
+  line-height: 16px;
 }
 
 .wrrpperHomeSlider .sliderss .slick-dots li.slick-active button:before {
@@ -14652,6 +14652,9 @@ body.dark-mode-active .personal_prfile_wrapper .head_tabs ul{
   padding: 0;
   line-height: 45px;
 }
+.dark-mode-active .personal_profilesDivs #images .btnArea .next, .dark-mode-active .personal_profilesDivs #videos .btnArea .next{
+  color: #fff;
+}
 .personal_profilesDivs .images_contentPAra {
   position: absolute;
   top: 64%;
@@ -15055,7 +15058,7 @@ div.mat-menu-panel.bdc-walk-popup .buttons button{
   line-height: 25px!important;
 }
 
-.dark-mode-active .personal_profilesDivs #images .btnArea .next, .personal_profilesDivs #videos .btnArea .next{
+.dark-mode-active .personal_profilesDivs #images .btnArea .next, .dark-mode-active.personal_profilesDivs #videos .btnArea .next{
   color: #fff!important;
 }
 
@@ -15107,12 +15110,12 @@ div#ModalForm .modal-header a i{
 /* .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeVideos .shaveIcon{
   bottom: initial;
 } */
-#cdk-overlay-7{
+.cdk-overlay-pane.pgpg{
   right: initial!important;
   left: 50%;
   transform: translateX(-50%)!important;
 }
-#cdk-overlay-7 div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, #cdk-overlay-7 div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before{
+.cdk-overlay-pane.pgpg div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, .cdk-overlay-pane.pgpg div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before{
   right: initial;
   left: 50%;
   transform: translateX(-50%);
@@ -15121,6 +15124,62 @@ div.mat-menu-panel.bdc-walk-popup{
   min-width: initial!important;
   width: 250px!important;
 }
+
+
+.thank_sliders .banner_content p {
+  font-size: 16px;
+  color: #ff6554;
+  line-height: normal;
+  text-align: center;
+  padding: 0 20px;
+  margin-bottom: 0;
+  position: relative;
+  font-style: italic;
+  margin: 0 5px;
+}
+
+.thank_sliders .banner_content p i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #ff6554;
+}
+
+.thank_sliders .banner_content p i:last-child {
+  position: absolute;
+  top: initial;
+  left: initial;
+  right:0;
+  bottom: 0;
+  color: #ff6554;
+}
+
+.thank_you_slider {
+  max-height: 90px;
+}
+
+.btnArea.flexingBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successs.thankyou_casting .btnArea{
+  display: flex;
+  align-items: center;
+}
+
+p.info_contnt {
+  margin-top: 20px;
+  margin-bottom: 0;
+  color: #ff6554;
+  font-size: 12px;
+}
+
+.dark-mode-active p.info_contnt{
+  color: #ff6554;
+}
+
 
 /* div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before */
 /* #cdk-overlay-7 .mat-menu-panel.bdc-walk-popup.modal_steps.arrow {

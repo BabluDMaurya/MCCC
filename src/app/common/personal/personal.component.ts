@@ -24,6 +24,7 @@ declare var $: any;
 export class PersonalComponent implements OnInit {
 
   toastError:string = 'toast-6';
+
   @ViewChild('openbutton') openbutton :any;
   @ViewChild('closebutton') closebutton :any;
   public countryList:{id:number,name:string, code:string}[] = countries;
@@ -295,10 +296,13 @@ videoFound : boolean = false;
           this.age = this.resData.data.age; 
         this.userdetail = this.resData.data;
         let message = this.resData.message;
+
         new toastbox(this.toastSuccess, 2000);
+          $('#success_tosterMsg').text('Profile saved.')
             setTimeout(() => {
               $('#'+this.toastSuccess).removeClass('show');
           }, 2000);
+
           sessionStorage.setItem('name',this.form.value.name);
           this.authenticationService.currentUserValue.userDetails.name = this.form.value.name;
           this.authenticationService.currentUserValue.percentage = this.resData.percentage;
@@ -440,7 +444,12 @@ videoFound : boolean = false;
       this.imagenotload = false;
       // this.imageChangedEvent = event;
       }else{
-        this.notification.showInfo('Select image (jpg,jpeg,png) only.','');
+        // this.notification.showInfo('Select image (jpg,jpeg,png) only.','');
+        new toastbox(this.toastError, 2000);
+        $('#form-error-id').text('Select image (jpg,jpeg,png) only.')
+          setTimeout(() => {
+            $('#'+this.toastError).removeClass('show');
+        }, 2000);
       }    
       for (var i = 0; i < event.target.files.length; i++) {
           this.imageProcess(event, event.target.files[i]);      
@@ -583,12 +592,12 @@ videoFound : boolean = false;
         }
       }
     }else{
-      new toastbox(this.toastError, 2000);
-            $('#form-error-id').text('Please select mp4 video.')
-              setTimeout(() => {
-                $('#'+this.toastError).removeClass('show');
-            }, 2000);
       // this.notification.showInfo('Please select mp4 video.','');
+      new toastbox(this.toastError, 2000);
+      $('#form-error-id').text('Please select mp4 video.')
+        setTimeout(() => {
+          $('#'+this.toastError).removeClass('show');
+      }, 2000);
     }
     }
   }
@@ -631,9 +640,10 @@ videoFound : boolean = false;
           this.progress = 0;
           this.waitText = false;
           new toastbox(this.toastSuccess, 2000);
-          setTimeout(() => {
-            $('#'+this.toastSuccess).removeClass('show');
-        }, 2000); 
+          $('#success_tosterMsg').text('Video Saved')
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
           this.resData = event;
           let percentage = JSON.stringify(event.body.percentage);
           this.authenticationService.currentUserValue.percentage = percentage;
@@ -719,9 +729,10 @@ videoFound : boolean = false;
         this.progress = 0;
         this.waitText = false;
         new toastbox(this.toastSuccess, 2000);
-        setTimeout(() => {
-          $('#'+this.toastSuccess).removeClass('show');
-      }, 2000); 
+          $('#success_tosterMsg').text('Images Saved')
+            setTimeout(() => {
+              $('#'+this.toastSuccess).removeClass('show');
+          }, 2000);
         this.resData = event;
         let percentage = JSON.stringify(event.body.percentage);
         this.authenticationService.currentUserValue.percentage = percentage;

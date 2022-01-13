@@ -38,6 +38,7 @@ export class CastingCardComponent implements OnInit {
   bookmarkCasting(id:any,status?:any){
     this.dashboardService.bookmarkCasting({casting_card_id:id})
       .subscribe(res => {
+        this.dashboardService.filter('applyed');
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){
           this.data.bookmark_status = 1;

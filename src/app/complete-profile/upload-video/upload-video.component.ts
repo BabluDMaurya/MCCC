@@ -26,7 +26,7 @@ export class UploadVideoComponent implements OnInit {
   url: any;
   responseData: any;
   uploading:boolean=false;
-  fileTypes = ['mp4'];  //acceptable file types
+  fileTypes = ['mp4','mov','webm'];  //acceptable file types
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
@@ -116,7 +116,7 @@ export class UploadVideoComponent implements OnInit {
       }}
     }else{
       new toastbox(this.toastError, 2000);
-            $('#form-error-id').text('Please select mp4 video.')
+            $('#form-error-id').text('Please select mp4,mov or webm video.')
               setTimeout(() => {
                 $('#'+this.toastError).removeClass('show');
             }, 2000);

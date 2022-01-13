@@ -14,7 +14,7 @@ export class BtsCategoryCardComponent implements OnInit {
 
   @Input() data:any;
   ngOnInit(): void {
-    console.log(this.data);
+    // console.log(this.data);
   }
   isOdd(n:number) {
     return Math.abs(n % 2) == 1;

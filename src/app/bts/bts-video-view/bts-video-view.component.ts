@@ -59,7 +59,7 @@ export class BtsVideoViewComponent implements OnInit {
                         this.BtsVideos = data.data;
                         if(this.BtsVideos[0].video_url != null && this.BtsVideos[0].video_url != ''){
                           this.upNext = data.category_videos;
-                          this.vid = this.BtsVideos[0].video_url+'?autoplay=1&modestbranding=1&showinfo=0&amp';
+                          this.vid = this.BtsVideos[0].video_url+'?autoplay=1&rel=0&modestbranding=1&showinfo=0&amp';
                           this.iframe.nativeElement.contentWindow.location.replace(this.vid);
                           // this.vid = this.BtsVideos[0].video_url+'?autoplay=1&mute=1&enablejsapi=1';
                           console.log("vid : ",this.vid);
@@ -89,6 +89,7 @@ export class BtsVideoViewComponent implements OnInit {
   bookmarkBTS(id:any,status?:any){
     this.dashboardService.bookmarkWorkshopEvents({event_id:id,type:'BTS'})
       .subscribe(res => {
+        this.dashboardService.filter('applyed');
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){
           this.BtsVideos[0].bookmark_status = 1;

@@ -16,6 +16,8 @@ export class BtsComponent implements OnInit {
   popularBtsVideos : any;
   topBtsVideos: any;
   topBTSV :boolean = false;
+  popularBTSV :boolean = false;
+  watchmoreBTSV :boolean = false;
   categories : any;
   hostUrl:string = Config.Host+'backend2/';
   category_color: any = ['hsl(7deg 88% 68%)','hsl(88deg 47% 64%)','hsl(42deg 76% 64%)','hsl(201deg 100% 73%)','hsl(7deg 88% 68%)','hsl(88deg 47% 64%)','hsl(42deg 76% 64%)','hsl(201deg 100% 73%)'];
@@ -45,6 +47,9 @@ export class BtsComponent implements OnInit {
                   data => { 
                       this.popularBtsVideos = data.data;
                       this.loadData = true;
+                      this.popularBTSV = true;
+                  },error=>{
+                    this.popularBTSV = false;
                   });
               this.btsVideosService.get_bts_videos({'limit': 10,'category_id':2}).subscribe(
                   data => { 
@@ -64,6 +69,9 @@ export class BtsComponent implements OnInit {
                     this.categories = data.data;
                     console.log(this.categories);
                     this.loadData = true;
+                    this.watchmoreBTSV = true;
+                },error=>{
+                  this.watchmoreBTSV = false;
                 });              
   }
   isOdd(n:number) {

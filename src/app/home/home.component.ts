@@ -109,7 +109,7 @@ export class HomeComponent implements OnInit {
     this.castingSliderApi();
     this.newCastingCallApi();
     this.getRecomendedData();
-    var udata = this.authenticationService.login_with_token(this.localData.token);
+    // var udata = this.authenticationService.login_with_token(this.localData.token);
     // console.log(udata);
     this.btsVideosService.get_categories().subscribe(
       data => { 

@@ -76,6 +76,7 @@ export class TrainingInnerComponent implements OnInit {
   bookmarkBTS(id:any,status?:any){
     this.dashboardService.bookmarkWorkshopEvents({event_id:id,type:'event'})
       .subscribe(res => {
+        this.dashboardService.filter('applyed');
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){
           this.trainingVideo[0].bookmark_status = 1;

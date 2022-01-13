@@ -15,5 +15,8 @@ export class GamesComponent implements OnInit {
   show(){
     this.route.navigate(['/bollywood-memory-game']);
   }
+  showTicTacToe(){
+    this.route.navigate(['/tic-tac-toe-game']);
+  }
 
 }

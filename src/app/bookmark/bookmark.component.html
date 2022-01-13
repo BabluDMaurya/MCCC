@@ -42,10 +42,12 @@
                     </div>
                     <div class="section full mt-1">
                         <div class="casingCalls">
-                            <app-bookmark-casting-card *ngFor="let c of castings; let idx=index" [data]="c"></app-bookmark-casting-card>
+                            <app-bookmark-casting-card *ngFor="let c of castings; let idx=index" [data]="c" (bookmarkCount)="bookmarkCountOutput($event)" [bookmarkCountParent]="bookmarkCount"></app-bookmark-casting-card>
                         </div>
                     </div>
-                    <app-not-found-data *ngIf="bookmarkNoData && loading"></app-not-found-data>
+                    <div class="casingCalls" *ngIf="bookmarkNoData">
+                    <app-not-found-data></app-not-found-data>
+                </div>
                 </div>
                 
                 <!-- * casting tab -->

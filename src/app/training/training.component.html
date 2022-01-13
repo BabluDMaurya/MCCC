@@ -17,6 +17,12 @@
                 </ngx-slick-carousel>
                 
             </div>
+            <div *ngIf="!trvideo">
+                <div class="header_skelton"></div>
+                <div class="box_skeleton"></div>
+                <div class="box_skeleton"></div>
+                <div class="box_skeleton"></div>
+            </div>
             <div class="otherTrainingVid">
                 <div class="trainingCallHeader">
                     <p class="classinghead primary__color">{{title}}</p>
@@ -44,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                
+               
                 <div *ngIf="trainingVideo == '' ">
                     <app-not-found-data ></app-not-found-data>
                 </div>

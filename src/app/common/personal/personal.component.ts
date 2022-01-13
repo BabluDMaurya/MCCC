@@ -14,6 +14,7 @@ import countries from '../../_files/countries.json';
 import { CommonService } from 'src/app/_service/common.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { getLeadingCommentRanges } from 'typescript';
 declare var toastbox: any;
 declare var $: any;
 @Component({
@@ -88,7 +89,8 @@ export class PersonalComponent implements OnInit {
   qualifications :any = [];
   socialLink :any = [];
   pageName : any;
-
+  dobnf:boolean = false;
+  lagnf:boolean = false;
 //----------video-------------//
 vform: FormGroup | any;
 videoloading : boolean = true;
@@ -103,11 +105,12 @@ format : any;
 fileselected : boolean = false;  
 videoPath = this.baseUrl+'public/uploads/UserVideos/';
 videoArray:any;
-videofileTypes = ['mp4'];  //acceptable file types
+videofileTypes = ['mp4','mov','webm'];  //acceptable file types
 oldvideo:any;
 currentPlayingVideo: HTMLVideoElement | any;
 waitText :boolean = false;
 progress: number = 0;
+progressv: number = 0;
 disabledv : boolean = false;
 vresData:any;   
 vdatas:any
@@ -144,6 +147,11 @@ videoFound : boolean = false;
       //   }        
       // });
      }
+     backs(): void {
+      // this.route.navigateByUrl('/casting-all/'+this.castingId);
+      this.location.back();
+      // window.history.back();
+    }
   ngOnInit(): void {
     //--------profile-------------//
     this.year(1971);    
@@ -152,12 +160,12 @@ videoFound : boolean = false;
       dob : [''],
       home_town : ['', Validators.required],
       hobbies: ['', Validators.required],
-      language_id: ['',[Validators.required]],
+      language_id: ['',Validators.required],
       // country_code:['',[Validators.required]],
-      gender:['',[Validators.required]],
-      country:['',[Validators.required]],
-      state:['',[Validators.required]],
-      select_city:['',[Validators.required]],
+      gender:['',Validators.required],
+      country:['',Validators.required],
+      state:['',Validators.required],
+      select_city:['',Validators.required],
       work_experiences: this.formBuilder.array([this.createExperience()]),
       qualifications: this.formBuilder.array([this.createQualification()]),
       social_links: this.formBuilder.array([this.createSocialLinks()]),
@@ -181,7 +189,7 @@ videoFound : boolean = false;
       this.vresData = res;   
       this.vdatas = this.vresData.data;
       this.videoArray = this.vdatas;
-      console.log("video length :",this.videoArray);
+      // console.log("video length :",this.videoArray);
       if(this.videoArray == 'No Record Found'){
         this.videoFound = false;
       }else{
@@ -198,6 +206,9 @@ videoFound : boolean = false;
       newfileSource : [''], 
     });    
     this.disabledi = true;
+    this.getImages();  
+  }
+  getImages(){
     this.commonService.myImages().subscribe(res => {
       this.iresData = res;   
       this.idatas = this.iresData.data;
@@ -205,9 +216,9 @@ videoFound : boolean = false;
       if(this.imgArray == 'No Record Found'){
         this.imgArray = [];
       }
-      console.log(this.imgArray);
+      // console.log(this.imgArray);
     },error=>{
-    });   
+    });
   }
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
@@ -227,7 +238,7 @@ videoFound : boolean = false;
   }
   addExperience(): void {
     if(this.workCount < 5){
-      console.log(this.workCount)
+      // console.log(this.workCount)
         this.experiences = this.form.get('work_experiences') as FormArray;
         this.experiences.push(this.createExperience());
         this.workCount = this.workCount + 1;
@@ -281,7 +292,7 @@ videoFound : boolean = false;
       let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
       this.form.controls['dob'].setValue(DOB); 
       this.cropimages.forEach((imgObject: { imgBase64: any; }) => {
-        console.log(imgObject);
+        // console.log(imgObject);
         this.finalImageList.push(imgObject.imgBase64);
         this.patchValues();
         
@@ -318,7 +329,7 @@ videoFound : boolean = false;
           this.disabledv = false;
         }
       },error=>{
-        console.log('error message' , error);
+        // console.log('error message' , error);
         this.loading = false;
         this.disabledv = false;
       });
@@ -330,25 +341,50 @@ videoFound : boolean = false;
           this.userdetail = this.resData.data.user_details;
           this.form.controls['name'].setValue(this.userdetail.name);
           this.form.controls['dob'].setValue(this.userdetail.dob);
-          this.form.controls['height'].setValue(this.userdetail.height);
-          this.form.controls['gender'].setValue(this.userdetail.gender);
-          this.form.controls['language_id'].setValue(this.userdetail.language_id);
-          this.form.controls['country'].setValue(this.userdetail.country_id);
-          this.form.controls['select_city'].setValue(this.userdetail.city_id);
-          this.form.controls['state'].setValue(this.userdetail.state_id);
-          this.form.controls['home_town'].setValue(this.userdetail.home_town);
-          this.form.controls['hobbies'].setValue(this.userdetail.hobbies);
+          if(this.userdetail.height !=null && this.userdetail.height !=''){
+            this.form.controls['height'].setValue(this.userdetail.height);
+          }          
+          if(this.userdetail.gender != null && this.userdetail.gender !=''){
+            this.form.controls['gender'].setValue(this.userdetail.gender);
+          }
+          if(this.userdetail.language_id != null && this.userdetail.language_id != ''){
+            this.lagnf = false;
+            console.log("lan false",this.userdetail.language_id);
+            this.form.controls['language_id'].setValue(this.userdetail.language_id);
+          }else{
+            this.lagnf = true;
+            console.log("lan true");
+          }
+          if(this.userdetail.country_id != null && this.userdetail.country_id != ''){
+            this.form.controls['country'].setValue(this.userdetail.country_id);
+          }          
+          if(this.userdetail.city_id != null && this.userdetail.city_id !=''){
+            this.form.controls['select_city'].setValue(this.userdetail.city_id);
+          }
+          if(this.userdetail.state_id != null  && this.userdetail.state_id != ''){
+            this.form.controls['state'].setValue(this.userdetail.state_id);
+          }
+          if(this.userdetail.home_town != null && this.userdetail.home_town !=''){
+            this.form.controls['home_town'].setValue(this.userdetail.home_town);
+          }
+          if(this.userdetail.hobbies !=null && this.userdetail.hobbies !=''){
+            this.form.controls['hobbies'].setValue(this.userdetail.hobbies);
+          }          
           this.workExperiencesSetValue(this.userdetail.work_experience);  
           this.socialLinkSetValue(this.userdetail.socialLinks);
           this.qualificationSetValue(this.userdetail.qualification);
-          
-          var date = new Date(this.userdetail.dob);
-          var year = date.getFullYear();
-          var month = date.getMonth() +1;
-          var day = date.getUTCDate();
-          this.day = day;
-          this.month = month;
-          this.myYear = year;
+          if(this.userdetail.dob != null && this.userdetail.dob != ''){
+            this.dobnf = false;
+            var date = new Date(this.userdetail.dob);
+            var year = date.getFullYear();
+            var month = date.getMonth() +1;
+            var day = date.getUTCDate();
+            this.day = day;
+            this.month = month;
+            this.myYear = year;
+          }else{
+            this.dobnf = true;
+          }          
           this.city_id = this.userdetail.city_id;
           this.state_id = this.userdetail.state_id;
           sessionStorage.setItem('language_id',this.userdetail.language_id);
@@ -377,8 +413,10 @@ videoFound : boolean = false;
       if (this.response.data !== 'undefined' && this.response.data.length > 0) {
         this.dataTrue = true;
         this.languages = this.response.data;
+        // console.log("language",this.languages);
         let lanstr:any = sessionStorage.getItem('language_id');
         this.language_ids = lanstr.split(',');
+        console.log("language_ids",this.language_ids);
       } else {
         this.dataTrue = false;
       }
@@ -466,13 +504,13 @@ videoFound : boolean = false;
         this.cropimages.push({ imgId: this.imgId, imgBase64: reader.result, imgFile: file });
       // }
     };
-    console.log(this.cropimages);
+    // console.log(this.cropimages);
   }
   cropImage(imgId: any) {
-    console.log('dd');
+    // console.log('dd');
     this.currentProcessingImg = imgId;
-    console.log(imgId);
-    console.log(this.cropimages);
+    // console.log(imgId);
+    // console.log(this.cropimages);
     var imgObj = this.cropimages.find((x: { imgId: any; }) => x.imgId === imgId);
     //created dummy event Object and set as imageChangedEvent so it will set cropper on this image 
     var event = {
@@ -490,7 +528,7 @@ videoFound : boolean = false;
     // this.patchValues();
     this.onCloseHandled();
   }
-  patchValues(){    
+  patchValues(){   
     this.form.patchValue({
        profilePicSource: this.finalImageList,
     });
@@ -505,12 +543,12 @@ videoFound : boolean = false;
   loadImageFailed() {
     this.imagenotload = true;
     this.notification.showInfo('Load failed.','');
-      console.log('Load failed');
+      // console.log('Load failed');
   }
   imageLoaded() {
     this.imagenotload = false;
       this.showCropper = true;
-      console.log('Image loaded');    
+      // console.log('Image loaded');    
   }
   onCloseHandled() {
     this.imageChangedEvent = null;
@@ -556,7 +594,7 @@ videoFound : boolean = false;
     let newVideo :string [] = [];
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files && event.target.files[0];
-      console.log("file:",file);
+      // console.log("file:",file);
       var extension = event.target.files[0].name.split('.').pop().toLowerCase();
       
       var isSuccess = this.videofileTypes.indexOf(extension) > -1;
@@ -594,7 +632,7 @@ videoFound : boolean = false;
     }else{
       // this.notification.showInfo('Please select mp4 video.','');
       new toastbox(this.toastError, 2000);
-      $('#form-error-id').text('Please select mp4 video.')
+      $('#form-error-id').text('Please select mp4,mov or webm video.')
         setTimeout(() => {
           $('#'+this.toastError).removeClass('show');
       }, 2000);
@@ -619,8 +657,10 @@ videoFound : boolean = false;
     //video update section
     this.videoloading = false;
     if(this.videoArray!= null){
+      // console.log("video if");
       this.oldvideo = 1;
     }else{
+      // console.log("video else");
       this.oldvideo = 0;
     }
     let totalvideo = this.videos.length + this.oldvideo;
@@ -632,12 +672,12 @@ videoFound : boolean = false;
         (event: HttpEvent<any>) => {
         if (event.type == HttpEventType.UploadProgress) {
           let total:any = event.total;
-          this.progress = Math.round((100 / total) * event.loaded);
+          this.progressv = Math.round((100 / total) * event.loaded);
           this.waitText = true;
           this.videoloading = true;
         } else if (event.type == HttpEventType.Response) {
           this.videoloading = true;
-          this.progress = 0;
+          this.progressv = 0;
           this.waitText = false;
           new toastbox(this.toastSuccess, 2000);
           $('#success_tosterMsg').text('Video Saved')
@@ -650,6 +690,7 @@ videoFound : boolean = false;
           // var currentUser :any = localStorage.getItem('currentUser');
           //     currentUser['percentage'] = percentage;
           //     localStorage.setItem('currentUser',currentUser  );    
+          this.vform.reset();
           ($event.target as HTMLButtonElement).disabled = false;
           this.disabledv = false;
         }
@@ -672,13 +713,13 @@ videoFound : boolean = false;
   }  
   //--------Image------------
   ifileChangeEvent(event: any): void {    
-      this.totalupimg = this.imgArray.length+this.cropimages.length;
+      this.totalupimg = this.imgArray.length+this.cropimages.length; 
       var cnt = 3 - (this.imgArray.length + this.cropimages.length);
       for (var i = 0; i < event.target.files.length; i++) {
         if(i < cnt){
           var extension = event.target.files[i].name.split('.').pop().toLowerCase();
           var isSuccess = this.fileTypes.indexOf(extension) > -1;
-          if (isSuccess) { 
+          if (isSuccess) {             
             this.disabledi = false;
               this.imageProcess(event, event.target.files[i]);
               this.imagenotload = false;
@@ -707,11 +748,12 @@ videoFound : boolean = false;
     }else{
       this.loading = false;
       let totalimg = this.imgArray.length+this.cropimages.length;
-       
+      //  console.log("this.imgArray.length:",this.imgArray.length);
+      //  console.log("this.cropimages.length:",this.cropimages.length);
       if(totalimg > 0 ){    
-        console.log(this.cropimages);
+        // console.log(this.cropimages);
         this.cropimages.forEach((imgObject: { imgBase64: any; }) => {
-          console.log(imgObject);
+          // console.log(imgObject);
           this.finalImageList.push(imgObject.imgBase64);
           this.ipatchValues();          
         })     
@@ -728,6 +770,8 @@ videoFound : boolean = false;
         this.videoloading = true;
         this.progress = 0;
         this.waitText = false;
+        this.getImages();
+        this.cropimages = [];
         new toastbox(this.toastSuccess, 2000);
           $('#success_tosterMsg').text('Images Saved')
             setTimeout(() => {
@@ -736,6 +780,7 @@ videoFound : boolean = false;
         this.resData = event;
         let percentage = JSON.stringify(event.body.percentage);
         this.authenticationService.currentUserValue.percentage = percentage;
+        this.iform.reset();
         ($event.target as HTMLButtonElement).disabled = false;
         this.disabledi = false;
       }
@@ -744,7 +789,7 @@ videoFound : boolean = false;
         
       }else{
         this.loading = false;
-        console.log("image count :" + totalimg);
+        // console.log("image count :" + totalimg);
         
         if(totalimg > 3){
           this.imageerror = 'Please Select Only Three Photos';
@@ -756,7 +801,7 @@ videoFound : boolean = false;
     }
   }
   removeSelectedImages(url:any){   
-    console.log(url); 
+    // console.log(url); 
     this.cropimages.splice(url, 1);
     // this.patchValues();
   }
@@ -785,11 +830,12 @@ videoFound : boolean = false;
   }
   getFormValidationErrors() {
     Object.keys(this.form.controls).forEach(key => {
+      var kets = key.charAt(0).toUpperCase() + key.slice(1).toLowerCase();
       const controlErrors: ValidationErrors = this.form.get(key).errors;
       if (controlErrors != null) {
         Object.keys(controlErrors).forEach(keyError => {
           new toastbox(this.toastError, 2000);
-          $('#form-error-id').text(key+': '+keyError)
+          $('#form-error-id').text(kets+' '+keyError)
             setTimeout(() => {
               $('#'+this.toastError).removeClass('show');
           }, 2000);
@@ -800,11 +846,12 @@ videoFound : boolean = false;
   }
   getiFormValidationErrors() {
     Object.keys(this.iform.controls).forEach(key => {
+      var kets = key.charAt(0).toUpperCase() + key.slice(1).toLowerCase();
       const controlErrors: ValidationErrors = this.iform.get(key).errors;
       if (controlErrors != null) {
         Object.keys(controlErrors).forEach(keyError => {
           new toastbox(this.toastError, 2000);
-          $('#form-error-id').text('Image: '+keyError)
+          $('#form-error-id').text('Image '+keyError)
             setTimeout(() => {
               $('#'+this.toastError).removeClass('show');
           }, 2000);
@@ -815,11 +862,12 @@ videoFound : boolean = false;
   }
   getvFormValidationErrors() {
     Object.keys(this.vform.controls).forEach(key => {
+      var kets = key.charAt(0).toUpperCase() + key.slice(1).toLowerCase();
       const controlErrors: ValidationErrors = this.vform.get(key).errors;
       if (controlErrors != null) {
         Object.keys(controlErrors).forEach(keyError => {
           new toastbox(this.toastError, 2000);
-          $('#form-error-id').text('Video: '+keyError)
+          $('#form-error-id').text('Video '+keyError)
             setTimeout(() => {
               $('#'+this.toastError).removeClass('show');
           }, 2000);

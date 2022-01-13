@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-sub-header',
   templateUrl: './sub-header.component.html',
@@ -8,10 +8,15 @@ import { Component, OnInit,Input } from '@angular/core';
 export class SubHeaderComponent implements OnInit {
   @Input() back : any; 
   link : any;
-  constructor() { }
+  constructor(private location:Location,) { }
 
   ngOnInit(): void {
     this.link = "/"+this.back;
+  }
+  backs(): void {
+    // this.route.navigateByUrl('/casting-all/'+this.castingId);
+    this.location.back();
+    // window.history.back();
   }
 
 }

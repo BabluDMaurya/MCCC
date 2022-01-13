@@ -65,6 +65,12 @@
                     <div class="tab-pane fade  " [ngClass]="catId == 1 ? 'active show':''" id="photos" role="tabpanel">
                         <div class="section full mt-1">
                             <div class="casingCalls">
+                                <div *ngIf="!workshopdata">
+                                    <div class="header_skelton"></div>
+                                    <div class="box_skeleton"></div>
+                                    <div class="box_skeleton"></div>
+                                    <div class="box_skeleton"></div>
+                                </div>
                                 <div class="casingCallHeader" *ngIf="!onGoingData[0].noData">
                                     <p class="classinghead">On Going Workshop</p>
                                     <!-- <span><a>View All</a></span> -->

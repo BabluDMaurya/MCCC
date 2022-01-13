@@ -17,6 +17,7 @@ declare var $: any;
   styleUrls: ['./complete-profile.component.scss']
 })
 export class CompleteProfileComponent implements OnInit {
+  toastError:string = 'toast-6';
   toastSuccess:string = 'toast-11';
   workCount : number = 1;
   qualiCount : number = 1;
@@ -231,15 +232,16 @@ export class CompleteProfileComponent implements OnInit {
   }
   getFormValidationErrors() {
     Object.keys(this.form.controls).forEach(key => {
+      var kets = key.charAt(0).toUpperCase() + key.slice(1).toLowerCase();
       const controlErrors: ValidationErrors = this.form.get(key).errors;
       if (controlErrors != null) {
         Object.keys(controlErrors).forEach(keyError => {
-          new toastbox(this.toastSuccess, 2000);
-          $('#form-error-id').text(key+': '+keyError)
+          new toastbox(this.toastError, 2000);
+          $('#form-error-id').text(kets+' '+keyError)
             setTimeout(() => {
-              $('#'+this.toastSuccess).removeClass('show');
+              $('#'+this.toastError).removeClass('show');
           }, 2000);
-        //  console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+         console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
         });
       }
     });

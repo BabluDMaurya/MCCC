@@ -49,6 +49,7 @@ export class CastingInnerComponent implements OnInit {
     private notifyService : NotificationService,
     
     ) {} 
+    
   ngOnInit(): void {    
     this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
       this.castingId = params.get('id');
@@ -106,6 +107,7 @@ export class CastingInnerComponent implements OnInit {
   bookmark(id:any){
     this.dashboardService.bookmarkCasting({casting_card_id:id})
       .subscribe(res => {
+        this.dashboardService.filter('applyed');
         this.resData = res; 
         this.bmkStatus = this.resData.data[0];
         if(this.bmkStatus === 'Bookmark removed'){

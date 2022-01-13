@@ -1,0 +1,22 @@
+.game-square { 
+    height: 96%; 
+    text-align: center;
+    line-height: 0.85;
+    cursor: pointer;
+    background-color: #ccc;
+    background-image: url('../../../../../assets/game_image/card-back.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  background-size: cover;
+  }
+
+  p { 
+    display: inline;
+    margin: 0px;
+    font-size: 11rem;
+    overflow: hidden;
+  }
+
+  .noClick {
+    pointer-events: none;
+  }

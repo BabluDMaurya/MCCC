@@ -13,6 +13,7 @@ export class TrainingComponent implements OnInit {
   expanded = 0;
   pageName = 'training';
   loading: boolean= false;
+  trvideo: boolean= false;
   resData: any;
   trainCatg: any;
   trainingVideo: any;
@@ -35,13 +36,16 @@ export class TrainingComponent implements OnInit {
       
       if(res.data == 'No Data'){
         this.trainingVideo = [];
+        this.trvideo = false;
       }else{
         this.trainingVideo = res.data;
+        this.trvideo = true;
       }
      
       console.log(this.trainingVideo);
     },error=>{
       this.loading = false;
+      this.trvideo = false;
     });
     
   }

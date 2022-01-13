@@ -15115,6 +15115,9 @@ div#ModalForm .modal-header a i{
   left: 50%;
   transform: translateX(-50%)!important;
 }
+div.training_tour_panel {
+  right: 8%!important;
+}
 .cdk-overlay-pane.pgpg div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, .cdk-overlay-pane.pgpg div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before{
   right: initial;
   left: 50%;
@@ -15180,6 +15183,107 @@ p.info_contnt {
   color: #ff6554;
 }
 
+dark-mode-active p.info_contnt{
+  color: #ff6554;
+}
+.logo_wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.logo_wrapper h1{
+  font-size: 30px;
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.logo_wrapper .logos{
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
+.logo_wrapper .content_areas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.logo_wrapper .content_areas p{
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: normal;
+    color: #ffffff;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.logo_wrapper .content_areas label{
+  font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 32px;
+  color: #ffffff;
+  font-weight: 400;
+  /* font-family: "Source Sans Pro"; */
+  text-align: center;
+}
+
+.logo_wrapper .content_areas .logoBtn{
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border: 1px solid #fff;
+  border-radius: 79px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+}
+.logo_wrapper .content_areas span{
+  position: relative;
+}
+.logo_wrapper .content_areas span:before{
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    width: 2px;
+    height: 90%;
+    transform: translateY(-50%);
+    content: '';
+    background: #fff;
+}
+.logo_wrapper .content_areas ion-icon{
+  padding-left: 12px;
+  font-size: 20px;
+}
+.dark-mode-active .btnArea.iwdl span{
+  color: #fff!important;
+}
+
+.game_header{
+  font-size: 24px;
+  /* color: #ff6554; */
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+/* .game_header span{
+  position: relative;
+
+}
+.game_header span::before{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 1px;
+  background: #ff6554;
+  content: '';
+}  */
 
 /* div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before */
 /* #cdk-overlay-7 .mat-menu-panel.bdc-walk-popup.modal_steps.arrow {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input, EventEmitter } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { DashboardService } from 'src/app/_service/dashboard.service';
 import { Config } from '../_config/config';
@@ -28,19 +28,30 @@ export class BookmarkComponent implements OnInit {
   toastSuccess:string = 'toast-15';
   toastDanger:string = 'toast-16';
   btsBookmarkNoData: boolean = true;
+  castingLength : any;
+  bookmarkCount :number = 0;
   constructor(private dashboardService:DashboardService,
     private route : Router,) {
       this.dashboardService.listen().subscribe((e:any)=>{
         this.ngOnInit();
       });
      }
-
+     bookmarkCountOutput($event: any) {
+      this.bookmarkCount = $event;
+      let BCount = $event;
+      console.log("BCOunt: ",BCount);
+      if(BCount == 0){
+        this.bookmarkNoData = true;
+      }      
+      this.ngOnInit();
+    }
   ngOnInit(): void {
     this.catId = 1;
     this.dashboardService.getUserBookmark('')
         .subscribe(res => {
           this.loading = true;
               this.castings = res.data;
+              this.bookmarkCount = this.castings.length;              
               if(this.castings.length > 0){
                 this.bookmarkNoData = false;
               }else{
@@ -54,6 +65,8 @@ export class BookmarkComponent implements OnInit {
 
               if(this.eventBookmarkData.length > 0){
               this.eventbookmarkNoData = false;
+              }else{
+                this.eventbookmarkNoData = true;
               }
               // console.log(res.data);
         });
@@ -66,7 +79,7 @@ export class BookmarkComponent implements OnInit {
               }else{
                 this.workshopbookmarkNoData = true;
               }
-              console.log(this.workshopBookmarkData);
+              // console.log(this.workshopBookmarkData);
         });
         
         this.dashboardService.getUserBookmarkBTS('')
@@ -75,8 +88,10 @@ export class BookmarkComponent implements OnInit {
           this.btsBookmarkData = data.data;
               if(this.btsBookmarkData.length > 0){
                 this.btsBookmarkNoData = false;
+              }else{
+                this.btsBookmarkNoData = true;
               }
-              console.log(data.data);
+              // console.log(data.data);
         });
   }
   castingInner(id:any){
@@ -91,23 +106,28 @@ export class BookmarkComponent implements OnInit {
   bookmarkBTS(id:any,index?:any){
     this.dashboardService.bookmarkWorkshopEvents({event_id:id,type:'BTS'})
       .subscribe(res => {
-        this.resData = res; 
+        this.resData = res;         
         if(this.resData.data[0] == 'Bookmark Added'){
           this.btsBookmarkData[index].bookmark_status = 1;
           this.dashboardService.filter('applyed');
-          console.log('toast added',this.toastSuccess);
           new toastbox(this.toastSuccess, 2000);
             setTimeout(() => {
               $('#'+this.toastSuccess).removeClass('show');
           }, 2000);
         }
         if(this.resData.data[0] == 'Bookmark removed'){
+          
           this.btsBookmarkData[index].bookmark_status = 0;
           this.dashboardService.filter('applyed');
           new toastbox(this.toastDanger, 2000);
             setTimeout(() => {
               $('#'+this.toastDanger).removeClass('show');
           }, 2000);
+          // if(this.btsBookmarkData.length == 0){
+          //   this.btsBookmarkNoData = false;
+          // }else{
+          //   this.btsBookmarkNoData = true;
+          // }
         }     
       });
   }
@@ -118,7 +138,6 @@ export class BookmarkComponent implements OnInit {
         if(this.resData.data[0] == 'Bookmark Added'){
           this.eventBookmarkData[index].bookmark_status = 1;
           this.dashboardService.filter('applyed');
-          console.log('toast added',this.toastSuccess);
           new toastbox(this.toastSuccess, 2000);
             setTimeout(() => {
               $('#'+this.toastSuccess).removeClass('show');

@@ -48,6 +48,7 @@ import { PasswordComponent } from './password/password.component';
 
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { InnerSplashComponent } from './inner-splash/inner-splash.component';
+import { BoardsComponent } from './games/boards/boards.component';
 
 // RouterModule.forRoot(Router, {scrollPositionRestoration: 'enabled'})
 
@@ -177,6 +178,10 @@ const routes: Routes = [{
 {    
   path: 'bollywood-memory-game',component: BollywoodMemoryGameComponent,canActivate: [AuthGuard],   
   data: {title: 'bollywood memory game'}    
+},
+{    
+  path: 'tic-tac-toe-game',component: BoardsComponent,canActivate: [AuthGuard],   
+  data: {title: 'tic tac toe game'}    
 },
 {    
   path: 'my-applications',component: MyApplicationsComponent,canActivate: [AuthGuard],   

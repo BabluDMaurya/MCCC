@@ -16,7 +16,7 @@ export class SupportComponent implements OnInit {
   back_link :any =  "home";
   component_title : string = 'Support';
   submitted = false;
-  optionsList = ['What Whappen Next', 'App Not Working', 'What do casting agencies do', 'What types of Casting?'];
+  optionsList = ['What Happen Next', 'App Not Working', 'What do casting agencies do', 'What types of Casting?'];
 
 
   constructor(

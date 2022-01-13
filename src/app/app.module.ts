@@ -96,9 +96,13 @@ import { SupportComponent } from './support/support.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PasswordComponent } from './password/password.component';
 import { InnerSplashComponent } from './inner-splash/inner-splash.component';
+import { SquareComponent } from './games/boards/board/square/square.component';
+import { BoardComponent } from './games/boards/board/board.component';
+import { BoardsComponent } from './games/boards/boards.component';
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     LogoComponent,
     SplashComponent,
@@ -164,7 +168,10 @@ import { InnerSplashComponent } from './inner-splash/inner-splash.component';
     BookmarkCastingCardComponent,
     SupportComponent,
     PasswordComponent,
-    InnerSplashComponent
+    InnerSplashComponent,
+    SquareComponent,
+    BoardComponent,
+    BoardsComponent
   ],
   imports: [
     BrowserModule,

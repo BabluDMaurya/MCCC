@@ -15,10 +15,10 @@ export class FooterComponent implements OnInit {
   constructor(private dashboardService:DashboardService,private bdcWalkService: BdcWalkService) { }
 
   ngOnInit(): void {
-    this.setintvl = setInterval(() => { 
-      this.addExternalClass();
-      console.log('startIntereval')
-     },200)
+    // this.setintvl = setInterval(() => { 
+      // this.addExternalClass();
+      // console.log('startIntereval')
+    //  },200)
     
   }
   letEx(){
@@ -26,14 +26,11 @@ export class FooterComponent implements OnInit {
   }
 
   addExternalClass(){
-    // console.log('vgbhnj');
     if($('.bdc-walk-popup').hasClass('circle_menus')){
       $('.cdk-overlay-pane').addClass('pgpg');
-      clearInterval(this.setintvl);
-      console.log('close');
     }
-
-
   }
-
+  ngAfterViewChecked(){
+    this.addExternalClass();
+  }
 }

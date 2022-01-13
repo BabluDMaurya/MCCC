@@ -14,9 +14,9 @@
             <input autocomplete="off" formControlName="phone" type="tel" maxlength="16" class="form-control" [ngClass]="{ 'is-invalid': submit && f.phone.errors }">
             <div *ngIf="submit && f.phone.errors" class="invalid-feedback">
               <div *ngIf="f.phone.errors.required">Phone is required</div>
-              <div *ngIf="f.phone.errors.maxlength">Not more then 16 digit's</div>
-              <div *ngIf="f.phone.errors.minlength">Minimum 8 digit's required</div>
-              <div *ngIf="f.phone.errors.pattern">Only digit's allowed</div>
+              <div *ngIf="f.phone.errors.maxlength">Not more then 16 digits</div>
+              <div *ngIf="f.phone.errors.minlength">Minimum 8 digits required</div>
+              <div *ngIf="f.phone.errors.pattern">Only digits allowed</div>
               <div *ngIf="f.phone.errors.phoneTaken">Phone number is already taken.</div>
             </div>
             <div class="invalid-feedback error" style="display: block;" *ngIf="f.phone.errors?.serverError">{{ f.phone.errors?.serverError }}</div> 

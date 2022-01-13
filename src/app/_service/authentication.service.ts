@@ -34,21 +34,21 @@ export class AuthenticationService {
                 return user;
             }));
     }
-    login_with_token(token: any) {
-        console.log("autologin API");
-        return this.http.post<any>(`${Config.BasePath}/login_with_token`, { token })
-            .pipe(map(user => {       
-                // console.log(user);        
-                if(user.status != 'false'){
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                }else{
-                    this.currentUserSubject.next(null as any);
-                }                
-                return user;
-            }));
-    }
+    // login_with_token(token: any) {
+    //     console.log("autologin API");
+    //     return this.http.post<any>(`${Config.BasePath}/login_with_token`, { token })
+    //         .pipe(map(user => {       
+    //             // console.log(user);        
+    //             if(user.status != 'false'){
+    //             // store user details and jwt token in local storage to keep user logged in between page refreshes
+    //             localStorage.setItem('currentUser', JSON.stringify(user));
+    //             this.currentUserSubject.next(user);
+    //             }else{
+    //                 this.currentUserSubject.next(null as any);
+    //             }                
+    //             return user;
+    //         }));
+    // }
     social_login(data :any){
         return this.http.post<any>(`${Config.BasePath}/social_login`, data).pipe(map(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes

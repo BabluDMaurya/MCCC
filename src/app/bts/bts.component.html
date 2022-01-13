@@ -13,6 +13,13 @@
                     <p class="classinghead recomded">Popular BTS</p>
                     <span><a [routerLink]="['/bts-inner/1']">View All</a></span>
                 </div>
+                <div *ngIf="!popularBTSV">
+                    <div class="moreSlider">
+                        <div class="bts_skeleton"></div>
+                        <div class="bts_skeleton"></div>
+                        <div class="bts_skeleton"></div>
+                    </div>
+                </div>
                 <div class="bts_popular_slider bts_popular_sliderSecond">
                     <app-bts-card  [data]="popularBtsVideos"></app-bts-card>  
                 </div>
@@ -22,6 +29,13 @@
                     <p class="classinghead primary__color recomded">Top BTS</p>
                     <span><a [routerLink]="['/bts-inner/2']">View All</a></span>
                 </div>
+                <div *ngIf="!topBTSV">
+                    <div class="moreSlider">
+                        <div class="bts_skeleton"></div>
+                        <div class="bts_skeleton"></div>
+                        <div class="bts_skeleton"></div>
+                    </div>
+                </div>
                 <div class="bts_popular_slider bts_popular_sliderSecond">
                     <app-bts-card  [data]="topBtsVideos"></app-bts-card>  
                 </div>
@@ -30,6 +44,14 @@
                 <div class="casingCallHeader">
                     <p class="classinghead recomded secondary__color">Watch more videos</p>
                 </div>
+                <!-- circle-skeleton -->
+            <div *ngIf="!watchmoreBTSV">            
+                <div class="moreSlider">
+                    <div class="more_slider_skeleton"></div>
+                    <div class="more_slider_skeleton"></div>
+                    <div class="more_slider_skeleton"></div>
+                </div>
+            </div>
                 <div class="moresliderVideos">
                     <app-bts-category-card  [data]="categories"></app-bts-category-card>
                     </div>

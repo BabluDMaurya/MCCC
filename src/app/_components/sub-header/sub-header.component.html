@@ -1,8 +1,11 @@
 <div class="mainHeader">
     <div class="top_header">
-        <div class="arrowLeft" [routerLink]="[link]">
+        <div class="arrowLeft" (click)="backs()">
             <ion-icon name="chevron-back-outline"></ion-icon>
         </div>
+        <!-- <div class="arrowLeft" [routerLink]="[link]">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+        </div> -->
         <div class="logo middle">
             <img src="assets/img/img/black_logo.webp" class="lightMode" alt="">
             <img src="assets/img/img/white_logo.webp" class="darkMode" alt="">

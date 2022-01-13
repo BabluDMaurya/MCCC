@@ -34,19 +34,19 @@
                         <i [ngClass]="trainingVideo[0].bookmark_status == 1 ? 'fas fa-bookmark removecard' : 'far fa-bookmark'"></i>
                     </div> 
                     <div  *ngIf="length > 50 && expanded !=  trainingVideo[0].id" >
-                        <p [innerHTML]="desc.substr(0, 50) + '...' | titlecase"></p>
+                        <p [innerHTML]="desc.substr(0, 50) + '...'"></p>
                             <span (click)="expanded = trainingVideo[0].id"
                             class="text-green"><b>{{expanded==  trainingVideo[0].id ?'View less':'View more'}}</b>
                             </span>
                         </div>
                     <div  *ngIf="expanded ==  trainingVideo[0].id ">
-                        <p [innerHTML]="desc | titlecase"></p>
+                        <p [innerHTML]="desc"></p>
                         <span (click)="expanded = 0"
                         class="text-green"><b>{{expanded ==  trainingVideo[0].id ?'View less':'View more'}}</b>
                         </span>
                     </div>
                     <div  *ngIf="length < 50 " >
-                        <p [innerHTML]="desc | titlecase"></p>
+                        <p [innerHTML]="desc"></p>
                         </div>
                         <label>Up Next</label>
                 </div>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="vright" [routerLink]="['/training-video-view/',data.id,data.category_id]">
                         <p>{{data.title | titlecase}}</p>
-                        <span [innerHTML]="data.description.substr(0, 35) + '...' | titlecase"></span>
+                        <span [innerHTML]="data.description.substr(0, 35) + '...'"></span>
                     </div>
                 </div>
                 <!-- </div> -->

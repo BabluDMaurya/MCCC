@@ -12141,10 +12141,15 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 }
 
 .main_wrppers {
-  margin-bottom: 70px;
+  margin-bottom: 80px;
   margin-top: 70px;
 }
-
+/* vg-overlay-play .vg-overlay-play:hover .overlay-play-container.vg-icon-play_arrow:before{
+  transform: scale(0.5)!important;
+} */
+vg-overlay-play .vg-overlay-play .overlay-play-container.vg-icon-play_arrow{
+  font-size: 45px!important;
+}
 .main_wrppers .banner {
   width: 100%;
   height: 182px;
@@ -13457,7 +13462,7 @@ body.dark-mode-active .bts_inner .bts_inners .bts__inner .moviesArea .moviesCont
   margin: 0;
   line-height: normal;
   color: #000;
-  padding-right: 12px;
+  padding-right: 15px;
 }
 body.dark-mode-active .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent p {
   color: #fff!important;
@@ -14144,8 +14149,9 @@ body.dark-mode-active .profile .profileWrpper .profiles .profileDiv label,body.d
   font-size: 16px;
   text-align: center;
   border-radius: 50px;
-  padding: 8px 0;
+  padding: 15px 0!important;
   margin-bottom: 50px;
+  line-height: 13px;
 }
 
 .profile .profileWrpper .profiles .submit .btns.outline {
@@ -14648,9 +14654,12 @@ body.dark-mode-active .personal_prfile_wrapper .head_tabs ul{
   text-align: center;
   border-radius: 50px;
   font-weight: 600;
-  display: block;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  height: 45px;
   padding: 0;
-  line-height: 45px;
+  line-height: 42px;
 }
 .dark-mode-active .personal_profilesDivs #images .btnArea .next, .dark-mode-active .personal_profilesDivs #videos .btnArea .next{
   color: #fff;

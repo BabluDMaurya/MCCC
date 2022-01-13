@@ -60,7 +60,7 @@
                                <option [value]="day" *ngFor="let day of dayList" >{{day}}</option>
                                </select>
                                <div *ngIf="submit && f.day.errors" class="invalid-feedback">
-                                  <div *ngIf="f.day.errors.required">Day is required</div>
+                                  <div *ngIf="f.day.errors.required">Date is required</div>
                                </div>
                             </div>
                             <div class="select">                               

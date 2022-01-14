@@ -72,13 +72,22 @@ export class WorkshopCardComponent implements OnInit {
         // this.showToasterSuccess();      
       });
   }
-  doHtmlDisplay(text:any, limit = 50) {
+  // doHtmlDisplay(text:any, limit = 50) {
+  //   if (text.length > limit) {
+  //    text = text.substring(0, limit) + '...';
+  //   } else {
+  //    text;
+  //   }
+  //   return text;
+  //  }
+
+   doHtmlDisplay(text:any, limit = 50) {
     if (text.length > limit) {
      text = text.substring(0, limit) + '...';
     } else {
      text;
     }
-    return text;
+    return text + ' <span>View More</span>';
    }
    workshopInner(id:any){
     this.route.navigate(['workshop-registration',id]);

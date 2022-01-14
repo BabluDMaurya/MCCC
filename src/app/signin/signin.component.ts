@@ -7,7 +7,7 @@ import { AlertService } from '../_service/alert.service';
 import { Config } from '../_config/config';
 import { DashboardService } from '../_service/dashboard.service';
 import {HttpErrorResponse} from '@angular/common/http';
-
+declare var $: any;
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -20,6 +20,19 @@ export class SigninComponent implements OnInit {
   returnUrl: string | undefined;
   splaceScreen : any = 0;
   hide : boolean = true;  
+  btnVal :string = "SIGN IN";
+
+//button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal : string = "SIGN IN";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
   constructor(private formBuilder : FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -55,13 +68,16 @@ export class SigninComponent implements OnInit {
     this.alertService.clear();
     // stop here if form is invalid
     if (this.signinForm?.invalid) {
+      this.submitConfig();
         return;
     }
+    this.progressConfig();
     this.loading = true;
         this.authenticationService.login(this.f.email_or_mobile.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {
+                  this.submitConfig();
                   if(data.status === 'false'){
                     this.signinForm.controls['password'].setErrors({'incorrect': true});
                   }else{
@@ -98,7 +114,8 @@ export class SigninComponent implements OnInit {
                     }
                   }
                 },
-                (errorResponse: HttpErrorResponse) => {                  
+                (errorResponse: HttpErrorResponse) => {             
+                  this.submitConfig();     
                   const validationErrors = errorResponse.error.errors;
                   Object.keys(validationErrors).forEach(prop => {
                     const formControl = this.f.get(prop);

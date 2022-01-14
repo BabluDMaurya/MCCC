@@ -6,7 +6,7 @@ import { AuthenticationService } from 'src/app/_service/authentication.service';
 import { DashboardService } from 'src/app/_service/dashboard.service';
 import { NotificationService } from 'src/app/_service/notification.service';
 import { User } from '../../_models/user';
-
+declare var $: any;
 @Component({
   selector: 'app-apply-casting',
   templateUrl: './apply-casting.component.html',
@@ -45,6 +45,7 @@ export class ApplyCastingComponent implements OnInit {
   phone:any;
   hobbies:any;
   currentUser: User;
+  btnVal :string = "Submit";
   constructor(
     private actRoute:ActivatedRoute,
     private route : Router,
@@ -60,6 +61,17 @@ export class ApplyCastingComponent implements OnInit {
       this.back_link = "casting-inner/"+this.castingId;
     });
    }
+   //button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal : string = "Submit";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
    onPlayingVideo(event:any) {
     event.preventDefault();
     // play the first video that is chosen by the user
@@ -160,14 +172,19 @@ submit(){
     //   this.mediaerrordescription = 'To change video go to profile and update video from there';
     //   this.openmediadialogbox.nativeElement.click();
     // }
+    this.submitConfig();
     return;
   }else{
+    this.progressConfig();
     sessionStorage.removeItem('casting_title');
     sessionStorage.removeItem('casting_date');
     this.dashboardService.applyForCasting(this.form.value)     
         .subscribe(res => {
+          this.submitConfig();
           this.resData = res;
           this.route.navigate(['/thank-you-casting/'+this.resData.data.application_id]);
+        },error=>{
+          this.submitConfig()
         });
   }
 }

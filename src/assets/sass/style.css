@@ -13127,7 +13127,10 @@ body.dark-mode-active .profile .profileWrpper .profiles .profileDiv .dateBirth .
 body.dark-mode-active .casting_inner .casting__profiles .castingProfile h2 {
   color: #ff6454;
 }
-
+.cdk-overlay-pane.training_tour_pane{
+  transform: initial!important;
+  right: 3%!important;
+}
 body.dark-mode-active .casting_inner .casting__profiles .castingProfile h3, body.dark-mode-active .casting_inner .casting__profiles .castingProfile h4, body.dark-mode-active .casting_inner .casting__profiles .castingProfile p, body.dark-mode-active .casting_inner .casting__profiles .castingProfile .inputs input, body.dark-mode-active .casting_inner .casting__profiles .castingProfile .inputs textarea {
   color: #fff;
 }
@@ -13520,7 +13523,7 @@ body.dark-mode-active .toast-box{
   display: -ms-flexbox;
   display: flex;
   align-items: stretch !important;
-  padding-bottom: 20px;
+  padding-bottom: 150px;
   flex-wrap: wrap;
 }
 
@@ -13566,6 +13569,9 @@ body.dark-mode-active .toast-box{
   line-height: normal;
   display: block;
   padding-bottom: 5px;
+  font-weight: normal;
+}
+.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vright span p{
   font-weight: normal;
 }
 
@@ -15279,6 +15285,9 @@ dark-mode-active p.info_contnt{
   align-items: center;
   justify-content: center;
   margin-bottom: 0;
+}
+.dis-class {
+  opacity: 0.5;
 }
 /* .game_header span{
   position: relative;

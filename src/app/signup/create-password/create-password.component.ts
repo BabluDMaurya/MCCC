@@ -15,6 +15,8 @@ declare var toastbox: any;
   styleUrls: ['./create-password.component.scss']
 })
 export class CreatePasswordComponent implements OnInit {
+  
+  btnVal = "Sign Up";
   toastSuccess:string = 'toast-14';
   form: FormGroup | any;
   back_link :any =  "registration";
@@ -38,6 +40,17 @@ export class CreatePasswordComponent implements OnInit {
            this.route.navigate([Config.AfterLogin]);
        }
      }
+  }
+  //button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal = "Sign Up";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
   }
   passwordhideshow() {
     this.hide = !this.hide;
@@ -110,8 +123,10 @@ this.registerService.terms().subscribe(
   submit(){
     this.submitted = true;
     if (this.form.invalid) {
+      this.submitConfig();
       return;
     }else{
+      this.progressConfig(); 
         sessionStorage.setItem('password',this.form.value.password);
         this.registerService.register_new(this.form.value).subscribe(
                 data => {     
@@ -130,6 +145,7 @@ this.registerService.terms().subscribe(
                   
                 },
                 (errorResponse: HttpErrorResponse) => {
+                  this.submitConfig();
                   const validationErrors = errorResponse.error.errors;
                   Object.keys(validationErrors).forEach(prop => {
                     const formControl = this.form.get(prop);

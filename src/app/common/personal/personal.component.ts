@@ -127,7 +127,19 @@ idatas:any
 totalupimg: any;
 disabledi : boolean = false;
 videoFound : boolean = false;
+btnVal :string = "Save";
 
+//button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal : string = "Save";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
   constructor(private location:Location,
     private actRoute:ActivatedRoute,
     public datepipe: DatePipe,
@@ -284,10 +296,12 @@ videoFound : boolean = false;
     this.submitted = true;
     this.disabledv = true;
     if (this.form.invalid) {
+      this.submitConfig();
       this.getFormValidationErrors();
       this.disabledv = false;
       return;
     }else{
+      this.progressConfig();
       this.loading = true;
       let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
       this.form.controls['dob'].setValue(DOB); 
@@ -300,6 +314,7 @@ videoFound : boolean = false;
       this.dashboardService.editUserDetail(this.form.value).pipe(first()).subscribe(res=>{
         this.loading = false;
         this.resData = res;
+        this.submitConfig();
         if(this.resData.code == '500' && this.resData.status == 'false'){
           let message = this.resData.message;
         }else{
@@ -330,6 +345,7 @@ videoFound : boolean = false;
         }
       },error=>{
         // console.log('error message' , error);
+        this.submitConfig();
         this.loading = false;
         this.disabledv = false;
       });
@@ -644,11 +660,13 @@ videoFound : boolean = false;
     ($event.target as HTMLButtonElement).disabled = true;
     this.disabledv = true;
   if (this.vform.invalid) {
+    this.submitConfig();
     this.getvFormValidationErrors();
     ($event.target as HTMLButtonElement).disabled = false;
     this.disabledv = false;
     return;
   }else{     
+    this.progressConfig();
     //video update section
     if(this.newVideoAdded){
          this.videoArray = null;
@@ -675,7 +693,7 @@ videoFound : boolean = false;
           this.progressv = Math.round((100 / total) * event.loaded);
           this.waitText = true;
           this.videoloading = true;
-        } else if (event.type == HttpEventType.Response) {
+        } else if (event.type == HttpEventType.Response) {          
           this.videoloading = true;
           this.progressv = 0;
           this.waitText = false;
@@ -693,11 +711,13 @@ videoFound : boolean = false;
           this.vform.reset();
           ($event.target as HTMLButtonElement).disabled = false;
           this.disabledv = false;
+          this.submitConfig();
         }
       });
     }else{ 
       this.videoloading = true;
        if(totalvideo > 4){
+        this.submitConfig();
         this.videoerror = 'Please Select Only One Video';
         this.onevideoerror = true;
         ($event.target as HTMLButtonElement).disabled = false;
@@ -741,11 +761,13 @@ videoFound : boolean = false;
     ($event.target as HTMLButtonElement).disabled = true;
     this.disabledi = true;
     if (this.iform.invalid) {
+      this.submitConfig();
       this.getiFormValidationErrors();
       ($event.target as HTMLButtonElement).disabled = false;
     this.disabledi = false;
       return;
     }else{
+      this.progressConfig();
       this.loading = false;
       let totalimg = this.imgArray.length+this.cropimages.length;
       //  console.log("this.imgArray.length:",this.imgArray.length);
@@ -783,6 +805,7 @@ videoFound : boolean = false;
         this.iform.reset();
         ($event.target as HTMLButtonElement).disabled = false;
         this.disabledi = false;
+        this.submitConfig();
       }
     }
         );
@@ -792,6 +815,7 @@ videoFound : boolean = false;
         // console.log("image count :" + totalimg);
         
         if(totalimg > 3){
+          this.submitConfig();
           this.imageerror = 'Please Select Only Three Photos';
         this.threeimgerror = true;
         ($event.target as HTMLButtonElement).disabled = false;

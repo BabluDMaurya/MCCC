@@ -30,6 +30,19 @@ export class ResetPasswordComponent implements OnInit {
   otp : string = '1111';
   hide : boolean = true;
   chide : boolean = true;
+  btnVal :string = "Submit";
+
+//button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal : string = "Submit";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
   constructor(public otpService:OtpService,private registerService : RegisterService,private userService:UserService,private actRoute:ActivatedRoute ,private formBuilder: FormBuilder, private route : Router,private authenticationService: AuthenticationService) { }
   passwordhideshow() {
     this.hide = !this.hide;
@@ -67,10 +80,13 @@ this.registerService.terms().subscribe(
     console.log("submit");
     this.submitted = true;
     if (this.form.invalid) {
+      this.submitConfig();
         return;
     }else{ 
+      this.progressConfig();
       this.userService.reset_password(this.form.value,this.token).pipe(first()).subscribe(res => {
         this.responceData = res;
+        this.submitConfig();
         if(this.responceData.status == 'true'){  
           sessionStorage.removeItem('rotp');
           // this.notifyService.showSuccess("Password Reset Successfully !!", "");
@@ -85,6 +101,7 @@ this.registerService.terms().subscribe(
           console.log('Hello forgot',this.responceData);
         }          
        },error=>{
+         this.submitConfig();
         // this.notifyService.showError(error.message, "")
        });       
         

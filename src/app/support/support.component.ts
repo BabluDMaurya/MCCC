@@ -28,7 +28,7 @@ export class SupportComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      options : ['What Whappen Next',[Validators.required]],
+      options : ['What Happen Next',[Validators.required]],
       message : ['',[Validators.required]]
     });
   }

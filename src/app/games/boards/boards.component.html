@@ -4,7 +4,9 @@
             <!-- <h1 class="text-center text-orange " *ngIf="gameService.isGameRunning"> 
             {{ gameService.activePlayer }}'S TURN  
             </h1> -->
-         <h1 class="text-center text-grey-darker">  Tic-Tac-Toe </h1>
+         <h1 class="text-center text-grey-darker game_header">
+            <span> Tic-Tac-Toe</span>
+        </h1>
         </div>
         
         <app-board (cardClicked)="cardClicked()"></app-board>

@@ -52,6 +52,15 @@ export class HeaderComponent implements OnInit {
           
         // });
   }
+  addExternalClass(){
+    $('.ng-tns-c95-7').addClass('training_tour');
+    if($('.ng-tns-c95-7').hasClass('training_tour')){
+      $('.cdk-overlay-pane').addClass('training_tour_panel');
+    }
+  }
+  ngAfterViewChecked(){
+    this.addExternalClass();
+  }
   getUserNotificationCounter(){
     this.dashboardService.getUserNotificationCounter(null)
     .subscribe(res => {

@@ -11905,6 +11905,10 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
 .main .mainHeader .bottomHeader {
   padding-top: 15px;
   height: 66px;
+  overflow-x:scroll;
+}
+.main .mainHeader .bottomHeader::-webkit-scrollbar{
+  display: none;
 }
 
 .main .mainHeader .bottomHeader .tabs {
@@ -11917,10 +11921,13 @@ body.dark-mode-active .completeProfile .forms_input .formGroup .select select op
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+          min-width: 390px;
 }
 
 .main .mainHeader .bottomHeader .tabs .box {
   text-align: center;
+  width: 80px;
+
 }
 
 .main .mainHeader .bottomHeader .tabs .box .label {
@@ -12370,6 +12377,8 @@ vg-overlay-play .vg-overlay-play .overlay-play-container.vg-icon-play_arrow{
   position: relative;
   height: 190px;
   margin-right: 10px;
+  border-radius: 20px;
+  border: 1px solid #fff5;
 }
 
 .main_wrppers .casingCalls .bts_popular_slider .btsSlioder img {
@@ -15287,6 +15296,75 @@ dark-mode-active p.info_contnt{
   justify-content: center;
   margin-bottom: 0;
 }
+.reels_warpper{
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  padding-top: 70px;
+}
+.reels_wrrpers_sliders .slick-initialized .slick-slide{
+  height: calc(100vh - 85px);
+  overflow: hidden;
+}
+.reels_wrrpers_sliders .slick-initialized .slick-slide img{
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+.reels_wrrpers_sliders .reels_Slioder img{
+  height: 100%;
+}
+.arrow-container {
+  width: auto;
+  /* cubic-bezier-easing = sine / mehr Beispiele: https://easings.net/ */
+  animation: bounce 1600ms infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  cursor: pointer;
+  height: 20px;
+}
+.jumping_arrows{
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+span.slick-prev{
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+  animation: bounce 1600ms infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+span.slick-prev:before{
+  display: none;
+}
+
+.app_circles{
+  width: 115px;
+  height: 115px;
+  background: #2790cf;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-right: 15px;
+  overflow: hidden;
+}
+
+.app_circles img{
+  width: 100%;
+}
+
+@keyframes bounce {
+50% {
+    transform: translateY(-15px);
+  }
+}
+
 /* .game_header span{
   position: relative;
 

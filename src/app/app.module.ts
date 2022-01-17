@@ -99,6 +99,8 @@ import { InnerSplashComponent } from './inner-splash/inner-splash.component';
 import { SquareComponent } from './games/boards/board/square/square.component';
 import { BoardComponent } from './games/boards/board/board.component';
 import { BoardsComponent } from './games/boards/boards.component';
+import { ReelsComponent } from './reels/reels.component';
+import { SupportedPartnersComponent } from './_components/supported-partners/supported-partners.component';
 
 @NgModule({
   declarations: [
@@ -171,7 +173,9 @@ import { BoardsComponent } from './games/boards/boards.component';
     InnerSplashComponent,
     SquareComponent,
     BoardComponent,
-    BoardsComponent
+    BoardsComponent,
+    ReelsComponent,
+    SupportedPartnersComponent
   ],
   imports: [
     BrowserModule,

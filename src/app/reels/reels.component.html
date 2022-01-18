@@ -1,0 +1,26 @@
+
+<!-- <app-footer></app-footer> -->
+<div class="main casting_inner reels_warpper">
+    <app-sub-header [back]="back_link"></app-sub-header>
+    <div class="main_wrppers">
+        <div class="reels_wrrpers_sliders">
+            <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="trns_sliders" (init)="slickInit($event)" >
+                <div *ngFor="let img of imgArray;" ngxSlickItem  class="reels_Slioder">
+                    <!-- <img src="../../assets/img/img/1.jpg" alt=""> -->
+                    <img src="{{imgPath}}{{img.image}}" alt="">
+                    <!-- <img src="{{img.image}}" alt=""> -->
+                </div>   
+            </ngx-slick-carousel>
+           <div class="jumping_arrows">
+                <div class="arrow-container">
+                    <div class="arrow-down">
+                        <!-- <img src="https://img.icons8.com/fluency-systems-filled/24/ffffff/double-down.png"/> -->
+                        <!-- <i class="fas fa-angle-double-down"></i> -->
+                        <img src="https://img.icons8.com/material-sharp/64/ffffff/expand-arrow--v1.png"/>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>
+

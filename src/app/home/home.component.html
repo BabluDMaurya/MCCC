@@ -129,5 +129,23 @@
                 <app-bts-category-card  [data]="categories"></app-bts-category-card>
             </div>
         </div>
+
+        <div class="casingCalls">
+            <div class="casingCallHeader">
+                <p class="classinghead recomded secondary__color">Support Partners</p>
+                <!-- <span><a>View All</a></span> -->
+            </div>  
+            <!-- circle-skeleton -->
+            <div *ngIf="!loadingbts">            
+                <div class="moreSlider">
+                    <div class="more_slider_skeleton"></div>
+                    <div class="more_slider_skeleton"></div>
+                    <div class="more_slider_skeleton"></div>
+                </div>
+            </div>          
+            <div class="moresliderVideos" *ngIf="loadingbts">
+                <app-supported-partners  [data]="categories"></app-supported-partners>
+            </div>
+        </div>
     </div>
 </div>

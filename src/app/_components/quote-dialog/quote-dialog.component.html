@@ -1,0 +1,31 @@
+<button type="button" class="btn btn-secondary" #opendialog data-bs-toggle="modal" data-bs-target="#QuoteSuccess" style="display: none;"></button>
+                <div class="modal fade dialogbox" id="QuoteSuccess" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content dilog-square">
+                            <div class="dilog-square-close" #closedialog data-bs-dismiss="modal" 
+                            style="  
+                            font-weight: bold;
+                            padding: 10px;
+                            color: red;
+                            position: absolute;">X</div>
+                            <!-- <div class="modal-header">                               
+                                <h5 class="modal-title" > 
+                                    <a style="color: #fff;" class="btn btnss_r ripple" data-bs-dismiss="modal">X</a>
+                                </h5>                                
+                            </div>   -->
+                            <img src="{{active_quote}}" alt="image" class="img-fluid">
+                            <!-- <div class="modal-icon text-success">
+                                <ion-icon name="checkmark-circle" role="img" class="md hydrated" aria-label="checkmark circle"></ion-icon>
+                            </div> -->
+                                                     
+                            <!-- <div class="modal-body">
+                                {{active_quote}}
+                            </div> -->
+                            <!-- <div class="modal-footer">
+                                <div class="btn-inline">
+                                    <a style="color: #fff;" class="btn btnss_r ripple" data-bs-dismiss="modal">X</a>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>

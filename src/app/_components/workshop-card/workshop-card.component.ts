@@ -30,7 +30,7 @@ export class WorkshopCardComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
+    // console.log(this.data);
     this.workshopService.get_all_workshop_data('').subscribe(
       data => { 
         // this.workshsopData = data.data;

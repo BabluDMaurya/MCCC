@@ -52,10 +52,16 @@ export class HeaderComponent implements OnInit {
           
         // });
   }
+  // addExternalClass(){
+  //   $('.ng-tns-c95-7').addClass('training_tour');
+  //   if($('.ng-tns-c95-7').hasClass('training_tour')){
+  //     $('.cdk-overlay-pane').addClass('training_tour_pane');
+  //   }
+  // }
   addExternalClass(){
-    $('.ng-tns-c95-7').addClass('training_tour');
-    if($('.ng-tns-c95-7').hasClass('training_tour')){
-      $('.cdk-overlay-pane').addClass('training_tour_panel');
+    $('.ng-tns-c95-7').addClass('taining_tour');
+    if($('.ng-tns-c95-7').hasClass('taining_tour')){
+      $('.cdk-overlay-pane').addClass('training_tour_pane');
     }
   }
   ngAfterViewChecked(){

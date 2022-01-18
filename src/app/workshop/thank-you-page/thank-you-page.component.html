@@ -15,17 +15,19 @@
             </div>
         </div>
         
-        <ngx-slick-carousel class="carousel slick_sliders thank_you_slider" #slickModal="slick-carousel" [config]="slideConfig"
+        <!-- <ngx-slick-carousel class="carousel slick_sliders thank_you_slider" #slickModal="slick-carousel" [config]="slideConfig"
         (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
         (beforeChange)="beforeChange($event)">                
         <div ngxSlickItem *ngFor="let slide of slides" class="banner thank_sliders main_banner" style="min-height: 132px;">
          <div class="banner_content">
-            <!-- <h2>{{slide.title}}</h2> -->
             <p><i class="fas fa-quote-left"></i>{{slide.des}}<i class="fas fa-quote-right"></i></p> 
         </div>
         </div>        
-      </ngx-slick-carousel>
+      </ngx-slick-carousel> -->
         <div class="btnArea">
             <button [routerLink]="['/home']" class="next btnss_r ripple">Let's Explore!</button>
+        </div>
+        <div *ngIf="showquote">
+            <app-quote-dialog [screen]='screen'></app-quote-dialog> 
         </div>
     </div>

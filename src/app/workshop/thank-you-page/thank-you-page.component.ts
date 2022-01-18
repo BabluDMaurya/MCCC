@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuoteList } from 'src/app/_config/quote-list';
 
 @Component({
   selector: 'app-thank-you-page',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./thank-you-page.component.scss']
 })
 export class ThankYouPageComponent implements OnInit {
-
+  screen = 'workshop';
+  lists = QuoteList.List;
+  showquote : boolean = true;
   constructor() { }
   //-----slick slider------------//    
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,autoplay: true,autoplaySpeed: 5000,'nextArrow':false,'prevArrow':false,fade:true};
@@ -36,6 +39,16 @@ export class ThankYouPageComponent implements OnInit {
   } 
   //-----slick slider------------//
   ngOnInit(): void {
+    //-----show quote-------//
+    if (localStorage.getItem(this.screen+'-quotes') != null) {
+      var qd:any = localStorage.getItem(this.screen+'-quotes');
+      let ld :any  = JSON.parse(qd)
+      if(ld.length == this.lists.length){
+        this.showquote = false;
+      }else{
+        this.showquote = true;
+      }
+    }
   }
 
 }

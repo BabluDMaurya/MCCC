@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { QuoteList } from 'src/app/_config/quote-list';
 import { DashboardService } from 'src/app/_service/dashboard.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { DashboardService } from 'src/app/_service/dashboard.service';
   styleUrls: ['./thank-you-casting.component.scss']
 })
 export class ThankYouCastingComponent implements OnInit {
-
+  screen = 'casting';
+  lists = QuoteList.List;
+  showquote : boolean = true;
   applicationNo:any;
   constructor(private dashboardService:DashboardService,private route:Router,private actRoute:ActivatedRoute) { }
 
@@ -44,6 +47,16 @@ export class ThankYouCastingComponent implements OnInit {
     this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
       this.applicationNo = params.get('application_no');
     });
+    //-----show quote-------//
+    if (localStorage.getItem(this.screen+'-quotes') != null) {
+      var qd:any = localStorage.getItem(this.screen+'-quotes');
+      let ld :any  = JSON.parse(qd)
+      if(ld.length == this.lists.length){
+        this.showquote = false;
+      }else{
+        this.showquote = true;
+      }
+    }
   }
   letEx(){
     this.dashboardService.filter('applyed');

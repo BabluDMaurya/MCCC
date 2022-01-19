@@ -9,9 +9,9 @@ declare var $: any;
 export class QuoteDialogComponent implements OnInit {
   @Input() screen:any;
   @ViewChild('opendialog') opendialog:any;
-  lists : any;
+  lists : any = QuoteList.List;
   quotes: any = [];
-  active_quote : any;
+  active_quote : any ='';
   localData : any;
   showquote : boolean = true;
   constructor() { }
@@ -19,7 +19,7 @@ export class QuoteDialogComponent implements OnInit {
     this.setupQuotes();
   }
   setupQuotes(): void {
-      this.lists = QuoteList.List;
+      
     this.lists.forEach((quote : any) => {
       const quoteData = {
         id:quote.id,
@@ -66,7 +66,7 @@ export class QuoteDialogComponent implements OnInit {
       .sort((a, b) => a[0] - b[0])
       .map(a => a[1]);
   }
-  ngAfterViewChecked(){
+  ngAfterViewChecked(){    
     if(this.showquote){
       // const myVar = setTimeout(()=>{                           
               this.opendialog.nativeElement.click();

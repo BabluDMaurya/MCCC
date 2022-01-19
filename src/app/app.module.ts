@@ -100,6 +100,8 @@ import { SquareComponent } from './games/boards/board/square/square.component';
 import { BoardComponent } from './games/boards/board/board.component';
 import { BoardsComponent } from './games/boards/boards.component';
 import { QuoteDialogComponent } from './_components/quote-dialog/quote-dialog.component';
+import { ReelsComponent } from './reels/reels.component';
+import { SupportedPartnersComponent } from './_components/supported-partners/supported-partners.component';
 
 @NgModule({
   declarations: [
@@ -173,7 +175,9 @@ import { QuoteDialogComponent } from './_components/quote-dialog/quote-dialog.co
     SquareComponent,
     BoardComponent,
     BoardsComponent,
-    QuoteDialogComponent
+    QuoteDialogComponent,
+    ReelsComponent,
+    SupportedPartnersComponent
   ],
   imports: [
     BrowserModule,

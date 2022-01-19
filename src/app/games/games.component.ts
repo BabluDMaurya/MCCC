@@ -14,6 +14,9 @@ export class GamesComponent implements OnInit {
   constructor(private route : Router) { }
 
   ngOnInit(): void {
+
+  }
+  ngAfterViewChecked(){
     if (localStorage.getItem(this.screen+'-quotes') != null) {
       var qd:any = localStorage.getItem(this.screen+'-quotes');
       let ld :any  = JSON.parse(qd)
@@ -22,10 +25,12 @@ export class GamesComponent implements OnInit {
       }else{
         this.showquote = true;
       }
-      
-    } 
+      console.log("ld.length:",ld);
+      console.log("this.lists.length:",this.lists.length);
+      console.log("this.showquote:",this.showquote);
+    }     
   }
-   show(){
+  show(){
     this.route.navigate(['/bollywood-memory-game']);
   }
   showTicTacToe(){

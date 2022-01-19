@@ -45,6 +45,7 @@ import { AuthGuard } from './_helpers/auth.guard';
 import { NoInternetComponent } from './no-internet/no-internet.component';
 import { SupportComponent } from './support/support.component';
 import { PasswordComponent } from './password/password.component';
+import { ReelsComponent } from './reels/reels.component';
 
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { InnerSplashComponent } from './inner-splash/inner-splash.component';
@@ -251,6 +252,10 @@ const routes: Routes = [{
 {    
   path: 'support',component: SupportComponent,canActivate: [AuthGuard],   
   data: {title: 'support'}    
+},
+{    
+  path: 'reels',component: ReelsComponent,canActivate: [AuthGuard],   
+  data: {title: 'reels'}    
 },
 ];
 

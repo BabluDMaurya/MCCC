@@ -15335,13 +15335,21 @@ dark-mode-active p.info_contnt{
   left: 50%;
   transform: translateX(-50%);
 }
+.arrows{
+  animation: bounce 1600ms infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  /* height: 20px; */
+  top: initial;
+  position: absolute;
+  left: 50%;
+  bottom: 54px;
+}
+
 
 span.slick-prev{
   left: 50%;
   transform: translateX(-50%);
   width: auto;
   height: auto;
-  animation: bounce 1600ms infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 span.slick-prev:before{

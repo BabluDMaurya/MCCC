@@ -9,10 +9,10 @@ export class ReelsComponent implements OnInit {
   back_link :any =  "home";
   imgArray:any;
   imgPath="../../assets/img/img/";
-  // nextButton = '<div class="arrows"><span class="slick-prev slick-next-bouncing"><img src="https://img.icons8.com/material-sharp/64/ffffff/expand-arrow--v1.png"/></span></div>';
+  nextButton = '<div class="arrows"><span class="slick-prev slick-next-bouncing"><img src="https://img.icons8.com/material-sharp/64/ffffff/expand-arrow--v1.png"/></span></div>';
   constructor() { }
 
-  trns_sliders = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,"infinite": false,'nextArrow':false,'prevArrow':false, vertical: true, verticalSwiping: true};
+  trns_sliders = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,"infinite": false,'nextArrow':this.nextButton,'prevArrow':false, vertical: true, verticalSwiping: true};
 
   ngOnInit(): void {
     this.imgArray = [

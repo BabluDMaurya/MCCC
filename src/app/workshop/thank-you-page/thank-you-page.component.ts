@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit,ViewChild,OnDestroy } from '@angular/core';
+import { Router,NavigationStart, NavigationEnd ,Event as NavigationEvent} from '@angular/router';
+import { QuoteList } from 'src/app/_config/quote-list';
+import { QuoteService } from 'src/app/_service/quote.service';
 
 @Component({
   selector: 'app-thank-you-page',
@@ -6,8 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./thank-you-page.component.scss']
 })
 export class ThankYouPageComponent implements OnInit {
-
-  constructor() { }
+  screen = 'workshop';
+  lists = QuoteList.List;
+  showquote : boolean = true;
+  @ViewChild('openquotedialog') openquotedialog:ElementRef | any;  
+  quote : any;
+  event$ 
+  constructor(private router: Router,private _QuoteService:QuoteService) {
+    this.event$=this.router.events.subscribe((event: NavigationEvent) => {
+            if(event instanceof NavigationEnd ) {
+              if(event.url=="/thank-you-workshop"){
+                this.showQuote();
+              }
+            }
+          });
+        }
   //-----slick slider------------//    
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,autoplay: true,autoplaySpeed: 5000,'nextArrow':false,'prevArrow':false,fade:true};
   slides = [
@@ -36,6 +52,21 @@ export class ThankYouPageComponent implements OnInit {
   } 
   //-----slick slider------------//
   ngOnInit(): void {
+   
   }
-
+  ngOnDestroy() {
+    this.event$.unsubscribe();
+  }
+  showQuote(){
+    this.quote = this._QuoteService.setupQuotes(this.screen);
+    if (localStorage.getItem(this.screen+'-quotes') != null) {
+      var qd:any = localStorage.getItem(this.screen+'-quotes');
+      let ld :any  = JSON.parse(qd)
+      if(ld.length <= this.lists.length){
+        setTimeout(() => {
+          this.openquotedialog.nativeElement.click();
+        }, 3000);
+      }    
+    }
+  }
 }

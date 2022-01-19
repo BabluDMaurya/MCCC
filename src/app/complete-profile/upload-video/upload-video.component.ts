@@ -14,6 +14,7 @@ declare var $: any;
   styleUrls: ['./upload-video.component.scss']
 })
 export class UploadVideoComponent implements OnInit {
+  btnVal :string = "Continue";
   toastError:string = 'toast-6';
   progress: number = 0;
   currentPlayingVideo: HTMLVideoElement | any;
@@ -54,6 +55,17 @@ export class UploadVideoComponent implements OnInit {
         this.route.navigate(['/signin']);
       }
     }
+  }
+  //button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal : string = "Continue";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
   }
   onPlayingVideo(event:any) {
     event.preventDefault();
@@ -127,12 +139,14 @@ export class UploadVideoComponent implements OnInit {
     this.uploading = true;
     this.submitted = true;
     if (this.form.invalid) {
+      this.submitConfig();
       return;
     } else {
       this.userService.upload_video(this.form.value).subscribe(
         (event: HttpEvent<any>) => {
         switch (event.type) {
           case HttpEventType.Sent:
+            this.progressConfig();
             console.log('Request has been made!');
             break;
           case HttpEventType.ResponseHeader:
@@ -144,8 +158,10 @@ export class UploadVideoComponent implements OnInit {
             console.log(`Uploaded! ${this.progress}%`);
             break;
           case HttpEventType.Response:
+              this.submitConfig();
               this.uploading = false; 
               if (event.body.status == 'true') {
+                this.authenticationService.currentUserValue.percentage = event.body.percentage;
                 this.route.navigate(['/final-success']);
               } else {
               }

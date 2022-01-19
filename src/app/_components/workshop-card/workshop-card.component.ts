@@ -30,7 +30,7 @@ export class WorkshopCardComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
+    // console.log(this.data);
     this.workshopService.get_all_workshop_data('').subscribe(
       data => { 
         // this.workshsopData = data.data;
@@ -72,13 +72,22 @@ export class WorkshopCardComponent implements OnInit {
         // this.showToasterSuccess();      
       });
   }
-  doHtmlDisplay(text:any, limit = 50) {
+  // doHtmlDisplay(text:any, limit = 50) {
+  //   if (text.length > limit) {
+  //    text = text.substring(0, limit) + '...';
+  //   } else {
+  //    text;
+  //   }
+  //   return text;
+  //  }
+
+   doHtmlDisplay(text:any, limit = 50) {
     if (text.length > limit) {
      text = text.substring(0, limit) + '...';
     } else {
      text;
     }
-    return text;
+    return text + ' <span>View More</span>';
    }
    workshopInner(id:any){
     this.route.navigate(['workshop-registration',id]);

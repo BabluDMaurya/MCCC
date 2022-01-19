@@ -52,7 +52,6 @@ export class HeaderComponent implements OnInit {
           
         // });
   }
-
   getUserNotificationCounter(){
     this.dashboardService.getUserNotificationCounter(null)
     .subscribe(res => {

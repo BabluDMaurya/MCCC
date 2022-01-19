@@ -5,7 +5,7 @@ import { AuthenticationService } from '../_service/authentication.service';
 import { Config } from '../_config/config';
 import { UserService } from '../_service/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
+declare var $: any;
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
@@ -17,7 +17,19 @@ export class ForgotPasswordComponent implements OnInit {
   form: FormGroup | any;
   submitted = false;
   responceData: any;
+  btnVal :string = "Next";
 
+//button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal : string = "Next";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
   constructor(private formBuilder: FormBuilder,
     private route: Router,
     private authenticationService: AuthenticationService,
@@ -35,10 +47,13 @@ export class ForgotPasswordComponent implements OnInit {
   submit() {
     this.submitted = true;
     if (this.form.invalid) {
+      this.submitConfig();
       return;
     } else {
+      this.progressConfig();
       this.userService.forgot_password(this.form.value).subscribe(res => {
         this.responceData = res;
+        this.submitConfig();
         if (this.responceData.status == 'true' && this.responceData.token != '') {
           sessionStorage.setItem('rotp', this.responceData.otp);
           sessionStorage.setItem('email_or_mobile', this.form.value.email_or_mobile);
@@ -47,6 +62,7 @@ export class ForgotPasswordComponent implements OnInit {
           this.form.controls['email_or_mobile'].setErrors({ userNotExit: true });
         }
       }, (error) => {
+        this.submitConfig();
         console.log("error", error);
         const validationErrors = error;
         // Object.keys(validationErrors).forEach(prop => {

@@ -17,6 +17,7 @@ declare var $: any;
   styleUrls: ['./complete-profile.component.scss']
 })
 export class CompleteProfileComponent implements OnInit {
+  btnVal = "NEXT";
   toastError:string = 'toast-6';
   toastSuccess:string = 'toast-11';
   workCount : number = 1;
@@ -63,7 +64,17 @@ export class CompleteProfileComponent implements OnInit {
       }
     }
   }
-
+  //button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal = "NEXT";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
   ngOnInit(): void {
     if (sessionStorage.getItem('social_login')) {
       this.social_login = true;
@@ -205,8 +216,10 @@ export class CompleteProfileComponent implements OnInit {
     if (this.form?.invalid) {
       this.uploading = false;
       this.getFormValidationErrors();
+      this.submitConfig();
       return;
     }
+    this.progressConfig();
     this.loading = true;
     let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
       this.form.controls['dob'].setValue(DOB); 
@@ -220,11 +233,14 @@ export class CompleteProfileComponent implements OnInit {
           item['profileStatus']='true';
           localStorage.setItem('currentUser', JSON.stringify(item));
           this.authenticationService.currentUserValue.profileStatus = "true";
+          this.authenticationService.currentUserValue.percentage = this.responseData.percentage;
           this.route.navigate(['/upload-images']);
         } else {
+          this.submitConfig();
           this.alertService.success(this.responseData.data);
         }
       }, error => {
+        this.submitConfig();
         this.uploading = false;
         this.alertService.error(error);
         this.loading = false;

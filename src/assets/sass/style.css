@@ -13136,7 +13136,10 @@ body.dark-mode-active .profile .profileWrpper .profiles .profileDiv .dateBirth .
 body.dark-mode-active .casting_inner .casting__profiles .castingProfile h2 {
   color: #ff6454;
 }
-
+.cdk-overlay-pane.training_tour_pane{
+  transform: initial!important;
+  right: 3%!important;
+}
 body.dark-mode-active .casting_inner .casting__profiles .castingProfile h3, body.dark-mode-active .casting_inner .casting__profiles .castingProfile h4, body.dark-mode-active .casting_inner .casting__profiles .castingProfile p, body.dark-mode-active .casting_inner .casting__profiles .castingProfile .inputs input, body.dark-mode-active .casting_inner .casting__profiles .castingProfile .inputs textarea {
   color: #fff;
 }
@@ -13575,6 +13578,9 @@ body.dark-mode-active .toast-box{
   line-height: normal;
   display: block;
   padding-bottom: 5px;
+  font-weight: normal;
+}
+.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .upNextVideos .vright span p{
   font-weight: normal;
 }
 
@@ -15372,7 +15378,12 @@ span.slick-prev:before{
     transform: translateY(-15px);
   }
 }
-
+.quote-dilog-square {
+  border-radius: 5px !important;    
+}
+.quote-dilog-square-close{
+  font-weight: bold; padding: 10px;color: red; position: absolute;
+}
 /* .game_header span{
   position: relative;
 

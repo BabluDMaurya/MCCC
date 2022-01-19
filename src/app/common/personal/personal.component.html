@@ -267,7 +267,7 @@
                          </div>
                       </div>
                       <div class="submit">
-                         <button [disabled]="disabledv" type="submit" class="btns btnss_r ripple">Submit</button>
+                         <button [disabled]="disabledv" type="submit" class="btns btnss_r ripple tbsub">{{btnVal}}</button>
                          <a [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}" class="btns outline" (click)="backs()"> Cancel</a>
                       </div>
                       </form>
@@ -334,11 +334,11 @@
                             </div>
                          </div>
                          <div class="btnArea" *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
-                            <a [ngStyle]="{'pointer-events': disabledi ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next">Save</a>
-                            <button type="button" [routerLink]="['/home']" [disabled]="disabledi" class="next outline">Cancel</button>
+                            <a [ngStyle]="{'pointer-events': disabledi ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next tbsub">{{btnVal}}</a>
+                            <button type="button" (click)="backs()" [disabled]="disabledi" class="next outline">Cancel</button>
                          </div>
                          <div class="btnArea flexingBtn" *ngIf="imgArray.length == 3">
-                            <button type="button" (click)="backs()" [disabled]="disabledi" class="next outline">Cancel</button>
+                            <button type="button" (click)="backs()" class="next outline">Cancel</button>
                          </div>
                       </form>
                    </div>
@@ -432,7 +432,7 @@
                             </div>
                          </div>
                          <div class="btnArea">                        
-                            <a (click)="videoSubmit($event)" class="next btnss_r ripple" type="button" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}"> Save </a>
+                            <a (click)="videoSubmit($event)" class="next btnss_r ripple tbsub" type="button" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}">{{btnVal}}</a>
                             <button [disabled]="disabledv" (click)="backs()"  class="next outline"> Cancel</button>            
                          </div>
                       </form>

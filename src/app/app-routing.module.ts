@@ -145,6 +145,10 @@ const routes: Routes = [{
   data: {title: 'Thank You'}    
 },
 {    
+  path: 'thank-you-workshop',component: ThankYouPageComponent,canActivate: [AuthGuard],  
+  data: {title: 'Thank You'}    
+},
+{    
   path: 'images',component: ImagesComponent,canActivate: [AuthGuard],  
   data: {title: 'Images'}    
 },

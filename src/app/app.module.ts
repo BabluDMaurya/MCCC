@@ -99,9 +99,9 @@ import { InnerSplashComponent } from './inner-splash/inner-splash.component';
 import { SquareComponent } from './games/boards/board/square/square.component';
 import { BoardComponent } from './games/boards/board/board.component';
 import { BoardsComponent } from './games/boards/boards.component';
-import { QuoteDialogComponent } from './_components/quote-dialog/quote-dialog.component';
 import { ReelsComponent } from './reels/reels.component';
 import { SupportedPartnersComponent } from './_components/supported-partners/supported-partners.component';
+import { QuoteService } from './_service/quote.service';
 
 @NgModule({
   declarations: [
@@ -175,7 +175,6 @@ import { SupportedPartnersComponent } from './_components/supported-partners/sup
     SquareComponent,
     BoardComponent,
     BoardsComponent,
-    QuoteDialogComponent,
     ReelsComponent,
     SupportedPartnersComponent
   ],
@@ -214,6 +213,7 @@ import { SupportedPartnersComponent } from './_components/supported-partners/sup
     
   ],
   providers: [
+    QuoteService,
     DatePipe,
     {
       provide: RouteReuseStrategy,

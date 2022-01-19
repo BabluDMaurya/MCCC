@@ -130,7 +130,7 @@ export class WorkshopRegistrationFormComponent implements OnInit {
               console.log(data);
               this.loading = true;
               this.submitConfig();
-              this.route.navigate(['/thank-you-workshop/',this.workshopData.title]);
+              this.route.navigate(['/thank-you-workshop/']);
           });
       }
       if(this.type == 1){

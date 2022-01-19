@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Component, ElementRef, OnInit,ViewChild } from '@angular/core';
+import { Router,ParamMap,ActivatedRoute} from '@angular/router';
 import { QuoteList } from 'src/app/_config/quote-list';
 import { DashboardService } from 'src/app/_service/dashboard.service';
+import { QuoteService } from 'src/app/_service/quote.service';
 
 @Component({
   selector: 'app-thank-you-casting',
   templateUrl: './thank-you-casting.component.html',
   styleUrls: ['./thank-you-casting.component.scss']
 })
-export class ThankYouCastingComponent implements OnInit {
+export class ThankYouCastingComponent implements OnInit{
+  @ViewChild('openquotedialog') openquotedialog:ElementRef | any;
   screen = 'casting';
   lists = QuoteList.List;
-  showquote : boolean = true;
+  quote : any;
   applicationNo:any;
-  constructor(private dashboardService:DashboardService,private route:Router,private actRoute:ActivatedRoute) { }
+  constructor(private _QuoteService:QuoteService,private dashboardService:DashboardService,private route:Router,private actRoute:ActivatedRoute) { 
+    
+  }
 
   //-----slick slider------------//    
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,autoplay: true,autoplaySpeed: 5000,'nextArrow':false,'prevArrow':false,fade:true};
@@ -44,23 +48,25 @@ export class ThankYouCastingComponent implements OnInit {
   //-----slick slider------------//
 
   ngOnInit(): void {
-    this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
+    this.actRoute.paramMap.subscribe((params: ParamMap) => { 
       this.applicationNo = params.get('application_no');
-    });
-    //-----show quote-------//
-    if (localStorage.getItem(this.screen+'-quotes') != null) {
-      var qd:any = localStorage.getItem(this.screen+'-quotes');
-      let ld :any  = JSON.parse(qd)
-      if(ld.length == this.lists.length){
-        this.showquote = false;
-      }else{
-        this.showquote = true;
-      }
-    }
+      this.showQuote();
+    });   
   }
   letEx(){
     this.dashboardService.filter('applyed');
     this.route.navigate(['/home']);
   }
-
+  showQuote(){
+    this.quote = this._QuoteService.setupQuotes(this.screen);
+    if (localStorage.getItem(this.screen+'-quotes') != null) {
+      var qd:any = localStorage.getItem(this.screen+'-quotes');
+      let ld :any  = JSON.parse(qd)
+      if(ld.length <= this.lists.length){
+        setTimeout(() => {
+          this.openquotedialog.nativeElement.click();
+        }, 3000);
+      }    
+    }
+  }
 }

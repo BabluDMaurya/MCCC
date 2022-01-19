@@ -13,8 +13,14 @@
     <div class="btnArea">
         <!-- <p class="btn_ctnt">Take a few minutes to complete your Profile</p> -->
         <button class="next btnss_r ripple" [routerLink]="['/home']">Let’s Explore It Together!</button>
-    </div>
-    <!-- <div *ngIf="showquote">
-        <app-quote-dialog [screen]='screen'></app-quote-dialog> 
-    </div> -->
+    </div>    
 </div>
+<button type="button" class="btn btn-secondary" #openquotedialog data-bs-toggle="modal" data-bs-target="#QuoteSuccess" style="display: none;"></button>
+    <div class="modal fade dialogbox" id="QuoteSuccess" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content quote-dilog-square">
+                <div class="quote-dilog-square-close" data-bs-dismiss="modal">X</div>                            
+                <img src="{{quote}}" alt="image" class="img-fluid">                            
+            </div>
+        </div>
+    </div>

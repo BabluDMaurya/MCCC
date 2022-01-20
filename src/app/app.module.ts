@@ -102,6 +102,7 @@ import { BoardsComponent } from './games/boards/boards.component';
 import { ReelsComponent } from './reels/reels.component';
 import { SupportedPartnersComponent } from './_components/supported-partners/supported-partners.component';
 import { QuoteService } from './_service/quote.service';
+import { ForProducerComponent } from './for-producer/for-producer.component';
 
 @NgModule({
   declarations: [
@@ -176,7 +177,8 @@ import { QuoteService } from './_service/quote.service';
     BoardComponent,
     BoardsComponent,
     ReelsComponent,
-    SupportedPartnersComponent
+    SupportedPartnersComponent,
+    ForProducerComponent
   ],
   imports: [
     BrowserModule,

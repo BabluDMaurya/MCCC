@@ -30,6 +30,9 @@ export class RegisterService {
   support(data:any){
     return this.http.post(`${Config.BasePath}/support`,data);
   }
+  producer_contact(data:any){
+    return this.http.post(`${Config.BasePath}/producer_contact`,data);
+  }
   delete(id: number) {
     return this.http.delete(`${Config.BasePath}/users/${id}`);
   }

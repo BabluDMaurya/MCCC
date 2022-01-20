@@ -50,6 +50,7 @@ import { ReelsComponent } from './reels/reels.component';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { InnerSplashComponent } from './inner-splash/inner-splash.component';
 import { BoardsComponent } from './games/boards/boards.component';
+import { ForProducerComponent } from './for-producer/for-producer.component';
 
 // RouterModule.forRoot(Router, {scrollPositionRestoration: 'enabled'})
 
@@ -256,6 +257,10 @@ const routes: Routes = [{
 {    
   path: 'support',component: SupportComponent,canActivate: [AuthGuard],   
   data: {title: 'support'}    
+},
+{    
+  path: 'for-producer',component: ForProducerComponent,canActivate: [AuthGuard],   
+  data: {title: 'for-producer'}    
 },
 {    
   path: 'reels',component: ReelsComponent,canActivate: [AuthGuard],   

@@ -27,28 +27,32 @@
                           <div class="invalid-feedback error" style="display: block;" *ngIf="f.email.errors?.serverError">{{ f.email.errors?.serverError }}</div>
                     </div>
                 </div>
-                <div class="formGroup mobileNumer">
+                <div class="formGroup mobileNumer for_producer">
                     <label>Your Phone Number*</label>
-                    <div class="selects">
-                        <select formControlName="country_code" class="form-control" [(ngModel)]="selectedCode">
-                           <option [value]="code.mobileCountryCode" *ngFor="let code of codeList">{{code.mobileCountryCode}}</option>
-                        </select>
+                    <div class="mobileNumer">
+                        <div class="selects">
+                            <select formControlName="country_code" class="form-control" [(ngModel)]="selectedCode">
+                                <option [value]="code.mobileCountryCode" *ngFor="let code of codeList">{{code.mobileCountryCode}}</option>
+                             </select>
+                        </div>
                         <div *ngIf="submitted && f.country_code.errors" class="invalid-feedback">
                             <div *ngIf="f.country_code.errors.required">Country code is required</div>               
-                          </div>
-                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.country_code.errors?.serverError">{{ f.country_code.errors?.serverError }}</div>
-                    </div>   
-                    <div class="inputs">
-                        <input autocomplete="off" formControlName="phone" type="tel" maxlength="16" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
-                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                          <div *ngIf="f.phone.errors.required">Phone is required</div>
-                          <div *ngIf="f.phone.errors.maxlength">Not more then 16 digits</div>
-                          <div *ngIf="f.phone.errors.minlength">Minimum 8 digits required</div>
-                          <div *ngIf="f.phone.errors.pattern">Only digits allowed</div>
-                          <div *ngIf="f.phone.errors.phoneTaken">Phone number is already taken.</div>
                         </div>
-                        <div class="invalid-feedback error" style="display: block;" *ngIf="f.phone.errors?.serverError">{{ f.phone.errors?.serverError }}</div> 
-                      </div>
+                        <div class="invalid-feedback error" style="display: block;" *ngIf="f.country_code.errors?.serverError">
+                            {{ f.country_code.errors?.serverError }}
+                        </div>
+                        <div class="inputs">
+                            <input autocomplete="off" formControlName="phone" type="number" maxlength="16" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                              <div *ngIf="f.phone.errors.required">Phone is required</div>
+                              <div *ngIf="f.phone.errors.maxlength">Not more then 16 digits</div>
+                              <div *ngIf="f.phone.errors.minlength">Minimum 8 digits required</div>
+                              <div *ngIf="f.phone.errors.pattern">Only digits allowed</div>
+                              <div *ngIf="f.phone.errors.phoneTaken">Phone number is already taken.</div>
+                            </div>
+                            <div class="invalid-feedback error" style="display: block;" *ngIf="f.phone.errors?.serverError">{{ f.phone.errors?.serverError }}</div> 
+                          </div>
+                    </div>   
                     </div>
                 <div class="formGroup">
                     <label>Message *</label>

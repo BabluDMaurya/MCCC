@@ -1,0 +1,91 @@
+<app-footer></app-footer>
+<div class="main casting_inner notifications wrrpperRegisterForm supports">
+    <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
+    <div class="main_wrppers">
+        <div class="forms">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="formGroup">
+                    <label>Your Full Name*</label>
+                    <div class="inputs">
+                        <input autocomplete="off" formControlName="name" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" maxlength="28">
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                            <div *ngIf="f.name.errors.pattern">Characters and space are allowed, It's length should be minimum two characters</div>
+                          </div>
+                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.name.errors?.serverError">{{ f.name.errors?.serverError }}</div>
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label>Your Email Id*</label>
+                    <div class="inputs">
+                        <input autocomplete="off" formControlName="email" type="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div> 
+                            <div *ngIf="f.email.errors.emailTaken">Email is already taken</div>
+                            <div *ngIf="f.email.errors.pattern">Email must be a valid email id</div>
+                          </div> 
+                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.email.errors?.serverError">{{ f.email.errors?.serverError }}</div>
+                    </div>
+                </div>
+                <div class="formGroup mobileNumer for_producer">
+                    <label>Your Phone Number*</label>
+                    <div class="mobileNumer">
+                        <div class="selects">
+                            <select formControlName="country_code" class="form-control" [(ngModel)]="selectedCode">
+                                <option [value]="code.mobileCountryCode" *ngFor="let code of codeList">{{code.mobileCountryCode}}</option>
+                             </select>
+                        </div>
+                        <div *ngIf="submitted && f.country_code.errors" class="invalid-feedback">
+                            <div *ngIf="f.country_code.errors.required">Country code is required</div>               
+                        </div>
+                        <div class="invalid-feedback error" style="display: block;" *ngIf="f.country_code.errors?.serverError">
+                            {{ f.country_code.errors?.serverError }}
+                        </div>
+                        <div class="inputs">
+                            <input autocomplete="off" formControlName="phone" type="number" maxlength="16" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                              <div *ngIf="f.phone.errors.required">Phone is required</div>
+                              <div *ngIf="f.phone.errors.maxlength">Not more then 16 digits</div>
+                              <div *ngIf="f.phone.errors.minlength">Minimum 8 digits required</div>
+                              <div *ngIf="f.phone.errors.pattern">Only digits allowed</div>
+                              <div *ngIf="f.phone.errors.phoneTaken">Phone number is already taken.</div>
+                            </div>
+                            <div class="invalid-feedback error" style="display: block;" *ngIf="f.phone.errors?.serverError">{{ f.phone.errors?.serverError }}</div> 
+                          </div>
+                    </div>   
+                    </div>
+                <div class="formGroup">
+                    <label>Message *</label>
+                    <div class="inputs">
+                        <textarea formControlName="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
+                        <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+                            <div *ngIf="f.message.errors.required">Message is required</div>               
+                          </div>
+                    </div>
+                </div>
+                <button class="next tbsub">{{btnVal}}</button>
+                <button type="button" class="btn btn-secondary" #opendialog data-bs-toggle="modal" data-bs-target="#SupportSuccess" style="display: none;">Success</button>
+                <div class="modal fade dialogbox" id="SupportSuccess" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-icon text-success">
+                                <ion-icon name="checkmark-circle" role="img" class="md hydrated" aria-label="checkmark circle"></ion-icon>
+                            </div>
+                            <div class="modal-header">
+                                <h5 class="modal-title">Success</h5>
+                            </div>
+                            <div class="modal-body">
+                                Thank you for getting in touch!
+                            </div>
+                            <div class="modal-footer">
+                                <div class="btn-inline">
+                                    <a href="#" class="btn btnss_r ripple" style="color: #fff;" data-bs-dismiss="modal">CLOSE</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

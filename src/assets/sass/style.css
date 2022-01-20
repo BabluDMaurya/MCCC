@@ -15397,6 +15397,25 @@ div#QuoteSuccess {
 .quote-dilog-square{
   max-width: 350px!important;
 }
+p.appName{
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  position: relative;
+  padding-left: 10px;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 10px;
+}
+.dark-mode-active p.appName{
+  color: #fff;
+}
+.for_producer{
+  flex-direction: column;
+}
+.dark-mode-active textarea, .form-control:focus{
+  color: #fff;
+}
 /* body.mccc.modal-open .modal-backdrop.fade.show {
   z-index: 99999;
 } */

@@ -12,7 +12,6 @@ export class YourMobileNumberComponent implements OnInit {
   // public countryList:{id:number, name:string, code:string}[] = countries;
   @Input() parent: FormGroup | any;
   @Input() submit: any;
-  // codeList: any = ['+91', '+101', '+21'];
   selectedCode = '+91';
   constructor() { }
   ngOnInit(): void {        

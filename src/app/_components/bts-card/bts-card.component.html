@@ -3,8 +3,8 @@
     (beforeChange)="beforeChange($event)">
     <div ngxSlickItem  *ngFor="let vid of data; let i=index;"  class="btsSlioder">
         <a [routerLink]="['/bts-video-view/',vid.id,1]">
-            <img *ngIf="vid.youtube_thumbnail == null " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
-            <img *ngIf="vid.youtube_thumbnail != null " src="{{vid.youtube_thumbnail}}">
+            <img *ngIf="vid.thumbnail != '' " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
+            <img *ngIf="vid.thumbnail == '' " src="{{vid.youtube_thumbnail}}">
             <div class="btsPlay_icon">
             <img src="assets/img/img/play_icon.webp" alt="">
         </div>

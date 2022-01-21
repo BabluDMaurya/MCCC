@@ -11,9 +11,12 @@ export class BtsCardComponent implements OnInit {
   @Input() data:any;
   hostUrl:string = Config.Host+'backend2/';
 
-  constructor() { }
-  two_sliders = {"slidesToShow": 2.5, "slidesToScroll": 2,"dots": false,"infinite": false,'nextArrow':false,'prevArrow':false};
+  constructor() {
+    
+   }
+  two_sliders = {"slidesToShow": 2.2, "slidesToScroll": 2,"dots": false,"infinite": false,'nextArrow':false,'prevArrow':false};
   ngOnInit(): void {
+    console.log(this.data);
   }
   isOdd(n:number) {
     return Math.abs(n % 2) == 1;

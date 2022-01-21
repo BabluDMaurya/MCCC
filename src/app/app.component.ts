@@ -10,7 +10,7 @@ import { AuthenticationService } from './_service/authentication.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent{
-  title = 'MCCCSCSS';
+  title = 'MCCC';
   status = 'ONLINE';
   isConnected = true;
   constructor(

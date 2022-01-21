@@ -16,7 +16,41 @@
                     </div>
                 </div>
                 <div class="formGroup">
-                    <label>Your Email Id*</label>
+                    <label>Production House*</label>
+                    <div class="inputs">
+                        <input autocomplete="off" formControlName="production_house" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.production_house.errors }" maxlength="28">
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                            <div *ngIf="f.name.errors.pattern">Characters and space are allowed, It's length should be minimum two characters</div>
+                          </div>
+                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.name.errors?.serverError">{{ f.name.errors?.serverError }}</div>
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label>Designation*</label>
+                    <div class="inputs">
+                        <input autocomplete="off" formControlName="designation" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" maxlength="28">
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                            <div *ngIf="f.name.errors.required">Name is required</div>
+                            <div *ngIf="f.name.errors.pattern">Characters and space are allowed, It's length should be minimum two characters</div>
+                          </div>
+                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.name.errors?.serverError">{{ f.name.errors?.serverError }}</div>
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label>Country*</label>
+                    <div class="select">
+                        <select formControlName="country" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.country.errors }">            
+                            <option value="">Select</option>
+                            <option value="{{country.id}}" *ngFor="let country of countryList" >{{country.name}}</option>
+                         </select>
+                         <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                             <div *ngIf="f.country.errors.required">Country is required</div>               
+                           </div>
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label>Email ID*</label>
                     <div class="inputs">
                         <input autocomplete="off" formControlName="email" type="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -27,7 +61,7 @@
                           <div class="invalid-feedback error" style="display: block;" *ngIf="f.email.errors?.serverError">{{ f.email.errors?.serverError }}</div>
                     </div>
                 </div>
-                <div class="formGroup mobileNumer for_producer">
+                <!-- <div class="formGroup mobileNumer for_producer">
                     <label>Your Phone Number*</label>
                     <div class="mobileNumer">
                         <div class="selects">
@@ -62,7 +96,7 @@
                             <div *ngIf="f.message.errors.required">Message is required</div>               
                           </div>
                     </div>
-                </div>
+                </div> -->
                 <button class="next tbsub">{{btnVal}}</button>
                 <button type="button" class="btn btn-secondary" #opendialog data-bs-toggle="modal" data-bs-target="#SupportSuccess" style="display: none;">Success</button>
                 <div class="modal fade dialogbox" id="SupportSuccess" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">

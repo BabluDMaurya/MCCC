@@ -6,6 +6,7 @@ import { Config } from 'src/app/_config/config';
 import {HttpErrorResponse} from '@angular/common/http';
 import { RegisterService } from '../_service/register.service';
 import mobile_code from '../_files/mobile_code.json';
+import countries from '../_files/countries.json';
 
 declare var $: any;
 
@@ -15,6 +16,7 @@ declare var $: any;
   styleUrls: ['./for-producer.component.scss']
 })
 export class ForProducerComponent implements OnInit {
+  public countryList:{id:number, name:string, code:string}[] = countries;
   public codeList:{id:number, name:string,mobileCountryCode:string}[] = mobile_code;
   selectedCode = '+91';
   @ViewChild('opendialog') opendialog:any;
@@ -50,9 +52,13 @@ export class ForProducerComponent implements OnInit {
         // Validators.email,
         Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
       ]],
-      phone : ['',[Validators.required]],
-      country_code : ['+91',[Validators.required]],
-      message : ['',[Validators.required]]
+      production_house:['',[Validators.required]],
+      designation:['',[Validators.required]],
+      country:['',[Validators.required]],
+
+      // phone : ['',[Validators.required]],
+      // country_code : ['+91',[Validators.required]],
+      // message : ['',[Validators.required]]
     });
   }
   get f(): { [key: string]: AbstractControl } {

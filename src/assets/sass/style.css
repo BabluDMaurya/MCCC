@@ -15406,7 +15406,7 @@ p.appName{
   font-weight: 600;
   text-align: center;
   padding-top: 10px;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 .dark-mode-active p.appName{
   color: #fff;

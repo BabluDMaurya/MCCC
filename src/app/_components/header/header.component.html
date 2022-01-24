@@ -65,7 +65,7 @@
                 <a [routerLink]="['/reels']" [bdcWalkTriggerFor]="example2Step7">
                     <img src="assets/img/img/movies.png"  class="lightMode" alt="">
                     <img src="assets/img/img/white_upcoming.png" class="darkMode" alt="">
-                    <div class="label">Movies</div>
+                    <div class="label">Our Work</div>
                 </a>
             </div>
 
@@ -92,6 +92,23 @@
         </ul>
     </div>
     <!-- * Extra Header -->
+    <!-- movies_tab_header -->
+
+    <div class="extraHeader p-0" *ngIf="moviesTab == 1">
+        <ul class="nav nav-tabs lined" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="tab == 1 ? 'active':''" data-bs-toggle="tab" href="#photos" role="tab">
+                    Upcoming Projects
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [ngClass]="tab == 2? 'active':''" data-bs-toggle="tab" href="#videos" role="tab">
+                    Previous Projects
+                </a>
+            </li>
+            
+        </ul>
+    </div>
     <!-- Extra Header -->
     <div class="extraHeader p-0" *ngIf="workshoptab == 1">
         <ul class="nav nav-tabs lined" role="tablist">

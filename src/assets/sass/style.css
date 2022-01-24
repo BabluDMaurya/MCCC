@@ -14466,7 +14466,8 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
 }
 .app_content_area{
   width: 100%;
-  min-height: 30px;
+  margin-top: 10px;
+  min-height: 15px;
   border-radius: 15px;
   background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
   background-size: 200%;
@@ -15458,6 +15459,9 @@ p.appName{
   margin: 0;
   padding: 0;
   padding-top: 5px;
+}
+.dark-mode-active .language_app .card_app .content_area p{
+  color: #fff;
 }
 .language_app .card_app .img_area {
   height:100px;

@@ -13177,7 +13177,7 @@ deg
   align-items: flex-start;
   justify-content: space-between;
 }
-.notifications .notification_area .notificationDiv .notificationDivs a{
+.notifications .notification_area .notificationDiv .notificationDivs img{
 transform: rotate(270deg);
 }
 .notifications .notification_area .notificationDiv::after {
@@ -14464,6 +14464,15 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   background-size: 200%;
   animation: loader 1s infinite reverse;
 }
+.app_content_area{
+  width: 100%;
+  margin-top: 10px;
+  min-height: 15px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+}
 
 .moreSlider{
   display: flex;
@@ -15450,6 +15459,9 @@ p.appName{
   margin: 0;
   padding: 0;
   padding-top: 5px;
+}
+.dark-mode-active .language_app .card_app .content_area p{
+  color: #fff;
 }
 .language_app .card_app .img_area {
   height:100px;

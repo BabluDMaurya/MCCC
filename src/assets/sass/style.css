@@ -14456,6 +14456,15 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   background-size: 200%;
   animation: loader 1s infinite reverse;
 }
+.app_img_area{
+  width: 167px;
+  min-height: 100px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
+  background-size: 200%;
+  animation: loader 1s infinite reverse;
+}
+
 .moreSlider{
   display: flex;
   align-items: center;

@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
     
    }
   @Input() castingtab : any;
+  @Input() moviesTab : any;
   @Input() tab : any;
   @Input() workshoptab : any;
 

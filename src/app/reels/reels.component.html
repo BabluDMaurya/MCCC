@@ -1,36 +1,161 @@
 <app-sidebars></app-sidebars>
 <app-footer></app-footer>
-<!-- <app-footer></app-footer> -->
-<div class="main casting">
-    <!-- <app-header [castingtab]="castingtab" [tab]="catId" [workshoptab]="workshoptab"></app-header> -->
-    <!-- <app-sub-header [back]="back_link"></app-sub-header> -->
+<div class="main casting movies_tab_wrappers">
+    <app-header [moviesTab]="moviesTab" [castingtab]="castingtab" [tab]="catId" [workshoptab]="workshoptab"></app-header>   
     <div class="main_wrppers">
-        <div class="movies_tab">
-            <ul class="nav nav-tabs lined" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-bs-toggle="tab" href="#photos" role="tab">
-                        Upcoming Projects
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" href="#videos" role="tab">
-                        Completed Projects
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="tabs_data">
-            <div class="tab-pane fade show active" id="photos" role="tabpanel">
-                <div class="section full mt-1">
-                    <div class="section-title">Upcoming Projects</div>
+        <!-- App Capsule -->
+        <div id="appCapsule" class="extra-header-active">            
+            <div class="tab-content mt-1">
+                <!-- photos tab -->
+                <div class="tab-pane fade show active" id="photos" role="tabpanel">
+                    <div class="movies_areas">
+                        <div class="section full mt-1">
+                            <div class="casingCalls">                            
+                                <div class="casingCallHeader">
+                                    <p class="classinghead">Movies</p>
+                                    <a [routerLink]="['/reels-inner']">View All</a>
+                                </div>
+                            </div>
+                            <div class="movies_tab_wrppers">
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section full mt-1">
+                            <div class="casingCalls">                            
+                                <div class="casingCallHeader ">
+                                    <p class="classinghead primary__color">Web Series</p>
+                                    <a [routerLink]="['/reels-inner']" >View All</a>
+                                </div>
+                            </div>
+                            <div class="movies_tab_wrppers">
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="tab-pane fade show active" id="videos" role="tabpanel">
-                <div class="section full mt-1">
-                    <div class="section-title">Upcoming Projects</div>
+                <!-- * photos tab -->
+                <!-- videos tab -->
+                <div class="tab-pane fade" id="videos" role="tabpanel">
+                    <div class="movies_areas">
+                        <div class="section full mt-1">
+                            <div class="casingCalls">                            
+                                <div class="casingCallHeader">
+                                    <p class="classinghead ">Movies</p>
+                                    <a [routerLink]="['/reels-inner']">View All</a>
+                                </div>
+                            </div>
+                            <div class="movies_tab_wrppers">
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section full mt-1">
+                            <div class="casingCalls">                            
+                                <div class="casingCallHeader">
+                                    <p class="classinghead primary__color">Web Series</p>
+                                    <a [routerLink]="['/reels-inner']">View All</a>
+                                </div>
+                            </div>
+                            <div class="movies_tab_wrppers">
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                                <div class="moives_area">
+                                    <img src="../../assets/img/img/pic_movies.png" alt="">
+                                    <div class="content_area">
+                                        <p>Bachchan Pandey</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- * videos tab -->
             </div>
         </div>
+        <!-- * App Capsule -->
     </div>
 </div>
-

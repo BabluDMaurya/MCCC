@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reels.component.scss']
 })
 export class ReelsComponent implements OnInit {
+  castingtab:any = 0;
+  workshoptab:any = 0;
+  shownw:boolean = false;
+  showre:boolean = false;
+  showen:boolean = false;
+  catId:any = 1;
+  moviesTab:any = 1;
   back_link :any =  "home";
   imgArray:any;
   imgPath="../../assets/img/img/";

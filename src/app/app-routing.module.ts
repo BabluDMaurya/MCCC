@@ -109,7 +109,7 @@ const routes: Routes = [{
   data: {title: 'training'}    
 },
 {    
-  path: 'workshop/:id',component: WorkshopComponent,canActivate: [AuthGuard],    
+  path: 'workshop/:id',component: WorkshopComponent,
   data: {storeRoute: false,title: 'Workshop'}    
 },
 {

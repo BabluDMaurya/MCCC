@@ -12,8 +12,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     constructor(private authenticationService: AuthenticationService) {}
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
+            // let gerror = JSON.stringify(err);
             // new toastbox(this.toastSuccess, 2000);
-            //     $('#success_tosterMsg').text(" error intercepter : "+err)
+            //     $('#success_tosterMsg').text(" error intercepter : "+gerror)
             //         setTimeout(() => {
             //         $('#'+this.toastSuccess).removeClass('show');
             //     }, 20000);

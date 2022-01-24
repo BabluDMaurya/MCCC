@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestimonialComponent implements OnInit {
   back_link:any;
-  two_sliders = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,"infinite": false,'arrows':true};
+  imgPath="../../assets/img/img/arrow_left.png'";
+  nextButton = '<div class="arrows"><span class="slick-prev slick-next-bouncing"><img src="../../assets/img/img/arrow_left.png"/></span></div>';
+  two_sliders = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,"infinite": false,'nextArrow':false,'prevArrow':false};
   constructor() { }
 
   ngOnInit(): void {

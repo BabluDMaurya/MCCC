@@ -15443,7 +15443,7 @@ p.appName{
   padding-top: 5px;
 }
 .language_app .card_app .img_area {
-  height: 105px;
+  height:100px;
   border-radius: 15px;
   overflow: hidden;
 }

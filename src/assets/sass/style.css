@@ -15145,8 +15145,9 @@ div#ModalForm .modal-header a i{
 }
 
 .cdk-overlay-pane.training_tour_pane{
-  transform: initial!important;
-  right: 3%!important;
+  right: initial!important;
+  left: 19%;
+  transform: translateX(4%)!important;
 }
 
 .cdk-overlay-pane.pgpg div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):after, .cdk-overlay-pane.pgpg div.mat-menu-panel.bdc-walk-popup.arrow.mat-menu-above:not(.horizontal):before{
@@ -15156,7 +15157,7 @@ div#ModalForm .modal-header a i{
 }
 div.mat-menu-panel.bdc-walk-popup{
   min-width: initial!important;
-  width: 250px!important;
+  width: 240px!important;
 }
 
 
@@ -15407,6 +15408,9 @@ p.appName{
   text-align: center;
   padding-top: 10px;
   margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .dark-mode-active p.appName{
   color: #fff;
@@ -15511,10 +15515,20 @@ z-index: 1000;
   transform: translate(-8px, -16px);
 } */
 /* youtube__back__button-end*/
-
+@media (max-width:360px){
+  .cdk-overlay-pane.training_tour_pane {
+    right: initial!important;
+    left: 20%;
+    transform: translateX(4%)!important;
+  }
+}
 @media (max-width:340px){
   div.mat-menu-panel.bdc-walk-popup {
       min-width: initial!important;
       width: 230px!important;
+  }
+  .cdk-overlay-pane.training_tour_pane {
+    left: 24%;
+    transform: translateX(4%)!important;
   }
 }

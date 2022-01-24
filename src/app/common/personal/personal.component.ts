@@ -114,7 +114,7 @@ progressv: number = 0;
 disabledv : boolean = false;
 vresData:any;   
 vdatas:any
-
+currentimage : boolean = false;
 //-----------image---------//
 imgArray:any = [];
 imagePath = this.baseUrl+'public/uploads/UserImages/';
@@ -306,7 +306,6 @@ btnVal :string = "Save";
       let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
       this.form.controls['dob'].setValue(DOB); 
       this.cropimages.forEach((imgObject: { imgBase64: any; }) => {
-        // console.log(imgObject);
         this.finalImageList.push(imgObject.imgBase64);
         this.patchValues();
         
@@ -328,7 +327,8 @@ btnVal :string = "Save";
             setTimeout(() => {
               $('#'+this.toastSuccess).removeClass('show');
           }, 2000);
-
+          this.cropimages = [];
+          this.imageChangedEvent = null;
           sessionStorage.setItem('name',this.form.value.name);
           this.authenticationService.currentUserValue.userDetails.name = this.form.value.name;
           this.authenticationService.currentUserValue.percentage = this.resData.percentage;
@@ -338,8 +338,8 @@ btnVal :string = "Save";
           sessionStorage.setItem('city',this.userdetail.city_name);
           sessionStorage.setItem('city_id',this.userdetail.city);
           sessionStorage.setItem('state_id',this.userdetail.state);
-            sessionStorage.setItem('home_town',this.form.value.home_town);
-            sessionStorage.setItem('hobbies',this.form.value.hobbies);
+          sessionStorage.setItem('home_town',this.form.value.home_town);
+          sessionStorage.setItem('hobbies',this.form.value.hobbies);
           this.dashboardService.filter('applyed');
           this.disabledv = false;
         }
@@ -491,6 +491,7 @@ btnVal :string = "Save";
     this.form.setControl('qualifications', this.experiences);
   }
   fileChangeEvent(event: any): void {
+    this.currentimage = false;
     // this.modalService.dismissAll('save');
     var extension = event.target.files[0].name.split('.').pop().toLowerCase();
       var isSuccess = this.fileTypes.indexOf(extension) > -1;
@@ -732,14 +733,16 @@ btnVal :string = "Save";
     });
   }  
   //--------Image------------
-  ifileChangeEvent(event: any): void {    
+  ifileChangeEvent(event: any): void {   
+    
       this.totalupimg = this.imgArray.length+this.cropimages.length; 
       var cnt = 3 - (this.imgArray.length + this.cropimages.length);
       for (var i = 0; i < event.target.files.length; i++) {
         if(i < cnt){
           var extension = event.target.files[i].name.split('.').pop().toLowerCase();
           var isSuccess = this.fileTypes.indexOf(extension) > -1;
-          if (isSuccess) {             
+          if (isSuccess) {      
+            this.currentimage = true; 
             this.disabledi = false;
               this.imageProcess(event, event.target.files[i]);
               this.imagenotload = false;
@@ -794,6 +797,7 @@ btnVal :string = "Save";
         this.waitText = false;
         this.getImages();
         this.cropimages = [];
+        this.imageChangedEvent = null;
         new toastbox(this.toastSuccess, 2000);
           $('#success_tosterMsg').text('Images Saved')
             setTimeout(() => {

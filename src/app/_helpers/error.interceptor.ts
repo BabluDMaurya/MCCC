@@ -4,17 +4,28 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { AuthenticationService } from '../_service/authentication.service';
-
+declare var toastbox: any;
+declare var $: any;
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
+    toastSuccess:string = 'toast-18';
     constructor(private authenticationService: AuthenticationService) {}
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
-            
+            // new toastbox(this.toastSuccess, 2000);
+            //     $('#success_tosterMsg').text(" error intercepter : "+err)
+            //         setTimeout(() => {
+            //         $('#'+this.toastSuccess).removeClass('show');
+            //     }, 20000);
             if (err.status === 401) {
                 // auto logout if 401 response returned from api
                 this.authenticationService.logout();
                 location.reload();
+                // new toastbox(this.toastSuccess, 2000);
+                // $('#success_tosterMsg').text(" error intercepter of 401:"+err)
+                //     setTimeout(() => {
+                //     $('#'+this.toastSuccess).removeClass('show');
+                // }, 20000);
             }  
             if (err.status === 404) {
                 const error = err.error.errors || err.statusText;

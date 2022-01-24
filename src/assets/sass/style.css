@@ -14465,13 +14465,14 @@ body.dark-mode-active #sidebarPanel .profileBox .in strong .listview.transparent
   animation: loader 1s infinite reverse;
 }
 .app_content_area{
-  width: 100%;
+  width: 70%;
   margin-top: 10px;
   min-height: 15px;
   border-radius: 15px;
   background: linear-gradient(90deg, hsl(210, 15%, 88%), hsl(210, 15%, 95%), hsl(210, 15%, 88%) );
   background-size: 200%;
   animation: loader 1s infinite reverse;
+  margin: 10px auto 0;
 }
 
 .moreSlider{
@@ -15451,6 +15452,12 @@ p.appName{
 }
 .language_app .card_app {
   text-align: center;
+}
+.app_areas{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  place-items: center;
+  grid-gap: 20px;
 }
 .language_app .card_app .content_area p{
   font-size: 14px;

@@ -103,6 +103,8 @@ import { ReelsComponent } from './reels/reels.component';
 import { SupportedPartnersComponent } from './_components/supported-partners/supported-partners.component';
 import { QuoteService } from './_service/quote.service';
 import { ForProducerComponent } from './for-producer/for-producer.component';
+import { ReelsInnerComponent } from './reels/reels-inner/reels-inner.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @NgModule({
   declarations: [
@@ -178,7 +180,9 @@ import { ForProducerComponent } from './for-producer/for-producer.component';
     BoardsComponent,
     ReelsComponent,
     SupportedPartnersComponent,
-    ForProducerComponent
+    ForProducerComponent,
+    ReelsInnerComponent,
+    TestimonialComponent
   ],
   imports: [
     BrowserModule,

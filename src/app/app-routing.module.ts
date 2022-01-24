@@ -46,11 +46,13 @@ import { NoInternetComponent } from './no-internet/no-internet.component';
 import { SupportComponent } from './support/support.component';
 import { PasswordComponent } from './password/password.component';
 import { ReelsComponent } from './reels/reels.component';
+import { ReelsInnerComponent } from './reels/reels-inner/reels-inner.component';
 
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { InnerSplashComponent } from './inner-splash/inner-splash.component';
 import { BoardsComponent } from './games/boards/boards.component';
 import { ForProducerComponent } from './for-producer/for-producer.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 // RouterModule.forRoot(Router, {scrollPositionRestoration: 'enabled'})
 
@@ -265,6 +267,14 @@ const routes: Routes = [{
 {    
   path: 'reels',component: ReelsComponent,canActivate: [AuthGuard],   
   data: {title: 'reels'}    
+},
+{    
+  path: 'reels-inner',component: ReelsInnerComponent,canActivate: [AuthGuard],   
+  data: {title: 'reels-inner'}
+},
+{    
+  path: 'testimonial',component: TestimonialComponent,canActivate: [AuthGuard],   
+  data: {title: 'testimonial'}    
 },
 ];
 

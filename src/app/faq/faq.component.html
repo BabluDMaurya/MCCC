@@ -1,7 +1,32 @@
 <div class="main casting_inner inviteFrnds">
     <app-top-header-btl [back]="back_link" [title]="component_title"></app-top-header-btl>
     <div class=" main_wrppers faq">
-        <div class="faqWrapper">
+        <div class="faqWrapper">            
+            <div *ngIf="!loading">
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>
+                <div class="para_skeleton"></div>           
+            </div>
+            <div class="accordion" id="accordionCasting">
+                <div class="accordion-item" *ngFor="let item of common; let i = index" [id]="'accordionExample'+i">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" [ngClass]="{ 'collapsed': i != 0 }" type="button" data-bs-toggle="collapse"
+                            [attr.data-bs-target]="'#accordioncc'+i" [innerHTML]="item.title"></button>
+                    </h2>
+                    <div [id]="'accordioncc'+i" class="accordion-collapse collapse" [ngClass]="{ 'show': i == 0 }"
+                        data-bs-parent="#accordionCasting">
+                        <div class="accordion-body" [innerHTML]="item.description"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- <div class="faqWrapper">
             <label>Casting Call</label>
             <div *ngIf="!loading">
                 <div class="para_skeleton"></div>
@@ -26,8 +51,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="faqWrapper">
+            </div> -->
+            <!-- <div class="faqWrapper">
                 <label>BTS</label>
                 <div *ngIf="!loading">
                     <div class="para_skeleton"></div>
@@ -80,6 +105,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
         </div>

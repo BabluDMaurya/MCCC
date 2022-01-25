@@ -14,6 +14,9 @@ export class CommonService {
     getAboutMCCC(){
       return this.http.get(`${Config.BasePath}/display_about_mccc`);
     }
+    getTestimonials(){
+      return this.http.get(`${Config.BasePath}/testimonial`);
+    }
     getFAQ(){
       return this.http.get(`${Config.BasePath}/display_main_faq`);
     }

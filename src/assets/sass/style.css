@@ -15688,6 +15688,12 @@ p.appName{
   justify-content: center;
   z-index: 99;
 }
+.slick-disabled span.slick-next{
+  display: none !important;
+}
+.slick-disabled span.slick-prev{
+  display: none !important;
+}
 .movies_areas a{
   color: #ff6454!important;
 } 

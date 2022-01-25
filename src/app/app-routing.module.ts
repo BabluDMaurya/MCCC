@@ -47,6 +47,9 @@ import { SupportComponent } from './support/support.component';
 import { PasswordComponent } from './password/password.component';
 import { ReelsComponent } from './reels/reels.component';
 import { ReelsInnerComponent } from './reels/reels-inner/reels-inner.component';
+import { UpcomingSeriesComponent } from './reels/upcoming-series/upcoming-series.component';
+import { CompletedMoviesComponent } from './reels/completed-movies/completed-movies.component';
+import { CompletedSeriesComponent } from './reels/completed-series/completed-series.component';
 
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { InnerSplashComponent } from './inner-splash/inner-splash.component';
@@ -275,6 +278,18 @@ const routes: Routes = [{
 {    
   path: 'testimonial',component: TestimonialComponent,canActivate: [AuthGuard],   
   data: {title: 'testimonial'}    
+},
+{    
+  path: 'upcoming-series',component: UpcomingSeriesComponent,canActivate: [AuthGuard],   
+  data: {title: 'upcoming-series'}    
+},
+{    
+  path: 'completed-movies',component: CompletedMoviesComponent,canActivate: [AuthGuard],   
+  data: {title: 'completed-movies'}    
+},
+{    
+  path: 'completed-series',component: CompletedSeriesComponent,canActivate: [AuthGuard],   
+  data: {title: 'completed-series'}    
 },
 ];
 

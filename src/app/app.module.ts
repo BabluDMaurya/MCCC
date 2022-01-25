@@ -105,6 +105,10 @@ import { QuoteService } from './_service/quote.service';
 import { ForProducerComponent } from './for-producer/for-producer.component';
 import { ReelsInnerComponent } from './reels/reels-inner/reels-inner.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { ReelsInner1Component } from './reels/reels-inner1/reels-inner1.component';
+import { UpcomingSeriesComponent } from './reels/upcoming-series/upcoming-series.component';
+import { CompletedMoviesComponent } from './reels/completed-movies/completed-movies.component';
+import { CompletedSeriesComponent } from './reels/completed-series/completed-series.component';
 
 @NgModule({
   declarations: [
@@ -182,7 +186,11 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     SupportedPartnersComponent,
     ForProducerComponent,
     ReelsInnerComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    ReelsInner1Component,
+    UpcomingSeriesComponent,
+    CompletedMoviesComponent,
+    CompletedSeriesComponent
   ],
   imports: [
     BrowserModule,

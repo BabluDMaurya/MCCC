@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+declare var $: any;
 @Component({
   selector: 'app-testimonial',
   templateUrl: './testimonial.component.html',
@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestimonialComponent implements OnInit {
   back_link:any;
+  disableArrow:boolean = false;
   imgPath="../../assets/img/img/arrow_left.png'";
   prevtButton = '<div class="testimonials_arrows"><span class="slick-next"><img src="../../assets/img/img/arrow_left.png"/></span></div>';
   nextButton = '<div class="testimonials_arrows"><span class="slick-prev"><img src="../../assets/img/img/arrow_left.png"/></span></div>';
   two_sliders = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,"infinite": false,"fade":true,'nextArrow':this.prevtButton,'prevArrow':this.nextButton,};
+
   constructor() { }
 
   ngOnInit(): void {
@@ -26,5 +28,8 @@ export class TestimonialComponent implements OnInit {
   }    
   beforeChange(e:any) {
     // console.log('beforeChange');
-  } 
+    if(e.currentSlide == 10 && e.nextSlide == 0){      
+      // this.disableArrow = true;
+    }
+  }
 }

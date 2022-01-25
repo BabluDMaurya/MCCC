@@ -16,4 +16,19 @@
   <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/58e9e99853.js" crossorigin="anonymous"></script>
 </body>
+<script>
+  //Prevent copy paste via HTML attributes
+var body = document.body;
+body.setAttribute("oncopy","return false");
+body.setAttribute("oncut","return false");
+body.setAttribute("onpaste","return false");
+
+
+//This prevents the action of right clicking
+//This is now pointless after what I implemented above
+var preventRightClick = window.addEventListener("contextmenu",function(e) {
+  e.preventDefault();
+  // alert("Not allowed to right click, sorry");
+});
+</script>
 </html>

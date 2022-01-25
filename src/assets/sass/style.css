@@ -28,6 +28,11 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 body.dark-mode-active{
   background: #000!important;
@@ -13232,7 +13237,7 @@ transform: rotate(270deg);
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
+  max-width: 78%;
   font-size: 15px;
   margin: 0;
   color: #000;
@@ -15559,6 +15564,7 @@ p.appName{
 .main.testimonials{
   padding-top: 70px;
   margin-top: 0;
+  padding-bottom: 50px;
 }
 .testimonials:before{
   position: absolute;
@@ -15597,6 +15603,10 @@ p.appName{
   margin-top: 100px;
   position: relative;
 }
+.dark-mode-active .testimonials__slidersss{
+  background: #000;
+  box-shadow: 0px 0px 9px 1px #fff7;
+}
 .testimonials__slidersss .img_area{
   position: absolute;
   top: -75px;
@@ -15616,6 +15626,7 @@ p.appName{
   padding: 22px;
   padding-top: 80px;
   padding-bottom: 42px;
+  min-height: 517px;
 }
 .testimonials__slidersss .sliders p{
   text-align: left;
@@ -15626,6 +15637,9 @@ p.appName{
   margin-bottom: 35px;
   /* position: relative;
   z-index: 9; */
+}
+.dark-mode-active .testimonials__slidersss .sliders p{
+  color: #fff;
 }
 .testimonials__slidersss .sliders button{
   border: none;
@@ -15679,6 +15693,9 @@ p.appName{
 } 
 .dark-mode-active  .movies_tab_wrppers .moives_area .content_area p {
   color: #fff!important;
+}
+.dark-mode-active .wrrpperRegisterForm .forms .formGroup textarea:focus {
+  color: #fff;
 }
 /* body.mccc.modal-open .modal-backdrop.fade.show {
   z-index: 99999;

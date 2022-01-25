@@ -105,7 +105,6 @@ import { QuoteService } from './_service/quote.service';
 import { ForProducerComponent } from './for-producer/for-producer.component';
 import { ReelsInnerComponent } from './reels/reels-inner/reels-inner.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
-import { ReelsInner1Component } from './reels/reels-inner1/reels-inner1.component';
 import { UpcomingSeriesComponent } from './reels/upcoming-series/upcoming-series.component';
 import { CompletedMoviesComponent } from './reels/completed-movies/completed-movies.component';
 import { CompletedSeriesComponent } from './reels/completed-series/completed-series.component';
@@ -187,7 +186,6 @@ import { CompletedSeriesComponent } from './reels/completed-series/completed-ser
     ForProducerComponent,
     ReelsInnerComponent,
     TestimonialComponent,
-    ReelsInner1Component,
     UpcomingSeriesComponent,
     CompletedMoviesComponent,
     CompletedSeriesComponent

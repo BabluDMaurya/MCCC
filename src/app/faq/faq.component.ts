@@ -14,6 +14,7 @@ export class FaqComponent implements OnInit {
   bts : any;
   casting_calls : any;
   events : any;
+  common : any;
   resData:any;
   constructor(private commonService:CommonService) { }
 
@@ -23,10 +24,11 @@ export class FaqComponent implements OnInit {
     this.commonService.getFAQ().subscribe(res => {
       this.loading = true;
       this.resData = res;   
-      this.bts = this.resData.data.bts;
-      this.casting_calls = this.resData.data.casting_calls;
-      this.events = this.resData.data.events;
-      this.training = this.resData.data.training;
+      // this.bts = this.resData.data.bts;
+      // this.casting_calls = this.resData.data.casting_calls;
+      // this.events = this.resData.data.events;
+      // this.training = this.resData.data.training;
+      this.common = this.resData.data.common;
     },error=>{
       this.loading = false;
     });

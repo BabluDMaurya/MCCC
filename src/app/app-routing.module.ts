@@ -114,7 +114,7 @@ const routes: Routes = [{
   data: {title: 'training'}    
 },
 {    
-  path: 'workshop/:id',component: WorkshopComponent,canActivate: [AuthGuard],    
+  path: 'workshop/:id',component: WorkshopComponent,
   data: {storeRoute: false,title: 'Workshop'}    
 },
 {
@@ -268,12 +268,12 @@ const routes: Routes = [{
   data: {title: 'for-producer'}    
 },
 {    
-  path: 'reels',component: ReelsComponent,canActivate: [AuthGuard],   
-  data: {title: 'reels'}    
+  path: 'movies',component: ReelsComponent,canActivate: [AuthGuard],   
+  data: {title: 'movies'}    
 },
 {    
-  path: 'reels-inner',component: ReelsInnerComponent,canActivate: [AuthGuard],   
-  data: {title: 'reels-inner'}
+  path: 'movies-inner',component: ReelsInnerComponent,canActivate: [AuthGuard],   
+  data: {title: 'movies inner'}
 },
 {    
   path: 'testimonial',component: TestimonialComponent,canActivate: [AuthGuard],   

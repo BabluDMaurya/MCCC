@@ -9,42 +9,17 @@
             <div class="testimonials_slider_wrrperss">
                
                 <ngx-slick-carousel class="carousel slick_sliders testimonials_slidersssss" #slickModal="slick-carousel" [config]="two_sliders" (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
-                    <div ngxSlickItem   class="btsSlioder">
+                    <div ngxSlickItem   *ngFor="let slide of testimonilas" class="btsSlioder">
                         <div class="testimonials__slidersss">
                             <div class="img_area">
-                                <img src="../../assets/img/img/testimonial_pic1.png" alt="">
+                                <img src="{{ baseUrl+slide.img_path+slide.img_name }}" alt="">
                             </div>
                             <div class="sliders">
-                                <p>"To find the right actor to play a character, big or small requires, one, immense understanding of the script and two, a keen eye to find an artist who has the ability to portray the character that he is to play. Having worked with Mukesh Chhabra, it has made me realize that he not only has an eye for talent but also the patience and commitment, required to ease the casting worry of a Director. Mukesh stands by you, takes his work seriously, to the extent that he even creates a set like environment for all his auditions, putting props, getting right costume, giving the actor a look and sometimes even back ground music . He ensures that even the surroundings play its role in getting the actor into character, thus raising the standard of his audition to a superior quality. I enjoy working with him."</p>
-                                <button>Raj Kumar Hirani <span>Director of Lage Raho Munna bhai, 3 Idiots, pk</span></button>
+                                <p>"{{slide.testimonial}}"</p>
+                                <button>{{slide.name}} <span>{{slide.designation}}</span></button>
                             </div>
                         </div>
-                    </div> 
-
-                    <div ngxSlickItem   class="btsSlioder">
-                        <div class="testimonials__slidersss">
-                            <div class="img_area">
-                                <img src="../../assets/img/img/testimonial_pic2.png" alt="">
-                            </div>
-                            <div class="sliders">
-                                <p>"For me 50% of my film is made if it's cast right...but its difficult to find a casting director with that eye for detail and someone who works closely with actors to turn them into characters, that fit the call. Mukesh is someone i discovered through Chillar Party. I found the casting in that film was spot on and i wanted to know who has done it. After meeting him, he has been a permanent fixture of our productions..so much so that we operate from the same premises."</p>
-                            <button>Raj Kumar Hirani <span>Director of Lage Raho Munna bhai, 3 Idiots, pk</span></button>
-                            </div>
-                        </div>
-                    </div> 
-
-                    <div ngxSlickItem   class="btsSlioder">
-                        <div class="testimonials__slidersss">
-                            <div class="img_area">
-                                <img src="../../assets/img/img/testimonial_pic1.png" alt="">
-                            </div>
-                            <div class="sliders">
-                                <p>"To find the right actor to play a character, big or small requires, one, immense understanding of the script and two, a keen eye to find an artist who has the ability to portray the character that he is to play. Having worked with Mukesh Chhabra, it has made me realize that he not only has an eye for talent but also the patience and commitment, required to ease the casting worry of a Director. Mukesh stands by you, takes his work seriously, to the extent that he even creates a set like environment for all his auditions, putting props, getting right costume, giving the actor a look and sometimes even back ground music . He ensures that even the surroundings play its role in getting the actor into character, thus raising the standard of his audition to a superior quality. I enjoy working with him."</p>
-                            <button>Raj Kumar Hirani <span>Director of Lage Raho Munna bhai, 3 Idiots, pk</span></button>
-                            </div>
-                        </div>
-                    </div> 
-                           
+                    </div>
                 </ngx-slick-carousel>
             </div>
         </div>

@@ -6,6 +6,7 @@ import { Config } from 'src/app/_config/config';
 import {HttpErrorResponse} from '@angular/common/http';
 import { RegisterService } from '../_service/register.service';
 import mobile_code from '../_files/mobile_code.json';
+import countries from '../_files/countries.json';
 
 declare var $: any;
 
@@ -15,12 +16,15 @@ declare var $: any;
   styleUrls: ['./for-producer.component.scss']
 })
 export class ForProducerComponent implements OnInit {
+  public countryList:{id:number, name:string, code:string}[] = countries;
   public codeList:{id:number, name:string,mobileCountryCode:string}[] = mobile_code;
+  response: any;
+  languages: any;
   selectedCode = '+91';
   @ViewChild('opendialog') opendialog:any;
   form: FormGroup | any;
   back_link :any =  "home";
-  component_title : string = 'Producer Contact';
+  component_title : string = 'Producer Enquiry';
   submitted = false;
   btnVal :string = "Submit";
 
@@ -50,9 +54,23 @@ export class ForProducerComponent implements OnInit {
         // Validators.email,
         Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
       ]],
+      production_house:['',[Validators.required]],
+      designation:['',[Validators.required]],
+      country_id:['',[Validators.required]],
+      language_id : ['',[Validators.required]],
+      film_log_line : [''],
+      cast : ['',[Validators.required]], 
       phone : ['',[Validators.required]],
       country_code : ['+91',[Validators.required]],
-      message : ['',[Validators.required]]
+      // message : ['',[Validators.required]]
+    });
+    this.registerService.languages().subscribe(res => {
+      this.response = res;
+      if (this.response.data !== 'undefined' && this.response.data.length > 0) {
+        this.languages = this.response.data;
+      }
+    }, error => {
+      
     });
   }
   get f(): { [key: string]: AbstractControl } {

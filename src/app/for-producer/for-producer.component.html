@@ -55,11 +55,85 @@
                     </div>   
                     </div>
                 <div class="formGroup">
-                    <label>Message *</label>
+                    <label>Production House*</label>
                     <div class="inputs">
-                        <textarea formControlName="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.message.errors }"></textarea>
-                        <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
-                            <div *ngIf="f.message.errors.required">Message is required</div>               
+                        <input autocomplete="off" formControlName="production_house" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.production_house.errors }">
+                        <div *ngIf="submitted && f.production_house.errors" class="invalid-feedback">
+                            <div *ngIf="f.production_house.errors.required">Production House is required</div>
+                          </div>
+                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.production_house.errors?.serverError">{{ f.production_house.errors?.serverError }}</div>
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label>Designation*</label>
+                    <div class="inputs">
+                        <input autocomplete="off" formControlName="designation" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.designation.errors }">
+                        <div *ngIf="submitted && f.designation.errors" class="invalid-feedback">
+                            <div *ngIf="f.designation.errors.required">Designation is required</div>                            
+                          </div>
+                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.designation.errors?.serverError">{{ f.designation.errors?.serverError }}</div>
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label>Country*</label>
+                    <div class="select">
+                        <select formControlName="country_id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.country_id.errors }">            
+                            <option value="" disabled>Select</option>
+                            <option value="{{country.id}}" *ngFor="let country of countryList" >{{country.name}}</option>
+                         </select>
+                         <div *ngIf="submitted && f.country_id.errors" class="invalid-feedback">
+                             <div *ngIf="f.country_id.errors.required">Country is required</div>               
+                           </div>
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label>Languages*</label>
+                    <div class="select">
+                        <select class="form-control"  formControlName="language_id" [ngClass]="{ 'is-invalid': submitted && f.language_id.errors }">
+                            <option value="" disabled>Select</option>
+                            <option *ngFor="let language of languages;" value="{{language.id}}">{{language.name}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.language_id.errors" class="invalid-feedback">
+                            <div *ngIf="f.language_id.errors.required">Language is required</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="formGroup">
+                    <label>Film Log Line</label>
+                    <div class="inputs">
+                        <input autocomplete="off" formControlName="film_log_line" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.film_log_line.errors }">
+                        <div *ngIf="submitted && f.film_log_line.errors" class="invalid-feedback">
+                            <div *ngIf="f.film_log_line.errors.required">Film Log Line is required</div>                            
+                          </div>
+                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.film_log_line.errors?.serverError">{{ f.film_log_line.errors?.serverError }}</div>
+                    </div>
+                </div> -->
+                <div class="formGroup">
+                    <label>Film Log Line</label>
+                    <div class="inputs">
+                        <textarea formControlName="film_log_line" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.film_log_line.errors }"></textarea>
+                        <div *ngIf="submitted && f.film_log_line.errors" class="invalid-feedback">
+                            <div *ngIf="f.film_log_line.errors.required">Film Log Line is required</div>               
+                          </div>
+                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.film_log_line.errors?.serverError">{{ f.film_log_line.errors?.serverError }}</div>
+                    </div>
+                </div>
+                <!-- <div class="formGroup">
+                    <label>Cast Requirement*</label>
+                    <div class="inputs">
+                        <input autocomplete="off" formControlName="cast" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cast.errors }">
+                        <div *ngIf="submitted && f.cast.errors" class="invalid-feedback">
+                            <div *ngIf="f.cast.errors.required">Cast is required</div>                            
+                          </div>
+                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.cast.errors?.serverError">{{ f.cast.errors?.serverError }}</div>
+                    </div>
+                </div>                 -->
+                <div class="formGroup">
+                    <label>Cast Requirement*</label>
+                    <div class="inputs">
+                        <textarea formControlName="cast" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cast.errors }"></textarea>
+                        <div *ngIf="submitted && f.cast.errors" class="invalid-feedback">
+                            <div *ngIf="f.cast.errors.required">Cast is required</div>               
                           </div>
                     </div>
                 </div>

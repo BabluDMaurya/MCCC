@@ -102,9 +102,13 @@ const routes: Routes = [{
   data: {storeRoute: false, title: 'BTS Inner'}    
 },
 {    
-  path: 'bts-video-view/:id/:type',component: BtsVideoViewComponent,canActivate: [AuthGuard],
+  path: 'bts-video-view/:id',component: BtsVideoViewComponent,canActivate: [AuthGuard],
   data: {storeRoute: false,title: 'BTS Inner'}    
 },
+// {    
+//   path: 'bts-video-view/:id/:type',component: BtsVideoViewComponent,canActivate: [AuthGuard],
+//   data: {storeRoute: false,title: 'BTS Inner'}    
+// },
 {    
   path: 'training-video-view/:id/:type',component: TrainingInnerComponent,canActivate: [AuthGuard],
   data: {storeRoute: false,title: 'Training Video'}    

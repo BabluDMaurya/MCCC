@@ -35,8 +35,6 @@ export class BtsInnerComponent implements OnInit {
                         }else{
                           this.videoNotFound = true;
                         }
-                        
-                       
                     }); 
                     
     });

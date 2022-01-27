@@ -116,21 +116,21 @@ export class HomeComponent implements OnInit {
         this.loadingbts = true;
         this.categories = data.data;
     });
-    this.btsVideosService.get_bts_videos({'limit': 4,'category_id':1}).subscribe(
+    this.btsVideosService.get_bts_videos({'limit': 4}).subscribe(
       data => { 
           this.popularBtsVideos = data.data;
           this.loadData = true;
       });
-      this.btsVideosService.get_bts_videos({'limit': 1,'category_id':2}).subscribe(
-        data => { 
-            this.topBTSVideos = data.data;
-            if(this.topBTSVideos.length > 0){
-              this.topBTSV = true;
-            }else{
-              this.topBTSV = false;
-            }
-            this.loadData = true;
-        });
+      // this.btsVideosService.get_bts_videos({'limit': 1,'category_id':2}).subscribe(
+      //   data => { 
+      //       this.topBTSVideos = data.data;
+      //       if(this.topBTSVideos.length > 0){
+      //         this.topBTSV = true;
+      //       }else{
+      //         this.topBTSV = false;
+      //       }
+      //       this.loadData = true;
+      //   });
         this.workshopService.get_all_workshop_data({'limit': 5}).subscribe(
           data => { 
             this.workshsopData = data.data;

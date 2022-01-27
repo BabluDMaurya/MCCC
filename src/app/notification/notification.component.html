@@ -25,7 +25,9 @@
                 <div class="notificationDiv" *ngFor="let data of resData">
                     <a [routerLink]="[data.link]">
                         <div class="notificationDivs">
-                            <p>{{data.title}}<br>
+                            <p *ngIf="data.noti_title">{{data.title}}<br>
+                                {{data.noti_title}}</p>
+                            <p *ngIf="!data.noti_title">{{data.title}}<br>
                             {{data.message}}</p>
                             <!-- <i class="fa fa-long-arrow-right" aria-hidden="true"></i> -->
                             <!-- <img src="assets/img/img/downArrow.webp" alt="" class="lightMode">

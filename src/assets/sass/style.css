@@ -15448,7 +15448,7 @@ span.slick-prev:before{
 }
 .quote-dilog-square-close{
   font-weight: bold;
-  padding: 0px 5px;
+  padding: 5px;
   color: #ff6554;
   position: absolute;
   right: 0;
@@ -15688,8 +15688,17 @@ p.appName{
   justify-content: center;
   z-index: 99;
 }
+.slick-disabled span.slick-next{
+  display: none !important;
+}
+.slick-disabled span.slick-prev{
+  display: none !important;
+}
 .movies_areas a{
   color: #ff6454!important;
+} 
+.dark-mode-active  .movies_tab_wrppers .moives_area .content_area p {
+  color: #fff!important;
 }
 .dark-mode-active .wrrpperRegisterForm .forms .formGroup textarea:focus {
   color: #fff;

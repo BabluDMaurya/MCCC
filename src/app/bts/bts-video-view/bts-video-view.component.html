@@ -55,9 +55,9 @@
                             <p [innerHTML]="desc"></p>
                         </div>
                         <span>{{BtsVideos[0].viewsCount}} Views</span>
-                        <label>Up Next</label>
+                        <label *ngIf="showupNext">Up Next</label>
                     </div>
-                    <div class="upNextVideos" *ngFor="let data of upNext">
+                    <div class="upNextVideos" *ngFor="let data of displayData">
                         <div class="vLeft" [routerLink]="['/bts-video-view/',data.id,btsCategoryId]">
                             <img *ngIf="data.thumbnail != '' " src="{{hostUrl}}{{data.thumbnail_path}}{{data.thumbnail}}">
                             <img *ngIf="data.thumbnail == '' " src="{{data.youtube_thumbnail}}">
@@ -71,6 +71,7 @@
                             
                         </div>
                     </div>
+                    <button class="next tbsub" (click)="loadmore()" *ngIf="loadMoreButton">Load more</button>
                 </div>
 
             </div>

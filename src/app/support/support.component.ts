@@ -17,7 +17,7 @@ export class SupportComponent implements OnInit {
   back_link :any =  "home";
   component_title : string = 'Support';
   submitted = false;
-  optionsList = ['What Happen Next', 'App Not Working', 'What do casting agencies do', 'What types of Casting?'];
+  optionsList = ['App is not working', 'Casting related', 'Workshop related','Other'];
 
   btnVal :string = "Send";
 
@@ -41,7 +41,7 @@ export class SupportComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      options : ['What Happen Next',[Validators.required]],
+      options : ['App is not working',[Validators.required]],
       message : ['',[Validators.required]]
     });
   }

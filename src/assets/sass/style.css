@@ -15221,7 +15221,7 @@ div#ModalForm .modal-header a i{
 }
 div.mat-menu-panel.bdc-walk-popup{
   min-width: initial!important;
-  width: 240px!important;
+  width: 220px!important;
 }
 
 
@@ -15806,6 +15806,7 @@ z-index: 1000;
   transform: translate(-8px, -16px);
 } */
 /* youtube__back__button-end*/
+
 @media (max-width:360px){
   .cdk-overlay-pane.training_tour_pane {
     right: initial!important;

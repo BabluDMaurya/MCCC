@@ -60,14 +60,14 @@ export class HeaderComponent implements OnInit {
       // console.log(this.getCount + 'count');
     });
   }
-  addExternalClass(){
-    $('.ng-tns-c95-7').addClass('taining_tour');
-    if($('.ng-tns-c95-7').hasClass('taining_tour')){
-      $('.cdk-overlay-pane').addClass('training_tour_pane');
-    }
-  }
+  // addExternalClass(){
+  //   $('.ng-tns-c95-8').addClass('our_work');
+  //   if($('.ng-tns-c95-8').hasClass('our_work')){
+  //     $('.cdk-overlay-pane').addClass('our_work_pane');
+  //   }
+  // }
   ngAfterViewChecked(){
-    this.addExternalClass();
+    // this.addExternalClass();
   }
   // clickClass(){
   //   $('.mccc').addClass('popUpClass');

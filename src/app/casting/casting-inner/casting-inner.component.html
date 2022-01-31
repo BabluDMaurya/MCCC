@@ -3,8 +3,47 @@
     <app-sub-header [back]="back_link"></app-sub-header>
     <div class="main_wrppers">
         <div class="castingImg" *ngIf="!Apiloading">
-            <!-- <img *ngIf="Apiloading" src="../../../assets/img/white_logo.webp" class="hd-img"> -->
+            <img *ngIf="Apiloading" src="../../../assets/img/white_logo.webp" class="hd-img">
             <img *ngIf="!Apiloading" src="{{image}}" alt="">
+            <!-- <div class="casting_camera">
+                <img src="../../../assets/img/img/casting_camera.webp" alt="">
+                <div class="logo">
+                    <img src="../../../assets/img/img/casting_logo.webp" alt="">
+                </div>
+                <div class="content_area">
+                   <div class="top">
+                        <h5 [innerHTML]="castingTitle"></h5>
+                        <p [innerHTML]="long_description"></p>
+                   </div>
+                   <div class="bottom">
+                    <ul class="cating_details">
+                        <li>
+                            <div class="head"> Role- </div>
+                            <label><b> {{role}}</b></label>
+                        </li>
+                        <li>
+                            <div class="head">Age- </div>
+                            <label><b> {{age}}</b></label>
+                        </li>
+                        <li>
+                            <div class="head">Location- </div>
+                            <label><b> {{locations}}</b></label>
+                        </li>
+                        <li>
+                            <div class="head"> Gender- </div>
+                            <label><b> {{gender}}</b></label>
+                        </li>
+                    </ul>
+                   </div>
+                </div>
+                <div class="title_content">
+                    <div class="shaveIcon">
+                        <i (click)="bookmark(castingId)" [ngClass]="bookmarks != '1'?'far fa-bookmark':'fas fa-bookmark'"></i>
+                    </div>
+                </div>
+            </div> -->
+
+
         </div>
         <div class="castingContent" *ngIf="!Apiloading">
             <div class="catingHeader">
@@ -29,7 +68,6 @@
                 </li>
                 <li>
                     <div class="head">
-                        <!-- <ion-icon name="location-outline"></ion-icon>  -->
                         <i class="fas fa-map-marker-alt"></i>
                         Location
                     </div>
@@ -43,7 +81,9 @@
                 </li>
             </ul>
             <div class="labelBtns">
-                <div class="slide" *ngFor="let tag of casting.tags;"> <label>{{tag}}</label></div>
+                <div class="slide" *ngFor="let tag of casting.tags;">
+                    <label>{{tag}}</label>
+                </div>
              </div>
             <button *ngIf="applySt == 0" class="castingApply btnss_r ripple" (click)="apply()">Apply</button>
             <button *ngIf="applySt == 1" class="castingApply btnss_r ripple" >Applied</button>

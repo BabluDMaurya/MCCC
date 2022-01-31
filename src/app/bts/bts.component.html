@@ -70,7 +70,7 @@
                             <p [innerHTML]="data.description"></p>
                         </div>
                     </div>
-                    <button class="next tbsub" (click)="loadmore()" *ngIf="loadMoreButton && !videoNotFound">Load more</button>
+                    <button class="next tbsub load_more" (click)="loadmore()" *ngIf="loadMoreButton && !videoNotFound">Load More...</button>
                     <div *ngIf="!loadData && !videoNotFound">
                         <div class="header_skelton"></div>
                         <div class="box_skeleton"></div>
@@ -97,8 +97,23 @@
                 </div>
             </div>
                 <div class="moresliderVideos">
-                    <app-bts-category-card  [data]="categories"></app-bts-category-card>
+                    <!-- <app-bts-category-card  [data]="categories"></app-bts-category-card> -->
+                    <div class="moresliderVideos">
+                        <div class="more_V_box">
+                            <img src="../../assets/img/img/MamtaHanda.png">
+                            <span>Be You By Mamta Handa</span>
+                        </div>
+                        <div class="more_V_box">
+                            <img src="../../assets/img/img/interviews.png">
+                            <span>Interviews</span>
+                        </div>
+                        <div class="more_V_box">
+                            <img src="../../assets/img/img/testimonials.png">
+                            <span>Testimonials</span>
+                        </div>
+        
                     </div>
+                </div>
                 
             </div>
         </div>

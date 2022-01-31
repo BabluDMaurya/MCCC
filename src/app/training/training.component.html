@@ -34,13 +34,13 @@
                             <img src="assets/img/img/play_icon.webp" alt="">
                         </div>
                     </div>
-                    <div  *ngIf="vid.description.length > 50 && expanded !=  vid.id" >
-                        <p [innerHTML]="vid.description.substr(0, 50) + '...' | titlecase"></p>
+                    <div class="training_videos" *ngIf="vid.description.length > 50 && expanded !=  vid.id" >
+                        <p [innerHTML]="vid.description.substr(0, 45) + '...' | titlecase"></p>
                             <span (click)="expanded = vid.id"
                             class="text-green"><b>{{expanded==  vid.id ?'View less':'View more'}}</b>
                             </span>
                         </div>
-                    <div  *ngIf="expanded ==  vid.id ">
+                    <div class="training_videos" *ngIf="expanded ==  vid.id ">
                         <p [innerHTML]="vid.description | titlecase"></p>
                         <span (click)="expanded = 0"
                         class="text-green"><b>{{expanded ==  vid.id ?'View less':'View more'}}</b>

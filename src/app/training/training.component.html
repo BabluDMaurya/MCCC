@@ -6,7 +6,7 @@
         <app-header></app-header>
         
         <div class="main_wrppers trainingWrapper">
-            <div class="trainngSlider">
+            <!-- <div class="trainngSlider">
                 
                 <ngx-slick-carousel class="carousel slick_sliders" #slickModal="slick-carousel" [config]="two_sliders"
                     (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
@@ -16,18 +16,24 @@
                     </div>        
                 </ngx-slick-carousel>
                 
-            </div>
-            <div *ngIf="!trvideo">
+            </div> -->
+            <div *ngIf="!trvideo && trainingVideo != ''">
                 <div class="header_skelton"></div>
                 <div class="box_skeleton"></div>
                 <div class="box_skeleton"></div>
                 <div class="box_skeleton"></div>
             </div>
             <div class="otherTrainingVid">
-                <div class="trainingCallHeader">
+                <!-- <div class="trainingCallHeader">
                     <p class="classinghead primary__color">{{title}}</p>
-                </div>
-                <div class="videosWithContnt" *ngFor="let vid of trainingVideo">
+                </div> -->
+                <div class="videosWithContnt" *ngFor="let vid of displayData">
+                    <div class="imgPlayIcon" [routerLink]="['/training-video-view/',vid.id,vid.category_id]">
+                        <img src="{{vid.youtube_thumbnail}}" alt="">
+                        <div class="btsPlay_icon">
+                            <img src="assets/img/img/play_icon.webp" alt="">
+                        </div>
+                    </div>
                     <div  *ngIf="vid.description.length > 50 && expanded !=  vid.id" >
                         <p [innerHTML]="vid.description.substr(0, 50) + '...' | titlecase"></p>
                             <span (click)="expanded = vid.id"
@@ -43,14 +49,9 @@
                     <div  *ngIf="vid.description.length < 50 " >
                         <p [innerHTML]="vid.description | titlecase"></p>
                         </div>
-                    <div class="imgPlayIcon" [routerLink]="['/training-video-view/',vid.id,vid.category_id]">
-                        <img src="{{vid.youtube_thumbnail}}" alt="">
-                        <div class="btsPlay_icon">
-                            <img src="assets/img/img/play_icon.webp" alt="">
-                        </div>
-                    </div>
+                    
                 </div>
-               
+                <button class="next tbsub" (click)="loadmore()" *ngIf="loadMoreButton && trainingVideo != ''">Load more</button>
                 <div *ngIf="trainingVideo == '' ">
                     <app-not-found-data ></app-not-found-data>
                 </div>

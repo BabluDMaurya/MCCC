@@ -115,6 +115,10 @@ this.registerService.terms().subscribe(
               $('#'+this.toastSuccess14).removeClass('show');
           }, 2000);
       sessionStorage.setItem('rotp',this.otp);
+      $('#codeBox1').val('');
+      $('#codeBox2').val('');
+      $('#codeBox3').val('');
+      $('#codeBox4').val('');
       this.ngOnInit();
     });
   }

@@ -12428,12 +12428,57 @@ vg-overlay-play .vg-overlay-play .overlay-play-container.vg-icon-play_arrow{
   color: #fff;
   margin-right: 15px;
 }
+.moresliderVideos{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 10px;
+  margin-bottom: 40px;
+}
+.moresliderVideos .more_V_box{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.moresliderVideos .more_V_box span{
+  font-size: 14px;
+  text-align: center;
+  line-height: 15px;
+  padding: 5px 5px 0;
+  color: #000;
+}
 
 .main_wrppers .casingCalls .moresliderVideos .moreSlider .more_V_box span {
   font-size: 14px;
   text-align: center;
   line-height: 15px;
   padding: 0 5px;
+}
+
+.dark-mode-active .moresliderVideos .more_V_box span{
+  color: #fff;
+}
+
+.moresliderVideos .more_V_box img{
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px #0005;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  place-items:flex-start;
+}
+
+.main_wrppers .casingCalls .moresliderVideos .moreSlider .more_V_box span b{
+  line-height: normal;
+  display: block;
+}
+.training .trainingWrapper .otherTrainingVid .videosWithContnt .training_videos span{
+  display: block;
+  line-height: 15px;
+}
+.training .trainingWrapper .otherTrainingVid .videosWithContnt .training_videos span b{
+  color: #ff6554;
+  font-weight: 600;
 }
 .right_sidebar{
   background: linear-gradient(131deg, #d5eef2, #ddbdda)!important;
@@ -12716,7 +12761,7 @@ body.dark-mode-active .bts .mainHeader .bottomHeader .tabs .box:nth-child(4) .la
 }
 
 .training .trainingWrapper .otherTrainingVid .videosWithContnt {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .training .trainingWrapper .otherTrainingVid .videosWithContnt p {
@@ -12726,15 +12771,28 @@ body.dark-mode-active .bts .mainHeader .bottomHeader .tabs .box:nth-child(4) .la
   margin: 0;
   padding-bottom: 10px;
 }
+.training .trainingWrapper .otherTrainingVid .videosWithContnt .training_videos{
+  padding: 5%;
+}
+.training .trainingWrapper .otherTrainingVid .videosWithContnt .training_videos p{
+  font-size: 14px;
+  padding-bottom: 0;
+}
+
+.training .trainingWrapper .otherTrainingVid .videosWithContnt .training_videos span b{
+  font-size: 12px;
+}
 
 .training .trainingWrapper .otherTrainingVid .videosWithContnt .imgPlayIcon {
   position: relative;
-  padding-top: 20px;
+  padding-top: 0px;
+  box-shadow: 0px 0px 4px #fff9;
+  border-radius: 15px;
 }
 
 .training .trainingWrapper .otherTrainingVid .videosWithContnt .imgPlayIcon img {
   width: 100%;
-  border-radius: 15px;
+  /* border-radius: 15px; */
 }
 
 .training .trainingWrapper .otherTrainingVid .videosWithContnt .imgPlayIcon .btsPlay_icon {
@@ -13572,7 +13630,11 @@ body.dark-mode-active .workshop_innerProfile .casting__profiles .profileDetailsW
   font-size: 14px;
   color: #000;
   margin: 0;
-  padding-bottom: 3px;
+  padding-bottom: 0px;
+}
+.bts_inners .bts__inner .moviesArea .moviesContent span b{
+  color: #ff6554;
+  font-weight: 600;
 }
 
 .bts_inners .bts__inner .moviesArea .moviesContent span {
@@ -15744,6 +15806,7 @@ p.appName{
   color: #fff;
 }
 .testimonials__slidersss .sliders button{
+  border-radius: 10px;
   border: none;
   outline: none!important;
   background: #fc5842;
@@ -15834,7 +15897,7 @@ button.next.load_more{
   border-radius: 10px!important;
   padding: 8px 0px;
   margin: 0 auto;
-  margin-bottom: 0px!important;
+  margin-bottom: 40px!important;
   display: block;
 }
 .bts_mains .main_wrppers.bts_inners {

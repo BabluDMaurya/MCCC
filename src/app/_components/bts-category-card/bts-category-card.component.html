@@ -3,6 +3,7 @@
 (beforeChange)="beforeChange($event)">
     <div class="moreSlider" *ngFor="let catg of data; let i=index;" [routerLink]="['/bts-inner/',catg.id]" ngxSlickItem>
         <div [ngClass]="isOdd(i) ? 'more_V_box primaryColor' : 'more_V_box'">
+            <img>
             <span>{{catg.category}}</span>
         </div>
     </div>

@@ -104,30 +104,12 @@
         
         <div class="casingCalls">
             <div class="casingCallHeader">
-                <p class="classinghead recomded secondary__color">Watch more videos</p>
-                <!-- <span><a>View All</a></span> -->
-            </div>  
-            <!-- circle-skeleton -->
-            <div *ngIf="!loadingbts">            
-                <div class="moreSlider">
-                    <div class="more_slider_skeleton"></div>
-                    <div class="more_slider_skeleton"></div>
-                    <div class="more_slider_skeleton"></div>
-                </div>
-            </div>          
-            <div class="moresliderVideos" *ngIf="loadingbts">
-                <app-bts-category-card  [data]="categories"></app-bts-category-card>
-            </div>
-        </div>
-
-        <div class="casingCalls">
-            <div class="casingCallHeader">
                 <p class="classinghead recomded secondary__color">View Exciting Shows On</p>
                 <!-- <span><a>View All</a></span> -->
             </div>
             <div class="language_app">
                 <div class="card_app">
-                    <a href="https://play.google.com/store/apps/details?id=ahaflix.tv&hl=en&gl=US">
+                    <a href="https://play.google.com/store/apps/details?id=ahaflix.tv&hl=en&gl=US" target="_blank">
                         <div class="img_area">
                             <img src="../../../assets/img/img/aha.png" alt="">
                         </div>
@@ -137,7 +119,7 @@
                     </a>
                 </div>
                 <div class="card_app">
-                    <a href="https://play.google.com/store/apps/details?id=com.viewlift.hoichoi&hl=en_IN&gl=US">
+                    <a href="https://play.google.com/store/apps/details?id=com.viewlift.hoichoi&hl=en_IN&gl=US" target="_blank">
                         <div class="img_area">
                             <img src="../../../assets/img/img/ohichoi.png" alt="">
                         </div>
@@ -147,7 +129,7 @@
                     </a>
                 </div>
                 <div class="card_app">
-                    <a href="https://play.google.com/store/apps/details?id=com.cineman.oho&hl=en&gl=US">
+                    <a href="https://play.google.com/store/apps/details?id=com.cineman.oho&hl=en&gl=US" target="_blank">
                         <div class="img_area">
                             <img src="../../../assets/img/img/oho.png" alt="">
                         </div>
@@ -157,7 +139,7 @@
                     </a>
                 </div>
                 <div class="card_app">
-                   <a href="https://play.google.com/store/apps/details?id=com.planetmarathi.android&hl=en&gl=US">
+                   <a href="https://play.google.com/store/apps/details?id=com.planetmarathi.android&hl=en&gl=US" target="_blank">
                     <div class="img_area">
                         <img src="../../../assets/img/img/planet_marathi.png" alt="">
                     </div>
@@ -187,7 +169,39 @@
                 </div>
             </div> -->
         </div>
+
         
+        
+        <div class="casingCalls">
+            <div class="casingCallHeader">
+                <p class="classinghead recomded secondary__color">Watch More Videos</p>
+                <!-- <span><a>View All</a></span> -->
+            </div>  
+            <!-- circle-skeleton -->
+            <div *ngIf="!loadingbts">            
+                <div class="moreSlider">
+                    <div class="more_slider_skeleton"></div>
+                    <div class="more_slider_skeleton"></div>
+                    <div class="more_slider_skeleton"></div>
+                </div>
+            </div>          
+            <div class="moresliderVideos">
+                <div class="more_V_box">
+                    <img src="../../assets/img/img/MamtaHanda.png">
+                    <span>Be You By Mamta Handa</span>
+                </div>
+                <div class="more_V_box">
+                    <img src="../../assets/img/img/interviews.png">
+                    <span>Interviews</span>
+                </div>
+                <div class="more_V_box">
+                    <img src="../../assets/img/img/testimonials.png">
+                    <span>Testimonials</span>
+                </div>
+
+            </div>
+        </div>
+
         <div class="casingCalls">
             <div class="casingCallHeader">
                 <p class="classinghead recomded">Behind The Scene</p>

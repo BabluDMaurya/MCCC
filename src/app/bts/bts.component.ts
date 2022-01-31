@@ -115,7 +115,7 @@ export class BtsComponent implements OnInit {
   loadmore(){
     let newLength;
     if(this.videosdata.length >= this.displayData.length + 10){
-      newLength= this.displayData.length + 5;
+      newLength= this.displayData.length + 10;
     }else{
       let newLengthadd = this.videosdata.length - this.displayData.length;
       newLength = this.displayData.length + newLengthadd;

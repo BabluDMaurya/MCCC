@@ -12412,8 +12412,8 @@ vg-overlay-play .vg-overlay-play .overlay-play-container.vg-icon-play_arrow{
 }
 
 .main_wrppers .casingCalls .moresliderVideos .moreSlider .more_V_box {
-  width: 115px;
-  height: 115px;
+  width: 100px;
+  height: 100px;
   background: #2790cf;
   border-radius: 50%;
   display: -webkit-box;
@@ -12866,9 +12866,120 @@ color: #fff;
 
 .casting_inner .main_wrppers .castingImg img {
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: 100%;
+  object-fit: cover;
+  min-height: 375px;
+  object-position: left;
 }
+.casting_inner .main_wrppers .castingImg .casting_camera{
+  position: relative;
+  min-height: 375px;
+}
+.casting_camera .logo {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+.casting_camera .logo img {
+  width: auto!important;
+  height: auto!important;
+  object-fit: contain!important;
+  min-height: initial!important;
+  width: 40px!important;
+}
+.content_area {
+  position: absolute;
+  top: 50%;
+  width: 230px;
+  right: 0;
+  transform: translateY(-50%);
+}
+.casting_camera .content_area .top p{
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  font-weight: 400;
+  margin-bottom: 0;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.casting_camera .content_area .top h5{
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 0;
+  line-height: normal;
+}
+.casting_camera .content_area .top p b{
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.casting_camera .content_area .top {
+  position: relative;
+}
+.casting_camera .content_area .top:before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: '';
+  height: 2px;
+  background: #ed695a;
+  width: 92%;
+}
+.casting_camera .content_area .bottom ul{
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  /* grid-template-columns: repeat(2, 1fr); */
+  grid-gap: 2px 10px;
+  padding-top: 10px;
+}
+.casting_camera .content_area .bottom ul li{
+  display: flex;
+  line-height: normal;
+  font-size: 14px;
+  align-items: center;
+}
+.casting_camera .content_area .bottom ul li label{
+  /* align-items: center; */
+  margin: 0;
+}
+.casting_camera .content_area .bottom ul li .head{
+  font-weight: 600;
+  color: #000;
+}
+.casting_camera .content_area .bottom ul li label b{
+
+}
+/* .casting_inner .main_wrppers .castingImg .casting_camera:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background: #ff6454;
+  clip-path: polygon(20% 0%, 85% 0, 0 41%, 0 0);
+}
+.casting_inner .main_wrppers .castingImg .casting_camera:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background: #ff6454;
+  clip-path: polygon(0 18%, 0% 100%, 71% 100%);
+  z-index: -1;
+} */
+/* .casting_inner .main_wrppers .castingImg img {
+  width: auto;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+} */
 
 .casting_inner .main_wrppers .castingImg .shaveIcon {
   position: absolute;
@@ -15479,7 +15590,7 @@ p.appName{
 .language_app {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap:10px 20px;
+  grid-gap:20px 20px;
 }
 .language_app .card_app {
   text-align: center;
@@ -15497,6 +15608,7 @@ p.appName{
   margin: 0;
   padding: 0;
   padding-top: 5px;
+  line-height: normal;
 }
 .dark-mode-active .language_app .card_app .content_area p{
   color: #fff;
@@ -15712,6 +15824,26 @@ p.appName{
   justify-content: center;
   top: -12px;
 }
+button.next.load_more{
+  width: 150px!important;
+  border: none;
+  background: #ff6454;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 10px!important;
+  padding: 8px 0px;
+  margin: 0 auto;
+  margin-bottom: 0px!important;
+  display: block;
+}
+.bts_mains .main_wrppers.bts_inners {
+  margin-bottom: 40px;
+}
+button.load_more_btn{
+  width: 150px;
+  margin: 0 auto;
+}
 /* body.mccc.modal-open .modal-backdrop.fade.show {
   z-index: 99999;
 } */
@@ -15822,5 +15954,12 @@ z-index: 1000;
   .cdk-overlay-pane.training_tour_pane {
     left: 24%;
     transform: translateX(4%)!important;
+  }
+  .main_wrppers .casingCalls .moresliderVideos .moreSlider .more_V_box{
+    width: 90px;
+    height: 90px;
+  }
+  .main_wrppers .casingCalls .moresliderVideos .moreSlider .more_V_box span{
+    font-size: 12px;
   }
 }

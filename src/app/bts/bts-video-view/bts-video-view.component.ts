@@ -26,6 +26,7 @@ export class BtsVideoViewComponent implements OnInit {
   resData: any;
   toastSuccess:string = 'toast-15';
   toastDanger:string = 'toast-16';
+  loadMoreButton :boolean = false;
   constructor(private actRoute:ActivatedRoute,
     private route : Router,
     private btsVideosService: BtsVideosService,
@@ -39,48 +40,92 @@ export class BtsVideoViewComponent implements OnInit {
     BtsVideos:any;
     vid: any;
     desc: any;
-    upNext: any;
+    upNext: any = [];
     pageName = 'bts-video-view';
+    displayData:any = [];
     BtsNextVideos:any;
     getUpnextVideos: boolean = false;
+    showupNext : boolean = false;
   ngOnInit(): void {
     this.dataLoad = true;
-    this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
-      this.btsCategoryId = params.get('type');
+    this.actRoute.paramMap.subscribe((params: ParamMap) => { 
       this.btsVideoId = params.get('id');
       console.log(params );
-      console.log( this.btsCategoryId );
       // this.ngOnInit();
     });
  this.btsVideosService.bts_videos_by_id({'video_id': this.btsVideoId})
           .subscribe(
                     data => { 
-                        console.log("bts_videos_by_id : " ,data);
                         this.BtsVideos = data.data;
                         if(this.BtsVideos[0].video_url != null && this.BtsVideos[0].video_url != ''){
+                          console.log("upNext:",this.upNext);
+                          console.log("upNext Length:",this.upNext.length);
                           this.upNext = data.category_videos;
                           this.vid = this.BtsVideos[0].video_url+'?autoplay=1&rel=0&modestbranding=1&showinfo=0&amp';
                           this.iframe.nativeElement.contentWindow.location.replace(this.vid);
                           // this.vid = this.BtsVideos[0].video_url+'?autoplay=1&mute=1&enablejsapi=1';
-                          console.log("vid : ",this.vid);
+                          // console.log("vid : ",this.vid);
                           this.desc = this.BtsVideos[0].description;
                           this.descLength = this.desc.length;
                           this.videoNotFound = false;
                           this.dataLoad = false;
+                          let newLength;
+                          if(this.upNext.length > 0){
+                            this.showupNext = true;
+                          }
+                          if(this.upNext.length >= this.displayData.length + 10){
+                            newLength= this.displayData.length + 10;
+                          }else{
+                            let newLengthadd = this.upNext.length - this.displayData.length;
+                            newLength = this.displayData.length + newLengthadd;
+                          }
+                          
+                        if (newLength > this.upNext.length) {
+                            newLength = this.displayData.length;
+                        }
+                        this.displayData = this.upNext.slice(0, newLength);
+                        if (newLength < this.upNext.length) {
+                            this.loadMoreButton = true;
+                        }else{
+                          this.loadMoreButton = false;
+                        }
+                        
                         }else{
                           this.dataLoad = false;
                           this.videoNotFound = true;
                           console.log("vid not found: ");
                         }                       
                       }); 
-    this.btsVideosService.get_bts_videos({'limit': null,'category_id':this.btsCategoryId})
-          .subscribe(
-                    data => { 
-                        console.log(data.data);
-                        this.getUpnextVideos = true;
-                        this.BtsNextVideos = data.data;
-                    }); 
+    // this.btsVideosService.load_next_bts_videos({'video_id': this.btsVideoId})
+    //       .subscribe(
+    //                 data => { 
+    //                   console.log("load_next_bts_videos : " ,data);
+    //                     console.log(data.data);
+    //                     this.getUpnextVideos = true;
+    //                     this.BtsNextVideos = data.data;
+    //                 }); 
     
+  }
+  loadmore(){
+    let newLength;
+    if(this.upNext.length >= this.displayData.length + 10){
+      newLength= this.displayData.length + 10;
+    }else{
+      let newLengthadd = this.upNext.length - this.displayData.length;
+      newLength = this.displayData.length + newLengthadd;
+    }
+    
+        console.log("displayData :",this.displayData.length);
+        console.log("newlength :",newLength);
+      if (newLength > this.upNext.length) {
+          newLength = this.displayData.length;
+      }
+      this.displayData = this.upNext.slice(0, newLength);
+      if (newLength < this.upNext.length) {
+          this.loadMoreButton = true;
+      }else{
+        this.loadMoreButton = false;
+      }
   }
   back(){
     this.location.back()

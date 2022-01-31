@@ -80,7 +80,7 @@
             <app-workshop-card *ngFor="let c of eventForYouData; let idx=index" [data]="c"></app-workshop-card>
         </div>
         
-        <div class="casingCalls" *ngIf="topBTSV">
+        <!-- <div class="casingCalls" *ngIf="topBTSV">
             <div class="casingCallHeader">
                 <p class="classinghead recomded">Behind The Scene</p>
                 <span><a [routerLink]="['/bts-inner/2']">View All</a></span>
@@ -100,17 +100,7 @@
                     </div>        
                 </ngx-slick-carousel>
             </div>
-        </div>
-        
-        <div class="casingCalls">
-            <div class="casingCallHeader">
-                <p class="classinghead recomded">Popular BTS</p>
-                <span><a [routerLink]="['/bts-inner/1']">View All</a></span>
-            </div>
-            <div class="bts_popular_slider bts_popular_sliderSecond">      
-                <app-bts-card  [data]="popularBtsVideos"></app-bts-card>          
-            </div>
-        </div>
+        </div> -->
         
         <div class="casingCalls">
             <div class="casingCallHeader">
@@ -196,6 +186,16 @@
                     <div class="app_content_area"></div>
                 </div>
             </div> -->
+        </div>
+        
+        <div class="casingCalls">
+            <div class="casingCallHeader">
+                <p class="classinghead recomded">Behind The Scene</p>
+                <span><a [routerLink]="['/bts']">View All</a></span>
+            </div>
+            <div class="bts_popular_slider bts_popular_sliderSecond">      
+                <app-bts-card  [data]="popularBtsVideos"></app-bts-card>          
+            </div>
         </div>
     </div>
 </div>

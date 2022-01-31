@@ -12875,7 +12875,7 @@ color: #fff;
   position: relative;
   min-height: 375px;
 }
-.casting_camera .logo {
+/* .casting_camera .logo {
   position: absolute;
   top: 10px;
   right: 20px;
@@ -12887,7 +12887,7 @@ color: #fff;
   min-height: initial!important;
   width: 40px!important;
 }
-.content_area {
+.casting_camera .content_area {
   position: absolute;
   top: 50%;
   width: 230px;
@@ -12931,18 +12931,18 @@ color: #fff;
   list-style: none;
   padding: 0;
   display: grid;
-  /* grid-template-columns: repeat(2, 1fr); */
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 2px 10px;
   padding-top: 10px;
-}
-.casting_camera .content_area .bottom ul li{
+} */
+/* .casting_camera .content_area .bottom ul li{
   display: flex;
   line-height: normal;
   font-size: 14px;
   align-items: center;
 }
 .casting_camera .content_area .bottom ul li label{
-  /* align-items: center; */
+  align-items: center;
   margin: 0;
 }
 .casting_camera .content_area .bottom ul li .head{
@@ -12951,7 +12951,7 @@ color: #fff;
 }
 .casting_camera .content_area .bottom ul li label b{
 
-}
+} */
 /* .casting_inner .main_wrppers .castingImg .casting_camera:before {
   position: absolute;
   top: 0;

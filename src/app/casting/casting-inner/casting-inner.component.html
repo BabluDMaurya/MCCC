@@ -3,19 +3,17 @@
     <app-sub-header [back]="back_link"></app-sub-header>
     <div class="main_wrppers">
         <div class="castingImg" *ngIf="!Apiloading">
-            <!-- <img *ngIf="Apiloading" src="../../../assets/img/white_logo.webp" class="hd-img"> -->
-            <!-- <img *ngIf="!Apiloading" src="{{image}}" alt=""> -->
-            <div class="casting_camera">
+            <img *ngIf="Apiloading" src="../../../assets/img/white_logo.webp" class="hd-img">
+            <img *ngIf="!Apiloading" src="{{image}}" alt="">
+            <!-- <div class="casting_camera">
                 <img src="../../../assets/img/img/casting_camera.webp" alt="">
                 <div class="logo">
                     <img src="../../../assets/img/img/casting_logo.webp" alt="">
                 </div>
                 <div class="content_area">
                    <div class="top">
-                        <!-- <p>Looking for <b>Chennai-based</b> Actors.</p> -->
                         <h5 [innerHTML]="castingTitle"></h5>
                         <p [innerHTML]="long_description"></p>
-                        <!-- <p><b>45-55</b> year old</p> -->
                    </div>
                    <div class="bottom">
                     <ul class="cating_details">
@@ -39,24 +37,23 @@
                    </div>
                 </div>
                 <div class="title_content">
-                    <!-- <h5 [innerHTML]="castingTitle"></h5> -->
                     <div class="shaveIcon">
                         <i (click)="bookmark(castingId)" [ngClass]="bookmarks != '1'?'far fa-bookmark':'fas fa-bookmark'"></i>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
         </div>
         <div class="castingContent" *ngIf="!Apiloading">
             <div class="catingHeader">
-                <!-- <h5 [innerHTML]="castingTitle"></h5> -->
-                <!-- <div class="shaveIcon">
+                <h5 [innerHTML]="castingTitle"></h5>
+                <div class="shaveIcon">
                     <i (click)="bookmark(castingId)" [ngClass]="bookmarks != '1'?'far fa-bookmark':'fas fa-bookmark'"></i>
-                </div> -->
+                </div>
             </div>
-            <!-- <p [innerHTML]="long_description"></p> -->
-            <!-- <ul class="cating_details">
+            <p [innerHTML]="long_description"></p>
+            <ul class="cating_details">
                 <li>
                     <div class="head">
                         <i class="far fa-user"></i> Role
@@ -82,9 +79,11 @@
                     </div>
                     <label>{{gender}}</label>
                 </li>
-            </ul> -->
+            </ul>
             <div class="labelBtns">
-                <div class="slide" *ngFor="let tag of casting.tags;"> <label><p>#{{tag}}</p></label></div>
+                <div class="slide" *ngFor="let tag of casting.tags;">
+                    <label>{{tag}}</label>
+                </div>
              </div>
             <button *ngIf="applySt == 0" class="castingApply btnss_r ripple" (click)="apply()">Apply</button>
             <button *ngIf="applySt == 1" class="castingApply btnss_r ripple" >Applied</button>

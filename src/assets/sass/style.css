@@ -12180,6 +12180,7 @@ vg-overlay-play .vg-overlay-play .overlay-play-container.vg-icon-play_arrow{
      object-fit: cover;
   height: 100%;
   border-radius: 20px;
+  border: 1px solid #cdcdcd;
 }
 
 
@@ -12282,6 +12283,8 @@ vg-overlay-play .vg-overlay-play .overlay-play-container.vg-icon-play_arrow{
   font-size: 17px;
   color: #ff6454;
   font-weight: 600;
+  padding-right: 8px;
+  display: inline-block;
 }
 
 .main_wrppers .casingCalls .boxs p {
@@ -15916,6 +15919,16 @@ button.load_more_btn{
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent p a{
   float: initial;
   color: #ff6554;
+}
+.game_dsic p{
+  padding: 8px 5% 0;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ff6554;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0;
+  font-family: 'Source Sans Pro'!important;
 }
 
 /* body.mccc.modal-open .modal-backdrop.fade.show {

@@ -4,6 +4,9 @@
     <h1 class="text-center text-grey-darker game_header">
         <span>Bollywood Memory Game</span>
     </h1>
+    <div class="game_dsic">
+        <p>Challenge your friend to see how strong your memory is !</p>
+    </div>
     <div class="main_wrppers gameWrpper">
         <div class="grids p-16">
             <app-game-card *ngFor="let c of cards; let idx=index" [data]="c" (cardClicked)="cardClicked(idx)">

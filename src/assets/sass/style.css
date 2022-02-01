@@ -13406,7 +13406,7 @@ transform: rotate(270deg);
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 78%;
+  max-width: 70%;
   font-size: 15px;
   margin: 0;
   color: #000;
@@ -13725,7 +13725,6 @@ body.dark-mode-active .toast-box{
   overflow-x: hidden;
   padding-bottom: 25px!important;
 }
-
 .casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext .shavIcon_training{
   display: flex;
   align-items: flex-start;
@@ -15887,6 +15886,9 @@ p.appName{
   justify-content: center;
   top: -12px;
 }
+.dark-mode-active .modal_withCross_icon .quote-dilog-square-close{
+  background: #000;
+}
 button.next.load_more{
   width: 150px!important;
   border: none;
@@ -15907,65 +15909,14 @@ button.load_more_btn{
   width: 150px;
   margin: 0 auto;
 }
-
-/* game_css-start */
-:host {
-  display: block;
-}
-.game_cards.card {
-  -webkit-box-shadow: 10px 10px 43px -18px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 43px -18px rgba(0, 0, 0, 0.75);
-  border-radius: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 145px;
-  cursor: pointer;
-  position: relative;
-  -moz-transform-style: preserve-3d; 
-  -ms-transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-}
-.game_cards .back, .game_cards .front {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  -webkit-backface-visibility: hidden;
-      -moz-backface-visibility: hidden;
-      -ms-backface-visibility: hidden;
-      backface-visibility: hidden;
-}
-.game_cards .back {
-  -webkit-transform: rotateY(0deg);
-  -moz-transform: rotateY(0deg);
-  -o-transform: rotateY(0deg);
-  -ms-transform: rotateY(0deg);
-          transform: rotateY(0deg);
-}
-.game_cards .front {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  -ms-transform: rotateY(180deg);
-          transform: rotateY(180deg);
-}
-.game_cards img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 5px;
+.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .upNext.training_inner_video{
+  padding-bottom: 120px!important;
 }
 
-/* game_css-end */
+.casting_inner.bts_inner_inner .main_wrppers .bts__inner_inner .youtubeContent p a{
+  float: initial;
+  color: #ff6554;
+}
 
 /* body.mccc.modal-open .modal-backdrop.fade.show {
   z-index: 99999;
@@ -16025,9 +15976,6 @@ z-index: 1000;
   min-height: inherit;
   max-height: inherit;
 } */
-
-
-
 
 
 /* youtube__back__button */

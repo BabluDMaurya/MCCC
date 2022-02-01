@@ -6,15 +6,15 @@
             <img *ngIf="vid.thumbnail != '' " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.thumbnail}}">
             <img *ngIf="vid.thumbnail == '' " src="{{vid.youtube_thumbnail}}">
             <div class="btsPlay_icon">
-            <img src="assets/img/img/play_icon.webp" alt="">
-        </div>
+                <img src="assets/img/img/play_icon.webp" alt="">
+            </div>
         </a>
         <a [routerLink]="['/bts-video-view/',vid.id,1]" *ngIf="vid.banner_thumbnail != null">
             <img *ngIf="vid.banner_thumbnail != '' " src="{{hostUrl}}{{vid.thumbnail_path}}{{vid.banner_thumbnail}}">
             <!-- <img *ngIf="vid.thumbnail == '' " src="{{vid.youtube_thumbnail}}"> -->
             <div class="btsPlay_icon">
-            <img src="assets/img/img/play_icon.webp" alt="">
-        </div>
+                <img src="assets/img/img/play_icon.webp" alt="">
+            </div>
         </a>
     </div>        
 </ngx-slick-carousel>

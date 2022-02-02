@@ -1,0 +1,78 @@
+<div class="main casting_inner sidePaading0 bts_inner_inner videos_play">
+    <div class="mainHeader video_header">
+        <div class="top_header">
+            <!-- <div class="arrowLeft" (click)="back()">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </div> -->
+            <!-- <div class="logo middle">
+                <img src="assets/img/img/black_logo.webp" class="lightMode" alt="">
+                <img src="assets/img/img/white_logo.webp" class="darkMode" alt="">
+            </div>
+            <div class="lats_side">
+                <div class="avtars" [routerLink]="['/home']">
+                    <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
+                </div>
+            </div> -->
+            <app-top-header-bt [back]="back_link" [title]="component_title"></app-top-header-bt>
+        </div>
+    </div>
+    <div class="main_wrppers bts_inners_inner">
+        <div *ngIf="dataLoad && !videoNotFound" >
+            <div class="box_skeleton"></div>
+        </div>
+        <div *ngIf="dataLoad && !getUpnextVideos">
+                <div class="header_skelton"></div>
+                <div class="box_skeleton"></div>
+                <div class="box_skeleton"></div>
+                <div class="box_skeleton"></div>
+            </div>                
+        <div class="bts__inner_inner">                
+            <div class="videosTopPart">
+                <div class="youtubeVideos">
+                    <iframe #iframe  width="100%" height="250" class="e2e-trusted-url ivideo"  src="about:blank" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;" allowfullscreen=""></iframe>
+                </div>
+            </div>
+            
+            <div class="upNext">                    
+                <div class="youtubeContent">
+                    <div  *ngIf="descLength > 50 && expanded !=  BtsVideos[0].id" >
+                        <p [innerHTML]="desc.substr(0, 50) + '...' | titlecase"></p>
+                        <span (click)="expanded = BtsVideos[0].id"
+                        class="text-green"><b>{{expanded==  BtsVideos[0].id ?'View less':'View more'}}</b>
+                        </span>
+                    </div>
+                    <div class="shaveIcon" (click)="bookmarkBTS(BtsVideos[0].id,BtsVideos[0]?.bookmark_status)">
+                        <i [ngClass]="BtsVideos[0].bookmark_status == 1 ? 'fas fa-bookmark removecard' : 'far fa-bookmark'"></i>
+                    </div> 
+                    <div  *ngIf="expanded ==  this.BtsVideos[0].id ">
+                        <p [innerHTML]="desc | titlecase"></p>
+                        <span (click)="expanded = 0"
+                        class="text-green"><b>{{expanded==  this.BtsVideos[0].id ?'View less':'View more'}}</b>
+                        </span>
+                    </div>
+                    <div  *ngIf="descLength < 50">
+                        <p [innerHTML]="desc | titlecase"></p>
+                    </div>
+                    <span>{{BtsVideos[0].viewsCount}} Views</span>
+                    <label *ngIf="showupNext">Up Next</label>
+                </div>
+                <div class="upNextVideos" *ngFor="let data of displayData">
+                    <div class="vLeft" [routerLink]="['/interview/',data.id,btsCategoryId]">
+                        <img *ngIf="data.youtube_thumbnail == null " src="{{hostUrl}}{{data.thumbnail_path}}{{data.thumbnail}}">
+                        <img *ngIf="data.youtube_thumbnail != null " src="{{data.youtube_thumbnail}}">
+                        <div class="play__ionc">
+                            <img src="assets/img/img/play_icon.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="vright" [routerLink]="['/bts-video-view/',data.id,btsCategoryId]">
+                        <p>{{data.title | titlecase}}</p>
+                        <span [innerHTML]="data.description.substr(0, 35) + '...' | titlecase"></span>
+                        
+                    </div>
+                </div>
+                <button class="next load_more_btn load_more tbsub" (click)="loadmore()" *ngIf="loadMoreButton">Load More...</button>
+            </div>
+
+        </div>
+    </div>
+</div>

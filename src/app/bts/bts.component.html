@@ -8,33 +8,115 @@
             <app-header></app-header>
         </div>
         <div class="main_wrppers">
-            <div class="casingCalls">
+            <!-- <div class="casingCalls">
                 <div class="casingCallHeader">
                     <p class="classinghead recomded">Popular BTS</p>
                     <span><a [routerLink]="['/bts-inner/1']">View All</a></span>
                 </div>
+                <div *ngIf="!popularBTSV">
+                    <div class="moreSlider">
+                        <div class="bts_skeleton"></div>
+                        <div class="bts_skeleton"></div>
+                        <div class="bts_skeleton"></div>
+                    </div>
+                </div>
                 <div class="bts_popular_slider bts_popular_sliderSecond">
                     <app-bts-card  [data]="popularBtsVideos"></app-bts-card>  
                 </div>
-            </div>
-            <div class="casingCalls">
+            </div> -->
+            <!-- <div class="casingCalls" *ngIf="topBTSV">
                 <div class="casingCallHeader">
                     <p class="classinghead primary__color recomded">Top BTS</p>
                     <span><a [routerLink]="['/bts-inner/2']">View All</a></span>
                 </div>
+                <div *ngIf="!topBTSV">
+                    <div class="moreSlider">
+                        <div class="bts_skeleton"></div>
+                        <div class="bts_skeleton"></div>
+                        <div class="bts_skeleton"></div>
+                    </div>
+                </div>
                 <div class="bts_popular_slider bts_popular_sliderSecond">
                     <app-bts-card  [data]="topBtsVideos"></app-bts-card>  
                 </div>
-            </div>
-            <div class="casingCalls">
-                <div class="casingCallHeader">
-                    <p class="classinghead recomded secondary__color">Watch more videos</p>
-                </div>
-                <div class="moresliderVideos">
-                    <app-bts-category-card  [data]="categories"></app-bts-category-card>
+            </div> -->
+
+            <div class="main_wrppers bts_inners">
+                <div class="bts__inner">
+                    <!-- <div class="head">
+                        <label *ngIf="!videoNotFound">{{topBtsVideos[0].category}}</label>
+                    </div> -->
+                    <div class="moviesArea" *ngFor="let data of displayData">
+                        <div class="moviess" (click) = 'videoClick(data.id)' [routerLink]="['/bts-video-view/',data.id]" >
+                            <img *ngIf="data.thumbnail != '' " src="{{hostUrl}}{{data.thumbnail_path}}{{data.thumbnail}}">
+                            <img *ngIf="data.thumbnail == '' " src="{{data.youtube_thumbnail}}">
+                            <div class="play__ionc">
+                                <img src="../../assets/img/img/play_icon.webp" alt="">
+                            </div>
+                        </div>
+                        <div class="moviesContent" *ngIf="data.description.length > 50 && expanded !=  data.id">
+                            <p [innerHTML]="data.description.substr(0, 50) + '...'"></p>
+                            <span (click)="expanded = data.id"
+                                      class="text-green"><b>{{expanded==  data.id ?'View less':'View more'}}</b></span>
+                           
+                        </div>
+                        <div class="moviesContent" *ngIf="expanded ==  data.id ">
+                            <p [innerHTML]="data.description"></p>
+                            <span (click)="expanded =0"
+                                      class="text-green"><b>{{expanded==  data.id ?'View less':'View more'}}</b></span>
+                            
+                        </div>
+                        <div class="moviesContent" *ngIf="data.description.length < 50 ">
+                            <p [innerHTML]="data.description"></p>
+                        </div>
                     </div>
-                
+                    <button class="next tbsub load_more" (click)="loadmore()" *ngIf="loadMoreButton && !videoNotFound">Load More...</button>
+                    <div *ngIf="!loadData && !videoNotFound">
+                        <div class="header_skelton"></div>
+                        <div class="box_skeleton"></div>
+                        <div class="box_skeleton"></div>
+                        <div class="box_skeleton"></div>
+                    </div>
+                    
+                </div>
+                <div *ngIf="videoNotFound">
+                    <app-not-found-data ></app-not-found-data>
+                </div>
+            </div>
+
+            <div class="casingCalls" *ngIf="watchmoreBTSV">
+                <div class="casingCallHeader">
+                    <p class="classinghead recomded secondary__color">Watch More Videos</p>
+                </div>
+                <!-- circle-skeleton -->
+            <!-- <div *ngIf="!watchmoreBTSV">            
+                <div class="moreSlider">
+                    <div class="more_slider_skeleton"></div>
+                    <div class="more_slider_skeleton"></div>
+                    <div class="more_slider_skeleton"></div>
+                </div>
+            </div> -->
+                <div class="moresliderVideos">
+                    <a href="https://www.youtube.com/channel/UCfyqUB5FRpkLse0RjJbaacQ" target="_blank">
+                        <div class="more_V_box">
+                            <img src="../../assets/img/img/MamtaHanda.png">
+                            <span>Be You By Mamta Handa</span>
+                        </div>
+                    </a>
+
+                    <a [routerLink]="['/bts-inner/9']">
+                        <div class="more_V_box">
+                            <img src="../../assets/img/img/interviews.png">
+                            <span>Interviews</span>
+                        </div>
+                    </a>
+                    <a [routerLink]="['/bts-inner/10']">
+                        <div class="more_V_box">
+                            <img src="../../assets/img/img/testimonials.png">
+                            <span>Testimonials</span>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-    
 </div>

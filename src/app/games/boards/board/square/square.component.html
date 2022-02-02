@@ -1,0 +1,14 @@
+<div 
+      class="game-square rounded-lg bg-teal-lightest 
+      shadow-md " 
+      (click)="changePlayer()" 
+      [ngClass]="{noClick: gameService.winner} "
+    >
+      <!-- <p class="text-grey-darker"> {{ square.state}} </p> -->
+      <div class="face front" *ngIf="square.state == 'X'">
+        <img src="assets/game_image/akshay.png" width="" height="">
+    </div>
+    <div class="face front" *ngIf="square.state == 'O'">
+      <img src="assets/game_image/kriti.png" width="" height="">
+  </div>
+    </div>

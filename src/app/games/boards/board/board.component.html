@@ -1,0 +1,6 @@
+<section w-full class="tic_toe_tac_wrraper" >
+    <!-- row 1 -->
+      <div class="square-container  h-48" *ngFor="let square of boardService.board"> 
+        <app-square [square]="square" border-blue  (click)="cardClicked.emit()"> </app-square>
+      </div>
+    </section>

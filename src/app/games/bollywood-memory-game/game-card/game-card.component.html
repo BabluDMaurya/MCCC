@@ -1,8 +1,20 @@
-<div class="card" (click)="cardClicked.emit()" [@cardFlip]="data.state">
+<div class="game_card cards" (click)="cardClicked.emit()" [@cardFlip]="data.state">
     <div class="face back">
         <img src="assets/game_image/card-back.png">
     </div>
     <div class="face front">
-        <img [src]="'./assets/game_image/' + data.imageId + '.jpg'">
+        <img [src]="'./assets/game_image/' + data.imageId + '.png'">
     </div>
 </div>
+
+<!-- <section class="container">
+  <div class='card'>
+    <figure class="face front">
+      <img src="assets/game_image/card-back.png">
+    </figure>
+    <figure class="face back">
+      <img [src]="'./assets/game_image/' + data.imageId + '.png'">
+    </figure>
+  </div>
+  <button class="btn flipBtn"  (click)="cardClicked.emit()" [@cardFlip]="data.state" ><span>Flip card</span></button>
+</section> -->

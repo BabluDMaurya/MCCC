@@ -1,23 +1,45 @@
     <!-- <app-footer></app-footer> -->
-<div class="main casting_inner sidePaading0">
+<div class="main casting_inner sidePaading0 gammings">
     <app-sub-header [back]="back_link"></app-sub-header>    
     <div class="main_wrppers gameWrpper">
         <div class="gamesArea">
             <div class="gameHeader">
-                <p class="classinghead">Game</p>
+                <p class="classinghead">Games</p>
                 <!-- <span><a>View All</a></span> -->
             </div>
         </div>
         <div class="gameArea" (click)="show()">
-            <img src="assets/img/img/gamesImg.webp" alt="">
-            <div class="gamesBtmTxtArrow">
+            <img src="assets\game_image\memory_game.png" alt="">
+            <!-- <div class="gamesBtmTxtArrow">
                 <div class="gmeImgContnt">
                     <a>
                     <p>Bollywood Memory</p>
                     <img src="assets/img/img/threeArrow.webp" alt="">
                 </a>
                 </div>
-            </div>
-        </div>        
+            </div> -->
+        </div> 
+        <div class="gameArea" (click)="showTicTacToe()">
+            <img src="assets\game_image\tic_tac.png" alt="">
+            <!-- <div class="gamesBtmTxtArrow">
+                <div class="gmeImgContnt">
+                    <a>
+                    <p>Bollywood Memory</p>
+                    <img src="assets/img/img/threeArrow.webp" alt="">
+                </a>
+                </div>
+            </div> -->
+        </div> 
+          
     </div>
 </div>
+    <button type="button" class="btn btn-secondary modal_withCross_iconss" #openquotedialog data-bs-toggle="modal" data-bs-target="#QuoteSuccess" style="display: none;"></button>
+    <div class="modal fade dialogbox modal_withCross_icon" id="QuoteSuccess" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content quote-dilog-square">
+                <div class="quote-dilog-square-close" data-bs-dismiss="modal">X</div>                            
+                <img src="{{quote}}" alt="image" class="img-fluid">                            
+            </div>
+        </div>
+    </div>
+    

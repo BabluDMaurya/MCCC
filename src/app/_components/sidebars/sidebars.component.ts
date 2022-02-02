@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../_service/authentication.service';
 import { DashboardService } from '../../_service/dashboard.service';
 import { User } from '../../_models/user';
+import {BdcWalkService} from 'bdc-walkthrough';
 declare var switchDarkModeCheck: any ;
 declare var $: any ;
 import { Config } from 'src/app/_config/config';
@@ -22,12 +23,18 @@ export class SidebarsComponent implements OnInit {
   baseUrl :string = Config.Host;
   profile_pic_path: any;
   profile_pic: any;
-
+  progress: number = 0;
+  reset() {
+    this.bdcWalkService.reset('example2');
+  }
   constructor(
     private route:Router,
     private authenticationService: AuthenticationService,
-    private dashboardService: DashboardService
-    ) {this.currentUser = this.authenticationService.currentUserValue; }
+    private dashboardService: DashboardService,    
+    private bdcWalkService: BdcWalkService
+    ) {this.currentUser = this.authenticationService.currentUserValue; 
+      this.progress = this.currentUser.percentage;
+    }
 
   ngOnInit(): void {
     this.check = localStorage.getItem("MobilekitDarkMode"); 
@@ -37,7 +44,7 @@ export class SidebarsComponent implements OnInit {
       this.checkboxVal = false;
     }
     
-    console.log(this.currentUser);
+    // console.log(this.currentUser);
     this.dashboardService.userDetailsForPeofile()
         .subscribe(res => {
           this.resData = res;
@@ -48,12 +55,12 @@ export class SidebarsComponent implements OnInit {
         });
   }
   logout(){
-    $('.mat-typography').css('overflow','inherit !important');
+    $('.mccc').css('overflow','inherit');
     this.authenticationService.logout();
     this.route.navigate(['/signin']);
   }
   sideBarClose(){
-    $('.mat-typography').css('overflow','inherit !important');
+    $('.mccc').css('overflow','inherit');
   }
   darkMode(){
     if(this.check == 1){
@@ -75,7 +82,7 @@ export class SidebarsComponent implements OnInit {
     // localStorage.setItem("MobilekitDarkMode", "1");
   }
   closeSide(){
-    $('.mat-typography').css('overflow','inherit');
+    $('.mccc').css('overflow','inherit');
   }
   
 }

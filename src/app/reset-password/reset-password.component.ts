@@ -17,6 +17,7 @@ declare var toastbox: any;
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
+  toastSuccess14:string = 'toast-14';
   toastSuccess:string = 'toast-12';
   back_link :any =  "forgot-password";
   component_title : string = 'Reset Password';
@@ -29,6 +30,19 @@ export class ResetPasswordComponent implements OnInit {
   otp : string = '1111';
   hide : boolean = true;
   chide : boolean = true;
+  btnVal :string = "Submit";
+
+//button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal : string = "Submit";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
   constructor(public otpService:OtpService,private registerService : RegisterService,private userService:UserService,private actRoute:ActivatedRoute ,private formBuilder: FormBuilder, private route : Router,private authenticationService: AuthenticationService) { }
   passwordhideshow() {
     this.hide = !this.hide;
@@ -42,12 +56,12 @@ export class ResetPasswordComponent implements OnInit {
     });
     this.rotp = sessionStorage.getItem('rotp');
     this.form = this.formBuilder.group({
-      password: ['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}')]],
-      confirm_password: ['',Validators.required],
+      password: ['',[Validators.required,Validators.minLength(4),Validators.maxLength(12)]],
+      
       otp : ['',[Validators.required]],
-      terms:['',Validators.required],
+      // terms:['',Validators.required],
     }, {
-      validator: [MustMatchOTP(this.rotp,'otp'),MustMatch('password','confirm_password')]
+      validator: [MustMatchOTP(this.rotp,'otp')]
   });
 
   // fetch terms and condtion from server
@@ -63,12 +77,16 @@ this.registerService.terms().subscribe(
     return this.form.controls;
   } 
   submit(){
+    console.log("submit");
     this.submitted = true;
     if (this.form.invalid) {
+      this.submitConfig();
         return;
     }else{ 
+      this.progressConfig();
       this.userService.reset_password(this.form.value,this.token).pipe(first()).subscribe(res => {
         this.responceData = res;
+        this.submitConfig();
         if(this.responceData.status == 'true'){  
           sessionStorage.removeItem('rotp');
           // this.notifyService.showSuccess("Password Reset Successfully !!", "");
@@ -83,6 +101,7 @@ this.registerService.terms().subscribe(
           console.log('Hello forgot',this.responceData);
         }          
        },error=>{
+         this.submitConfig();
         // this.notifyService.showError(error.message, "")
        });       
         
@@ -91,7 +110,15 @@ this.registerService.terms().subscribe(
   resendOTP(){
     this.otpService.get_resendotp({email_or_mobile:sessionStorage.getItem('email_or_mobile')}).subscribe((res: any) => {      
       this.otp = res.otp;
+      new toastbox(this.toastSuccess14, 2000);
+            setTimeout(() => {
+              $('#'+this.toastSuccess14).removeClass('show');
+          }, 2000);
       sessionStorage.setItem('rotp',this.otp);
+      $('#codeBox1').val('');
+      $('#codeBox2').val('');
+      $('#codeBox3').val('');
+      $('#codeBox4').val('');
       this.ngOnInit();
     });
   }

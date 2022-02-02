@@ -11,13 +11,15 @@ import { AuthenticationService } from '../_service/authentication.service';
 export class SplashComponent implements OnInit {
   readytoredirect : boolean = false;
   slides = [
-    {"no": 1,class1:"first",class2:"casting-content",class3:"slide-btn1",logo: "../../assets/img/white_logo.webp",img: "../../assets/img/img/GirlImg.webp",title:"Casting Call",des:"Get updates on the most recent casting calls of features films, TV commercials and other meduims. Resgister NOW!", skipBtn:"Skip"},
-    {"no": 2,class1:"second",class2:"traning-content",class3:"slide-btn2",logo: "../../assets/img/white_logo.webp",img: "../../assets/img/img/GirlImg.webp",title:"Training",des:"Don't stop growing. Never limit your acting abilities. Our Acting training will provide you the challenge that you as an actor desperately require", skipBtn:"Skip"},
-    {"no": 3,class1:"third",class2:"event-content",class3:"slide-btn3",logo: "../../assets/img/white_logo.webp",img: "../../assets/img/img/GirlImg.webp",title:"Events",des:"Be a part of the most exciting events at Indian Cinema just by signing-up on your smartphone.", skipBtn:"Skip"},
-    {"no": 4,class1:"fourth",class2:"bTs-content",class3:"slide-btn4",logo: "../../assets/img/white_logo.webp",img: "../../assets/img/img/GirlImg.webp",title:"BTS",des:"Get the most of what's happening 'Behind The Screen'. Anywhere. Everywhere.",link:"/signin-signup", skipBtn:"Next"}
+    {"no": 1,class1:"first",class2:"casting-content",class3:"slide-btn1",logo: "../../assets/img/white_logo.webp",img: "../../assets/img/img/GirlImg.webp",title:"Just Act",des:"Get updates on the most recent casting calls of features films, TV commercials and other mediums. Resgister NOW!", skipBtn:"Next"},
+
+    // {"no": 1,class1:"first",class2:"casting-content",class3:"slide-btn1",logo: "../../assets/img/white_logo.webp",img: "../../assets/img/img/GirlImg.webp",title:"Casting Call",des:"Get updates on the most recent casting calls of features films, TV commercials and other mediums. Resgister NOW!", skipBtn:"Skip"},
+    // {"no": 2,class1:"second",class2:"traning-content",class3:"slide-btn2",logo: "../../assets/img/white_logo.webp",img: "../../assets/img/img/GirlImg.webp",title:"Training",des:"Don't stop growing. Never limit your acting abilities. Our Acting training will provide you the challenge that you as an actor desperately require", skipBtn:"Skip"},
+    // {"no": 3,class1:"third",class2:"event-content",class3:"slide-btn3",logo: "../../assets/img/white_logo.webp",img: "../../assets/img/img/GirlImg.webp",title:"Workshop",des:"Be a part of the most exciting events at Indian Cinema just by signing-up on your smartphone.", skipBtn:"Skip"},
+    // {"no": 4,class1:"fourth",class2:"bTs-content",class3:"slide-btn4",logo: "../../assets/img/white_logo.webp",img: "../../assets/img/img/GirlImg.webp",title:"BTS",des:"Get the most of what's happening 'Behind The Screen'. Anywhere. Everywhere.",link:"/signin-signup", skipBtn:"Next"}
   ];
   //-----slick slider------------//    
-  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": true,"autoplay": true,"infinite": true,
+  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,"autoplay": true,"infinite": true,
   fade: true,
   "autoplaySpeed": 10000,method:{
     "slickPause" : true

@@ -8,7 +8,7 @@ import { UserService } from 'src/app/_service/user.service';
 import { AlertService } from 'src/app/_service/alert.service';
 import { Dimensions,ImageCroppedEvent, ImageTransform,base64ToFile} from 'ngx-image-cropper';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-
+declare var $: any;
 @Component({
   selector: 'app-upload-images',
   templateUrl: './upload-images.component.html',
@@ -17,9 +17,10 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
 export class UploadImagesComponent implements OnInit {
   @ViewChild('openbutton') openbutton :any;
   @ViewChild('closebutton') closebutton :any;
+  btnVal = "Continue";
   progress: number = 0;
-  back_link :any =  "signin";
-  component_title : string = 'Complete your Profile';
+  back_link :any =  "";
+  component_title : string = 'Complete Your Profile';
   form: FormGroup | any;
   display = 'none';
   ulpoadedFiles: any = [];
@@ -85,6 +86,17 @@ export class UploadImagesComponent implements OnInit {
       }
     }
   } 
+  //button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal :string = "Continue";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
   openModal() {
     this.openbutton.nativeElement.click();
   }
@@ -226,13 +238,14 @@ saveImage(){
     this.submitted = true;
     console.log(this.form);
     if (this.form.invalid) {
-      console.log('Invalid');
+      this.submitConfig();
       return;
     }else{      
       this.userService.upload_image(this.form.value).subscribe(
         (event: HttpEvent<any>) => {
           switch (event.type) {
             case HttpEventType.Sent:
+              this.progressConfig();
               console.log('Request has been made!');
               break;
             case HttpEventType.ResponseHeader:
@@ -244,9 +257,12 @@ saveImage(){
               console.log(`Uploaded! ${this.progress}%`);
               break;
             case HttpEventType.Response:
+              this.submitConfig();
                 this.uploading = false; 
                 if (event.body.status == 'true') {
+                  this.authenticationService.currentUserValue.percentage = event.body.percentage;
                   this.route.navigate(['/upload-video']);
+                  
                 } else {
                 }
               setTimeout(() => {

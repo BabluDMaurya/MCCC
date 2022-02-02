@@ -12,7 +12,7 @@
                 <div class="lats_side">
                     <div class="avtars">
                             <a [routerLink]="['/home']">
-                                <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
+                                <ion-icon name="home-outline"></ion-icon>
                             </a>
                         <!-- </div> -->
                     </div>
@@ -23,17 +23,19 @@
         <div class="main_wrppers">
             <div class="notification_area">
                 <div class="notificationDiv" *ngFor="let data of resData">
-                    <div class="notificationDivs">
-                        <p>{{data.title}}<br>
-                        {{data.message}}</p>
-                        <a [routerLink]="[data.link]">
+                    <a [routerLink]="[data.link]">
+                        <div class="notificationDivs">
+                            <p *ngIf="data.noti_title">{{data.title}}<br>
+                                {{data.noti_title}}</p>
+                            <p *ngIf="!data.noti_title">{{data.title}}<br>
+                            {{data.message}}</p>
                             <!-- <i class="fa fa-long-arrow-right" aria-hidden="true"></i> -->
-                            <img src="assets/img/img/downArrow.webp" alt="" class="lightMode">
-                            <img src="assets/img/img/white_arrow_down.webp" alt="" class="darkMode">
-                        </a>
+                            <!-- <img src="assets/img/img/downArrow.webp" alt="" class="lightMode">
+                            <img src="assets/img/img/white_arrow_down.webp" alt="" class="darkMode"> -->
+                            <span>{{data.created_at}}</span>
+                        </div>
+                    </a>
                     </div>
-                    <span>{{data.created_at}}</span>
-                </div>
                 <div *ngIf="dataLength <= 0">
                     <app-not-found-data ></app-not-found-data>
                 </div>

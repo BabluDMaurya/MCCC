@@ -6,16 +6,19 @@ import { Config } from 'src/app/_config/config';
 import { first } from 'rxjs/operators';
 import { UserService } from 'src/app/_service/user.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-
+declare var toastbox: any;
+declare var $: any;
 @Component({
   selector: 'app-upload-video',
   templateUrl: './upload-video.component.html',
   styleUrls: ['./upload-video.component.scss']
 })
 export class UploadVideoComponent implements OnInit {
+  btnVal :string = "Continue";
+  toastError:string = 'toast-6';
   progress: number = 0;
   currentPlayingVideo: HTMLVideoElement | any;
-  back_link :any =  "upload-images";
+  back_link :any =  "";
   component_title : string = 'Complete your Profile';
   form: FormGroup | any;
   submitted = false;
@@ -24,6 +27,7 @@ export class UploadVideoComponent implements OnInit {
   url: any;
   responseData: any;
   uploading:boolean=false;
+  fileTypes = ['mp4','mov','webm'];  //acceptable file types
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
@@ -51,6 +55,17 @@ export class UploadVideoComponent implements OnInit {
         this.route.navigate(['/signin']);
       }
     }
+  }
+  //button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal : string = "Continue";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
   }
   onPlayingVideo(event:any) {
     event.preventDefault();
@@ -82,6 +97,17 @@ export class UploadVideoComponent implements OnInit {
       this.images = [];
       this.url = '';
       const file = event.target.files && event.target.files[0];
+        var extension = event.target.files[0].name.split('.').pop().toLowerCase();
+        var isSuccess = this.fileTypes.indexOf(extension) > -1;
+        if (isSuccess && file.type.indexOf('video') > -1) { 
+        const fileSizeInKB = Math.round(file.size / 1024);
+        if(fileSizeInKB > 102400){             
+          new toastbox(this.toastError, 2000);
+            $('#form-error-id').text('Please Select file less then 100 MB.')
+              setTimeout(() => {
+                $('#'+this.toastError).removeClass('show');
+            }, 2000);
+        }else{
       var filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
         var reader = new FileReader();
@@ -99,6 +125,13 @@ export class UploadVideoComponent implements OnInit {
           });
         }
         reader.readAsDataURL(event.target.files[i]);
+      }}
+    }else{
+      new toastbox(this.toastError, 2000);
+            $('#form-error-id').text('Please select mp4,mov or webm video.')
+              setTimeout(() => {
+                $('#'+this.toastError).removeClass('show');
+            }, 2000);
       }
     }
   }
@@ -106,12 +139,14 @@ export class UploadVideoComponent implements OnInit {
     this.uploading = true;
     this.submitted = true;
     if (this.form.invalid) {
+      this.submitConfig();
       return;
     } else {
       this.userService.upload_video(this.form.value).subscribe(
         (event: HttpEvent<any>) => {
         switch (event.type) {
           case HttpEventType.Sent:
+            this.progressConfig();
             console.log('Request has been made!');
             break;
           case HttpEventType.ResponseHeader:
@@ -123,9 +158,11 @@ export class UploadVideoComponent implements OnInit {
             console.log(`Uploaded! ${this.progress}%`);
             break;
           case HttpEventType.Response:
+              this.submitConfig();
               this.uploading = false; 
               if (event.body.status == 'true') {
-                this.route.navigate(['/complete-profile']);
+                this.authenticationService.currentUserValue.percentage = event.body.percentage;
+                this.route.navigate(['/final-success']);
               } else {
               }
             setTimeout(() => {

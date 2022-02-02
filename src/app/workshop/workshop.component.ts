@@ -14,6 +14,7 @@ export class WorkshopComponent implements OnInit {
   pageName = 'workshop';
   upcomingData: any;
   loading = false;
+  workshopdata : boolean = false;
   endingsoonData: any;
   previosData: any;
   expanded = 0;
@@ -54,10 +55,13 @@ export class WorkshopComponent implements OnInit {
         this.onGoingData = this.workshsopData.on_going;
         this.upcoming = this.workshsopData.upcoming;
         this.loading = true;
+        this.workshopdata = true;
         if(this.upcomingData == 'No Data'){
           this.upcomingData = [];
         }
         console.log(this.upcomingData);
+    },error=>{
+      this.workshopdata = false;
     });
    
   }

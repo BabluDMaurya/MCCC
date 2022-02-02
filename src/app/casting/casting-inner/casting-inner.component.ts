@@ -17,9 +17,10 @@ declare var $: any;
 export class CastingInnerComponent implements OnInit {
   toastSuccess:string = 'toast-15';
   toastDanger:string = 'toast-16';
-  back_link = "casting/1";
+  castingTab:any;  
+  back_link:any;
   pageName="casting-inner";
-  castingId:any;
+  castingId:any;  
   resData:any;
   casting:any;
   baseUrl :string = Config.Host+'backend2/';
@@ -48,9 +49,12 @@ export class CastingInnerComponent implements OnInit {
     private notifyService : NotificationService,
     
     ) {} 
+    
   ngOnInit(): void {    
     this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
       this.castingId = params.get('id');
+      this.castingTab = params.get('tab');
+      this.back_link = "casting/"+this.castingTab;
     });
     this.getCastingData();
   }
@@ -103,6 +107,7 @@ export class CastingInnerComponent implements OnInit {
   bookmark(id:any){
     this.dashboardService.bookmarkCasting({casting_card_id:id})
       .subscribe(res => {
+        this.dashboardService.filter('applyed');
         this.resData = res; 
         this.bmkStatus = this.resData.data[0];
         if(this.bmkStatus === 'Bookmark removed'){

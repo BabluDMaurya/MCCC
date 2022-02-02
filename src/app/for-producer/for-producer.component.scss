@@ -1,0 +1,32 @@
+.wrrpperRegisterForm .forms button.next {
+    width: 100%;
+    border: none;
+    background: #ff6454;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 50px;
+    padding: 8px 0;
+    margin-bottom: 80px;
+    display: block;
+}
+.wrrpperRegisterForm .forms .formGroup .mobileNumer .selects select {
+    width: 100%;
+    border: 2px solid #ff6454;
+    background: transparent;
+    border-radius: 5px;
+    line-height: 40px;
+    height: 45px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    padding-left: 5px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.wrrpperRegisterForm .forms .formGroup.mobileNumer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

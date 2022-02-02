@@ -10,6 +10,7 @@ declare var $: any;
   styleUrls: ['./casting-card.component.scss']
 })
 export class CastingCardComponent implements OnInit {
+  @Input() tab?: number;
   @Input() data:any;
   toastSuccess:string = 'toast-15';
   toastDanger:string = 'toast-16';
@@ -30,13 +31,14 @@ export class CastingCardComponent implements OnInit {
     }
     return text + ' <span>View More</span>';
    }
-   castingInner(id:any){
-    this.route.navigate(['casting-inner',id]);
+   castingInner(id:any,tab:any){
+    this.route.navigate(['casting-inner',id,tab]);
   }
 
   bookmarkCasting(id:any,status?:any){
     this.dashboardService.bookmarkCasting({casting_card_id:id})
       .subscribe(res => {
+        this.dashboardService.filter('applyed');
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){
           this.data.bookmark_status = 1;

@@ -10,6 +10,7 @@ import { NotificationService } from 'src/app/_service/notification.service';
 import { AbstractControl, FormGroup, FormBuilder, Validators,FormControl } from '@angular/forms';
 declare var toastbox: any;
 declare var $: any;
+
 @Component({
   selector: 'app-workshop-registration-form',
   templateUrl: './workshop-registration-form.component.html',
@@ -37,6 +38,19 @@ export class WorkshopRegistrationFormComponent implements OnInit {
   panfileChoosen : boolean = false;
   panfileName : any;
   toastSuccess:string = 'toast-18';
+  btnVal :string = "Submit";
+
+//button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal : string = "Submit";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
   constructor(private location: Location,private workshopService: WorkshopService,
     private route:Router,
     private actRoute:ActivatedRoute,
@@ -60,7 +74,7 @@ export class WorkshopRegistrationFormComponent implements OnInit {
     this.dashboardService.userDetails({casting_id:''}).subscribe(
       data => { 
         this.userData = data;
-        console.log(data);
+        console.log("User Data:",data);
     });
 
     if(this.type == 1){
@@ -102,10 +116,10 @@ export class WorkshopRegistrationFormComponent implements OnInit {
     
     this.submitted = true;
     if (this.form.invalid) {
-      console.log('false');
-      console.log(this.form);
+      this.submitConfig();
       return;
     }else{
+      this.progressConfig();
       this.loading = false;
       var data = this.form.value;
       console.log(this.form.value);
@@ -115,8 +129,8 @@ export class WorkshopRegistrationFormComponent implements OnInit {
               this.dashboardService.filter('applyed');
               console.log(data);
               this.loading = true;
-               
-              this.route.navigate(['/thank-you-workshop/',this.workshopData.title]);
+              this.submitConfig();
+              this.route.navigate(['/thank-you-workshop/']);
           });
       }
       if(this.type == 1){
@@ -126,7 +140,7 @@ export class WorkshopRegistrationFormComponent implements OnInit {
             this.dashboardService.filter('applyed');
             console.log(data);
             this.loading = true;
-            
+            this.submitConfig();
             this.route.navigate(['/thank-you-workshop',this.workshopData.title]);
         });
     }

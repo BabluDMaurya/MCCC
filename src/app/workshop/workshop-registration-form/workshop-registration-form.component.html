@@ -6,7 +6,7 @@
                 </div>
                 <div class="logo middle">
                     <img src="assets/img/img/black_logo.webp" class="lightMode" alt="">
-                    <img src="assets/img/img/white_logo.webp" class="darkkMode" alt="">
+                    <img src="assets/img/img/white_logo.webp" class="darkMode" alt="">
                 </div>
                 <div class="lats_side">
                     <div class="avtars" [routerLink]="['/home']">
@@ -36,11 +36,11 @@
                     </div>
                     <div class="profileDiv">
                         <label>Sex<span>*</span></label>
-                        <p class="innerDetail">{{currentUser.userDetails.gender}}</p>
+                        <p class="innerDetail">{{userData.data.user_details.gender}}</p>
                     </div>
                     <div class="profileDiv">
                         <label>Date of Birth<span>*</span></label>
-                        <p class="innerDetail">{{currentUser.userDetails.dob}}</p>
+                        <p class="innerDetail">{{userData.data.user_details.dob}}</p>
                     </div>
                     <div class="profileDiv">
                         <label>Email Id<span>*</span></label>
@@ -53,14 +53,14 @@
                     <div class="profileDiv">
                         <label>Secondary Contact<span>*</span></label>
                         <div class="inputs">
-                            <input type="tel" formControlName="sos_phone" value="" minlength="10" maxlength="10" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
+                            <input type="number" formControlName="sos_phone" value="" minlength="10" maxlength="10" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
                             <div *ngIf="submitted && f.sos_phone.errors" class="invalid-feedback">
-                                <div *ngIf="f.sos_phone.errors.required">Please provide your secondary contact number.</div>
+                                <div *ngIf="f.sos_phone.errors.required">Please provide your secondary contact number</div>
                                 <div *ngIf="f.sos_phone.errors.minlength">
-                                    contact number must be at least 10 digit.
+                                    contact number must be at least 10 digit
                                 </div>
                                 <div *ngIf="f.sos_phone.errors.maxlength">
-                                    contact number must be at least 10 digit.
+                                    contact number must be at least 10 digit
                                 </div>
                                 </div>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="inputs">
                             <textarea placeholder="type here" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"> </textarea>
                             <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-                                <div *ngIf="f.address.errors.required">Please provide your Address details.</div>
+                                <div *ngIf="f.address.errors.required">Please provide your Address details</div>
                             </div>
                         </div>
                     </div>
@@ -92,48 +92,50 @@
                     </div>
 
                     <div class="profileDiv">
-                        <label>Adhaar Card<span>*</span></label>
+                        <label>Aadhaar Card<span>*</span></label>
                         <div class="inputFile">
                             <input #fileInput type="file" accept="image/jpeg, image/png, image/jpg"  id="upkoadAdhPan" formControlName="aadhar_file" (change)="onFileChange2($event)" [ngClass]="{ 'is-invalid': submitted && f.aadhar_file.errors }">
+                            <div *ngIf="submitted && f.aadhar_file.errors" class="invalid-feedback">
+                                <div *ngIf="f.aadhar_file.errors.required" class="error-dw">Please upload Aadhaar card photo</div>
+                            </div>
                             <div *ngIf="aadharfileChoosen" class="file-name">{{aadharfileName}}</div>
-                            <label for="upkoadAdhPan">Upload Adhaar</label>
+                            <label for="upkoadAdhPan">Upload Aadhaar</label>
                             <div class="fileUpIcon">
-                                <img src="assets/img/img/uploadFile.webp" alt="">
+                                <!-- <img src="assets/img/img/uploadFile.webp" alt=""> -->
+                                <i class="fas fa-upload"></i>
                             </div>
                         </div>
-                        <div *ngIf="submitted && f.aadhar_file.errors" class="invalid-feedback">
-                            <div *ngIf="f.aadhar_file.errors.required" class="error-dw">Please upload Aadhar card photo.</div>
-                        </div>
+                        
                     </div>
 
                     <div class="profileDiv uploadPan">
-                        <label>Pan Card<span>*</span></label>
+                        <label>PAN Card<span>*</span></label>
                         <div class="inputFile">
                             <input #fileInput type="file" accept="image/jpeg, image/png, image/jpg" formControlName="pan_file" id="upkoadPan" class="upkoadPans" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submitted && f.pan_file.errors }">
-                            <div *ngIf="panfileChoosen" class="file-name">{{panfileName}}</div>
-                            <label for="upkoadPan">Upload Pan</label>
-                            <div class="fileUpIcon">
-                                <img src="assets/img/img/uploadFile.webp" alt="">
+                            <div *ngIf="submitted && f.pan_file.errors" class="invalid-feedback">
+                                <div *ngIf="f.pan_file.errors.required" class="error-dw">Please upload PAN card photo</div>
                             </div>
-                        </div>
-                        <div *ngIf="submitted && f.pan_file.errors" class="invalid-feedback">
-                            <div *ngIf="f.pan_file.errors.required" class="error-dw">Please upload Pan card photo.</div>
-                        </div>
+                            <div *ngIf="panfileChoosen" class="file-name">{{panfileName}}</div>
+                            <label for="upkoadPan">Upload PAN</label>
+                            <div class="fileUpIcon">
+                                <!-- <img src="assets/img/img/uploadFile.webp" alt=""> -->
+                                <i class="fas fa-upload"></i>
+                            </div>
+                        </div>                        
                     </div>
-
                     <div class="profileDiv">
                         <label *ngIf="type == 2">Why you want to attend this workshop?<span class="text-danger">*</span></label>
                         <div class="inputs">
                         <textarea placeholder="Your Answer" formControlName="about_workshop" [ngClass]="{ 'is-invalid': submitted && f.about_workshop.errors }"></textarea>
                         
                         <div *ngIf="submitted && f.about_workshop.errors" class="invalid-feedback">
-                            <div *ngIf="f.about_workshop.errors.required">This field is required.</div>
+                            <div *ngIf="f.about_workshop.errors.required">This field is required</div>
                         </div>
                     </div>
                     </div>
                 </div>
 
-                <button type="submit" (click)="submit()" class="btnss btnss_r ripple">Submit</button>
+                <button type="submit" (click)="submit()" class="btnss btnss_r ripple tbsub">{{btnVal}}</button>
             </form>
             </div>
         </div>

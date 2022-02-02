@@ -45,6 +45,19 @@ import { AuthGuard } from './_helpers/auth.guard';
 import { NoInternetComponent } from './no-internet/no-internet.component';
 import { SupportComponent } from './support/support.component';
 import { PasswordComponent } from './password/password.component';
+import { ReelsComponent } from './reels/reels.component';
+import { ReelsInnerComponent } from './reels/reels-inner/reels-inner.component';
+import { UpcomingSeriesComponent } from './reels/upcoming-series/upcoming-series.component';
+import { CompletedMoviesComponent } from './reels/completed-movies/completed-movies.component';
+import { CompletedSeriesComponent } from './reels/completed-series/completed-series.component';
+
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { InnerSplashComponent } from './inner-splash/inner-splash.component';
+import { BoardsComponent } from './games/boards/boards.component';
+import { ForProducerComponent } from './for-producer/for-producer.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
+
+// RouterModule.forRoot(Router, {scrollPositionRestoration: 'enabled'})
 
 
 const routes: Routes = [{    
@@ -65,6 +78,10 @@ const routes: Routes = [{
   data: {title: 'splash'}    
 },
 {    
+  path: 'inner-splash',component: InnerSplashComponent,    
+  data: {title: 'inner splash'}    
+},
+{    
   path: 'signin-signup',component: SigninSignupComponent,    
   data: {title: 'signin signup'}    
 },
@@ -77,35 +94,39 @@ const routes: Routes = [{
   data: {title: 'signin'}    
 },
 {    
-  path: 'bts',component: BtsComponent,    
+  path: 'bts',component: BtsComponent,canActivate: [AuthGuard],  
   data: {title: 'BTS'}    
 },
 {    
-  path: 'bts-inner/:id',component: BtsInnerComponent,    
+  path: 'bts-inner/:id',component: BtsInnerComponent,canActivate: [AuthGuard],  
   data: {storeRoute: false, title: 'BTS Inner'}    
 },
 {    
-  path: 'bts-video-view/:id/:type',component: BtsVideoViewComponent,
+  path: 'bts-video-view/:id',component: BtsVideoViewComponent,canActivate: [AuthGuard],
   data: {storeRoute: false,title: 'BTS Inner'}    
 },
+// {    
+//   path: 'bts-video-view/:id/:type',component: BtsVideoViewComponent,canActivate: [AuthGuard],
+//   data: {storeRoute: false,title: 'BTS Inner'}    
+// },
 {    
-  path: 'training-video-view/:id/:type',component: TrainingInnerComponent,
+  path: 'training-video-view/:id/:type',component: TrainingInnerComponent,canActivate: [AuthGuard],
   data: {storeRoute: false,title: 'Training Video'}    
 },
 {    
-  path: 'training',component: TrainingComponent,    
+  path: 'training',component: TrainingComponent,canActivate: [AuthGuard],  
   data: {title: 'training'}    
 },
 {    
-  path: 'workshop/:id',component: WorkshopComponent,    
+  path: 'workshop/:id',component: WorkshopComponent,
   data: {storeRoute: false,title: 'Workshop'}    
 },
 {
-  path: 'workshop-registration/:id',component: WorkshopRegistrationComponent,    
+  path: 'workshop-registration/:id',component: WorkshopRegistrationComponent,canActivate: [AuthGuard],    
   data: {storeRoute: true,title: 'Workshop Registration'}    
 },
 {    
-  path: 'workshop-registration-form/:id/:type',component: WorkshopRegistrationFormComponent,   
+  path: 'workshop-registration-form/:id/:type',component: WorkshopRegistrationFormComponent,canActivate: [AuthGuard],   
   data: {title: 'Workshop Registration Form'}    
 },
 //----casting----------//
@@ -118,6 +139,10 @@ const routes: Routes = [{
   data: {title: 'casting inner'}    
 },
 {    
+  path: 'casting-inner/:id/:tab',component: CastingInnerComponent,canActivate: [AuthGuard],
+  data: {title: 'casting inner'}    
+},
+{    
   path: 'apply-casting/:id',component: ApplyCastingComponent,canActivate: [AuthGuard],    
   data: {title: 'Apply Casting'}   
 },
@@ -126,27 +151,35 @@ const routes: Routes = [{
   data: {title: 'Thank You Casting'}    
 },
 {    
-  path: 'thank-you-workshop/:name',component: ThankYouPageComponent,  
+  path: 'thank-you-workshop/:name',component: ThankYouPageComponent,canActivate: [AuthGuard],  
   data: {title: 'Thank You'}    
 },
 {    
-  path: 'images',component: ImagesComponent,  
+  path: 'thank-you-workshop',component: ThankYouPageComponent,canActivate: [AuthGuard],  
+  data: {title: 'Thank You'}    
+},
+{    
+  path: 'images',component: ImagesComponent,canActivate: [AuthGuard],  
   data: {title: 'Images'}    
 },
 {    
-  path: 'anatomy',component: AnatomyComponent,    
+  path: 'anatomy',component: AnatomyComponent,canActivate: [AuthGuard],    
   data: {storeRoute: true,title: 'Anatomy'}    
 },
 {    
-  path: 'personal',component: PersonalComponent,    
+  path: 'personal',component: PersonalComponent,canActivate: [AuthGuard],   
   data: {storeRoute: false,title: 'personal'}    
 },
 {    
-  path: 'video',component: VideoComponent,    
+  path: 'personal/:page/:id',component: PersonalComponent,canActivate: [AuthGuard],   
+  data: {storeRoute: false,title: 'personal'}    
+},
+{    
+  path: 'video',component: VideoComponent,canActivate: [AuthGuard],    
   data: {storeRoute: false,title: 'Video'}    
 },
 {
-  path: 'notification',component: NotificationComponent,    
+  path: 'notification',component: NotificationComponent,canActivate: [AuthGuard],    
   data: {title: 'Notification Panel'} 
 },
 {   
@@ -160,6 +193,10 @@ const routes: Routes = [{
 {    
   path: 'bollywood-memory-game',component: BollywoodMemoryGameComponent,canActivate: [AuthGuard],   
   data: {title: 'bollywood memory game'}    
+},
+{    
+  path: 'tic-tac-toe-game',component: BoardsComponent,canActivate: [AuthGuard],   
+  data: {title: 'tic tac toe game'}    
 },
 {    
   path: 'my-applications',component: MyApplicationsComponent,canActivate: [AuthGuard],   
@@ -211,7 +248,7 @@ const routes: Routes = [{
   data: {title: 'reset password'}    
 },
 {    
-  path: 'upload-images',component: UploadImagesComponent,canActivate: [AuthGuard], 
+  path: 'upload-images',component: UploadImagesComponent,canActivate: [AuthGuard],
   data: {title: 'Upload Images'}    
 },
 {    
@@ -227,13 +264,43 @@ const routes: Routes = [{
   data: {title: 'final success'}
 },
 {    
-  path: 'support',component: SupportComponent,   
+  path: 'support',component: SupportComponent,canActivate: [AuthGuard],   
   data: {title: 'support'}    
+},
+{    
+  path: 'for-producer',component: ForProducerComponent,canActivate: [AuthGuard],   
+  data: {title: 'for-producer'}    
+},
+{    
+  path: 'movies',component: ReelsComponent,canActivate: [AuthGuard],   
+  data: {title: 'movies'}    
+},
+{    
+  path: 'movies-inner',component: ReelsInnerComponent,canActivate: [AuthGuard],   
+  data: {title: 'movies inner'}
+},
+{    
+  path: 'testimonial',component: TestimonialComponent,canActivate: [AuthGuard],   
+  data: {title: 'testimonial'}    
+},
+{    
+  path: 'upcoming-series',component: UpcomingSeriesComponent,canActivate: [AuthGuard],   
+  data: {title: 'upcoming-series'}    
+},
+{    
+  path: 'completed-movies',component: CompletedMoviesComponent,canActivate: [AuthGuard],   
+  data: {title: 'completed-movies'}    
+},
+{    
+  path: 'completed-series',component: CompletedSeriesComponent,canActivate: [AuthGuard],   
+  data: {title: 'completed-series'}    
 },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [ RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled', // Add options right here
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

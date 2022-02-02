@@ -5,7 +5,7 @@
             </div>
              <p>Create Password</p>
         </div> -->
-        <div class="imgContent">
+        <div class="imgContent" style="height: calc(80vh - 100px)!important;">
             <div class="imgs">
                 <img src="assets/img/img/succes.webp" alt="">
             </div>
@@ -14,7 +14,26 @@
                 <p>Your Submission has been<br>received</p>
             </div>
         </div>
+        
+        <!-- <ngx-slick-carousel class="carousel slick_sliders thank_you_slider" #slickModal="slick-carousel" [config]="slideConfig"
+        (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
+        (beforeChange)="beforeChange($event)">                
+        <div ngxSlickItem *ngFor="let slide of slides" class="banner thank_sliders main_banner" style="min-height: 132px;">
+         <div class="banner_content">
+            <p><i class="fas fa-quote-left"></i>{{slide.des}}<i class="fas fa-quote-right"></i></p> 
+        </div>
+        </div>        
+      </ngx-slick-carousel> -->
         <div class="btnArea">
-            <button [routerLink]="['/home']" class="next btnss_r ripple">Let's Explore</button>
+            <button [routerLink]="['/home']" class="next btnss_r ripple">Let's Explore!</button>
+        </div>
+    </div>
+    <button type="button" class="btn btn-secondary modal_withCross_iconss" #openquotedialog data-bs-toggle="modal" data-bs-target="#QuoteSuccess" style="display: none;"></button>
+    <div class="modal fade dialogbox modal_withCross_icon" id="QuoteSuccess" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content quote-dilog-square">
+                <div class="quote-dilog-square-close" data-bs-dismiss="modal"><i class="far fa-times-circle"></i></div>                            
+                <img src="{{quote}}" alt="image" class="img-fluid">                            
+            </div>
         </div>
     </div>

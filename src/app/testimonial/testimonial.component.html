@@ -1,0 +1,27 @@
+<app-footer></app-footer>
+<div class="main casting_inner testimonials">
+    <app-sub-header [back]="back_link"></app-sub-header>
+    <div class="main_wrppers">
+        <div class="testimonail_slider">
+            <div class="testimonial_header">
+                <p>Testimonials</p>
+            </div>
+            <div class="testimonials_slider_wrrperss">
+               
+                <ngx-slick-carousel class="carousel slick_sliders testimonials_slidersssss" #slickModal="slick-carousel" [config]="two_sliders" (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+                    <div ngxSlickItem   *ngFor="let slide of testimonilas" class="btsSlioder">
+                        <div class="testimonials__slidersss">
+                            <div class="img_area">
+                                <img src="{{ baseUrl+slide.img_path+slide.img_name }}" alt="">
+                            </div>
+                            <div class="sliders">
+                                <p>"{{slide.testimonial}}"</p>
+                                <button>{{slide.name}} <span>{{slide.designation}}</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </ngx-slick-carousel>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,30 @@
-<div class="wrrpperRegisterForm completeProfile ">
-    <app-top-header-bt [back]="back_link" [title]="component_title"></app-top-header-bt>
+<div class="wrrpperRegisterForm completeProfile">
+    <div class="heading sticky">
+        <p>{{component_title}}</p>
+        <div class="lats_side">
+            <a [routerLink]="['/home']">Skip</a>
+        </div>
+    </div>
+    <!-- <app-top-header-bt [back]="back_link" [title]="component_title"></app-top-header-bt> -->
+    <div class="forms">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="forms_input">        
+        <div class="forms_input">     
+             <app-select-your-gender [parent]="form" [submit]="submitted"></app-select-your-gender>
+            <app-date-of-birth [parent]="form" [submit]="submitted"></app-date-of-birth>
+            <app-your-country-state-city [parent]="form" [submit]="submitted"></app-your-country-state-city>
             <div class="formGroup">
-                <label><img src="assets/img/img/height.webp" alt="">  Height <span>(e.g.5.8)</span>*</label>
+                <label>Home Town* <ion-icon name="information-circle-outline" placement="top" ngbTooltip="This will make it easier for the casting team to understand your native language for the role you’ll be auditioning for."></ion-icon></label>
                 <div class="inputs">
-                    <input type="tel" class="form-control" formControlName="height" maxlength="5" [ngClass]="{ 'is-invalid': submitted && f.height.errors }">
+                    <input autocomplete="off" formControlName="home_town" type="text"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.home_town.errors }">
+                    <div *ngIf="submitted && f.home_town.errors" class="invalid-feedback">
+                        <div *ngIf="f.home_town.errors.required">Home town is required</div> 
+                      </div>
+                    </div>
+            </div>   
+            <div class="formGroup">
+                <label><img src="assets/img/img/height.webp" alt="">  Height <span>(e.g.5.8) *</span></label>
+                <div class="inputs">
+                    <input type="text" class="form-control" formControlName="height" maxlength="5" [ngClass]="{ 'is-invalid': submitted && f.height.errors }">
                     <div *ngIf="submitted && f.height.errors" class="invalid-feedback">
                         <div *ngIf="f.height.errors.required">Height is required</div>
                         <div *ngIf="f.height.errors.pattern">Height must be numeric</div>
@@ -41,7 +60,7 @@
             <div class="addRemoveDivs qaulifications">
                 <div class="group">
                     <div class="formGroup addRemoveDivss qaulificationss" formArrayName="qualifications" *ngFor="let item of form.get('qualifications')['controls']; let j = index;">
-                        <label><img src="assets/img/img/qualification.webp" alt=""> Qualification*</label>
+                        <label><img src="assets/img/img/qualification.webp" alt=""> Qualification</label>
                         <div class="withIcon" [formGroupName]="j">
                             <div class="inputs">
                                 <input type="text" formControlName="qualification" maxlength="200" [ngClass]="{ 'is-invalid': submitted && f.qualifications.errors }">
@@ -102,8 +121,10 @@
                 </div>
             </div>        
         </div>
-        <div class="btnArea">
-            <button class="next btnss_r ripple">Continue</button>
+        <div class="btnArea iwdl" style="height: auto;">
+            <button class="next btnss_r ripple tbsub">{{btnVal}}</button>
+            <span [routerLink]="['/home']">I will do it later</span>
         </div>
     </form>
+</div>
 </div>

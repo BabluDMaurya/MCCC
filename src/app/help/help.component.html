@@ -6,7 +6,7 @@
                 <div class="accordion" id="accordionCasting">
                     <div class="accordion-item" *ngFor="let item of datas; let i = index">
                         <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            <button class="accordion-button" [ngClass]="{ 'collapsed': i != 0 }" type="button" data-bs-toggle="collapse"
                                 [attr.data-bs-target]="'#accordioncc'+i" [innerHTML]="item.title"></button>
                         </h2>
                         <div [id]="'accordioncc'+i" class="accordion-collapse collapse" [ngClass]="{ 'show': i == 0 }"
@@ -42,6 +42,7 @@
                 <div class="para_skeleton"></div>
                 <div class="para_skeleton"></div>
             </div>
+            <a href='https://tawk.to/chat/61f78f81b9e4e21181bcb1f0/1fqngh4uc' target="_blank">Click Me</a>
         </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="heading sticky">
-    <div class="arrowLeft" [routerLink]="[link]">
+    <div class="arrowLeft" [routerLink]="[link]" *ngIf="back != '' && back != null">
         <ion-icon name="chevron-back-outline"></ion-icon>
     </div>
     <p>{{title}}</p>

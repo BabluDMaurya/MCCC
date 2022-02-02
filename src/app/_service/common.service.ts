@@ -14,6 +14,9 @@ export class CommonService {
     getAboutMCCC(){
       return this.http.get(`${Config.BasePath}/display_about_mccc`);
     }
+    getTestimonials(){
+      return this.http.get(`${Config.BasePath}/testimonial`);
+    }
     getFAQ(){
       return this.http.get(`${Config.BasePath}/display_main_faq`);
     }
@@ -45,7 +48,7 @@ export class CommonService {
       return this.http.get(`${Config.BasePath}/display_user_image_data`);
     }
     updateImages(data:any){
-      return this.http.post(`${Config.BasePath}/update_user_image_data`,data);
+      return this.http.post(`${Config.BasePath}/update_user_image_data`,data,{reportProgress: true,observe: 'events'});
     }
     deleteImages(data:any){
       return this.http.post(`${Config.BasePath}/delete_user_image_data`,data);

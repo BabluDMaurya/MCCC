@@ -15,7 +15,7 @@
                 </div>
                 <div class="logo middle">
                     <img src="assets/img/img/black_logo.webp" class="lightMode" alt="">
-                    <img src="assets/img/img/white_logo.webp" class="darkkMode" alt="">
+                    <img src="assets/img/img/white_logo.webp" class="darkMode" alt="">
                 </div>
                 <div class="lats_side">
                     <div class="notification">
@@ -26,6 +26,7 @@
                     </div>
                     <div class="avtars">
                         <div class="avatar">
+                            <!-- <ion-icon name="home-outline"></ion-icon> -->
                             <img src="assets/img/img/avtar.webp" alt="avatar" class="rounded">
                         </div>
                     </div>
@@ -64,6 +65,12 @@
                     <div class="tab-pane fade  " [ngClass]="catId == 1 ? 'active show':''" id="photos" role="tabpanel">
                         <div class="section full mt-1">
                             <div class="casingCalls">
+                                <div *ngIf="!workshopdata">
+                                    <div class="header_skelton"></div>
+                                    <div class="box_skeleton"></div>
+                                    <div class="box_skeleton"></div>
+                                    <div class="box_skeleton"></div>
+                                </div>
                                 <div class="casingCallHeader" *ngIf="!onGoingData[0].noData">
                                     <p class="classinghead">On Going Workshop</p>
                                     <!-- <span><a>View All</a></span> -->

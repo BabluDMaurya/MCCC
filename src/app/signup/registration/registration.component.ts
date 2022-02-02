@@ -7,7 +7,7 @@ import { DatePipe } from '@angular/common';
 import{ AgeBetween13To54 } from "../../_helpers/custom-DOB.validator";
 import { RegisterService } from 'src/app/_service/register.service';
 import { AuthenticationService } from 'src/app/_service/authentication.service';
-
+declare var $: any;
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -18,7 +18,8 @@ export class RegistrationComponent implements OnInit {
   back_link :any =  "signin-signup";
   component_title : string = 'Fill Your Details';
   submitted = false;
-  submitt :any = 1;
+  submitt :any = 1; 
+  btnVal : string = 'NEXT';
   constructor(
     public datepipe: DatePipe,
     private formBuilder: FormBuilder,
@@ -43,37 +44,53 @@ export class RegistrationComponent implements OnInit {
         // Validators.email,
         Validators.pattern(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
       ]],
-      dob : [''],
-      home_town : ['', Validators.required]
+      // dob : [''],
+      // home_town : ['', Validators.required]
     });
     
   }
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   } 
-  submit(){
-    this.submitted = true;
-    if (this.form.invalid) {      
+  
+  //button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal = "NEXT";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
+  submit(){    
+    this.submitted = true;    
+    if (this.form.invalid) {   
+      this.submitConfig();
       return;
     }else{ 
-      let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
-      this.form.controls['dob'].setValue(DOB);      
+      // let DOB = this.datepipe.transform(this.form.value.year+'-'+this.form.value.month+'-'+this.form.value.day, 'yyyy-MM-dd');
+      // this.form.controls['dob'].setValue(DOB); 
+      this.progressConfig();     
         this.registerService.check_email_mobile(this.form.value).subscribe(
-                (data:any) => {
+                (data:any) => {                  
                   sessionStorage.setItem('otp',data.otp);
                   sessionStorage.setItem('name',data.userDetails.name);
                   sessionStorage.setItem('email',data.userDetails.email);
                   sessionStorage.setItem('phone',data.userDetails.phone);
-                  sessionStorage.setItem('dob',data.userDetails.dob);
-                  sessionStorage.setItem('gender',data.userDetails.gender);
-                  sessionStorage.setItem('country_id',data.userDetails.country_id);
-                  sessionStorage.setItem('state_id',data.userDetails.state_id);
-                  sessionStorage.setItem('city_id',data.userDetails.city_id);
-                  sessionStorage.setItem('home_town',data.userDetails.home_town);
+                  sessionStorage.setItem('country_code',data.userDetails.country_code);
+                  // sessionStorage.setItem('dob',data.userDetails.dob);
+                  // sessionStorage.setItem('gender',data.userDetails.gender);
+                  // sessionStorage.setItem('country_id',data.userDetails.country_id);
+                  // sessionStorage.setItem('state_id',data.userDetails.state_id);
+                  // sessionStorage.setItem('city_id',data.userDetails.city_id);
+                  // sessionStorage.setItem('home_town',data.userDetails.home_town);
                   this.route.navigate(['/create-password']);
                 },
-                (errorResponse: HttpErrorResponse) => {                  
-                  const validationErrors = errorResponse.error.errors;
+                (error) => {              
+                  this.submitConfig();
+                  const validationErrors = error;
                   Object.keys(validationErrors).forEach(prop => {
                     const formControl = this.form.get(prop);
                     if (formControl) {

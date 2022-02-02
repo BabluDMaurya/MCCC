@@ -4,7 +4,7 @@ import { AuthenticationService } from '../_service/authentication.service';
 import { BtsVideosService } from '../_service/bts-videos.service';
 import { DashboardService } from '../_service/dashboard.service';
 import {WorkshopService} from '../_service/workshop.service';
-
+import {BdcWalkService} from 'bdc-walkthrough';
 import { Config } from '../_config/config';
 
 @Component({
@@ -46,21 +46,28 @@ export class HomeComponent implements OnInit {
   localData : any;
   upcomingNoData: boolean = true;
   eventForYouNoData: boolean = true;
+  topBTSV : boolean = false;
+  innerSlide : any = false;
   constructor(
     private authenticationService: AuthenticationService,
     private route: Router,
     private btsVideosService: BtsVideosService,
     private dashboardService : DashboardService,
     private workshopService: WorkshopService,
+    private bdcWalkService: BdcWalkService
     ) {
+      this.innerSlide = localStorage.getItem('innerSlide');
+      if(!this.innerSlide){
+        this.route.navigate(['/inner-splash']);
+      }else{   
       this.localData = localStorage.getItem('currentUser');
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       let Auth = JSON.stringify(this.authenticationService.currentUserValue.status);
       if (Auth) {
-        if (this.authenticationService.currentUserValue.profileStatus  === 'false') {
-          this.route.navigate(['/upload-images']);
-        }
+        // if (this.authenticationService.currentUserValue.profileStatus  === 'false') {
+        //   this.route.navigate(['/upload-images']);
+        // }
       } else {
         this.route.navigate(['/signin']);
       }
@@ -70,6 +77,7 @@ export class HomeComponent implements OnInit {
     this.dashboardService.listen().subscribe((e:any)=>{
       this.ngOnInit();
     });
+    }
   }
   //-----slick slider------------//    
   slideConfig = {"slidesToShow": 1, "slidesToScroll": 1,"dots": false,autoplay: true,autoplaySpeed: 2000,'nextArrow':false,'prevArrow':false};
@@ -96,39 +104,42 @@ export class HomeComponent implements OnInit {
     // console.log('beforeChange');
   } 
   //-----slick slider------------//
+
   ngOnInit(): void {
     this.castingSliderApi();
     this.newCastingCallApi();
     this.getRecomendedData();
-    var udata = this.authenticationService.login_with_token(this.localData.token);
-    console.log(udata);
+    // var udata = this.authenticationService.login_with_token(this.localData.token);
+    // console.log(udata);
     this.btsVideosService.get_categories().subscribe(
       data => { 
         this.loadingbts = true;
         this.categories = data.data;
     });
-    this.btsVideosService.get_bts_videos({'limit': 4,'category_id':1}).subscribe(
+    this.btsVideosService.get_bts_videos({'limit': 4}).subscribe(
       data => { 
           this.popularBtsVideos = data.data;
           this.loadData = true;
       });
-      this.btsVideosService.get_bts_videos({'limit': 1,'category_id':2}).subscribe(
-        data => { 
-            this.topBTSVideos = data.data;
-            this.loadData = true;
-        });
+      // this.btsVideosService.get_bts_videos({'limit': 1,'category_id':2}).subscribe(
+      //   data => { 
+      //       this.topBTSVideos = data.data;
+      //       if(this.topBTSVideos.length > 0){
+      //         this.topBTSV = true;
+      //       }else{
+      //         this.topBTSV = false;
+      //       }
+      //       this.loadData = true;
+      //   });
         this.workshopService.get_all_workshop_data({'limit': 5}).subscribe(
           data => { 
             this.workshsopData = data.data;
-            console.log(this.workshsopData , 'workshop');
-            
+            // console.log(this.workshsopData , 'workshop');            
             this.eventForYouData = this.workshsopData.event_for_u;
             this.onGoingData = this.workshsopData.on_going;
             this.upcoming = this.workshsopData.upcoming;
             this.upcomingNoData = this.upcoming[0].noData;
-            this.eventForYouNoData = this.eventForYouData[0].noData;
-
-            
+            this.eventForYouNoData = this.eventForYouData[0].noData;            
             this.loading = true;
             if(this.upcomingData == 'No Data'){
               this.upcomingData = [];

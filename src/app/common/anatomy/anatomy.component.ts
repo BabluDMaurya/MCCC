@@ -25,7 +25,19 @@ export class AnatomyComponent implements OnInit {
   uploading:boolean=false;
   active:any=0;
   toastSuccess:string = 'toast-18';
+  btnVal :string = "Save";
 
+//button click function
+  progressConfig(){
+    let ProgressBtn :string = "Progress...";
+    this.btnVal = ProgressBtn;
+    $(".tbsub").prop('disabled', true).addClass('dis-class');
+  }
+  submitConfig(){    
+    let btnVal : string = "Save";
+    this.btnVal = btnVal;
+    $(".tbsub").prop('disabled', false).removeClass('dis-class');
+  }
   constructor( private notification : NotificationService, private alertService:AlertService,private formBuilder: FormBuilder,private location:Location,private route:Router,
     private authenticationService: AuthenticationService,private commonService:CommonService) {
       this.currentUser = this.authenticationService.currentUserValue;
@@ -64,12 +76,15 @@ export class AnatomyComponent implements OnInit {
     submit(){
       this.submitted = true;
       if (this.form.invalid) {
+        this.submitConfig();
         return;
       }else{
         this.uploading = true;
         this.active=1;
+        this.progressConfig();
         this.commonService.anatomyInnerUpdate(this.form.value).subscribe(
           data => {  
+            this.submitConfig();
             this.uploading = false;    
             new toastbox(this.toastSuccess, 2000);
             setTimeout(() => {
@@ -79,6 +94,7 @@ export class AnatomyComponent implements OnInit {
             // this.notification.showSuccess('Updated Successfully','');
           },
           error => {
+            this.submitConfig();
             // this.notification.showError(error.error.message,true);
               this.uploading = false;
               this.active=0;

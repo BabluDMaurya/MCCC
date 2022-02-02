@@ -2,16 +2,25 @@
     <!-- <app-top-header-bt [back]="back_link" [title]="component_title"></app-top-header-bt> -->
     <div class="imgContent">
         <div class="imgs">
-            <img src="assets/img/img/succes.webp" alt="">
+            <img src="assets/img/img/success.webp" alt="">
         </div>
         <div class="ctnt">
-            <h4>Awesome!</h4>
-            <p>Your Profile looks, ready to look<br>
-                around.</p>
+            <h4>You’ve Made It!</h4>
+            <p>Now That Your Profile Is Ready. <br>
+            It’s Time To Surf  Through The Best Roles From Our Casting Calls.</p>            
         </div>
     </div>
     <div class="btnArea">
         <!-- <p class="btn_ctnt">Take a few minutes to complete your Profile</p> -->
-        <button class="next btnss_r ripple" [routerLink]="['/home']">Discover</button>
+        <button class="next btnss_r ripple" [routerLink]="['/home']">Let’s Explore It Together!</button>
     </div>
 </div>
+<button type="button" class="btn btn-secondary modal_withCross_iconss" #openquotedialog data-bs-toggle="modal" data-bs-target="#QuoteSuccess" style="display: none;"></button>
+    <div class="modal fade dialogbox modal_withCross_icon" id="QuoteSuccess" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-modal="true" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content quote-dilog-square">
+                <div class="quote-dilog-square-close" data-bs-dismiss="modal"><i class="far fa-times-circle"></i></div>                            
+                <img src="{{quote}}" alt="image" class="img-fluid">                            
+            </div>
+        </div>
+    </div>

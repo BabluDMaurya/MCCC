@@ -9,6 +9,13 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from './_service/custom_reuse_strategy';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import {BdcWalkModule} from 'bdc-walkthrough';
+
 import {VgCoreModule} from '@videogular/ngx-videogular/core';
 import {VgControlsModule} from '@videogular/ngx-videogular/controls';
 import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
@@ -16,6 +23,7 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
+// import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 
 import { LogoComponent } from './logo/logo.component';
 import { SplashComponent } from './splash/splash.component';
@@ -87,9 +95,23 @@ import { BookmarkCastingCardComponent } from './_components/bookmark-casting-car
 import { SupportComponent } from './support/support.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PasswordComponent } from './password/password.component';
+import { InnerSplashComponent } from './inner-splash/inner-splash.component';
+import { SquareComponent } from './games/boards/board/square/square.component';
+import { BoardComponent } from './games/boards/board/board.component';
+import { BoardsComponent } from './games/boards/boards.component';
+import { ReelsComponent } from './reels/reels.component';
+import { SupportedPartnersComponent } from './_components/supported-partners/supported-partners.component';
+import { QuoteService } from './_service/quote.service';
+import { ForProducerComponent } from './for-producer/for-producer.component';
+import { ReelsInnerComponent } from './reels/reels-inner/reels-inner.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
+import { UpcomingSeriesComponent } from './reels/upcoming-series/upcoming-series.component';
+import { CompletedMoviesComponent } from './reels/completed-movies/completed-movies.component';
+import { CompletedSeriesComponent } from './reels/completed-series/completed-series.component';
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     LogoComponent,
     SplashComponent,
@@ -154,7 +176,19 @@ import { PasswordComponent } from './password/password.component';
     NoInternetComponent,
     BookmarkCastingCardComponent,
     SupportComponent,
-    PasswordComponent
+    PasswordComponent,
+    InnerSplashComponent,
+    SquareComponent,
+    BoardComponent,
+    BoardsComponent,
+    ReelsComponent,
+    SupportedPartnersComponent,
+    ForProducerComponent,
+    ReelsInnerComponent,
+    TestimonialComponent,
+    UpcomingSeriesComponent,
+    CompletedMoviesComponent,
+    CompletedSeriesComponent
   ],
   imports: [
     BrowserModule,
@@ -174,16 +208,24 @@ import { PasswordComponent } from './password/password.component';
     }),
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatDialogModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
     SocialLoginModule,
-    NgbModule
+    NgbModule,
+    BdcWalkModule,
+    // BackButtonDisableModule.forRoot()
     
   ],
   providers: [
+    QuoteService,
     DatePipe,
     {
       provide: RouteReuseStrategy,
@@ -225,7 +267,7 @@ import { PasswordComponent } from './password/password.component';
       } as SocialAuthServiceConfig,
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

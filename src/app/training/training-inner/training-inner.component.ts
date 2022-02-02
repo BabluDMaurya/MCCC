@@ -56,10 +56,12 @@ export class TrainingInnerComponent implements OnInit {
         this.trainingVideo = res.data;
         this.vid = this.trainingVideo[0].video_url+'?autoplay=1&modestbranding=1&showinfo=0&amp';
         this.iframe.nativeElement.contentWindow.location.replace(this.vid);
+        
         this.upNext = res.category_videos;
+        console.log("Next:",this.upNext);
         this.desc = this.trainingVideo[0].description;
         this.length = this.desc.length;
-        console.log(this.desc.length);
+        console.log("desc length:",this.desc.length);
       }
      
       console.log(this.trainingVideo);
@@ -74,6 +76,7 @@ export class TrainingInnerComponent implements OnInit {
   bookmarkBTS(id:any,status?:any){
     this.dashboardService.bookmarkWorkshopEvents({event_id:id,type:'event'})
       .subscribe(res => {
+        this.dashboardService.filter('applyed');
         this.resData = res; 
         if(this.resData.data[0] == 'Bookmark Added'){
           this.trainingVideo[0].bookmark_status = 1;

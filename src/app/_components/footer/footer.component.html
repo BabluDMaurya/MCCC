@@ -1,11 +1,11 @@
 <!-- circleMenu-start -->
-<div class="circleMenu">
+<div class="circleMenu" >
     <div id="circularMenu" class="circular-menu">
 
         <a class="floating-btn" onclick="document.getElementById('circularMenu').classList.toggle('active');">
-          <div class="logoMenuImg">
-            <img src="assets/img/img/mneuIcon.webp" class="logo__Menu" alt="">
-            <!-- <img src="assets/img/img/menuCross.webp"  alt=""> -->
+          <div class="logoMenuImg" [bdcWalkTriggerFor]="example2Step9">
+            <!-- <img src="assets/img/img/mneuIcon.webp" class="logo__Menu" alt=""> -->
+            <img src="assets/img/img/mccc_logos.svg" class="logo__Menu" alt="">
             <ion-icon name="close" class="cross__Menu"></ion-icon>
           </div>
         </a>
@@ -18,4 +18,7 @@
         </menu>
       </div>
 </div>
+<bdc-walk-popup #example2Step9 class="circle_menus" name="example2Step9" [arrow]="true" header="Circle Menu" xPosition="before" yPosition="above" sideNoteText="9/9" [showButton]="true" [mustCompleted]="{example2Next: 8}" [onButtonCompleteTask]="{example2Next: 9}">
+  Get easy access to games, application, support.
+</bdc-walk-popup>
 <!-- circleMenu-end -->

@@ -43,7 +43,7 @@ export class CastingComponent implements OnInit {
   ngOnInit(): void {  
     this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
       this.catId = params.get('id');
-      console.log("catId : ", this.catId);
+      // console.log("catId : ", this.catId);
     });
     this.loading = false;
     this.getCastingData();
@@ -52,7 +52,7 @@ export class CastingComponent implements OnInit {
   }
   tab(data:any){
     this.catId = data;
-    console.log("catId : ", this.catId);
+    // console.log("catId : ", this.catId);
   }
   getCastingData(){
     this.dashboardService.castingCall(null)
@@ -66,7 +66,9 @@ export class CastingComponent implements OnInit {
           this.shownw = true;
           this.castingData = false;
         }else{
+          // console.log("castingData 1 : ",this.castings.length);
           this.shownw = false;
+          this.castingData = false;
         }
       });
   }
@@ -91,11 +93,13 @@ export class CastingComponent implements OnInit {
         this.loading = true;
         this.resData = res;        
         this.recomended = this.resData.data;  
-        if(this.recomended.length > 0 && this.recomended != 'No data found'){
+        if(this.recomended.length > 0 && this.recomended != 'No Record Found'){
           // console.log("castingData 3 : ",this.recomended.length);
           this.recommendData = false;
           this.showre = true;
         }else{
+          // console.log("castingData 3 : ",this.recomended.length);
+          this.recommendData = false;
           this.showre = false;
         }       
       });

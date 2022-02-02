@@ -12,12 +12,12 @@ export class BollywoodMemoryGameComponent implements OnInit {
   @ViewChild('opendialog') opendialog:any;
   back_link = "games";
   cardImages = [
-    'Mccclogo150w-02',
-    'Mccclogo150w-03',
-    'Mccclogo150w-05',
-    'Mccclogo150w-06',
-    'Mccclogo150w-07',
-    'Mccclogo150w-08'
+    '1-01',
+    '1-02',
+    '1-03',
+    '1-04',
+    '1-05',
+    '1-06'
   ];
 
   cards: CardData[] = [];

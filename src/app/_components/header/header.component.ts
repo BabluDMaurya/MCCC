@@ -5,8 +5,8 @@ import { AuthenticationService } from '../../_service/authentication.service';
 import { DashboardService } from '../../_service/dashboard.service';
 import { User } from '../../_models/user';
 import { Config } from 'src/app/_config/config';
-
-
+import {BdcWalkService} from 'bdc-walkthrough';
+declare var $: any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -22,15 +22,17 @@ export class HeaderComponent implements OnInit {
   constructor(
     private route:Router,
     private authenticationService: AuthenticationService,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private bdcWalkService: BdcWalkService
   ) {
     
    }
   @Input() castingtab : any;
+  @Input() moviesTab : any;
   @Input() tab : any;
   @Input() workshoptab : any;
 
-
+   
   ngOnInit(): void {
     this.getUserNotificationCounter();
     setInterval(() => { 
@@ -44,8 +46,12 @@ export class HeaderComponent implements OnInit {
           this.profile_pic =  this.resData.data.user_details.profile_pic;
 
           this.data = this.resData.data.user_details;
-          console.log(this.resData.data.user_details);
+          // console.log(this.resData.data.user_details);
         });
+
+        // $('.clickClass').on('click',function(){
+          
+        // });
   }
   getUserNotificationCounter(){
     this.dashboardService.getUserNotificationCounter(null)
@@ -54,5 +60,16 @@ export class HeaderComponent implements OnInit {
       // console.log(this.getCount + 'count');
     });
   }
-
+  // addExternalClass(){
+  //   $('.ng-tns-c95-8').addClass('our_work');
+  //   if($('.ng-tns-c95-8').hasClass('our_work')){
+  //     $('.cdk-overlay-pane').addClass('our_work_pane');
+  //   }
+  // }
+  ngAfterViewChecked(){
+    // this.addExternalClass();
+  }
+  // clickClass(){
+  //   $('.mccc').addClass('popUpClass');
+  // }
 }

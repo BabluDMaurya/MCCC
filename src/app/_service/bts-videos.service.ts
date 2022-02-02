@@ -10,7 +10,12 @@ export class BtsVideosService {
   get_bts_videos(data:any){
     return this.http.post<any>(Config.BasePath +'/get_bts_videos',data);
   }
-
+  load_bts_videos(){
+    return this.http.post<any>(Config.BasePath +'/load_bts_videos','');
+  }
+  load_next_bts_videos(data:any){
+    return this.http.post<any>(Config.BasePath +'/load_next_bts_videos',data);
+  }
   bts_videos_by_id(data:any){
     return this.http.post<any>(Config.BasePath +'/bts_videos_by_id',data);
   }

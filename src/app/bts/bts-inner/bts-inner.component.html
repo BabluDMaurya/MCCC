@@ -12,7 +12,8 @@
                 <div class="lats_side">
                     <div class="avtars" [routerLink]="['/home']">
                         <!-- <div class="avatar"> -->
-                            <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
+                            <!-- <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded"> -->
+                            <ion-icon name="home-outline"></ion-icon>
                         <!-- </div> -->
                     </div>
                 </div>
@@ -25,8 +26,8 @@
                 </div>
                 <div class="moviesArea" *ngFor="let data of topBtsVideos">
                     <div class="moviess" (click) = 'videoClick(data.id)' [routerLink]="['/bts-video-view/',data.id,btsCategoryId]" >
-                        <img *ngIf="data.youtube_thumbnail == null " src="{{hostUrl}}{{data.thumbnail_path}}{{data.thumbnail}}">
-					    <img *ngIf="data.youtube_thumbnail != null " src="{{data.youtube_thumbnail}}">
+                        <img *ngIf="data.thumbnail != '' " src="{{hostUrl}}{{data.thumbnail_path}}{{data.thumbnail}}">
+					    <img *ngIf="data.thumbnail == '' " src="{{data.youtube_thumbnail}}">
                         <div class="play__ionc">
                             <img src="../../assets/img/img/play_icon.webp" alt="">
                         </div>
@@ -46,6 +47,12 @@
                     <div class="moviesContent" *ngIf="data.description.length < 50 ">
                         <p [innerHTML]="data.description"></p>
                     </div>
+                </div>
+                <div *ngIf="!loadData && !videoNotFound">
+                    <div class="header_skelton"></div>
+                    <div class="box_skeleton"></div>
+                    <div class="box_skeleton"></div>
+                    <div class="box_skeleton"></div>
                 </div>
                 
             </div>

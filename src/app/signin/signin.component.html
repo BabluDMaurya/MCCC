@@ -12,7 +12,7 @@
         <label>Your Email Id or Phone*</label>
         <div class="inputs">
           <input type="text" formControlName="email_or_mobile" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.email_or_mobile.errors }" maxlength="28" />
+            [ngClass]="{ 'is-invalid': submitted && f.email_or_mobile.errors }" (keyup)="onKeyUp($event)"/>
           <div *ngIf="submitted && f.email_or_mobile.errors" class="invalid-feedback">
             <div *ngIf="f.email_or_mobile.errors.required">Phone or Email is required</div>
           </div>
@@ -22,7 +22,7 @@
         <label>Password*</label>
         <div class="inputs passwrd">
           <input [type]="hide ? 'password' : 'text'" formControlName="password" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" maxlength="8" minlength="6" />
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" (keyup)="onKeyUp($event)"/>
             <div class="eye" (click)="passwordhideshow()">
               <i [ngClass]="hide ? 'fas fa-eye-slash showPasswd' : 'fas fa-eye showPasswd'"></i>
             </div>
@@ -37,7 +37,7 @@
         <div><a [routerLink]="['/forgot-password']" class="">Forgot Password?</a></div>
       </div>
       <div class="signIn">
-        <button type="submit" class="btnss_r ripple">SIGN IN</button>
+        <button type="submit" class="btnss_r ripple tbsub">{{btnVal}}</button>
         <!-- <a (click)="signup()">SIGN IN</a> -->
       </div>
     </form>

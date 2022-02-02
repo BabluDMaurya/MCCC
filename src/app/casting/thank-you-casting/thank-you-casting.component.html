@@ -1,5 +1,5 @@
-<div class="wrrpperRegisterForm successs thankyou_casting">    
-    <div class="imgContent" style="height: calc(80vh - 100px)!important;">
+<div class="wrrpperRegisterForm successs thankyou_casting flex_ flex_clm" style="height: 100vh!important;">    
+    <div class="imgContent" style="height:auto">
         <div class="imgs">
             <img src="assets/img/img/succes.webp" alt="">
         </div>
@@ -7,7 +7,7 @@
             <h4>Kudos!</h4>
             <p>We’re Glad To Receive Your Form!</p>
         </div>
-        <p class="btn_ctnt">Take A Seat And Sip On A Cup Of Coffee. We’ll Be Back With Some Great<br>News, In A Jiffy!<br>Your Application No. is <span>{{applicationNo}}</span></p>
+        <p class="btn_ctnt">Take A Seat And Sip On A Cup Of Coffee. We’ll Be Back With Some Great<br>News, In A Jiffy!<br><br>Your Application No. is <span>{{applicationNo}}</span></p>
     </div>
         <!-- <ngx-slick-carousel class="carousel slick_sliders thank_you_slider" #slickModal="slick-carousel" [config]="slideConfig"
         (init)="slickInit($event)" (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)"
@@ -19,8 +19,8 @@
         </div>        
       </ngx-slick-carousel> -->
 
-    <div class="btnArea">
-        <button class="next btnss_r ripple" (click)="letEx()">Let's Explore!</button>
+    <div class="btnArea w100 mt50" style="height: auto;">
+        <button class="next btnss_r ripple w100" (click)="letEx()">Let's Explore!</button>
     </div>
 </div>
 <button type="button" class="btn btn-secondary modal_withCross_iconss" #openquotedialog data-bs-toggle="modal" data-bs-target="#QuoteSuccess" style="display: none;"></button>

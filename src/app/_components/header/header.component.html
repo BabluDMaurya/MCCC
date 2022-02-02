@@ -62,7 +62,8 @@
             </div>
 
             <div class="box">
-                <a [routerLink]="['/movies']" [bdcWalkTriggerFor]="example2Step8">
+                <!-- <a [routerLink]="['/movies']" [bdcWalkTriggerFor]="example2Step8"> -->
+                    <a [routerLink]="['/movies']">
                     <img src="assets/img/img/our_works.webp"  class="lightMode" alt="">
                     <img src="assets/img/img/dark-our_works.webp" class="darkMode" alt="">
                     <div class="label">Our Works</div>
@@ -117,16 +118,19 @@
                     On Going
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" href="#videos" role="tab">
                     Upcoming
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" href="#sounds" role="tab">
                     Workshop For You
                 </a>
             </li>
+
         </ul>
     </div>
     <!-- * Extra Header --> 
@@ -160,12 +164,9 @@
         <p>Get all your acting skills expertised by the experts!</p>
       </bdc-walk-popup>
 
-      <bdc-walk-popup #example2Step8 name="example2Step8" header="Our Work" xPosition="before" yPosition="below" sideNoteText="8/9" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 7}" [onButtonCompleteTask]="{example2Next: 8}">
+      <!-- <bdc-walk-popup #example2Step8 name="example2Step8" header="Our Works" xPosition="before" yPosition="below" sideNoteText="8/9" [showButton]="true" buttonText="Next" [mustCompleted]="{example2Next: 7}" [onButtonCompleteTask]="{example2Next: 8}">
         <p>Get all your acting skills expertised by the experts!!!</p>
-      </bdc-walk-popup>
-      
-      
-      
+      </bdc-walk-popup> -->
     <!-- <bdc-walk-popup #example2Step1 name="example2Step1" header="Casting" xPosition="after" sideNoteText="1/4" [showButton]="true" buttonText="Next" [mustCompleted]="{dialogWelcome: true}" [onButtonCompleteTask]="{example2Next: 1}">
         The next popup will only be displayed if you click <b>Next</b>.
       </bdc-walk-popup>

@@ -104,6 +104,7 @@
                             </div>
                          </div>
                       </div>
+                      
                       <div class="profileDiv">
                          <label>Language<span>*</span></label>
                          <div class="select" *ngIf="lagnf">
@@ -164,14 +165,14 @@
                       </div>
                       <div class="profileDiv">
                          <label>Home Town<span>*</span></label>
-                         <input class="innerDetail" type="text" formControlName="home_town" placeholder="type here" [ngClass]="{ 'is-invalid': submit && f.home_town.errors }">
+                         <input class="innerDetail" type="text" formControlName="home_town" placeholder="Enter Your Home Town" [ngClass]="{ 'is-invalid': submit && f.home_town.errors }">
                          <div *ngIf="submit && f.home_town.errors" class="invalid-feedback">
                             <div *ngIf="f.home_town.errors.required">Home Town is required</div>
                          </div>
                       </div>
                       <div class="profileDiv">
                          <label>Hobbies<span>*</span></label>
-                         <input type="text" class="innerDetail" formControlName="hobbies" placeholder="type here" [ngClass]="{ 'is-invalid': submit && f.hobbies.errors }">
+                         <input type="text" class="innerDetail" formControlName="hobbies" placeholder="Enter Your Hobbies" [ngClass]="{ 'is-invalid': submit && f.hobbies.errors }">
                          <div *ngIf="submit && f.hobbies.errors" class="invalid-feedback">
                             <div *ngIf="f.hobbies.errors.required">Hobbies is required</div>
                          </div>
@@ -333,7 +334,7 @@
                             </div>
                          </div>
                          <div class="btnArea" *ngIf="imgArray.length < 3 || imgArray == 'No Record Found' ">
-                            <a [ngStyle]="{'pointer-events': disabledi ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next tbsub">{{btnVal}}</a>
+                            <button [ngStyle]="{'pointer-events': disabledi ? 'none': 'auto'}" (click)="imageSubmit($event)" type="button" class="next tbsub" style='background: #ff6454;color: #fff;border: none;'>{{btnVal}}</button>
                             <button type="button" (click)="backs()" [disabled]="disabledi" class="next outline">Cancel</button>
                          </div>
                          <div class="btnArea flexingBtn" *ngIf="imgArray.length == 3">
@@ -431,7 +432,7 @@
                             </div>
                          </div>
                          <div class="btnArea">                        
-                            <a (click)="videoSubmit($event)" class="next btnss_r ripple tbsub" type="button" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}">{{btnVal}}</a>
+                            <button (click)="videoSubmit($event)" class="next btnss_r ripple tbsub" type="button" [ngStyle]="{'pointer-events': disabledv ? 'none': 'auto'}" style='background: #ff6454;color: #fff;border: none;'>{{btnVal}}</button>
                             <button [disabled]="disabledv" (click)="backs()"  class="next outline"> Cancel</button>            
                          </div>
                       </form>

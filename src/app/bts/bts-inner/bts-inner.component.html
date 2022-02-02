@@ -25,7 +25,7 @@
                     <label *ngIf="!videoNotFound">{{topBtsVideos[0].category}}</label>
                 </div>
                 <div class="moviesArea" *ngFor="let data of topBtsVideos">
-                    <div class="moviess" (click) = 'videoClick(data.id)' [routerLink]="['/bts-video-view/',data.id,btsCategoryId]" >
+                    <div class="moviess" (click) = 'videoClick(data.id)' [routerLink]="['/interview/',data.id,btsCategoryId]" >
                         <img *ngIf="data.thumbnail != '' " src="{{hostUrl}}{{data.thumbnail_path}}{{data.thumbnail}}">
 					    <img *ngIf="data.thumbnail == '' " src="{{data.youtube_thumbnail}}">
                         <div class="play__ionc">

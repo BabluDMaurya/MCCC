@@ -7,10 +7,10 @@
     </div>
     <p><a (click)="castingInner(data.id,tab)" [innerHTML]="doHtmlDisplay(data.short_description)"></a></p>
      <ul class="userDetails">
-         <li><i class="fas fa-transgender-alt"></i>{{data.gender}}</li>
+         <!-- <li><i class="fas fa-transgender-alt"></i>{{data.gender}}</li>
          <li><i class="far fa-calendar-alt"></i>{{data.created_at}}</li>
          <li><ion-icon name="location-outline"></ion-icon>{{data.location}}</li>
-         <li><i class="far fa-user" aria-hidden="true"></i>{{data.role}}</li>
+         <li><i class="far fa-user" aria-hidden="true"></i>{{data.role}}</li> -->
      </ul>
      <div class="labelBtns">
         <div class="slide" *ngFor="let tag of data.tags;"> <label>{{tag}}</label></div>

@@ -63,7 +63,7 @@
                             <app-casting-card *ngFor="let c of callEndingSoon; let idx=index" [data]="c" [tab]="3"></app-casting-card>
                         </div>
                     </div>
-                    <app-not-found-data *ngIf="!endingSoonData && !showen"></app-not-found-data>
+                    <app-not-found-data *ngIf="!showen"></app-not-found-data>
                 </div>
                 <!-- * sounds tab -->
             </div>

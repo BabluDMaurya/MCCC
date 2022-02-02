@@ -108,6 +108,7 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
 import { UpcomingSeriesComponent } from './reels/upcoming-series/upcoming-series.component';
 import { CompletedMoviesComponent } from './reels/completed-movies/completed-movies.component';
 import { CompletedSeriesComponent } from './reels/completed-series/completed-series.component';
+import { InterviewComponent } from './bts/interview/interview.component';
 
 @NgModule({
   declarations: [
@@ -188,7 +189,8 @@ import { CompletedSeriesComponent } from './reels/completed-series/completed-ser
     TestimonialComponent,
     UpcomingSeriesComponent,
     CompletedMoviesComponent,
-    CompletedSeriesComponent
+    CompletedSeriesComponent,
+    InterviewComponent
   ],
   imports: [
     BrowserModule,

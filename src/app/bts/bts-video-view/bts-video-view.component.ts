@@ -57,7 +57,7 @@ export class BtsVideoViewComponent implements OnInit {
                         this.BtsVideos = data.data;
                         if(this.BtsVideos[0].video_url != null && this.BtsVideos[0].video_url != ''){
                           this.upNext = data.category_videos;
-                          this.vid = this.BtsVideos[0].video_url+'?autoplay=1&modestbranding=1&showinfo=0&amp';
+                          this.vid = this.BtsVideos[0].video_url+'?rel=0&modestbranding=1&autohide=1&showinfo=0';
                           this.iframe.nativeElement.contentWindow.location.replace(this.vid);
                           // this.vid = this.BtsVideos[0].video_url+'?autoplay=1&mute=1&enablejsapi=1';
                           console.log("vid : ",this.vid);

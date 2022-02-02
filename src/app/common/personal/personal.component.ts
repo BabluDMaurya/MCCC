@@ -91,6 +91,7 @@ export class PersonalComponent implements OnInit {
   pageName : any;
   dobnf:boolean = false;
   lagnf:boolean = false;
+  phoneHide :boolean = true;
 //----------video-------------//
 vform: FormGroup | any;
 videoloading : boolean = true;
@@ -359,7 +360,13 @@ btnVal :string = "Save";
           this.form.controls['dob'].setValue(this.userdetail.dob);
           if(this.userdetail.height !=null && this.userdetail.height !=''){
             this.form.controls['height'].setValue(this.userdetail.height);
-          }          
+          }  
+          if(this.userdetail.phone !=null && this.userdetail.phone !=''){
+            this.form.controls['phone'].setValue(this.userdetail.phone);
+            this.phoneHide = true;
+          }else{
+            this.phoneHide = false;
+          }        
           if(this.userdetail.gender != null && this.userdetail.gender !=''){
             this.form.controls['gender'].setValue(this.userdetail.gender);
           }

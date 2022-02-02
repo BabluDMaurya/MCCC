@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap,Router } from '@angular/router';
 import { Config } from '../../_config/config';
 import {WorkshopService} from '../../_service/workshop.service';
@@ -17,6 +17,11 @@ declare var $: any;
   styleUrls: ['./workshop-registration-form.component.scss']
 })
 export class WorkshopRegistrationFormComponent implements OnInit {
+  @ViewChild('closebutton') closebutton :any;
+  @ViewChild ('openmediadialogbox') openmediadialogbox:any;
+  @ViewChild ('openmodal') openmodal:any;
+  back_link :any;
+  castingId:any;
   pageName = "Workshop";
   fileTypes = ['png','jpg','jpeg'];  //acceptable file types
   id: any;
@@ -39,7 +44,7 @@ export class WorkshopRegistrationFormComponent implements OnInit {
   panfileName : any;
   toastSuccess:string = 'toast-18';
   btnVal :string = "Submit";
-
+  userdetail : any;
 //button click function
   progressConfig(){
     let ProgressBtn :string = "Progress...";
@@ -74,6 +79,15 @@ export class WorkshopRegistrationFormComponent implements OnInit {
     this.dashboardService.userDetails({casting_id:''}).subscribe(
       data => { 
         this.userData = data;
+        this.userdetail = this.userData.data.user_details;        
+        this.form.controls['age'].setValue(this.userData.data.age);
+        this.form.controls['city'].setValue(this.userdetail.city_name);
+        this.form.controls['sex'].setValue(this.userdetail.gender);
+        this.form.controls['dob'].setValue(this.userdetail.dob);
+        this.form.controls['phone'].setValue(this.userdetail.phone);
+        if(this.userdetail.phone !=null && this.userdetail.phone !=''){
+        this.currentUser.userDetails.phone = this.userdetail.phone;
+        }
         console.log("User Data:",data);
     });
 
@@ -105,6 +119,14 @@ export class WorkshopRegistrationFormComponent implements OnInit {
       fileSource : [''],
       aadharfileSource : [''],
       workshop_id:[this.id,''],
+
+     
+      age : ['',Validators.required],
+      sex : ['',Validators.required],
+      phone : ['',Validators.required],
+      dob : ['',Validators.required],
+      city : ['',Validators.required],
+     
     });
     this.loading = true;
   }
@@ -112,10 +134,18 @@ export class WorkshopRegistrationFormComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   } 
-  submit(){
-    
+  completeProfile(){
+    this.closebutton.nativeElement.click();
+    this.route.navigate(['/personal']);
+    // this.route.navigate(['/personal/apply-casting/'+this.castingId]);
+  }
+  submit(){    
     this.submitted = true;
     if (this.form.invalid) {
+      console.log(this.form);
+      if((this.userdetail.phone == null && this.userdetail.phone !='') || (this.userData.data.age == null && this.userData.data.age ==0) || (this.userdetail.gender == null && this.userdetail.gender == '') || (this.userdetail.city_name == null && this.userdetail.city_name == '') || (this.userdetail.dob == null && this.userdetail.dob == '')){
+        this.openmodal.nativeElement.click();
+      }
       this.submitConfig();
       return;
     }else{

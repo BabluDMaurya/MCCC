@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="main_wrppers">
+        <div class="main_wrppers" *ngIf="!Apiloading">
             <div class="castingImg">
                 <img src="{{bgImage}}" alt="">
                
@@ -52,5 +52,12 @@
                     <a class="next btnss_r ripple"> ALREADY ENROLLED </a>
                 </div>
             </div>
+            
+        </div>
+        <div *ngIf="Apiloading">
+            <div class="inner_imgskeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
+            <div class="para_skeleton"></div>
         </div>
     </div>

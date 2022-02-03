@@ -28,6 +28,7 @@ export class WorkshopRegistrationComponent implements OnInit {
   dataLoad: boolean = false;
   toastSuccess:string = 'toast-15';
   toastDanger:string = 'toast-16';
+  Apiloading : boolean = false;
   constructor(private notifyService : NotificationService,private location: Location,private workshopService: WorkshopService,
     private route:Router,private actRoute:ActivatedRoute,public datepipe: DatePipe,private dashboardService : DashboardService) {
       this.dashboardService.listen().subscribe((e:any)=>{
@@ -39,9 +40,10 @@ export class WorkshopRegistrationComponent implements OnInit {
     this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
       this.id = params.get('id');
     });
-
+    this.Apiloading  = true;
     this.workshopService.get_each_workshop_data({'id': this.id}).subscribe(
       data => { 
+        this.Apiloading = false;
         console.log(data);
         if(data.data == 'No Data'){
           this.workshopData = 'No Data';

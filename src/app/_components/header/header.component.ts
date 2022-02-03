@@ -60,12 +60,12 @@ export class HeaderComponent implements OnInit {
       // console.log(this.getCount + 'count');
     });
   }
-  // addExternalClass(){
-  //   $('.ng-tns-c95-8').addClass('our_work');
-  //   if($('.ng-tns-c95-8').hasClass('our_work')){
-  //     $('.cdk-overlay-pane').addClass('our_work_pane');
-  //   }
-  // }
+  addExternalClass(){
+    $('.ng-tns-c95-7').addClass('PGJA2');
+    if($('.ng-tns-c95-7').hasClass('PGJA2')){
+      $('.cdk-overlay-pane').addClass('training_tour_pane');
+    }
+  }
   ngAfterViewChecked(){
     // this.addExternalClass();
   }

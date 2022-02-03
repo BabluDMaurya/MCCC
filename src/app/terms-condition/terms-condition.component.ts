@@ -21,6 +21,7 @@ export class TermsConditionComponent implements OnInit {
       data => {
         this.loading = true;
         this.all_terms = data;
+        console.log(data);
         this.terms = this.all_terms.firstFourTerms;  
         // if(this.all_terms.length > 4){
           // this.showViewMore = true;

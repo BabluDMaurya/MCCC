@@ -53,7 +53,7 @@
                     <div class="profileDiv">
                         <label>Secondary Contact<span>*</span></label>
                         <div class="inputs">
-                            <input type="number" formControlName="sos_phone" value="" minlength="10" maxlength="10" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
+                            <input type="tel" formControlName="sos_phone" value="" minlength="10" maxlength="16"placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
                             <div *ngIf="submitted && f.sos_phone.errors" class="invalid-feedback">
                                 <div *ngIf="f.sos_phone.errors.required">Please provide your secondary contact number</div>
                                 <div *ngIf="f.sos_phone.errors.minlength">
@@ -144,3 +144,39 @@
             <img src="../../../assets/img/img/Mccc-white.gif" alt="" class="darkMode">
         </div>
     </div>
+    <i class="fas fa-pencil-alt" data-bs-toggle="modal" #openmodal data-bs-target="#ModalForm" style="display:none;"></i>
+<div class="modal fade modalbox input_text completeProfilesModal" id="ModalForm" data-bs-backdrop="static" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Complete Your Profile</h5>
+                <a #closebutton data-bs-dismiss="modal"><i class="far fa-times-circle"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="login-form">
+                    <div class="section mt-3 mb-3">
+                        <div class="is-invalid error">Your profile is not completed, please complete your profile then you can Submit the casting call.</div>
+                        <div class="mt-2">
+                            <button type="button" class="next btn-block" (click)="completeProfile()">Complete Profile</button>
+                        </div>
+                        <!-- <form [formGroup]="hobbiesForm" (ngSubmit)="updateHobbies($event)">
+                            <div class="form-group basic">                                
+                                <div class="input-wrapper">
+                                    <label class="form-label" for="hobbies">Hobbies</label>
+                                    <input [placeholder]="hobbies == 'Enter' ? 'Add your hobbies' : ''" formControlName="hobbies" type="text" [ngClass]="{ 'is-invalid': submitted && h.hobbies.errors }" maxlength="100">
+                                    <div *ngIf="submitted && h.hobbies.errors" class="invalid-feedback">
+                                        <div *ngIf="h.hobbies.errors.required">Hobbies is required</div>
+                                        <div *ngIf="h.hobbies.errors.maxlength">It's length should be maximum 100 characters</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <button type="submit" class="next btn-block">Submit</button>
+                            </div>
+                        </form> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

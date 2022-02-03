@@ -1,7 +1,7 @@
 <bdc-walk-dialog #dialogWelcome class="modal_steps" name="dialogWelcome" width="650px">
     <h1>Welcome to MCCC!</h1>  
     <mat-dialog-content>
-      <p>Let Us Give You A Tour</p>
+      <p>Let us give you a tour</p>
     </mat-dialog-content>  
     <div class="buttons">
       <button (click)="dialogWelcome.close()" mat-raised-button color="primary">Let's Start</button>
@@ -109,44 +109,76 @@
             </div>
             <div class="language_app">
                 <div class="card_app">
-                    <a href="https://play.google.com/store/apps/details?id=ahaflix.tv&hl=en&gl=US" target="_blank">
+                    <!-- <a href="https://play.google.com/store/apps/details?id=ahaflix.tv&hl=en&gl=US" target="_blank"> -->
                         <div class="img_area">
                             <img src="../../../assets/img/img/aha.png" alt="">
                         </div>
                         <div class="content_area">
                             <P>Aha (Telugu)</P>
                         </div>
-                    </a>
+                        <div class="stores">
+                            <a href="https://play.google.com/store/apps/details?id=ahaflix.tv&hl=en_IN&gl=US">
+                                <img src="../../../assets/img/img/google_.png" alt="" class="store_">
+                            </a>
+                            <a href="https://apps.apple.com/in/app/aha-ott-movies-webseries/id1488739001">
+                                <img src="../../../assets/img/img/ios.png" alt="" class="store_">
+                            </a>
+                        </div>
+                    <!-- </a> -->
                 </div>
                 <div class="card_app">
-                    <a href="https://play.google.com/store/apps/details?id=com.viewlift.hoichoi&hl=en_IN&gl=US" target="_blank">
+                    <!-- <a href="https://play.google.com/store/apps/details?id=com.viewlift.hoichoi&hl=en_IN&gl=US" target="_blank"> -->
                         <div class="img_area">
                             <img src="../../../assets/img/img/ohichoi.png" alt="">
                         </div>
                         <div class="content_area">
                             <P>Hoichoi (Bengali)</P>
                         </div>
-                    </a>
+                        <div class="stores">
+                            <a href="https://play.google.com/store/apps/details?id=com.viewlift.hoichoi&hl=en_IN&gl=US">
+                                <img src="../../../assets/img/img/google_.png" alt="" class="store_">
+                            </a>
+                            <a href="https://apps.apple.com/in/app/hoichoi-movies-web-series/id1188755540">
+                                <img src="../../../assets/img/img/ios.png" alt="" class="store_">
+                            </a>
+                        </div>
+                    <!-- </a> -->
                 </div>
                 <div class="card_app">
-                    <a href="https://play.google.com/store/apps/details?id=com.cineman.oho&hl=en&gl=US" target="_blank">
+                    <!-- <a href="https://play.google.com/store/apps/details?id=com.cineman.oho&hl=en&gl=US" target="_blank"> -->
                         <div class="img_area">
                             <img src="../../../assets/img/img/oho.png" alt="">
                         </div>
                         <div class="content_area">
                             <P>Oho (Gujarati)</P>
                         </div>
-                    </a>
+                        <div class="stores">
+                           <a href="https://play.google.com/store/apps/details?id=com.cineman.oho&hl=en_IN&gl=US">
+                            <img src="../../../assets/img/img/google_.png" alt="" class="store_">
+                           </a>
+                            <a href="https://apps.apple.com/in/app/oho-gujarati/id1563792900">
+                                <img src="../../../assets/img/img/ios.png" alt="" class="store_">
+                            </a>
+                        </div>
+                    <!-- </a> -->
                 </div>
                 <div class="card_app">
-                   <a href="https://play.google.com/store/apps/details?id=com.planetmarathi.android&hl=en&gl=US" target="_blank">
+                   <!-- <a href="https://play.google.com/store/apps/details?id=com.planetmarathi.android&hl=en&gl=US" target="_blank"> -->
                     <div class="img_area">
                         <img src="../../../assets/img/img/planet_marathi.png" alt="">
                     </div>
                     <div class="content_area">
                         <P>Planet Marathi (Marathi)</P>
                     </div>
-                   </a>
+                    <div class="stores">
+                        <a href="https://play.google.com/store/apps/details?id=com.planetmarathi.android&hl=en_IN&gl=US">
+                            <img src="../../../assets/img/img/google_.png" alt="" class="store_">
+                        </a>
+                        <a href="https://apps.apple.com/in/app/planet-marathi/id1571116191">
+                            <img src="../../../assets/img/img/ios.png" alt="" class="store_">
+                        </a>
+                    </div>
+                   <!-- </a> -->
                 </div>
             </div>
             <!-- ----skeleton -->
@@ -199,7 +231,8 @@
                         <span>Interviews</span>
                     </div>
                 </a>
-                <a [routerLink]="['/bts-inner/10']">
+                <!-- <a [routerLink]="['/bts-inner/10']"> -->
+                    <a>
                     <div class="more_V_box">
                         <img src="../../assets/img/img/testimonials.png">
                         <span>Testimonials</span>

@@ -56,6 +56,7 @@ import { InnerSplashComponent } from './inner-splash/inner-splash.component';
 import { BoardsComponent } from './games/boards/boards.component';
 import { ForProducerComponent } from './for-producer/for-producer.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { InterviewComponent } from './bts/interview/interview.component';
 
 // RouterModule.forRoot(Router, {scrollPositionRestoration: 'enabled'})
 
@@ -105,10 +106,10 @@ const routes: Routes = [{
   path: 'bts-video-view/:id',component: BtsVideoViewComponent,canActivate: [AuthGuard],
   data: {storeRoute: false,title: 'BTS Inner'}    
 },
-// {    
-//   path: 'bts-video-view/:id/:type',component: BtsVideoViewComponent,canActivate: [AuthGuard],
-//   data: {storeRoute: false,title: 'BTS Inner'}    
-// },
+{    
+  path: 'interview/:id/:type',component: InterviewComponent,canActivate: [AuthGuard],
+  data: {storeRoute: false,title: 'Interview'}    
+},
 {    
   path: 'training-video-view/:id/:type',component: TrainingInnerComponent,canActivate: [AuthGuard],
   data: {storeRoute: false,title: 'Training Video'}    

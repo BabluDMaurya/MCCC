@@ -91,6 +91,7 @@ export class PersonalComponent implements OnInit {
   pageName : any;
   dobnf:boolean = false;
   lagnf:boolean = false;
+  phoneHide :boolean = true;
 //----------video-------------//
 vform: FormGroup | any;
 videoloading : boolean = true;
@@ -181,7 +182,7 @@ btnVal :string = "Save";
       work_experiences: this.formBuilder.array([this.createExperience()]),
       qualifications: this.formBuilder.array([this.createQualification()]),
       social_links: this.formBuilder.array([this.createSocialLinks()]),
-      // phone:['', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      phone:['', [Validators.required, Validators.minLength(8),Validators.maxLength(16),Validators.pattern("^[0-9]*$")]],
       height:['',[Validators.required,Validators.pattern("^[0-9]+(.[0-9]{0,2})?$")]],
       day:['', [Validators.required]],     
       month:['', [Validators.required]],     
@@ -359,7 +360,15 @@ btnVal :string = "Save";
           this.form.controls['dob'].setValue(this.userdetail.dob);
           if(this.userdetail.height !=null && this.userdetail.height !=''){
             this.form.controls['height'].setValue(this.userdetail.height);
-          }          
+          }  
+          console.log("this.userdetail:",this.userdetail);
+          
+          if(this.userdetail.phone !=null && this.userdetail.phone !=''){
+            this.form.controls['phone'].setValue(this.userdetail.phone);
+            this.phoneHide = true;
+          }else{
+            this.phoneHide = false;
+          }        
           if(this.userdetail.gender != null && this.userdetail.gender !=''){
             this.form.controls['gender'].setValue(this.userdetail.gender);
           }

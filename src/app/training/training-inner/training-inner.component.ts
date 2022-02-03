@@ -29,6 +29,9 @@ export class TrainingInnerComponent implements OnInit {
   toastSuccess:string = 'toast-15';
   toastDanger:string = 'toast-16';
   hostUrl:string = Config.Host+'backend2/';
+  loadMoreButton :boolean = false;
+  videosdata:any = []; 
+  displayData:any = []; 
   constructor(private actRoute:ActivatedRoute,
     private trainingService: TrainingService,
     private location:Location,
@@ -62,6 +65,25 @@ export class TrainingInnerComponent implements OnInit {
         this.desc = this.trainingVideo[0].description;
         this.length = this.desc.length;
         console.log("desc length:",this.desc.length);
+
+        this.videosdata = this.upNext;
+        let newLength;
+        if(this.videosdata.length >= this.displayData.length + 10){
+          newLength= this.displayData.length + 10;
+        }else{
+          let newLengthadd = this.videosdata.length - this.displayData.length;
+          newLength = this.displayData.length + newLengthadd;
+        }
+
+        if (newLength > this.videosdata.length) {
+            newLength = this.videosdata.length;
+        }
+        this.displayData = this.videosdata.slice(0, newLength);
+        if (newLength < this.videosdata.length) {
+            this.loadMoreButton = true;
+        }else{
+          this.loadMoreButton = false;
+        }
       }
      
       console.log(this.trainingVideo);
@@ -96,5 +118,27 @@ export class TrainingInnerComponent implements OnInit {
           }, 2000);
         }     
       });
+  }
+  loadmore(){
+    let newLength;
+    if(this.videosdata.length >= this.displayData.length + 10){
+      newLength= this.displayData.length + 10;
+    }else{
+      let newLengthadd = this.videosdata.length - this.displayData.length;
+      newLength = this.displayData.length + newLengthadd;
+    }
+
+    console.log("displayData :",this.displayData.length);
+    console.log("newlength :",newLength);
+
+    if (newLength > this.videosdata.length) {
+        newLength = this.videosdata.length;
+    }
+     this.displayData = this.videosdata.slice(0, newLength);
+     if (newLength < this.videosdata.length) {
+        this.loadMoreButton = true;
+     }else{
+        this.loadMoreButton = false;
+     }
   }
 }

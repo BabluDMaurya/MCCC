@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit,ViewChild,OnDestroy } from '@angular/core';
-import { Router,NavigationStart, Event as NavigationEvent} from '@angular/router';
+import { Router,NavigationStart,NavigationEnd, Event as NavigationEvent} from '@angular/router';
 import { QuoteList} from '../_config/quote-list';
 import { QuoteService } from '../_service/quote.service';
 @Component({
@@ -14,9 +14,9 @@ export class GamesComponent implements OnInit, OnDestroy {
   lists = QuoteList.List;
   quote : any;
   event$ 
-  constructor(private router: Router,private _QuoteService:QuoteService) {
+  constructor(private router: Router,private _QuoteService:QuoteService) {   
     this.event$=this.router.events.subscribe((event: NavigationEvent) => {
-            if(event instanceof NavigationStart) {
+            if(event instanceof NavigationEnd) {
               if(event.url=="/games"){
                 this.showQuote();
               }

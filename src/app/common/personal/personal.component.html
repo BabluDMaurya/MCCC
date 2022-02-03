@@ -49,9 +49,10 @@
                             <div *ngIf="f.name.errors.required">Name is required</div>
                             <div *ngIf="f.name.errors.pattern">Characters and space are allowed, It's length should be minimum two characters</div>
                          </div>
+
                          <div class="invalid-feedback error" style="display: block;" *ngIf="f.name.errors?.serverError">{{ f.name.errors?.serverError }}</div>
+                         
                       </div>
-                      
                       <app-your-mobile-number *ngIf="!phoneHide" [parent]="form" [submit]="submitted"></app-your-mobile-number>
                       <div class="profileDiv">
                          <label>DOB<span>*</span></label>

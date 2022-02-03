@@ -143,7 +143,6 @@ export class WorkshopRegistrationFormComponent implements OnInit {
     this.submitted = true;
     if (this.form.invalid) {
       console.log(this.form);
-      console.log(this.userdetail.city_name);
       if((this.userdetail.phone == null || this.userdetail.phone !='') || (this.userData.data.age == null || this.userData.data.age ==0) || (this.userdetail.gender == null || this.userdetail.gender == '') || (this.userdetail.city_name == null || this.userdetail.city_name == '') || (this.userdetail.dob == null || this.userdetail.dob == '')){
         this.openmodal.nativeElement.click();
       }

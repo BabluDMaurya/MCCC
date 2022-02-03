@@ -15,10 +15,10 @@
         <app-board (cardClicked)="cardClicked()"></app-board>
         <div class="header" *ngIf="gameService.isGameRunning">
             <h3 class="text-center text-orange" *ngIf="gameService.activePlayer == 'X'"> 
-                Akshay's TURN  
+                Vicky's TURN  
             </h3>
             <h3 class="text-center text-orange" *ngIf="gameService.activePlayer == 'O'"> 
-                Kriti's TURN  
+                Sanya's TURN  
               </h3>
         </div>
         <!-- <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded mx-auto block mt-5 " 
@@ -38,10 +38,10 @@
                             <div class="modal-header" *ngIf="gameService.winner">
                                 <!-- <h5 class="modal-title">{{gameService.activePlayer  }} WON </h5> -->
                                 <h5 class="modal-title" *ngIf="gameService.activePlayer == 'X'"> 
-                                    Akshay WON 
+                                    Vicky WON 
                                 </h5>
                                 <h5 class="modal-title" *ngIf="gameService.activePlayer == 'O'"> 
-                                    Kriti WON  
+                                    Sanya WON  
                                   </h5>
                             </div>
                             <div class="modal-header" *ngIf="!gameService.winner">

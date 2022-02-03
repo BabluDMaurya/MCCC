@@ -11,7 +11,8 @@
                 <div class="lats_side">
                     <div class="avtars" [routerLink]="['/home']">
                         <!-- <div class="avatar"> -->
-                            <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded">
+                            <!-- <img src="assets/img/img/homeIcon.webp" alt="avatar" class="rounded"> -->
+                            <ion-icon name="home-outline"></ion-icon>
                         <!-- </div> -->
                     </div>
                 </div>
@@ -53,7 +54,7 @@
                     <div class="profileDiv">
                         <label>Secondary Contact<span>*</span></label>
                         <div class="inputs">
-                            <input type="tel" formControlName="sos_phone" value="" minlength="10" maxlength="16"placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
+                            <input type="tel" formControlName="sos_phone" value="" minlength="10" maxlength="16"placeholder="Enter your secondary contact" [ngClass]="{ 'is-invalid': submitted && f.sos_phone.errors }">
                             <div *ngIf="submitted && f.sos_phone.errors" class="invalid-feedback">
                                 <div *ngIf="f.sos_phone.errors.required">Please provide your secondary contact number</div>
                                 <div *ngIf="f.sos_phone.errors.minlength">
@@ -68,7 +69,7 @@
                     <div class="profileDiv">
                         <label>School/College<span class="text-danger">*</span></label>
                         <div class="inputs">
-                        <input type="text" formControlName="edu_details" maxlength="100" value="Bechelor's in Theater from NSD" placeholder="type here" [ngClass]="{ 'is-invalid': submitted && f.edu_details.errors }">
+                        <input type="text" formControlName="edu_details" maxlength="100" value="Bechelor's in Theater from NSD" placeholder="Enter your school/college name" [ngClass]="{ 'is-invalid': submitted && f.edu_details.errors }">
                         
                         <div *ngIf="submitted && f.edu_details.errors" class="invalid-feedback">
                             <div *ngIf="f.edu_details.errors.required">School/College required</div>
@@ -79,7 +80,7 @@
                     <div class="profileDiv">
                         <label>Address<span class="text-danger">*</span></label>
                         <div class="inputs">
-                            <textarea placeholder="type here" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"> </textarea>
+                            <textarea placeholder="Enter your address" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }"> </textarea>
                             <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
                                 <div *ngIf="f.address.errors.required">Please provide your Address details</div>
                             </div>

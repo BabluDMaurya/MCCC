@@ -12732,9 +12732,11 @@ body.dark-mode-active .bts .mainHeader .bottomHeader .tabs .box:nth-child(4) .la
 .training .trainingWrapper .trainngSlider .traning_slide {
   margin-right: 10px;
 }
+
 .training .trainingWrapper .trainngSlider .btsSlioder{
   margin-right: 10px;
 }
+
 .training .trainingWrapper .trainngSlider .btsSlioder img{
   width: 98%;
   border-radius: 10px;

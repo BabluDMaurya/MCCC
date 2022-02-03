@@ -52,6 +52,7 @@ export class InterviewComponent implements OnInit {
     this.actRoute.paramMap.subscribe((params: ParamMap) => {                 
       this.btsCategoryId = params.get('type');
       this.btsVideoId = params.get('id');
+      this.back_link = "bts-inner/"+this.btsCategoryId;
       console.log(params );
       console.log( this.btsCategoryId );
       // this.ngOnInit();

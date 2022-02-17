@@ -65,9 +65,31 @@ export class HeaderComponent implements OnInit {
     if($('.ng-tns-c95-7').hasClass('PGJA2')){
       $('.cdk-overlay-pane').addClass('training_tour_pane');
     }
+    $('.box.movies a').hasClass()
+
+    // $('.mat-menu-trigger').on('click',function () {
+    //   var position = $(this).position();
+    //   var corresponding = $(this).data("id");
+  
+    //   // scroll to clicked tab with a little gap left to show previous tabs
+    //   // eslint-disable-next-line no-restricted-globals
+    //   scroll = $('.tabs').scrollLeft();
+    //   // console.log(scroll);
+    //   $('.tabs').animate({
+    //     // eslint-disable-next-line no-restricted-globals
+    //       'scrollLeft': scroll + position.left - 30
+    //   }, 200);
+    // })
+
+    
+    $('.ng-tns-c95-8').addClass('moviesss');
+    if($('.ng-tns-c95-8').hasClass('movies')){
+      $('.cdk-overlay-pane').addClass('movies_tour_pane');
+    }
   }
+
   ngAfterViewChecked(){
-    // this.addExternalClass();
+    this.addExternalClass();
   }
   // clickClass(){
   //   $('.mccc').addClass('popUpClass');

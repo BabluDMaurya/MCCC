@@ -13233,7 +13233,9 @@ body.dark-mode-active .casting_inner .castingContent .cating_details li .head i 
   height: 60px;
   line-height: normal;
 }
-
+.main .mainHeader .bottomHeader .tabs .box a img {
+  width: 25px;
+}
 .casting__profiles .castingProfile .profileDetailsWrpper .profileDiv label {
   font-size: 12px;
   color: #ff6454;
@@ -14941,7 +14943,7 @@ body.dark-mode-active .personal_prfile_wrapper .head_tabs ul{
   font-size: 16px;
   text-align: center;
   border-radius: 50px;
-  font-weight: 600;
+  font-weight: 500;
   /* display: flex; */
   /* align-items: center; */
   /* justify-content: center; */
@@ -16114,14 +16116,38 @@ z-index: 1000;
   transform: translate(-8px, -16px);
 } */
 /* youtube__back__button-end*/
+@media (max-width:420px){
+  .cdk-overlay-pane.training_tour_pane {
+    right: initial!important;
+    left: 23%;
+    transform: translateX(4%)!important;
+  }
+}
+
+@media (max-width:412px){
+  .cdk-overlay-pane.training_tour_pane {
+    right: initial!important;
+    left: 24%;
+    transform: translateX(4%)!important;
+  }
+}
+
+@media (max-width:400px){
+  .cdk-overlay-pane.training_tour_pane {
+    right: initial!important;
+    left: 25%;
+    transform: translateX(4%)!important;
+  }
+}
 
 @media (max-width:360px){
   .cdk-overlay-pane.training_tour_pane {
     right: initial!important;
-    left: 20%;
+    left: 26%;
     transform: translateX(4%)!important;
   }
 }
+
 @media (max-width:340px){
   div.mat-menu-panel.bdc-walk-popup {
       min-width: initial!important;

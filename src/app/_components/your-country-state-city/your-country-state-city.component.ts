@@ -55,6 +55,7 @@ export class YourCountryStateCityComponent implements OnInit {
       },error=>{
        
       });
+      this.changeSuit(e);
     }
   }
   changeSuit(e:any) {

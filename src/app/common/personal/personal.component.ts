@@ -598,6 +598,7 @@ btnVal :string = "Save";
       },error=>{
        
       });
+      this.changeSuit(e);
     }
   }
   changeSuit(e:any) {
